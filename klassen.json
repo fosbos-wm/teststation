@@ -4,9 +4,41 @@
    "code": "f12sb-k7m",
    "name": "F12Sb (Beispiel)",
    "freigaben": [
-    {"id": "a1", "station": "zuordnung-baumrind", "titel": "Zuordnung: Erziehung und Erziehungsstile", "params": {"spiel": "3"}, "offen": true},
-    {"id": "a2", "station": "kprim-lernen", "titel": "K-Prim: Weiner, Bandura, Markowitsch", "params": {}, "offen": true},
-    {"id": "a3", "station": "zuordnung-gedaechtnis", "titel": "Zuordnung: Gedächtnis", "params": {"spiel": "1"}, "offen": false}
+    {
+     "id": "a1",
+     "station": "zuordnung-baumrind",
+     "titel": "Zuordnung: Erziehung und Erziehungsstile",
+     "params": {
+      "spiel": "3"
+     },
+     "offen": true
+    },
+    {
+     "id": "a2",
+     "station": "kprim-lernen",
+     "titel": "K-Prim: Weiner, Bandura, Markowitsch",
+     "params": {},
+     "offen": true
+    },
+    {
+     "id": "a3",
+     "station": "zuordnung-gedaechtnis",
+     "titel": "Zuordnung: Gedächtnis",
+     "params": {
+      "spiel": "1"
+     },
+     "offen": false
+    },
+    {
+     "id": "m1",
+     "station": "memory-articoli",
+     "titel": "Memory Articoli",
+     "params": {
+      "spiel": "2",
+      "woerter": "6"
+     },
+     "offen": true
+    }
    ]
   }
  ]
