@@ -1,0 +1,13 @@
+{
+ "klassen": [
+  {
+   "code": "f12sb-k7m",
+   "name": "F12Sb (Beispiel)",
+   "freigaben": [
+    {"id": "a1", "station": "zuordnung-baumrind", "titel": "Zuordnung: Erziehung und Erziehungsstile", "params": {"spiel": "3"}, "offen": true},
+    {"id": "a2", "station": "kprim-lernen", "titel": "K-Prim: Weiner, Bandura, Markowitsch", "params": {}, "offen": true},
+    {"id": "a3", "station": "zuordnung-gedaechtnis", "titel": "Zuordnung: Gedächtnis", "params": {"spiel": "1"}, "offen": false}
+   ]
+  }
+ ]
+}

@@ -1,0 +1,221 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Theorie-Duell Beamer</title><style>
+:root{--bg:#f3f2ee;--surface:#fff;--fg:#1c2124;--muted:#5c666b;--line:#d8dad4;--a:#b4451f;--a-soft:#fbe6dc;--b:#1b6485;--b-soft:#dcedf4;--ok:#1f6f4a;--bad:#9a2b2b;--btn-fg:#fff;--sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--serif:Georgia,"Times New Roman",serif}
+@media (prefers-color-scheme:dark){:root{--bg:#14181a;--surface:#1d2326;--fg:#eceff0;--muted:#a1abb0;--line:#30393d;--a:#ff9566;--a-soft:#3b2318;--b:#6cc0e3;--b-soft:#17323f;--ok:#7ad6a0;--bad:#ff8f8f;--btn-fg:#10161a;color-scheme:dark}}
+*{box-sizing:border-box}
+html{font-size:clamp(14px,.95vw,22px)}
+body{margin:0;background:var(--bg);color:var(--fg);font:1rem/1.45 var(--sans);min-height:100vh;padding:1rem 1.2rem 5rem}
+h1,h2,h3{font-family:var(--serif);margin:0}h2{font-size:1.5rem;line-height:1.2}h3{font-size:1.2rem}
+p{margin:0}.muted{color:var(--muted)}.lb{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--muted)}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:.8rem}
+.score{display:flex;gap:.8rem}.sb{border-radius:.7rem;padding:.3rem .9rem;font-weight:700;font-variant-numeric:tabular-nums;border:3px solid}
+.sb.a{background:var(--a-soft);border-color:var(--a);color:var(--a)}.sb.b{background:var(--b-soft);border-color:var(--b);color:var(--b)}.sb b{font:700 1.6rem var(--serif);margin-right:.3rem}
+.case{background:var(--surface);border:1px solid var(--line);border-radius:1rem;padding:1.1rem 1.4rem;margin-bottom:1rem}
+.case p.t{font-size:1.25rem;line-height:1.5;margin-top:.4rem}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.col{border-radius:1rem;padding:1rem;border:3px solid;display:flex;flex-direction:column;gap:.6rem;min-width:0}
+.col.a{background:var(--a-soft);border-color:var(--a)}.col.b{background:var(--b-soft);border-color:var(--b)}
+.col h3{color:inherit}.col.a h3{color:var(--a)}.col.b h3{color:var(--b)}
+.chip{display:flex;gap:.7rem;align-items:center;font:inherit;font-size:1.1rem;padding:.4rem .9rem;border-radius:.8rem;border:2px solid var(--line);background:var(--surface);color:var(--fg);text-align:left;cursor:pointer;width:100%}
+.chip kbd{font:700 .95rem var(--sans);background:var(--bg);border-radius:.4rem;padding:.1rem .5rem;border:1px solid var(--line)}
+.chip[aria-pressed="true"]{outline:4px solid var(--fg);font-weight:700}
+.chip.right{border-color:var(--ok);border-width:4px}.chip.wrong{border-color:var(--bad);border-width:4px;text-decoration:line-through}
+.chip:disabled{cursor:default}
+.res{background:var(--surface);border-radius:.7rem;padding:.6rem .9rem;font-size:.95rem}
+.btn{font:inherit;font-weight:700;padding:.65rem 1.2rem;border-radius:.8rem;border:0;background:var(--fg);color:var(--bg);cursor:pointer}
+.btn.n{background:none;border:2px solid var(--line);color:var(--fg)}.btn.a{background:var(--a);color:var(--btn-fg)}.btn.b{background:var(--b);color:var(--btn-fg)}
+.btn:focus-visible,.chip:focus-visible,input:focus-visible,select:focus-visible{outline:4px solid var(--fg);outline-offset:2px}
+input,select{font:inherit;padding:.4rem .7rem;border-radius:.6rem;border:2px solid var(--line);background:var(--surface);color:var(--fg)}
+input.code{width:5.5em;letter-spacing:.25em;text-transform:uppercase;font-weight:700;text-align:center}
+.vote{display:flex;gap:1rem;flex-wrap:wrap}.vote>div{flex:1;min-width:12em;background:var(--surface);border:2px solid var(--line);border-radius:1rem;padding:.8rem 1rem;display:flex;flex-direction:column;gap:.5rem;align-items:center;text-align:center}
+.vote .n{font:700 2.6rem var(--serif)}.vote .pm{display:flex;gap:.5rem}.vote .pm .btn{font-size:1.6rem;line-height:1;min-width:3rem}
+.foot{position:fixed;left:0;right:0;bottom:0;background:var(--bg);border-top:1px solid var(--line);padding:.6rem 1.2rem;display:flex;gap:.7rem;align-items:center;flex-wrap:wrap}
+.foot .btn,.foot select{font-size:.85rem;padding:.4rem .8rem}.foot .sp{flex:1;min-width:14rem;white-space:nowrap}
+.hint{font-size:.9rem;color:var(--muted)}
+.handy{max-width:30rem;margin:0 auto;display:flex;flex-direction:column;gap:.9rem;font-size:1.1rem}
+.handy .chip{font-size:1.1rem}
+.bigcode{font:700 4rem/1 var(--serif);letter-spacing:.25em;text-align:center}
+@media(max-width:800px){.cols{grid-template-columns:1fr}html{font-size:17px}}
+</style></head><body>
+<main></main>
+<div class="handy" id="handy" hidden></div>
+<div class="foot" id="foot"><button class="btn n" id="fback">Zurück</button><button class="btn" id="fnext">Begriffe wählen</button><span class="sp hint">Leertaste: weiter · ←: zurück · F: Vollbild</span><select id="fcase" aria-label="Fall wählen"></select><button class="btn n" id="fnew">Neues Spiel</button><button class="btn n" id="fhandy">Handy-Modus</button><button class="btn n" id="ffull">Vollbild</button></div>
+<script>
+const TH={
+ freud:{n:"Psychoanalyse (Freud)",lb:"LB 1",k:"Kritik: Die psychosexuelle Entwicklung und unbewusste Vorgänge lassen sich empirisch kaum überprüfen.",pool:["topografisches Modell","Instanzenmodell (Es, Ich, Über-Ich)","Trieblehre","psychosexuelle Entwicklung","Verdrängung","Projektion"]},
+ bindung:{n:"Bindungstheorie",lb:"LB 1",k:"Kritik: Bindungstypen sind Tendenzen und keine festen Schicksale. Spätere Erfahrungen können sie verändern.",pool:["Bindungstypologie","Phasen der Bindungsentwicklung","Feinfühligkeit der Bezugsperson","primäre und sekundäre Bindung"]},
+ resil:{n:"Vulnerabilität und Resilienz",lb:"LB 1",k:"Kritik: Schutzfaktoren zeigen Zusammenhänge, keine sicheren Ursachen. Resilienz ist kein fester Charakterzug.",pool:["Schutzfaktoren","Risikofaktoren","soziale Unterstützung","positive Peerkontakte","Vulnerabilität","Selbstwertgefühl"]},
+ rogers:{n:"Personenzentrierte Theorie (Rogers)",lb:"LB 2",k:"Kritik: Begriffe wie Aktualisierungstendenz sind schwer messbar, das Menschenbild ist sehr optimistisch.",pool:["Aktualisierungstendenz","Selbstkonzept (Real- und Idealselbst)","Bewertungsbedingungen","Inkongruenz","Wahrnehmungsverleugnung","Selbstachtung"]},
+ bandura:{n:"Sozialkognitive Theorie (Bandura)",lb:"LB 2",k:"Kritik: Erwartungen werden meist per Selbstauskunft erfasst. Die Theorie erklärt nicht, woher die Überzeugungen ursprünglich kommen.",pool:["Selbstwirksamkeitserwartung","Ergebniserwartung","Kompetenzerwartung","Selbstregulation","Beobachtungslernen (Modell)","Überzeugungen"]},
+ marcia:{n:"Identitätsmodell (Marcia)",lb:"LB 2",k:"Kritik: Das Modell beschreibt Status, erklärt aber nicht, warum jemand in einem Status bleibt oder wechselt.",pool:["diffuse Identität","übernommene Identität","Moratorium","erarbeitete Identität","Exploration (Krise)","Verpflichtung (Commitment)"]},
+ big5:{n:"Big Five (Costa und McCrae)",lb:"LB 2",k:"Kritik: Die Big Five beschreiben stabile Eigenschaften, erklären aber nicht ein konkretes Verhaltensmuster zwischen zwei Personen.",pool:["Offenheit","Gewissenhaftigkeit","Extraversion","Verträglichkeit","Neurotizismus","Eigenschaften und Dispositionen"]},
+ watz:{n:"Kommunikationstheorie (Watzlawick)",lb:"LB 4",k:"Kritik: Die Axiome beschreiben Störungen gut, sind aber wenig empirisch geprüft und berücksichtigen Absichten kaum.",pool:["Interpunktion von Ereignisfolgen","Inhalts- und Beziehungsebene","symmetrische Eskalation","digitale und analoge Modalität","Metakommunikation","selbsterfüllende Prophezeiung"]},
+ verh:{n:"Verhaltensorientierte Einzelhilfe",lb:"LB 3",k:"Kritik: Der Blick bleibt auf dem Verhalten. Umfeld und Beziehung können zu kurz kommen.",pool:["Analyse des Problemverhaltens","Planung","Verhaltensmodifikation","Evaluation","Verstärkung","Lerntheorie als Grundlage"]},
+ life:{n:"Life Model (Germain/Gitterman)",lb:"LB 3",k:"Kritik: Das Modell ist sehr breit und liefert wenig klare Vorgaben für einzelne Schritte.",pool:["Lebens-Stress","Coping","Ressourcen","Anpassung von Person und Umwelt","Transaktion","Habitat und Nische"]},
+ baltes:{n:"Entwicklung über die Lebensspanne (Baltes)",lb:"LB 1",k:"Kritik: Das Modell beschreibt typische Anforderungen, erklärt aber kaum, warum ein einzelner Jugendlicher auf seine Weise reagiert.",pool:["Entwicklungsanforderungen der Lebensspanne","Entwicklungsanforderungen im Jugendalter","normative altersbezogene Einflüsse","nicht-normative Ereignisse","Einfluss des Freundeskreises","moralisches Urteilen"]}
+};
+const CASES=[
+ {t:"Die Mathe-Klausur",x:"Jonas (16) hat wochenlang geübt. Vor dem Blatt friert er ein, ihm fällt nichts ein, und im Magen zieht es. Nach der Klausur fällt ihm alles wieder ein. Er sagt: „Ich bin einfach schlecht in Mathe, das wird nie was.“",
+  a:"freud",b:"bandura",
+  ca:["Verdrängung","topografisches Modell","Instanzenmodell (Es, Ich, Über-Ich)"],cb:["Selbstwirksamkeitserwartung","Kompetenzerwartung","Selbstregulation"],
+  ma:"Die Prüfung weckt Angst. Das Ich wehrt sie ab, indem es Wissen aus dem Bewusstsein ins Unbewusste schiebt (Verdrängung). Nach der Klausur lässt der Druck nach, und die Inhalte sind wieder zugänglich.",
+  mb:"Jonas hat eine niedrige Selbstwirksamkeitserwartung in Mathe: Er traut sich die Aufgaben nicht zu. Sein Verhalten folgt dieser Überzeugung und nicht seinem tatsächlichen Können.",
+  erg:"Beide lassen sich verbinden: Angst und Überzeugung verstärken sich. Bandura liefert konkretere Hilfen (Erfolgserlebnisse planen), Freud fragt nach dem, was der Angst zugrunde liegt."},
+ {t:"Die Nachrichtenflut",x:"Leon (17) klammert in seiner Beziehung. Antwortet seine Freundin nicht sofort, schreibt er zehn Nachrichten und ist wütend, danach entschuldigt er sich weinend. Als Kind war seine Mutter mal sehr zugewandt, mal tagelang abwesend.",
+  a:"bindung",b:"freud",
+  ca:["Bindungstypologie","Feinfühligkeit der Bezugsperson","primäre und sekundäre Bindung"],cb:["Fixierung","Regression","psychosexuelle Entwicklung"],
+  ma:"Die wechselhafte Zuwendung der Mutter passt zu einer unsicher-ambivalenten Bindung. In der Partnerschaft (sekundäre Bindung im Jugendalter) zeigt sich das Muster: Nähe suchen, Verlustangst, Wut.",
+  mb:"Frühe Frustration kann zu einer Fixierung führen. Unter Stress fällt Leon in kindliche Verhaltensweisen zurück (Regression): Er klammert und fordert wie ein Kind.",
+  erg:"Beide sehen die frühe Kindheit als prägend. Die Bindungstheorie ist stärker empirisch gestützt und bietet klarere Ansatzpunkte für Hilfe, etwa feinfühlige Beziehungserfahrungen."},
+ {t:"Die sichere Wahl",x:"Aylin (17) macht eine Ausbildung zur Pflegefachkraft, weil ihre Eltern das für sicher halten. Andere Berufe hat sie nie geprüft. Auf die Frage, was sie selbst will, sagt sie: „Weiß nicht, ist doch gut so.“ Abends fühlt sie sich leer.",
+  a:"marcia",b:"rogers",
+  ca:["übernommene Identität","Exploration (Krise)","Verpflichtung (Commitment)"],cb:["Bewertungsbedingungen","Inkongruenz","Selbstkonzept (Real- und Idealselbst)"],
+  ma:"Aylin hat sich auf eine berufliche Rolle festgelegt (Verpflichtung), ohne Alternativen zu prüfen (keine Exploration): Das ist die übernommene Identität.",
+  mb:"Aylin erlebt Zuwendung vor allem, wenn sie Erwartungen erfüllt (Bewertungsbedingungen). Ihr eigenes Erleben widerspricht ihrem Selbstbild: Inkongruenz. Das Leeregefühl zeigt sie an.",
+  erg:"Marcia beschreibt, wo Aylin steht, Rogers erklärt, warum sie ihre Wünsche nicht spürt. Zusammen ergibt sich ein Bild: Beschreibung plus mögliche Ursache."},
+ {t:"Der Abendstreit",x:"Paul und Lena streiten jeden Abend. Lena: „Ich nörgele nur, weil du dich zurückziehst.“ Paul: „Ich ziehe mich nur zurück, weil du ständig nörgelst.“ Beide fühlen sich vom anderen angegriffen.",
+  a:"watz",b:"big5",
+  ca:["Interpunktion von Ereignisfolgen","Inhalts- und Beziehungsebene","Metakommunikation"],cb:["Verträglichkeit","Neurotizismus","Eigenschaften und Dispositionen"],
+  ma:"Beide setzen den Anfang der Abfolge anders (Interpunktion). Es entsteht ein Teufelskreis, in dem jedes Verhalten das andere auslöst. Ein Ausweg ist Metakommunikation: über die Art des Redens sprechen.",
+  mb:"Stabile Dispositionen können die Reaktionen färben: Hohe Neurotizismuswerte machen Kritik bedrohlicher, niedrige Verträglichkeit führt zu Schärfe. Paul und Lena unterscheiden sich in ihren Ausprägungen.",
+  erg:"Watzlawick erklärt das Muster zwischen den beiden, die Big Five beschreiben, was jede Person mitbringt. Die Kommunikationstheorie bietet mehr Handlungsideen."},
+ {t:"Samir schwänzt",x:"Sozialarbeiter Herr Dorn betreut den 12-jährigen Samir. Samir schwänzt oft und wird bei Konflikten laut. Zuhause ist die Wohnung klein, die Mutter arbeitet im Schichtdienst, im Quartier gibt es kaum Angebote für Jugendliche.",
+  a:"verh",b:"baltes",
+  ca:["Analyse des Problemverhaltens","Verhaltensmodifikation","Evaluation"],cb:["Entwicklungsanforderungen im Jugendalter","Einfluss des Freundeskreises","normative altersbezogene Einflüsse"],
+  ma:"Schwänzen und Lautwerden werden genau analysiert (wann, wo, welche Folgen). Dann plant man gezielte Änderungen, etwa Verstärkung für Anwesenheit, und prüft, ob sie wirken.",
+  mb:"Samir steht vor typischen Anforderungen des frühen Jugendalters: Ablösung, ein Platz im Freundeskreis, Leistung in der Schule. Schwänzen und Lautwerden können Versuche sein, damit umzugehen, bevor er die passenden Mittel hat. Hinzu kommen Kontexte wie die enge Wohnung und der Schichtdienst der Mutter.",
+  erg:"Die Verhaltensorientierung liefert konkrete Schritte. Baltes ordnet Samirs Verhalten in typische Anforderungen seines Alters ein und warnt davor, es nur als individuelles Problem zu sehen."},
+ {t:"Der Witwer",x:"Herr Brandl (72) ist nach dem Tod seiner Frau und einem Umzug kaum noch draußen. Er isst unregelmäßig und lehnt Besuche ab. Seine Tochter wohnt weit weg, aber ein Nachbar klingelt ab und zu bei ihm.",
+  a:"life",b:"resil",
+  ca:["Lebens-Stress","Coping","Ressourcen"],cb:["Schutzfaktoren","soziale Unterstützung","Vulnerabilität"],
+  ma:"Verlust und Umzug sind Lebens-Stress. Brandls Coping gelingt nicht, und die Passung zwischen ihm und seiner Umwelt stimmt nicht. Die Soziale Arbeit stärkt Ressourcen (Nachbar, Tochter) und verbessert die Umwelt.",
+  mb:"Verlusterfahrungen erhöhen die Vulnerabilität. Schutzfaktoren wie soziale Unterstützung (Nachbar, Tochter) können sie abpuffern und sollten ausgebaut werden.",
+  erg:"Das Life Model zeigt die Wechselwirkung zwischen Person und Umwelt und leitet Hilfe ab. Die Resilienzperspektive betont, welche Schutzfaktoren bereits da sind."},
+ {t:"Emma bleibt stabil",x:"Emma (15) wird in der Klassen-Chatgruppe monatelang gemobbt. Sie bleibt trotzdem stabil, hat gute Noten und sagt: „Ich schaffe das, ich suche mir Hilfe.“ Sie hat eine beste Freundin und trainiert im Verein.",
+  a:"resil",b:"bandura",
+  ca:["Schutzfaktoren","positive Peerkontakte","Selbstwertgefühl"],cb:["Selbstwirksamkeitserwartung","Ergebniserwartung","Selbstregulation"],
+  ma:"Emma hat Schutzfaktoren: positive Peerkontakte (Freundin, Verein) und ein stabiles Selbstwertgefühl. Sie puffern das Risiko Mobbing ab: Das ist Resilienz.",
+  mb:"Emma glaubt, Probleme bewältigen zu können (Selbstwirksamkeit), und erwartet, dass Hilfe etwas bringt (Ergebniserwartung). Sie steuert ihr Verhalten selbst, sucht Unterstützung und trainiert.",
+  erg:"Selbstwirksamkeit gilt in der Resilienzforschung selbst als Schutzfaktor. Beide Perspektiven beschreiben also zusammen, warum Emma durchhält."},
+ {t:"Der starke Vater",x:"Tim (9) schubst in der Pause Mitschüler und ruft: „Ich bestimme hier!“ Zuhause erlebt er, dass sein Vater bei Streit laut wird und Türen knallt. Der Vater ist für Tim sehr wichtig, er will so sein wie er.",
+  a:"bandura",b:"freud",
+  ca:["Beobachtungslernen (Modell)","Ergebniserwartung","Überzeugungen"],cb:["Verdrängung","Instanzenmodell (Es, Ich, Über-Ich)","Trieblehre"],
+  ma:"Tim hat am Modell beobachtet, dass Lautstärke Durchsetzung bringt, und erwartet das auch in der Schule (Ergebniserwartung). Das Verhalten wird so nachgeahmt.",
+  mb:"Tim identifiziert sich mit seinem Vater: Er übernimmt dessen Haltung. Das ist Abwehr als Ich-Funktion, die ihm hilft, sich stark statt hilflos zu fühlen.",
+  erg:"Hier passt eher Bandura, weil sich Nachahmung konkret beobachten und beeinflussen lässt. Freud liefert dafür eine tiefere Deutung der Motive, die schwerer zu prüfen ist.",
+  fix:["Identifikation","Abwehr als Ich-Funktion"]}
+];
+/* Freud-Ecke von Fall 8 braucht passende Begriffe */
+CASES[7].cb=["Identifikation","Abwehr als Ich-Funktion","Instanzenmodell (Es, Ich, Über-Ich)"];
+TH.freud.pool.push("Identifikation","Fixierung","Regression","Abwehr als Ich-Funktion");
+
+
+
+const $=i=>document.getElementById(i);
+const esc=s=>String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;");
+function hash(s){let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)}return h>>>0}
+function mulberry(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function shuffle(a,r){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(r()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+const FAM=[["life","baltes","resil","verh"],["rogers","bandura","marcia","big5","resil"],["freud","bindung"],["watz"]];
+function distractors(c,side,r){
+  const own=side==="A"?c.ca:c.cb,other=side==="A"?c.cb:c.ca;
+  let banned=own.concat(other,TH[c.a].pool,TH[c.b].pool);
+  FAM.forEach(g=>{if(g.includes(c.a)||g.includes(c.b))g.forEach(k=>{banned=banned.concat(TH[k].pool)})});
+  const pool=[];Object.keys(TH).forEach(k=>{if(k!==c.a&&k!==c.b)TH[k].pool.forEach(t=>{if(!banned.includes(t))pool.push(t)})});
+  return shuffle(pool,r).slice(0,3);
+}
+/* Reihenfolge der Begriffe hängt nur von Fall und Ecke ab, damit Beamer und Handy dieselben Buchstaben zeigen */
+function itemsFor(ci,team){const c=CASES[ci],r=mulberry(hash("duell:"+ci+":"+team));return shuffle((team==="A"?c.ca:c.cb).concat(distractors(c,team,r)),r)}
+const L="ABCDEF";
+
+/* ---------- Beamer ---------- */
+let order=[],pos=0,step=0,sel={A:[],B:[]},score={A:0,B:0},votes={A:0,B:0,C:0},banked=false;
+function newGame(){order=shuffle(CASES.map((_,i)=>i),Math.random);pos=0;score={A:0,B:0};startCase()}
+function startCase(){step=0;sel={A:[],B:[]};votes={A:0,B:0,C:0};banked=false;render()}
+const cur=()=>CASES[order[pos]];
+function pts(team){const c=cur(),own=team==="A"?c.ca:c.cb,it=itemsFor(order[pos],team);let p=0;sel[team].forEach(i=>{p+=own.includes(it[i])?1:-1});return Math.max(0,p)}
+function colHtml(team){
+  const c=cur(),th=TH[team==="A"?c.a:c.b],it=itemsFor(order[pos],team),own=team==="A"?c.ca:c.cb,solved=step>=2,k=team.toLowerCase();
+  let h=`<section class="col ${k}" aria-label="Ecke ${team==="A"?"Rot":"Blau"}"><span class="lb">Ecke ${team==="A"?"Rot":"Blau"}</span><h3>${esc(th.n)}</h3>`;
+  if(step===0)h+=`<p class="muted">Gruppe ${team==="A"?"Rot":"Blau"}: Welche Begriffe passen zu eurer Theorie und diesem Fall? Gleich wählt ihr drei.</p>`;
+  else{
+    h+=it.map((t,i)=>{
+      const on=sel[team].includes(i),ok=own.includes(t);let cls="chip";if(solved){if(ok)cls+=" right";else if(on)cls+=" wrong"}
+      return`<button class="${cls}" data-act="pick" data-t="${team}" data-i="${i}" aria-pressed="${on}"${solved?" disabled":""}><kbd>${L[i]}</kbd><span>${solved&&ok?"✓ ":solved&&on?"✗ ":""}${esc(t)}</span></button>`}).join("");
+    if(step===1)h+=`<div style="display:flex;gap:.6rem;align-items:center;flex-wrap:wrap"><label class="hint" for="hc${team}">Code vom Handy:</label><input class="code" id="hc${team}" maxlength="3" autocomplete="off" placeholder="ABC"><button class="btn n" data-act="code" data-t="${team}">Übernehmen</button></div><p class="hint">${sel[team].length} von 3 gewählt</p>`;
+    if(solved)h+=`<div class="res"><b>${pts(team)} von 3 Punkten.</b> ${esc(team==="A"?c.ma:c.mb)}<div class="muted" style="margin-top:.4rem">${esc(th.k)}</div></div>`;
+  }
+  return h+"</section>";
+}
+function render(){
+  const c=cur(),m=document.querySelector("main");
+  const stepNames=["Fall lesen","Begriffe wählen","Auflösung","Urteil"];
+  let h=`<div class="top"><div><span class="lb">Pädagogik/Psychologie 12 · Fall ${pos+1} von ${order.length} · ${stepNames[step]}</span><h1 style="font-size:2rem;margin-top:.2rem">Theorie-Duell</h1></div><div class="score" aria-live="polite"><span class="sb a"><b>${score.A+(step===2&&!banked?0:0)}</b>Rot</span><span class="sb b"><b>${score.B}</b>Blau</span></div></div>`;
+  h+=`<div class="case"><span class="lb">Fall ${order[pos]+1} · ${esc(TH[c.a].lb)} gegen ${esc(TH[c.b].lb)}</span><h2>${esc(c.t)}</h2>${step>=2?"":`<p class="t">${esc(c.x)}</p>`}</div>`;
+  h+=`<div class="cols">${colHtml("A")}${colHtml("B")}</div>`;
+  if(step===3){
+    const tot=Math.max(1,votes.A+votes.B+votes.C);
+    h+=`<div style="margin-top:1rem"><h2 style="margin-bottom:.6rem">Wer erklärt den Fall besser? Handzeichen zählen</h2><div class="vote">`
+     +[["A",TH[c.a].n.split(" (")[0],"a"],["B",TH[c.b].n.split(" (")[0],"b"],["C","Beide ergänzen sich","n"]].map(v=>`<div><b>${esc(v[1])}</b><span class="n">${votes[v[0]]}</span><span class="pm"><button class="btn n" data-act="vm" data-v="${v[0]}" aria-label="eine Stimme weniger">−</button><button class="btn ${v[2]}" data-act="vp" data-v="${v[0]}" aria-label="eine Stimme mehr">+</button></span></div>`).join("")
+     +`</div><div class="case" style="margin-top:1rem"><h3>Zusammenspiel</h3><p class="t">${esc(c.erg)}</p><p class="hint" style="margin-top:.5rem">Kriterien fürs Urteil: Erklärungskraft für den Fall · empirische Überprüfbarkeit · Ableitung von Hilfen · Menschenbild</p></div></div>`;
+  }
+  m.innerHTML=h;
+  const nx=pos+1<order.length;
+  $("fnext").textContent=step===0?"Begriffe wählen":step===1?"Auflösen":step===2?"Zum Urteil":nx?"Nächster Fall":"Neues Spiel";
+  $("fback").disabled=step===0;
+  $("fcase").value=String(order[pos]);
+}
+function go(d){
+  if(d>0){
+    if(step===1&&!banked){score.A+=pts("A");score.B+=pts("B");banked=true}
+    if(step===3){if(pos+1<order.length){pos++;startCase()}else newGame();return}
+    step++;render();
+  }else if(step>0){
+    if(step===2&&banked){score.A-=pts("A");score.B-=pts("B");banked=false}
+    step--;render();
+  }
+}
+document.addEventListener("click",e=>{
+  const b=e.target.closest("[data-act]");if(!b)return;const a=b.getAttribute("data-act");
+  if(a==="pick"){const t=b.getAttribute("data-t"),i=+b.getAttribute("data-i"),s=sel[t],k=s.indexOf(i);if(k>-1)s.splice(k,1);else if(s.length<3)s.push(i);render()}
+  else if(a==="code"){const t=b.getAttribute("data-t"),v=$("hc"+t).value.toUpperCase().replace(/[^A-F]/g,"").split("").filter((x,i,arr)=>arr.indexOf(x)===i).slice(0,3);if(v.length){sel[t]=v.map(x=>L.indexOf(x));render()}}
+  else if(a==="vp"){votes[b.getAttribute("data-v")]++;render()}
+  else if(a==="vm"){const v=b.getAttribute("data-v");if(votes[v]>0)votes[v]--;render()}
+});
+$("fnext").onclick=()=>go(1);$("fback").onclick=()=>go(-1);
+$("fcase").innerHTML=CASES.map((c,i)=>`<option value="${i}">Fall ${i+1}: ${esc(c.t)}</option>`).join("");
+$("fcase").onchange=e=>{const i=+e.target.value;order=[i].concat(order.filter(x=>x!==i));pos=0;startCase()};
+$("fnew").onclick=newGame;
+$("ffull").onclick=()=>{try{document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}catch(e){}};
+$("fhandy").onclick=()=>{location.hash="handy";route()};
+document.addEventListener("keydown",e=>{
+  if(e.target.matches("input,select,textarea"))return;
+  if(e.key==="ArrowRight"||e.key===" "||e.key==="PageDown"){e.preventDefault();go(1)}
+  else if(e.key==="ArrowLeft"||e.key==="PageUp"){e.preventDefault();go(-1)}
+  else if(e.key==="f"||e.key==="F")$("ffull").click();
+});
+
+/* ---------- Handy-Modus (derselbe Datei-Inhalt, ohne Verbindung) ---------- */
+let hCase=0,hTeam="A",hSel=[];
+function handy(){
+  const items=itemsFor(hCase,hTeam),c=CASES[hCase],th=TH[hTeam==="A"?c.a:c.b],code=hSel.map(i=>L[i]).join("");
+  $("handy").innerHTML=`<h1 style="font-size:1.6rem">Theorie-Duell: Handy</h1><p class="muted">Wähle die Fallnummer vom Beamer und deine Ecke. Tippe drei Begriffe. Gib dann den Code auf dem Beamer ein.</p>
+  <label class="lb" for="hn">Fallnummer</label><select id="hn">${CASES.map((x,i)=>`<option value="${i}" ${i===hCase?"selected":""}>Fall ${i+1}: ${esc(x.t)}</option>`).join("")}</select>
+  <div style="display:flex;gap:.6rem"><button class="btn a" data-h="A" style="flex:1;${hTeam==="A"?"outline:4px solid var(--fg)":""}">Ecke Rot</button><button class="btn b" data-h="B" style="flex:1;${hTeam==="B"?"outline:4px solid var(--fg)":""}">Ecke Blau</button></div>
+  <h2>${esc(th.n)}</h2>${items.map((t,i)=>`<button class="chip" data-hi="${i}" aria-pressed="${hSel.includes(i)}"><kbd>${L[i]}</kbd><span>${esc(t)}</span></button>`).join("")}
+  <div class="case" style="text-align:center"><span class="lb">Dein Code</span><div class="bigcode">${esc(code)||"–––"}</div><p class="hint">${hSel.length} von 3 gewählt</p></div>
+  <button class="btn n" data-h="back">Zurück zur Beamer-Ansicht</button>`;
+}
+$("handy").addEventListener("click",e=>{
+  const h=e.target.closest("[data-h]"),i=e.target.closest("[data-hi]");
+  if(h){const v=h.getAttribute("data-h");if(v==="back"){location.hash="";route();return}hTeam=v;hSel=[];handy()}
+  else if(i){const n=+i.getAttribute("data-hi"),k=hSel.indexOf(n);if(k>-1)hSel.splice(k,1);else if(hSel.length<3)hSel.push(n);handy()}
+});
+$("handy").addEventListener("change",e=>{if(e.target.id==="hn"){hCase=+e.target.value;hSel=[];handy()}});
+function route(){
+  const hm=location.hash==="#handy";
+  $("handy").hidden=!hm;document.querySelector("main").hidden=hm;$("foot").hidden=hm;
+  if(hm)handy();
+}
+addEventListener("hashchange",route);
+newGame();route();
+</script></body></html>

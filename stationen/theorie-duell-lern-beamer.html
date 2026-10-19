@@ -1,0 +1,252 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Theorie-Duell Lerntheorien Beamer</title><style>
+:root{--bg:#f3f2ee;--surface:#fff;--fg:#1c2124;--muted:#5c666b;--line:#d8dad4;--a:#b4451f;--a-soft:#fbe6dc;--b:#1b6485;--b-soft:#dcedf4;--ok:#1f6f4a;--bad:#9a2b2b;--btn-fg:#fff;--sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--serif:Georgia,"Times New Roman",serif}
+@media (prefers-color-scheme:dark){:root{--bg:#14181a;--surface:#1d2326;--fg:#eceff0;--muted:#a1abb0;--line:#30393d;--a:#ff9566;--a-soft:#3b2318;--b:#6cc0e3;--b-soft:#17323f;--ok:#7ad6a0;--bad:#ff8f8f;--btn-fg:#10161a;color-scheme:dark}}
+*{box-sizing:border-box}
+html{font-size:clamp(14px,.95vw,22px)}
+body{margin:0;background:var(--bg);color:var(--fg);font:1rem/1.45 var(--sans);min-height:100vh;padding:1rem 1.2rem 5rem}
+h1,h2,h3{font-family:var(--serif);margin:0}h2{font-size:1.5rem;line-height:1.2}h3{font-size:1.2rem}
+p{margin:0}.muted{color:var(--muted)}.lb{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--muted)}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:.8rem}
+.score{display:flex;gap:.8rem}.sb{border-radius:.7rem;padding:.3rem .9rem;font-weight:700;font-variant-numeric:tabular-nums;border:3px solid}
+.sb.a{background:var(--a-soft);border-color:var(--a);color:var(--a)}.sb.b{background:var(--b-soft);border-color:var(--b);color:var(--b)}.sb b{font:700 1.6rem var(--serif);margin-right:.3rem}
+.case{background:var(--surface);border:1px solid var(--line);border-radius:1rem;padding:1.1rem 1.4rem;margin-bottom:1rem}
+.case p.t{font-size:1.25rem;line-height:1.5;margin-top:.4rem}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.col{border-radius:1rem;padding:1rem;border:3px solid;display:flex;flex-direction:column;gap:.6rem;min-width:0}
+.col.a{background:var(--a-soft);border-color:var(--a)}.col.b{background:var(--b-soft);border-color:var(--b)}
+.col h3{color:inherit}.col.a h3{color:var(--a)}.col.b h3{color:var(--b)}
+.chip{display:flex;gap:.7rem;align-items:center;font:inherit;font-size:1.1rem;padding:.4rem .9rem;border-radius:.8rem;border:2px solid var(--line);background:var(--surface);color:var(--fg);text-align:left;cursor:pointer;width:100%}
+.chip kbd{font:700 .95rem var(--sans);background:var(--bg);border-radius:.4rem;padding:.1rem .5rem;border:1px solid var(--line)}
+.chip[aria-pressed="true"]{outline:4px solid var(--fg);font-weight:700}
+.chip.right{border-color:var(--ok);border-width:4px}.chip.wrong{border-color:var(--bad);border-width:4px;text-decoration:line-through}
+.chip:disabled{cursor:default}
+.res{background:var(--surface);border-radius:.7rem;padding:.6rem .9rem;font-size:.95rem}
+.btn{font:inherit;font-weight:700;padding:.65rem 1.2rem;border-radius:.8rem;border:0;background:var(--fg);color:var(--bg);cursor:pointer}
+.btn.n{background:none;border:2px solid var(--line);color:var(--fg)}.btn.a{background:var(--a);color:var(--btn-fg)}.btn.b{background:var(--b);color:var(--btn-fg)}
+.btn:focus-visible,.chip:focus-visible,input:focus-visible,select:focus-visible{outline:4px solid var(--fg);outline-offset:2px}
+input,select{font:inherit;padding:.4rem .7rem;border-radius:.6rem;border:2px solid var(--line);background:var(--surface);color:var(--fg)}
+input.code{width:5.5em;letter-spacing:.25em;text-transform:uppercase;font-weight:700;text-align:center}
+.vote{display:flex;gap:1rem;flex-wrap:wrap}.vote>div{flex:1;min-width:12em;background:var(--surface);border:2px solid var(--line);border-radius:1rem;padding:.8rem 1rem;display:flex;flex-direction:column;gap:.5rem;align-items:center;text-align:center}
+.vote .n{font:700 2.6rem var(--serif)}.vote .pm{display:flex;gap:.5rem}.vote .pm .btn{font-size:1.6rem;line-height:1;min-width:3rem}
+.foot{position:fixed;left:0;right:0;bottom:0;background:var(--bg);border-top:1px solid var(--line);padding:.6rem 1.2rem;display:flex;gap:.7rem;align-items:center;flex-wrap:wrap}
+.foot .btn,.foot select{font-size:.85rem;padding:.4rem .8rem}.foot .sp{flex:1;min-width:14rem;white-space:nowrap}
+.hint{font-size:.9rem;color:var(--muted)}
+.handy{max-width:30rem;margin:0 auto;display:flex;flex-direction:column;gap:.9rem;font-size:1.1rem}
+.handy .chip{font-size:1.1rem}
+.bigcode{font:700 4rem/1 var(--serif);letter-spacing:.25em;text-align:center}
+@media(max-width:800px){.cols{grid-template-columns:1fr}html{font-size:17px}}
+</style></head><body>
+<main></main>
+<div class="handy" id="handy" hidden></div>
+<div class="foot" id="foot"><button class="btn n" id="fback">Zurück</button><button class="btn" id="fnext">Begriffe wählen</button><span class="sp hint">Leertaste: weiter · ←: zurück · F: Vollbild</span><select id="fcase" aria-label="Fall wählen"></select><button class="btn n" id="fnew">Neues Spiel</button><button class="btn n" id="fhandy">Handy-Modus</button><button class="btn n" id="ffull">Vollbild</button></div>
+<script>
+const TH={
+ klass:{n:"Klassisches Konditionieren (Grundschema)",lb:"Lernen",k:"Kritik: Erklärt gelernte Reaktionen wie Angst oder Speichelfluss gut, aktives und zielgerichtetes Verhalten dagegen kaum.",pool:["neutraler Reiz","unkonditionierter Reiz","unkonditionierte Reaktion","Kopplung der Reize","konditionierter Reiz","konditionierte Reaktion"]},
+ thorn:{n:"Gesetzmäßigkeiten von Thorndike",lb:"Lernen",k:"Kritik: Gedanken, Erwartungen und Einsicht bleiben außen vor. Lernen wird auf Versuch, Irrtum und Folgen reduziert.",pool:["Gesetz des Effekts","Gesetz der Übung","Gesetz der Bereitschaft","Versuch und Irrtum","Verbindung von Reiz und Reaktion"]},
+ kont:{n:"Kontingenzschema (operantes Konditionieren)",lb:"Lernen",k:"Kritik: Das Schema beschreibt Folgen von außen. Innere Vorgänge wie Erwartungen bleiben unberücksichtigt.",pool:["positive Verstärkung","negative Verstärkung","Bestrafung Typ I","Bestrafung Typ II","angenehmer Reiz folgt","aversiver Reiz folgt","angenehmer Reiz entfällt","aversiver Reiz entfällt","Verhalten wird häufiger","Verhalten wird seltener"]},
+ bandura:{n:"Sozial-kognitive Theorie (Bandura)",lb:"Lernen",k:"Kritik: Offen bleibt, warum Beobachter manches nachahmen und anderes nicht. Die Teilprozesse sind schwer einzeln zu messen.",pool:["Aneignungsphase","Ausführungsphase","Aufmerksamkeitsprozesse","Gedächtnisprozesse","motorische Reproduktionsprozesse","Motivationsprozesse"]},
+ psa:{n:"Psychoanalytische Theorie (Grundannahmen)",lb:"Menschenbild",k:"Kritik: Die Annahmen über das Unbewusste und die Triebe lassen sich empirisch kaum überprüfen.",pool:["Unbewusstes","Triebe als Antrieb","frühe Kindheit als prägend","innerer Konflikt","Determinismus","triebgesteuertes Menschenbild"]},
+ rog:{n:"Personenzentrierte Theorie (Grundannahmen)",lb:"Menschenbild",k:"Kritik: Das Menschenbild ist sehr optimistisch. Begriffe wie Aktualisierungstendenz sind schwer messbar.",pool:["Aktualisierungstendenz","Selbstverwirklichung","positives Menschenbild","subjektive Wahrnehmung der Wirklichkeit","Selbstbestimmung","Entwicklungsfähigkeit"]}
+};
+const CASES=[
+ {t:"Der Eiswagen",x:"Jeden Sommer spielt der Eiswagen eine kleine Melodie, bevor es Eis gibt. Die Kinder (5) laufen heute schon bei der Melodie zusammen, ihnen läuft das Wasser im Mund zusammen. Wer rechtzeitig am Wagen ist, bekommt ein Eis und rennt beim nächsten Mal noch schneller.",
+  a:"klass",b:"kont",
+  ca:["neutraler Reiz","konditionierter Reiz","konditionierte Reaktion"],cb:["positive Verstärkung","angenehmer Reiz folgt","Verhalten wird häufiger"],
+  ma:"Die Melodie war zuerst ein neutraler Reiz. Durch die Kopplung mit dem Eis wurde sie zum konditionierten Reiz, der nun den Speichelfluss auslöst (konditionierte Reaktion).",
+  mb:"Das Eis folgt auf das schnelle Hinlaufen (angenehmer Reiz folgt). Das ist positive Verstärkung: Das Verhalten wird häufiger.",
+  erg:"Beide Prozesse laufen gleichzeitig. Das klassische Konditionieren löst die Reaktion auf die Melodie aus, das operante erklärt, warum die Kinder losrennen."},
+ {t:"Die Kasse",x:"Der kleine Anton (4) schreit im Supermarkt an der Kasse. Seine Mutter drückt ihm schließlich Süßigkeiten in die Hand. Beim nächsten Einkauf probiert Anton verschiedene Wege: quengeln, jammern, schreien. Das Schreien klappt am besten, und er setzt es immer öfter ein.",
+  a:"thorn",b:"kont",
+  ca:["Gesetz des Effekts","Versuch und Irrtum","Gesetz der Übung"],cb:["positive Verstärkung","angenehmer Reiz folgt","Verhalten wird häufiger"],
+  ma:"Anton probiert Verhalten aus (Versuch und Irrtum). Schreien hat eine angenehme Folge und wird nach dem Gesetz des Effekts gefestigt. Durch häufige Wiederholung wird die Verbindung stärker (Gesetz der Übung).",
+  mb:"Auf das Schreien folgt ein angenehmer Reiz (Süßigkeiten). Das ist positive Verstärkung, das Verhalten wird häufiger.",
+  erg:"Thorndike beschreibt, wie die Verbindung entsteht, das Kontingenzschema ordnet die Folge ein. Pädagogisch heißt das: Schreien nicht verstärken und erwünschtes Verhalten gezielt belohnen."},
+ {t:"Lob in der Klasse",x:"Mia meldet sich im Unterricht und wird von der Lehrerin gelobt. Max beobachtet das genau, merkt sich Mias Satz und meldet sich in der nächsten Stunde mit ähnlichen Worten. Auch er bekommt Lob und meldet sich seitdem öfter.",
+  a:"bandura",b:"kont",
+  ca:["Aufmerksamkeitsprozesse","Gedächtnisprozesse","Ausführungsphase"],cb:["positive Verstärkung","angenehmer Reiz folgt","Verhalten wird häufiger"],
+  ma:"Max schaut aufmerksam zu (Aufmerksamkeitsprozesse) und speichert Mias Satz (Gedächtnisprozesse). In der nächsten Stunde setzt er ihn um: Das ist die Ausführungsphase.",
+  mb:"Das Lob folgt auf Maxs Melden (angenehmer Reiz folgt). Das ist positive Verstärkung, sein Melden wird häufiger.",
+  erg:"Bandura erklärt, wie Max das Verhalten übernimmt, das Kontingenzschema, warum er es beibehält. Beide Theorien ergänzen sich."},
+ {t:"Das Nörgeln",x:"Nele (15) räumt ihr Zimmer auf, sobald ihre Mutter zu nörgeln beginnt. Dann hört das Nörgeln auf. Seitdem räumt Nele schneller auf. Ihr fällt auf: „Ich will selbst entscheiden, wann ich aufräume, und nicht, weil mich jemand antreibt.“",
+  a:"kont",b:"rog",
+  ca:["negative Verstärkung","aversiver Reiz entfällt","Verhalten wird häufiger"],cb:["Selbstbestimmung","subjektive Wahrnehmung der Wirklichkeit","Entwicklungsfähigkeit"],
+  ma:"Das Aufräumen beendet einen unangenehmen Reiz (aversiver Reiz entfällt). Das ist negative Verstärkung, und das Aufräumen wird häufiger.",
+  mb:"Für Nele zählt, wie sie die Situation erlebt (subjektive Wahrnehmung der Wirklichkeit). Sie wünscht Selbstbestimmung und kann sich auch weiterentwickeln, wenn sie Raum bekommt.",
+  erg:"Das Schema beschreibt, was von außen passiert. Rogers fragt, was Nele selbst will. Gute Erziehung nutzt beides: klare Vereinbarungen und Mitbestimmung."},
+ {t:"Die Katze im Käfig",x:"Die Katze Mimi sitzt im Käfig, draußen liegt Futter. Sie probiert vieles und drückt zufällig den Riegel. Die Tür geht auf, sie kommt an das Futter. Mit jedem Versuch gelingt es schneller. Außerdem läuft Mimi das Wasser im Maul zusammen, sobald sie das Geräusch der Dose hört.",
+  a:"klass",b:"thorn",
+  ca:["neutraler Reiz","unkonditionierter Reiz","konditionierte Reaktion"],cb:["Versuch und Irrtum","Gesetz des Effekts","Gesetz der Übung"],
+  ma:"Das Dosengeräusch war neutral und wurde mit dem Futter (unkonditionierter Reiz) gekoppelt. Nun löst es allein den Speichelfluss aus (konditionierte Reaktion).",
+  mb:"Mimi lernt durch Versuch und Irrtum. Der Erfolg (Futter) festigt das Drücken (Gesetz des Effekts), und durch Wiederholung geht es schneller (Gesetz der Übung).",
+  erg:"Hier laufen zwei Lernformen nebeneinander: Das Dosengeräusch wirkt als Signal, das Riegel-Drücken wird durch seine Folge gelernt."},
+ {t:"Der Hund im Park",x:"Tom (7) wurde mit fünf von einem Hund gebissen. Heute bekommt er Herzklopfen und Angst, sobald er irgendeinen Hund sieht. Er sagt: „Ich weiß selbst nicht, warum ich solche Angst habe.“",
+  a:"klass",b:"psa",
+  ca:["unkonditionierter Reiz","konditionierter Reiz","konditionierte Reaktion"],cb:["Unbewusstes","frühe Kindheit als prägend","innerer Konflikt"],
+  ma:"Der Biss ist der unkonditionierte Reiz (Schmerz, Angst). Der Hund war neutral und ist durch die Kopplung ein konditionierter Reiz. Die Angst vor Hunden ist die konditionierte Reaktion.",
+  mb:"Die frühe Erfahrung prägt Tom bis heute. Er kennt den Grund nicht mehr (Unbewusstes). Dahinter kann ein innerer Konflikt zwischen Angst und Neugier stehen.",
+  erg:"Das klassische Konditionieren liefert eine konkrete, prüfbare Erklärung und Hilfen (schrittweise Gewöhnung). Die Psychoanalyse deutet tiefer, aber schwerer überprüfbar."},
+ {t:"Die Spielsachen",x:"Fabian (7) wirft wütend seine Spielsachen an die Wand. Seine Mutter schimpft laut. Danach wirft er seltener. Eine Erzieherin vermutet: „Fabian hat enorm viel Wut in sich, die er sonst nirgends loswird.“",
+  a:"kont",b:"psa",
+  ca:["Bestrafung Typ I","aversiver Reiz folgt","Verhalten wird seltener"],cb:["Triebe als Antrieb","innerer Konflikt","Unbewusstes"],
+  ma:"Auf das Werfen folgt ein unangenehmer Reiz (Schimpfen): Bestrafung Typ I. Das Verhalten wird seltener.",
+  mb:"Aus Sicht der Psychoanalyse treibt Fabians Aggression (Triebe als Antrieb) sein Verhalten an. Er erlebt einen inneren Konflikt zwischen Trieb und Verbot, dessen Ursache ihm unbewusst sein kann.",
+  erg:"Das Schimpfen unterdrückt das Verhalten, löst aber nicht die Ursache. Pädagogisch ist es sinnvoller, die Wut in erlaubte Wege (Sport, Reden) zu lenken."},
+ {t:"Das Klavier",x:"Ida (11) übt täglich Klavier, weil sie das Lied unbedingt für die Aufführung können will. Nur wenn sie Lust hat, übt sie konzentriert. Ihre Lehrerin sagt: „Du kannst dich einfach selbst steuern, du willst wachsen.“ Nach dem Applaus ist Ida stolz und übt weiter.",
+  a:"thorn",b:"rog",
+  ca:["Gesetz der Übung","Gesetz der Bereitschaft","Gesetz des Effekts"],cb:["Selbstverwirklichung","Aktualisierungstendenz","Selbstbestimmung"],
+  ma:"Idas tägliches Üben entspricht dem Gesetz der Übung. Sie lernt, weil sie bereit ist (Gesetz der Bereitschaft), und der angenehme Erfolg (Applaus) festigt das Verhalten (Gesetz des Effekts).",
+  mb:"Ida strebt nach Entfaltung ihrer Fähigkeiten (Selbstverwirklichung). Dahinter steht die Aktualisierungstendenz, und sie bestimmt ihr Tun selbst.",
+  erg:"Thorndike beschreibt, unter welchen Bedingungen gelernt wird, Rogers, warum jemand lernen will. Beides gemeinsam erklärt Idas Ausdauer."},
+ {t:"Der Werbespot",x:"Im Werbespot trinkt eine bekannte Sportlerin ein Getränk und strahlt vor Freude, im Hintergrund läuft fröhliche Musik. Jan (12) schaut aufmerksam zu, merkt sich ihre Gesten und trinkt das Getränk später mit denselben Bewegungen. Er fühlt sich dabei gut.",
+  a:"klass",b:"bandura",
+  ca:["neutraler Reiz","Kopplung der Reize","konditionierte Reaktion"],cb:["Aufmerksamkeitsprozesse","motorische Reproduktionsprozesse","Aneignungsphase"],
+  ma:"Das Getränk ist ein neutraler Reiz, wird mit Freude und Musik gekoppelt (Kopplung der Reize) und löst am Ende das gute Gefühl allein aus (konditionierte Reaktion).",
+  mb:"Jan beobachtet das Modell aufmerksam und eignet sich das Verhalten an (Aufmerksamkeitsprozesse, Aneignungsphase). Später ahmt er die Bewegungen nach (motorische Reproduktionsprozesse).",
+  erg:"Die Werbung wirkt auf zwei Wegen: Gefühle werden gekoppelt, und Verhalten wird beobachtet und übernommen. Medienkompetenz heißt, beides zu durchschauen."},
+ {t:"Die große Schwester",x:"Lina (6) sieht, wie ihre große Schwester wütend die Puppe schlägt und deswegen nicht bestraft wird. Zwei Tage später schlägt Lina im Streit ihre Freundin, genau so wie die Schwester. Die Mutter meint: „Die Kleinen sind eben so, das steckt in ihnen drin.“",
+  a:"bandura",b:"psa",
+  ca:["Aneignungsphase","Ausführungsphase","Motivationsprozesse"],cb:["Triebe als Antrieb","frühe Kindheit als prägend","Determinismus"],
+  ma:"Lina hat das Verhalten beim Zuschauen übernommen (Aneignungsphase) und später ausgeführt (Ausführungsphase). Motivationsprozesse spielen mit: Die Schwester wurde nicht bestraft, also lohnt es sich.",
+  mb:"Die Psychoanalyse sieht Aggression als Trieb und das Verhalten als durch frühe Erfahrungen bestimmt (Determinismus). Prägend ist vor allem die frühe Kindheit.",
+  erg:"Bandura liefert konkrete, beobachtbare Ansatzpunkte (Modelle verändern). Die psychoanalytische Sicht ist grundsätzlicher, aber schwerer zu prüfen."},
+ {t:"Die Perfektionistin",x:"Marie (17) lernt bis spät in die Nacht und ist trotzdem nie zufrieden. Ihre Eltern haben sie in der Kindheit meist nur bei guten Noten gelobt. Marie sagt: „Eigentlich würde ich gern Zeichnen, aber das bringt ja nichts.“",
+  a:"psa",b:"rog",
+  ca:["frühe Kindheit als prägend","innerer Konflikt","Unbewusstes"],cb:["Selbstverwirklichung","subjektive Wahrnehmung der Wirklichkeit","positives Menschenbild"],
+  ma:"Die frühe Erfahrung prägt Marie bis heute. Zwischen eigenem Wunsch und Anspruch der Eltern besteht ein innerer Konflikt, der ihr nicht ganz bewusst ist.",
+  mb:"Rogers vertraut darauf, dass Marie sich entfalten will (positives Menschenbild, Selbstverwirklichung). Wichtig ist, wie sie ihre Situation erlebt (subjektive Wahrnehmung).",
+  erg:"Die Psychoanalyse fragt nach der Herkunft des Konflikts, die personenzentrierte Theorie nach dem, was Marie jetzt werden will. Beratung kann beides aufgreifen."},
+ {t:"Der Wutausbruch",x:"Lukas (16) explodiert wegen einer Kleinigkeit und brüllt seine Mitschüler an. Er versteht selbst nicht, warum. Die Beratungslehrerin fragt: „Wie erlebst du die Situation? Was brauchst du?“ und ist überzeugt, dass Lukas selbst Wege findet.",
+  a:"psa",b:"rog",
+  ca:["Unbewusstes","Triebe als Antrieb","Determinismus"],cb:["Selbstbestimmung","Entwicklungsfähigkeit","subjektive Wahrnehmung der Wirklichkeit"],
+  ma:"Die Ursache liegt aus psychoanalytischer Sicht im Unbewussten. Aggressive Triebenergie bricht durch, und Verhalten ist durch frühere Erfahrungen bestimmt (Determinismus).",
+  mb:"Die Lehrerin fragt nach Lukas’ subjektivem Erleben. Sie traut ihm Selbstbestimmung und Entwicklung zu, er soll seinen Weg selbst finden.",
+  erg:"Beide Sichtweisen führen zu unterschiedlichen Gesprächen: Deuten und Erklären auf der einen, Zuhören und Zutrauen auf der anderen Seite."},
+ {t:"Das Referat",x:"Zeynep (16) hat bei einem Mitschüler genau gesehen, wie man ein Referat aufbaut, und sich den Ablauf gemerkt. Sie übt zu Hause viele Male und ist motiviert, weil sie es unbedingt schaffen will. Beim Vortrag klappt es, der Applaus tut ihr gut.",
+  a:"thorn",b:"bandura",
+  ca:["Gesetz der Übung","Gesetz der Bereitschaft","Gesetz des Effekts"],cb:["Aufmerksamkeitsprozesse","Gedächtnisprozesse","Ausführungsphase"],
+  ma:"Zeynep übt oft (Gesetz der Übung), ist bereit zu lernen (Gesetz der Bereitschaft), und der Erfolg mit Applaus festigt das Verhalten (Gesetz des Effekts).",
+  mb:"Sie beobachtet das Modell aufmerksam (Aufmerksamkeitsprozesse), speichert den Ablauf (Gedächtnisprozesse) und führt ihn im Vortrag aus (Ausführungsphase).",
+  erg:"Bandura erklärt, wie der Ablauf überhaupt gelernt wird, Thorndike, wie er durch Übung und Erfolg gefestigt wird."},
+ {t:"Die Strafarbeit",x:"Jonas (13) stört den Unterricht und bekommt eine Strafarbeit. In den nächsten Wochen stört er seltener. Seine Mitschüler beobachten das genau und stören ebenfalls weniger.",
+  a:"kont",b:"bandura",
+  ca:["Bestrafung Typ I","aversiver Reiz folgt","Verhalten wird seltener"],cb:["Aufmerksamkeitsprozesse","Motivationsprozesse","Ausführungsphase"],
+  ma:"Auf das Stören folgt ein unangenehmer Reiz (Strafarbeit): Bestrafung Typ I. Das Verhalten wird seltener.",
+  mb:"Die Mitschüler beobachten, was mit Jonas passiert (Aufmerksamkeitsprozesse), und ihre Motivation, selbst zu stören, sinkt (Motivationsprozesse). Das Verhalten in der Ausführungsphase bleibt aus.",
+  erg:"Bestrafung wirkt direkt und indirekt über Beobachtung. Gleichzeitig sollte die Lehrkraft erwünschtes Verhalten sichtbar machen und verstärken."},
+ {t:"Der Handyentzug",x:"Nina (14) streitet mit ihrer Schwester. Die Mutter zieht ihr das Handy für zwei Tage ein. Danach streitet Nina seltener. Nina sagt später: „Ich war so wütend. Ich wollte nur, dass jemand hört, was ich eigentlich brauche.“",
+  a:"kont",b:"rog",
+  ca:["Bestrafung Typ II","angenehmer Reiz entfällt","Verhalten wird seltener"],cb:["subjektive Wahrnehmung der Wirklichkeit","Selbstbestimmung","positives Menschenbild"],
+  ma:"Auf das Streiten folgt der Entzug eines angenehmen Reizes (Handy): Bestrafung Typ II. Das Verhalten wird seltener.",
+  mb:"Für Nina zählt ihr Erleben (subjektive Wahrnehmung). Die personenzentrierte Sicht traut ihr zu, Konflikte selbst zu lösen, wenn jemand zuhört (positives Menschenbild, Selbstbestimmung).",
+  erg:"Der Entzug stoppt den Streit, klärt aber nicht den Anlass. Ein Gespräch über Ninas Bedürfnisse kann nachhaltiger wirken."}
+];
+
+const $=i=>document.getElementById(i);
+const esc=s=>String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;");
+function hash(s){let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)}return h>>>0}
+function mulberry(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function shuffle(a,r){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(r()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+const FAM=[];
+function distractors(c,side,r){
+  const own=side==="A"?c.ca:c.cb,other=side==="A"?c.cb:c.ca;
+  let banned=own.concat(other,TH[c.a].pool,TH[c.b].pool);
+  FAM.forEach(g=>{if(g.includes(c.a)||g.includes(c.b))g.forEach(k=>{banned=banned.concat(TH[k].pool)})});
+  const pool=[];Object.keys(TH).forEach(k=>{if(k!==c.a&&k!==c.b)TH[k].pool.forEach(t=>{if(!banned.includes(t))pool.push(t)})});
+  return shuffle(pool,r).slice(0,3);
+}
+/* Reihenfolge der Begriffe hängt nur von Fall und Ecke ab, damit Beamer und Handy dieselben Buchstaben zeigen */
+function itemsFor(ci,team){const c=CASES[ci],r=mulberry(hash("duell:"+ci+":"+team));return shuffle((team==="A"?c.ca:c.cb).concat(distractors(c,team,r)),r)}
+const L="ABCDEF";
+
+/* ---------- Beamer ---------- */
+let order=[],pos=0,step=0,sel={A:[],B:[]},score={A:0,B:0},votes={A:0,B:0,C:0},banked=false;
+function newGame(){order=shuffle(CASES.map((_,i)=>i),Math.random);pos=0;score={A:0,B:0};startCase()}
+function startCase(){step=0;sel={A:[],B:[]};votes={A:0,B:0,C:0};banked=false;render()}
+const cur=()=>CASES[order[pos]];
+function pts(team){const c=cur(),own=team==="A"?c.ca:c.cb,it=itemsFor(order[pos],team);let p=0;sel[team].forEach(i=>{p+=own.includes(it[i])?1:-1});return Math.max(0,p)}
+function colHtml(team){
+  const c=cur(),th=TH[team==="A"?c.a:c.b],it=itemsFor(order[pos],team),own=team==="A"?c.ca:c.cb,solved=step>=2,k=team.toLowerCase();
+  let h=`<section class="col ${k}" aria-label="Ecke ${team==="A"?"Rot":"Blau"}"><span class="lb">Ecke ${team==="A"?"Rot":"Blau"}</span><h3>${esc(th.n)}</h3>`;
+  if(step===0)h+=`<p class="muted">Gruppe ${team==="A"?"Rot":"Blau"}: Welche Begriffe passen zu eurer Theorie und diesem Fall? Gleich wählt ihr drei.</p>`;
+  else{
+    h+=it.map((t,i)=>{
+      const on=sel[team].includes(i),ok=own.includes(t);let cls="chip";if(solved){if(ok)cls+=" right";else if(on)cls+=" wrong"}
+      return`<button class="${cls}" data-act="pick" data-t="${team}" data-i="${i}" aria-pressed="${on}"${solved?" disabled":""}><kbd>${L[i]}</kbd><span>${solved&&ok?"✓ ":solved&&on?"✗ ":""}${esc(t)}</span></button>`}).join("");
+    if(step===1)h+=`<div style="display:flex;gap:.6rem;align-items:center;flex-wrap:wrap"><label class="hint" for="hc${team}">Code vom Handy:</label><input class="code" id="hc${team}" maxlength="3" autocomplete="off" placeholder="ABC"><button class="btn n" data-act="code" data-t="${team}">Übernehmen</button></div><p class="hint">${sel[team].length} von 3 gewählt</p>`;
+    if(solved)h+=`<div class="res"><b>${pts(team)} von 3 Punkten.</b> ${esc(team==="A"?c.ma:c.mb)}<div class="muted" style="margin-top:.4rem">${esc(th.k)}</div></div>`;
+  }
+  return h+"</section>";
+}
+function render(){
+  const c=cur(),m=document.querySelector("main");
+  const stepNames=["Fall lesen","Begriffe wählen","Auflösung","Urteil"];
+  let h=`<div class="top"><div><span class="lb">Pädagogik/Psychologie 11 · Lerntheorien und Menschenbild · Fall ${pos+1} von ${order.length} · ${stepNames[step]}</span><h1 style="font-size:2rem;margin-top:.2rem">Theorie-Duell</h1></div><div class="score" aria-live="polite"><span class="sb a"><b>${score.A+(step===2&&!banked?0:0)}</b>Rot</span><span class="sb b"><b>${score.B}</b>Blau</span></div></div>`;
+  h+=`<div class="case"><span class="lb">Fall ${order[pos]+1} · ${esc(TH[c.a].lb)} gegen ${esc(TH[c.b].lb)}</span><h2>${esc(c.t)}</h2>${step>=2?"":`<p class="t">${esc(c.x)}</p>`}</div>`;
+  h+=`<div class="cols">${colHtml("A")}${colHtml("B")}</div>`;
+  if(step===3){
+    const tot=Math.max(1,votes.A+votes.B+votes.C);
+    h+=`<div style="margin-top:1rem"><h2 style="margin-bottom:.6rem">Wer erklärt den Fall besser? Handzeichen zählen</h2><div class="vote">`
+     +[["A",TH[c.a].n.split(" (")[0],"a"],["B",TH[c.b].n.split(" (")[0],"b"],["C","Beide ergänzen sich","n"]].map(v=>`<div><b>${esc(v[1])}</b><span class="n">${votes[v[0]]}</span><span class="pm"><button class="btn n" data-act="vm" data-v="${v[0]}" aria-label="eine Stimme weniger">−</button><button class="btn ${v[2]}" data-act="vp" data-v="${v[0]}" aria-label="eine Stimme mehr">+</button></span></div>`).join("")
+     +`</div><div class="case" style="margin-top:1rem"><h3>Zusammenspiel</h3><p class="t">${esc(c.erg)}</p><p class="hint" style="margin-top:.5rem">Kriterien fürs Urteil: Erklärungskraft für den Fall · empirische Überprüfbarkeit · Ableitung von Hilfen · Menschenbild</p></div></div>`;
+  }
+  m.innerHTML=h;
+  const nx=pos+1<order.length;
+  $("fnext").textContent=step===0?"Begriffe wählen":step===1?"Auflösen":step===2?"Zum Urteil":nx?"Nächster Fall":"Neues Spiel";
+  $("fback").disabled=step===0;
+  $("fcase").value=String(order[pos]);
+}
+function go(d){
+  if(d>0){
+    if(step===1&&!banked){score.A+=pts("A");score.B+=pts("B");banked=true}
+    if(step===3){if(pos+1<order.length){pos++;startCase()}else newGame();return}
+    step++;render();
+  }else if(step>0){
+    if(step===2&&banked){score.A-=pts("A");score.B-=pts("B");banked=false}
+    step--;render();
+  }
+}
+document.addEventListener("click",e=>{
+  const b=e.target.closest("[data-act]");if(!b)return;const a=b.getAttribute("data-act");
+  if(a==="pick"){const t=b.getAttribute("data-t"),i=+b.getAttribute("data-i"),s=sel[t],k=s.indexOf(i);if(k>-1)s.splice(k,1);else if(s.length<3)s.push(i);render()}
+  else if(a==="code"){const t=b.getAttribute("data-t"),v=$("hc"+t).value.toUpperCase().replace(/[^A-F]/g,"").split("").filter((x,i,arr)=>arr.indexOf(x)===i).slice(0,3);if(v.length){sel[t]=v.map(x=>L.indexOf(x));render()}}
+  else if(a==="vp"){votes[b.getAttribute("data-v")]++;render()}
+  else if(a==="vm"){const v=b.getAttribute("data-v");if(votes[v]>0)votes[v]--;render()}
+});
+$("fnext").onclick=()=>go(1);$("fback").onclick=()=>go(-1);
+$("fcase").innerHTML=CASES.map((c,i)=>`<option value="${i}">Fall ${i+1}: ${esc(c.t)}</option>`).join("");
+$("fcase").onchange=e=>{const i=+e.target.value;order=[i].concat(order.filter(x=>x!==i));pos=0;startCase()};
+$("fnew").onclick=newGame;
+$("ffull").onclick=()=>{try{document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}catch(e){}};
+$("fhandy").onclick=()=>{location.hash="handy";route()};
+document.addEventListener("keydown",e=>{
+  if(e.target.matches("input,select,textarea"))return;
+  if(e.key==="ArrowRight"||e.key===" "||e.key==="PageDown"){e.preventDefault();go(1)}
+  else if(e.key==="ArrowLeft"||e.key==="PageUp"){e.preventDefault();go(-1)}
+  else if(e.key==="f"||e.key==="F")$("ffull").click();
+});
+
+/* ---------- Handy-Modus (derselbe Datei-Inhalt, ohne Verbindung) ---------- */
+let hCase=0,hTeam="A",hSel=[];
+function handy(){
+  const items=itemsFor(hCase,hTeam),c=CASES[hCase],th=TH[hTeam==="A"?c.a:c.b],code=hSel.map(i=>L[i]).join("");
+  $("handy").innerHTML=`<h1 style="font-size:1.6rem">Theorie-Duell: Handy</h1><p class="muted">Wähle die Fallnummer vom Beamer und deine Ecke. Tippe drei Begriffe. Gib dann den Code auf dem Beamer ein.</p>
+  <label class="lb" for="hn">Fallnummer</label><select id="hn">${CASES.map((x,i)=>`<option value="${i}" ${i===hCase?"selected":""}>Fall ${i+1}: ${esc(x.t)}</option>`).join("")}</select>
+  <div style="display:flex;gap:.6rem"><button class="btn a" data-h="A" style="flex:1;${hTeam==="A"?"outline:4px solid var(--fg)":""}">Ecke Rot</button><button class="btn b" data-h="B" style="flex:1;${hTeam==="B"?"outline:4px solid var(--fg)":""}">Ecke Blau</button></div>
+  <h2>${esc(th.n)}</h2>${items.map((t,i)=>`<button class="chip" data-hi="${i}" aria-pressed="${hSel.includes(i)}"><kbd>${L[i]}</kbd><span>${esc(t)}</span></button>`).join("")}
+  <div class="case" style="text-align:center"><span class="lb">Dein Code</span><div class="bigcode">${esc(code)||"–––"}</div><p class="hint">${hSel.length} von 3 gewählt</p></div>
+  <button class="btn n" data-h="back">Zurück zur Beamer-Ansicht</button>`;
+}
+$("handy").addEventListener("click",e=>{
+  const h=e.target.closest("[data-h]"),i=e.target.closest("[data-hi]");
+  if(h){const v=h.getAttribute("data-h");if(v==="back"){location.hash="";route();return}hTeam=v;hSel=[];handy()}
+  else if(i){const n=+i.getAttribute("data-hi"),k=hSel.indexOf(n);if(k>-1)hSel.splice(k,1);else if(hSel.length<3)hSel.push(n);handy()}
+});
+$("handy").addEventListener("change",e=>{if(e.target.id==="hn"){hCase=+e.target.value;hSel=[];handy()}});
+function route(){
+  const hm=location.hash==="#handy";
+  $("handy").hidden=!hm;document.querySelector("main").hidden=hm;$("foot").hidden=hm;
+  if(hm)handy();
+}
+addEventListener("hashchange",route);
+newGame();route();
+</script></body></html>

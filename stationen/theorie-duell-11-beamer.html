@@ -1,0 +1,293 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Theorie-Duell 11 Beamer</title><style>
+:root{--bg:#f3f2ee;--surface:#fff;--fg:#1c2124;--muted:#5c666b;--line:#d8dad4;--a:#b4451f;--a-soft:#fbe6dc;--b:#1b6485;--b-soft:#dcedf4;--ok:#1f6f4a;--bad:#9a2b2b;--btn-fg:#fff;--sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--serif:Georgia,"Times New Roman",serif}
+@media (prefers-color-scheme:dark){:root{--bg:#14181a;--surface:#1d2326;--fg:#eceff0;--muted:#a1abb0;--line:#30393d;--a:#ff9566;--a-soft:#3b2318;--b:#6cc0e3;--b-soft:#17323f;--ok:#7ad6a0;--bad:#ff8f8f;--btn-fg:#10161a;color-scheme:dark}}
+*{box-sizing:border-box}
+html{font-size:clamp(14px,.95vw,22px)}
+body{margin:0;background:var(--bg);color:var(--fg);font:1rem/1.45 var(--sans);min-height:100vh;padding:1rem 1.2rem 5rem}
+h1,h2,h3{font-family:var(--serif);margin:0}h2{font-size:1.5rem;line-height:1.2}h3{font-size:1.2rem}
+p{margin:0}.muted{color:var(--muted)}.lb{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--muted)}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:.8rem}
+.score{display:flex;gap:.8rem}.sb{border-radius:.7rem;padding:.3rem .9rem;font-weight:700;font-variant-numeric:tabular-nums;border:3px solid}
+.sb.a{background:var(--a-soft);border-color:var(--a);color:var(--a)}.sb.b{background:var(--b-soft);border-color:var(--b);color:var(--b)}.sb b{font:700 1.6rem var(--serif);margin-right:.3rem}
+.case{background:var(--surface);border:1px solid var(--line);border-radius:1rem;padding:1.1rem 1.4rem;margin-bottom:1rem}
+.case p.t{font-size:1.25rem;line-height:1.5;margin-top:.4rem}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.col{border-radius:1rem;padding:1rem;border:3px solid;display:flex;flex-direction:column;gap:.6rem;min-width:0}
+.col.a{background:var(--a-soft);border-color:var(--a)}.col.b{background:var(--b-soft);border-color:var(--b)}
+.col h3{color:inherit}.col.a h3{color:var(--a)}.col.b h3{color:var(--b)}
+.chip{display:flex;gap:.7rem;align-items:center;font:inherit;font-size:1.1rem;padding:.4rem .9rem;border-radius:.8rem;border:2px solid var(--line);background:var(--surface);color:var(--fg);text-align:left;cursor:pointer;width:100%}
+.chip kbd{font:700 .95rem var(--sans);background:var(--bg);border-radius:.4rem;padding:.1rem .5rem;border:1px solid var(--line)}
+.chip[aria-pressed="true"]{outline:4px solid var(--fg);font-weight:700}
+.chip.right{border-color:var(--ok);border-width:4px}.chip.wrong{border-color:var(--bad);border-width:4px;text-decoration:line-through}
+.chip:disabled{cursor:default}
+.res{background:var(--surface);border-radius:.7rem;padding:.6rem .9rem;font-size:.95rem}
+.btn{font:inherit;font-weight:700;padding:.65rem 1.2rem;border-radius:.8rem;border:0;background:var(--fg);color:var(--bg);cursor:pointer}
+.btn.n{background:none;border:2px solid var(--line);color:var(--fg)}.btn.a{background:var(--a);color:var(--btn-fg)}.btn.b{background:var(--b);color:var(--btn-fg)}
+.btn:focus-visible,.chip:focus-visible,input:focus-visible,select:focus-visible{outline:4px solid var(--fg);outline-offset:2px}
+input,select{font:inherit;padding:.4rem .7rem;border-radius:.6rem;border:2px solid var(--line);background:var(--surface);color:var(--fg)}
+input.code{width:5.5em;letter-spacing:.25em;text-transform:uppercase;font-weight:700;text-align:center}
+.vote{display:flex;gap:1rem;flex-wrap:wrap}.vote>div{flex:1;min-width:12em;background:var(--surface);border:2px solid var(--line);border-radius:1rem;padding:.8rem 1rem;display:flex;flex-direction:column;gap:.5rem;align-items:center;text-align:center}
+.vote .n{font:700 2.6rem var(--serif)}.vote .pm{display:flex;gap:.5rem}.vote .pm .btn{font-size:1.6rem;line-height:1;min-width:3rem}
+.foot{position:fixed;left:0;right:0;bottom:0;background:var(--bg);border-top:1px solid var(--line);padding:.6rem 1.2rem;display:flex;gap:.7rem;align-items:center;flex-wrap:wrap}
+.foot .btn,.foot select{font-size:.85rem;padding:.4rem .8rem}.foot .sp{flex:1;min-width:14rem;white-space:nowrap}
+.hint{font-size:.9rem;color:var(--muted)}
+.handy{max-width:30rem;margin:0 auto;display:flex;flex-direction:column;gap:.9rem;font-size:1.1rem}
+.handy .chip{font-size:1.1rem}
+.bigcode{font:700 4rem/1 var(--serif);letter-spacing:.25em;text-align:center}
+@media(max-width:800px){.cols{grid-template-columns:1fr}html{font-size:17px}}
+</style></head><body>
+<main></main>
+<div class="handy" id="handy" hidden></div>
+<div class="foot" id="foot"><button class="btn n" id="fback">Zurück</button><button class="btn" id="fnext">Begriffe wählen</button><span class="sp hint">Leertaste: weiter · ←: zurück · F: Vollbild</span><select id="fcase" aria-label="Fall wählen"></select><button class="btn n" id="fnew">Neues Spiel</button><button class="btn n" id="fhandy">Handy-Modus</button><button class="btn n" id="ffull">Vollbild</button></div>
+<script>
+const TH={
+ wiss:{n:"Wissenschaftliche Aussagen",lb:"LB 1",k:"Grenze: Auch wissenschaftliche Aussagen sind vorläufig. Neue Befunde können sie widerlegen.",pool:["systematische Gewinnung","Überprüfbarkeit","Allgemeingültigkeit","Objektivität"]},
+ alltag:{n:"Alltagspsychologische Aussagen",lb:"LB 1",k:"Grenze: Alltagswissen ist nicht wertlos. Es liefert Ideen für Hypothesen, die dann erst geprüft werden müssen.",pool:["zufällige Erkenntnisgewinnung","fehlende Überprüfbarkeit","unzulässige Verallgemeinerung","Subjektivität"]},
+ exp:{n:"Das Experiment",lb:"LB 1",k:"Grenze: Im Experiment ist die Situation oft künstlich. Ergebnisse lassen sich nicht immer auf den Alltag übertragen.",pool:["Hypothese","unabhängige Variable","abhängige Variable","Versuchsgruppe","Kontrollgruppe","Willkürlichkeit","Variierbarkeit","Wiederholbarkeit"]},
+ erlv:{n:"Erleben und Verhalten",lb:"LB 1",k:"Grenze: Erleben ist nur indirekt zugänglich. Selbstauskünfte können verzerrt sein.",pool:["Erleben (innere Vorgänge)","Verhalten (beobachtbar)","Beobachtung","Befragung"]},
+ erz:{n:"Merkmale von Erziehung",lb:"LB 3",k:"Grenze: Die Merkmale grenzen Erziehung ab. Ob eine Erziehungshandlung gelingt, sagen sie nicht.",pool:["beabsichtigte Lernhilfe","soziale Kommunikation und Interaktion","soziales Handeln","Abgrenzung von Betreuung und Versorgung"]},
+ baum:{n:"Erziehungsstile (Baumrind)",lb:"LB 3",k:"Kritik: Die Stile sind Idealtypen. Im Alltag mischen sie sich, und auch das Kind beeinflusst den Stil.",pool:["autoritativer Stil","autoritärer Stil","permissiver Stil","vernachlässigender Stil","Lenkung und Anforderung","Zuwendung und Responsivität"]},
+ roth:{n:"Mündigkeit (Roth)",lb:"LB 3",k:"Kritik: Mündigkeit ist ein anspruchsvolles Ziel. Schwer zu messen ist, wann sie erreicht ist.",pool:["Selbstkompetenz","Sachkompetenz","Sozialkompetenz","Mündigkeit als Erziehungsziel"]},
+ bez:{n:"Pädagogische Beziehung",lb:"LB 1",k:"Grenze: Eine gute Beziehung allein reicht nicht. Sie muss zu Zielen und Erziehungshandlungen passen.",pool:["Wertschätzung","Echtheit","Einfühlungsvermögen","Verlässlichkeit","Asymmetrie der Beziehung"]},
+ wahr:{n:"Wahrnehmung",lb:"LB 2",k:"Grenze: Wahrnehmung ist ein Konstruktionsprozess. Zwei Personen können dieselbe Situation verschieden deuten.",pool:["Reizaufnahme","Weiterleitung und Verarbeitung","Bewertung und Empfindung","Reaktion auf die Wahrnehmung","individuelle Einflussfaktoren","soziale Einflussfaktoren"]},
+ gedm:{n:"Mehrspeichermodell des Gedächtnisses",lb:"LB 2",k:"Kritik: Das Modell ist vereinfacht. Die Speicher arbeiten nicht strikt nacheinander.",pool:["Ultrakurzzeitgedächtnis","Kurzzeitgedächtnis","Langzeitgedächtnis","Organisation","Elaboration","Wiederholung"]},
+ mark:{n:"Speichersysteme (Markowitsch)",lb:"LB 2",k:"Kritik: Im Alltag arbeiten die Systeme zusammen. Die Einteilung ist ein Modell.",pool:["episodisch-autobiographisches Gedächtnis","Wissenssystem","prozedurales Gedächtnis","Priming","perzeptuelles Gedächtnis","deklarative Systeme"]},
+ emo:{n:"Emotion und Emotionsregulation",lb:"LB 2",k:"Grenze: Die Komponenten hängen eng zusammen und lassen sich im Alltag kaum trennen.",pool:["subjektives Erleben","physiologische Veränderung","Ausdrucksverhalten","kognitive Bewertung","Handlungstendenz","Neubewertung","Atemtechnik","Unterdrücken des Ausdrucks"]},
+ weiner:{n:"Attributionstheorie (Weiner)",lb:"LB 2",k:"Kritik: Menschen suchen Ursachen nicht immer so bewusst, wie das Modell nahelegt.",pool:["internal","external","stabil","variabel","ergebnisabhängige Emotion","attributionsabhängige Emotion","Erfolgserwartung"]},
+ lernen:{n:"Merkmale von Lernen",lb:"LB 4",k:"Grenze: Nicht jede Verhaltensänderung ist Lernen. Reifung oder Ermüdung gehören nicht dazu.",pool:["relativ dauerhafte Veränderung","beruht auf Erfahrung und Übung","Abgrenzung von Reifung","nicht direkt beobachtbar"]},
+ pawlow:{n:"Klassisches Konditionieren (Pawlow)",lb:"LB 4",k:"Kritik: Gut für gelernte Reaktionen wie Angst oder Ekel. Aktives, zielgerichtetes Verhalten erklärt es kaum.",pool:["neutraler Reiz","unkonditionierter Reiz","konditionierter Reiz","unkonditionierte Reaktion","konditionierte Reaktion","Reizgeneralisierung","Konditionierung höherer Ordnung"]},
+ skinner:{n:"Operantes Konditionieren (Thorndike, Skinner)",lb:"LB 4",k:"Kritik: Gedanken und Erwartungen bleiben außen vor.",pool:["Gesetz des Effekts","positive Verstärkung","negative Verstärkung","primärer Verstärker","sekundärer Verstärker","Premack-Prinzip"]},
+ bandura:{n:"Sozial-kognitive Theorie (Bandura)",lb:"LB 4",k:"Kritik: Offen bleibt, warum Beobachter manches nachahmen und anderes nicht. Die Teilprozesse sind schwer einzeln zu messen.",pool:["Aneignungsphase","Ausführungsphase","Aufmerksamkeitsprozesse","Gedächtnisprozesse","motorische Reproduktionsprozesse","Motivationsprozesse","stellvertretende Bekräftigung","Selbstbekräftigung","Modell"]}
+};
+const CASES=[
+ {t:"Der Kaugummi-Mythos",x:"Tim (17) sagt: „Kaugummikauen macht schlau, das weiß jeder. Bei meinem Cousin hat es auch geklappt.“ Die Klasse prüft es: Eine Gruppe kaut beim Lernen Kaugummi, die andere nicht. Danach sollen alle dieselbe Wortliste wiedergeben.",
+  a:"alltag",b:"exp",
+  ca:["zufällige Erkenntnisgewinnung","unzulässige Verallgemeinerung","Subjektivität"],cb:["Hypothese","abhängige Variable","Kontrollgruppe"],
+  ma:"Tims Aussage beruht auf einem einzelnen Zufallsfall (Cousin), wird auf alle verallgemeinert und ist eine subjektive Überzeugung. Das sind Merkmale alltagspsychologischer Aussagen.",
+  mb:"Die Klasse formuliert eine überprüfbare Hypothese. Die Gruppe ohne Kaugummi ist die Kontrollgruppe. Gemessen wird die Zahl der erinnerten Wörter (abhängige Variable).",
+  erg:"Die Alltagsvermutung liefert die Idee, das Experiment prüft sie. So wird aus einer Meinung eine wissenschaftlich überprüfbare Aussage."},
+ {t:"Der Praktikumsbericht",x:"Luisa schreibt über Leon (6): „Leon stößt zwei Kinder und schreit. Er war wütend und eifersüchtig.“ Ihre Mitschülerin fragt: „Woher willst du wissen, dass er eifersüchtig war?“",
+  a:"erlv",b:"wiss",
+  ca:["Verhalten (beobachtbar)","Erleben (innere Vorgänge)","Befragung"],cb:["Objektivität","Überprüfbarkeit","systematische Gewinnung"],
+  ma:"Stoßen und Schreien sind beobachtbares Verhalten. Wut und Eifersucht gehören zum Erleben. Sie sind nur erschließbar oder durch Befragung zugänglich.",
+  mb:"Eine wissenschaftliche Aussage verlangt Objektivität: Mehrere Beobachter notieren dasselbe. Außerdem muss sie überprüfbar sein, und die Beobachtung sollte systematisch erfolgen.",
+  erg:"Luisa sollte Beobachtung und Deutung trennen. Das Verhalten beschreiben, das Erleben nur als Vermutung kennzeichnen und prüfen, etwa durch Nachfragen."},
+ {t:"Die Aufräumzeit",x:"In der Kita ruft Frau Maier: „Aufräumzeit!“ Mia (4) schmollt. Frau Maier kniet sich zu ihr, erklärt, warum aufgeräumt wird, und lässt sie wählen: erst die Bausteine oder erst die Puppen. Aufgeräumt wird aber, bleibt sie freundlich.",
+  a:"baum",b:"erz",
+  ca:["autoritativer Stil","Lenkung und Anforderung","Zuwendung und Responsivität"],cb:["beabsichtigte Lernhilfe","soziale Kommunikation und Interaktion","soziales Handeln"],
+  ma:"Frau Maier stellt klare Anforderungen (Lenkung) und ist zugleich zugewandt und eingehend auf Mia (Responsivität). Das entspricht dem autoritativen Stil.",
+  mb:"Die Handlung ist beabsichtigte Lernhilfe: Mia soll Verantwortung für den Raum lernen. Erklären und Wahl lassen sind soziale Kommunikation und Interaktion, und Frau Maier handelt auf Mia bezogen (soziales Handeln).",
+  erg:"Baumrind beschreibt, wie erzogen wird, die Merkmale von Erziehung zeigen, dass überhaupt erzogen wird. Beides zusammen ergibt eine vollständige Analyse."},
+ {t:"Handyfreie Zone",x:"Ben (14) zockt nachts, die Hausaufgaben bleiben liegen. Seine Mutter sagt: „Ich will ja nicht streng sein.“ Sie erlaubt fast alles und stellt kaum Regeln auf, ist aber herzlich. Ziel soll sein, dass Ben später selbstständig und verantwortlich handelt.",
+  a:"baum",b:"roth",
+  ca:["permissiver Stil","Zuwendung und Responsivität","Lenkung und Anforderung"],cb:["Mündigkeit als Erziehungsziel","Selbstkompetenz","Sozialkompetenz"],
+  ma:"Viel Zuwendung bei kaum Lenkung und Anforderung ist der permissive Stil. Die Mutter gibt wenig Orientierung und stellt kaum Erwartungen.",
+  mb:"Das Ziel entspricht Mündigkeit nach Roth. Ben braucht Selbstkompetenz (für sich verantwortlich handeln) und Sozialkompetenz. Ganz ohne Grenzen kann er das nur schwer üben.",
+  erg:"Mündigkeit entsteht nicht durch Grenzenlosigkeit. Der Stil mit Zuwendung und klaren Erwartungen (autoritativ) unterstützt dieses Ziel am besten."},
+ {t:"Mündigkeit im Hort",x:"Im Hort lässt Betreuerin Sevgi die Kinder die Spielregeln selbst aushandeln. Jan (9) gestaltet seinen Hausaufgabenplan selbst. Sevgi hört zu, nimmt seine Gefühle ernst und sagt ehrlich, wenn sie etwas nicht gut findet.",
+  a:"roth",b:"bez",
+  ca:["Selbstkompetenz","Sozialkompetenz","Mündigkeit als Erziehungsziel"],cb:["Wertschätzung","Echtheit","Einfühlungsvermögen"],
+  ma:"Jan übt, für sich selbst verantwortlich zu handeln (Selbstkompetenz), und die Kinder handeln Regeln gemeinsam aus (Sozialkompetenz). Das dient dem Erziehungsziel Mündigkeit.",
+  mb:"Sevgi nimmt Jan ernst (Wertschätzung), ist ehrlich (Echtheit) und fühlt sich in ihn ein (Einfühlungsvermögen). Das sind Merkmale einer förderlichen Beziehung.",
+  erg:"Die Beziehung ist der Boden, auf dem Mündigkeit wachsen kann. Wer sich ernst genommen fühlt, traut sich eher, Verantwortung zu übernehmen."},
+ {t:"Löffeln lernen",x:"In der Krippe hilft Praktikantin Nora Emil (2) beim Löffeln. Sie zeigt den Handgriff, lobt kleine Fortschritte und lässt ihn immer wieder üben. Die Windeln wechselt und das Essen anreichen übernimmt sie weiter. Nach Wochen löffelt Emil allein.",
+  a:"erz",b:"lernen",
+  ca:["beabsichtigte Lernhilfe","Abgrenzung von Betreuung und Versorgung","soziales Handeln"],cb:["beruht auf Erfahrung und Übung","relativ dauerhafte Veränderung","Abgrenzung von Reifung"],
+  ma:"Das Zeigen und Üben-Lassen ist beabsichtigte Lernhilfe und damit Erziehung. Windeln wechseln und Füttern ist dagegen Betreuung und Versorgung.",
+  mb:"Emils Verhalten hat sich durch Erfahrung und Übung relativ dauerhaft verändert. Man muss Lernen von Reifung abgrenzen: Hier spricht das gezielte Üben für Lernen.",
+  erg:"Erziehung ist das Angebot, Lernen ist das, was beim Kind ankommt. Reifung hilft, aber erst die Übung macht den Löffelgriff sicher."},
+ {t:"Die zwölf Namen",x:"Praktikant Dario muss die Namen von zwölf Kindern lernen. Er wiederholt sie, ordnet sie nach Gruppen und verknüpft „Lena“ mit einer Eselsbrücke. Später weiß er die Namen, kann das Händewaschlied wie von selbst singen und erinnert sich an seinen ersten Praktikumstag.",
+  a:"gedm",b:"mark",
+  ca:["Kurzzeitgedächtnis","Elaboration","Organisation"],cb:["prozedurales Gedächtnis","Wissenssystem","episodisch-autobiographisches Gedächtnis"],
+  ma:"Namen gelangen zuerst ins Kurzzeitgedächtnis. Durch Organisation (nach Gruppen ordnen) und Elaboration (Eselsbrücke) gelingt die Speicherung im Langzeitgedächtnis.",
+  mb:"Die Namen sind Faktenwissen (Wissenssystem). Das Singen läuft automatisch ab (prozedurales Gedächtnis). Der erste Praktikumstag ist ein persönliches Erlebnis (episodisch-autobiographisch).",
+  erg:"Das Mehrspeichermodell erklärt, wie Wissen gespeichert wird, Markowitsch, was dort liegt. Gute Lernstrategien nutzen beides."},
+ {t:"Der Schatten im Wald",x:"Bei der Nachtwanderung der Kita-Gruppe sieht Jana (17, Praktikantin) im Dunkeln einen Schatten und hört ein Knacken. Ihr Herz rast, sie hält die Luft an, denkt „Gefahr!“ und tritt einen Schritt zurück. Ihre Freundin sagt: „Das ist nur ein Ast.“",
+  a:"wahr",b:"emo",
+  ca:["Reizaufnahme","Weiterleitung und Verarbeitung","individuelle Einflussfaktoren"],cb:["physiologische Veränderung","kognitive Bewertung","Handlungstendenz"],
+  ma:"Licht- und Schallreize werden aufgenommen, weitergeleitet und verarbeitet. Wahrnehmung ist ein Konstruktionsprozess. Jana deutet die Reize auch durch ihre Erwartungen (individueller Einflussfaktor: Angst im Dunkeln).",
+  mb:"Das Herzrasen ist die physiologische Veränderung. Die Einschätzung „Gefahr“ ist die kognitive Bewertung, der Schritt zurück die Handlungstendenz.",
+  erg:"Wahrnehmung und Emotion beeinflussen sich: Wie Jana den Reiz deutet, entscheidet über das Gefühl, und das Gefühl färbt die nächste Wahrnehmung."},
+ {t:"Die Fünf in Mathe",x:"Mara (16) schreibt eine Fünf. Sie sagt: „Die Aufgaben waren unfair, und ich war an dem Tag völlig fertig. Nächstes Mal klappt es.“ Vor der nächsten Klausur zittern ihr die Hände. Sie atmet bewusst ruhig, sagt sich „Das ist nur eine Aufgabe, keine Gefahr“ und lässt sich nichts anmerken.",
+  a:"weiner",b:"emo",
+  ca:["external","variabel","Erfolgserwartung"],cb:["Neubewertung","Atemtechnik","Unterdrücken des Ausdrucks"],
+  ma:"Mara führt den Misserfolg auf äußere (external) und veränderliche (variabel) Ursachen zurück. Variabel hält die Erfolgserwartung hoch, deshalb bleibt sie motiviert.",
+  mb:"Sie nutzt drei Strategien der Emotionsregulation. Neubewertung setzt vorher an (antezedenzfokussiert), Atemtechnik und Unterdrücken des Ausdrucks wirken auf die Reaktion (reaktionsfokussiert).",
+  erg:"Die Attribution erklärt, warum Mara weitermacht, die Regulation, wie sie mit der Anspannung umgeht. Pädagogisch sinnvoll wäre, auch die eigenen Anteile (Üben) zu sehen."},
+ {t:"Pia gewinnt",x:"Pia (13) gewinnt einen Wettkampf und sagt: „Ich habe hart trainiert, darauf bin ich stolz!“ Ihr Trainer lobt sie nach jedem Training, und sie kommt immer häufiger.",
+  a:"weiner",b:"skinner",
+  ca:["ergebnisabhängige Emotion","attributionsabhängige Emotion","internal"],cb:["positive Verstärkung","sekundärer Verstärker","Gesetz des Effekts"],
+  ma:"Freude über den Sieg ist eine ergebnisabhängige Emotion. Stolz entsteht, weil Pia den Erfolg auf ihre Anstrengung zurückführt (internal): eine attributionsabhängige Emotion.",
+  mb:"Das Lob ist ein sekundärer Verstärker, der positiv verstärkt. Nach dem Gesetz des Effekts wird Verhalten mit angenehmer Folge häufiger.",
+  erg:"Beide Erklärungen passen zusammen: Das Lob verstärkt von außen, die Attribution (hart trainiert) stärkt von innen die Motivation."},
+ {t:"Der Geruch der Praxis",x:"Leni (6) wurde beim Zahnarzt gespritzt und hatte Schmerzen. Seitdem bekommt sie schon beim Geruch der Praxis Herzklopfen, sagt „Ich habe Angst“ und weint. Auch bei einem Spielzeug-Zahnarztkoffer im Kindergarten wird sie unruhig.",
+  a:"pawlow",b:"emo",
+  ca:["unkonditionierter Reiz","konditionierter Reiz","Reizgeneralisierung"],cb:["subjektives Erleben","physiologische Veränderung","Ausdrucksverhalten"],
+  ma:"Der Schmerz ist der unkonditionierte Reiz. Der Geruch war neutral und ist nun ein konditionierter Reiz, der Angst auslöst. Der Spielzeugkoffer wirkt durch Reizgeneralisierung ähnlich.",
+  mb:"Die Angst zeigt sich in mehreren Komponenten: Leni fühlt Angst (subjektives Erleben), hat Herzklopfen (physiologische Veränderung) und weint (Ausdrucksverhalten).",
+  erg:"Pawlow erklärt, wie die Angst gelernt wurde, die Emotionskomponenten beschreiben, wie sie sich zeigt. Hilfreich ist, die Verbindung durch angenehme Erfahrungen wieder zu lösen."},
+ {t:"Likes",x:"Mia (15) sieht, wie eine Influencerin mit einem Tanzvideo viele Likes bekommt. Mia filmt dasselbe Video nach und postet es. Sie bekommt Likes und Herzchen und stellt gleich das nächste Video online.",
+  a:"skinner",b:"bandura",
+  ca:["positive Verstärkung","sekundärer Verstärker","Gesetz des Effekts"],cb:["Modell","Aufmerksamkeitsprozesse","stellvertretende Bekräftigung"],
+  ma:"Likes sind ein sekundärer Verstärker. Die angenehme Folge verstärkt das Posten positiv, und nach dem Gesetz des Effekts wird Mia es häufiger tun.",
+  mb:"Die Influencerin ist ein Modell. Mia schenkt ihr Aufmerksamkeit (Aufmerksamkeitsprozesse) und sieht, dass das Modell belohnt wird (stellvertretende Bekräftigung).",
+  erg:"Bandura erklärt, wie Mia das Verhalten überhaupt übernimmt, Skinner, warum sie es beibehält. Medien wirken über beide Wege."},
+ {t:"Erst Hausaufgaben, dann Fußball",x:"Marc (8) spielt für sein Leben gern Fußball. Seine Mutter sagt: „Erst die Hausaufgaben, dann darfst du kicken.“ Sie erklärt ihm den Plan, hört sich seine Wünsche an und bleibt bei der Vereinbarung.",
+  a:"skinner",b:"baum",
+  ca:["Premack-Prinzip","positive Verstärkung","Gesetz des Effekts"],cb:["autoritativer Stil","Lenkung und Anforderung","Zuwendung und Responsivität"],
+  ma:"Die beliebte Tätigkeit (Fußball) verstärkt die weniger beliebte (Hausaufgaben): das Premack-Prinzip. Die angenehme Folge verstärkt das Verhalten positiv.",
+  mb:"Die Mutter setzt klare Erwartungen (Lenkung und Anforderung), erklärt und hört zu (Zuwendung und Responsivität). Das ist der autoritative Stil.",
+  erg:"Das Premack-Prinzip ist ein Mittel, der Stil die Haltung dahinter. Verstärkung wirkt besser, wenn sie in einer warmen, verlässlichen Beziehung geschieht."},
+ {t:"Das Glöckchen",x:"In der Kita läutet Erzieherin Ida vor dem Mittagessen ein Glöckchen. Nach einigen Wochen laufen die Kinder schon beim Klang zum Tisch. Später spielt Ida zuerst ein kurzes Flötenlied und danach das Glöckchen. Bald reagieren die Kinder schon auf die Flöte.",
+  a:"pawlow",b:"lernen",
+  ca:["neutraler Reiz","konditionierter Reiz","Konditionierung höherer Ordnung"],cb:["relativ dauerhafte Veränderung","beruht auf Erfahrung und Übung","Abgrenzung von Reifung"],
+  ma:"Das Glöckchen war ein neutraler Reiz und wurde zum konditionierten Reiz. Die Flöte, gekoppelt mit dem Glöckchen, löst die Reaktion nun selbst aus: Konditionierung höherer Ordnung.",
+  mb:"Die Kinder zeigen eine relativ dauerhafte Verhaltensänderung, die auf Erfahrung beruht und nicht auf Reifung. Das erfüllt Merkmale von Lernen.",
+  erg:"Lernen ist der Oberbegriff, klassisches Konditionieren ein Weg dorthin. Gelernt wird hier ein Zusammenhang zwischen Reizen."},
+ {t:"Nele als Vorbild",x:"Praktikantin Nele ist in der Kita beliebt: freundlich, ehrlich, immer verlässlich. Jonas (5) schaut ihr genau zu, wie sie Konflikte löst. Zu Hause spielt er „Nele“ und löst einen Streit mit seiner Schwester genauso. Danach sagt er stolz: „Das habe ich gut gemacht!“",
+  a:"bandura",b:"bez",
+  ca:["Aneignungsphase","Ausführungsphase","Selbstbekräftigung"],cb:["Wertschätzung","Echtheit","Asymmetrie der Beziehung"],
+  ma:"Beim Zuschauen eignet sich Jonas das Verhalten an (Aneignungsphase). Zuhause führt er es aus (Ausführungsphase). Sein Stolz ist Selbstbekräftigung.",
+  mb:"Nele begegnet den Kindern wertschätzend und ehrlich (Echtheit). Gleichzeitig ist die Beziehung asymmetrisch: Sie hat mehr Erfahrung und Verantwortung als Jonas.",
+  erg:"Eine gute Beziehung erhöht die Chance, dass jemand zum Modell wird. Dadurch tragen Erziehende viel Verantwortung für das, was Kinder nachahmen."},
+ {t:"Der erste Eindruck",x:"Praktikantin Eva hat gehört, Kevin (7) sei ein Störenfried. Rempelt er, sagt sie sofort: „Typisch!“ Dass er einem Kind aufhilft, bemerkt sie nicht. Im Team sagt sie: „Die Jungs aus dem Viertel sind eben alle so.“",
+  a:"wahr",b:"alltag",
+  ca:["individuelle Einflussfaktoren","soziale Einflussfaktoren","Bewertung und Empfindung"],cb:["unzulässige Verallgemeinerung","Subjektivität","fehlende Überprüfbarkeit"],
+  ma:"Evas Erwartung (individueller Einflussfaktor) und das Vorurteil (sozialer Einflussfaktor) lenken, was sie wahrnimmt und wie sie es bewertet.",
+  mb:"„Die Jungs aus dem Viertel sind alle so“ ist eine unzulässige Verallgemeinerung. Sie ist subjektiv und nicht überprüfbar, weil Eva keine Belege nennt.",
+  erg:"Wahrnehmung kann verzerren, und Alltagsaussagen verfestigen die Verzerrung. Eine gezielte, systematische Beobachtung korrigiert beides."},
+ {t:"Lenas Lernplan",x:"Lena (17) lernt für den Pflegetest: Sie ordnet den Stoff in einer Mindmap (nach Themen), wiederholt mit Karteikarten und verknüpft Begriffe mit eigenen Beispielen. Beim Test bekommt sie eine Fünf und sagt: „Ich bin einfach nicht begabt, das wird nie was.“ Sie lernt kaum noch.",
+  a:"gedm",b:"weiner",
+  ca:["Organisation","Wiederholung","Elaboration"],cb:["internal","stabil","Erfolgserwartung"],
+  ma:"Die Mindmap ordnet den Stoff (Organisation), die Karteikarten üben ein (Wiederholung), die eigenen Beispiele verknüpfen mit Vorwissen (Elaboration). So gelangt Wissen ins Langzeitgedächtnis.",
+  mb:"Lena führt den Misserfolg auf Begabung zurück, also auf eine Ursache in der Person (internal) und eine, die sich nicht ändert (stabil). Dadurch sinkt die Erfolgserwartung und damit die Motivation.",
+  erg:"Gute Strategien helfen nur, wenn Lena sie weiter nutzt. Eine Neu-Attribuierung auf veränderbare Ursachen (Strategie, Aufwand) kann ihre Motivation wiederherstellen."},
+ {t:"Hausaufgaben unter Kontrolle",x:"Der Vater von Ali (10) sagt: „Du machst, was ich sage, keine Diskussion!“ Er kontrolliert jede Hausaufgabe, droht mit Strafen und lobt nie. Fragt Ali „Warum?“, antwortet der Vater: „Weil ich es sage.“ Ziel des Vaters: ein selbstständiger Sohn.",
+  a:"roth",b:"baum",
+  ca:["Selbstkompetenz","Sachkompetenz","Mündigkeit als Erziehungsziel"],cb:["autoritärer Stil","Lenkung und Anforderung","Zuwendung und Responsivität"],
+  ma:"Mündigkeit verlangt Selbst- und Sachkompetenz: Ali muss selbstständig denken und Aufgaben eigenverantwortlich lösen können. Das übt er bei strenger Kontrolle kaum.",
+  mb:"Hohe Lenkung und Anforderung bei geringer Zuwendung und Responsivität ist der autoritäre Stil. Der Vater erklärt nichts und lässt keine Fragen zu.",
+  erg:"Ziel und Mittel passen nicht zusammen. Wer Mündigkeit will, braucht einen Stil, der Erklären und Mitentscheiden zulässt (autoritativ)."},
+ {t:"Der Pfeil-Versuch",x:"Im Unterricht behauptet Frau Roth: „Zwei Linien, die gleich lang sind, wirken verschieden lang, je nachdem, wie die Pfeilspitzen stehen.“ Die Klasse prüft es: Gruppe A bekommt Pfeile nach innen, Gruppe B nach außen, beide beurteilen die Länge. Das Ergebnis lässt sich wiederholen.",
+  a:"exp",b:"wahr",
+  ca:["unabhängige Variable","Versuchsgruppe","Wiederholbarkeit"],cb:["Reizaufnahme","Weiterleitung und Verarbeitung","Bewertung und Empfindung"],
+  ma:"Die Pfeilrichtung wird bewusst verändert: die unabhängige Variable. Gruppe A ist Versuchsgruppe. Das Experiment ist wiederholbar, also kann man die Ergebnisse überprüfen.",
+  mb:"Die Augen nehmen den Reiz auf, das Gehirn leitet ihn weiter und verarbeitet ihn, und die Bewertung („länger“ oder „kürzer“) täuscht. Wahrnehmung ist ein Konstruktionsprozess.",
+  erg:"Das Experiment zeigt, dass die Wahrnehmung nicht einfach abbildet, sondern konstruiert. Erst der Versuch macht diese Aussage wissenschaftlich überprüfbar."},
+ {t:"Das Klavier",x:"Herr Gruber (82) hat Demenz. Er weiß nicht mehr, wer seine Tochter ist, spielt aber sicher Klavier. Wenn er von seinem Hochzeitstag erzählt, leuchten seine Augen. Pflegekraft Aydin setzt sich zu ihm, hört zu, nimmt ihn ernst und kommt zuverlässig zur selben Zeit.",
+  a:"mark",b:"bez",
+  ca:["prozedurales Gedächtnis","episodisch-autobiographisches Gedächtnis","deklarative Systeme"],cb:["Wertschätzung","Verlässlichkeit","Einfühlungsvermögen"],
+  ma:"Klavierspielen ist im prozeduralen Gedächtnis gespeichert und bleibt oft lange erhalten. Die Erinnerung an den Hochzeitstag ist episodisch-autobiographisch und gehört wie die Erinnerung an die Tochter zu den deklarativen Systemen.",
+  mb:"Aydin zeigt Wertschätzung (ernst nehmen), Einfühlungsvermögen (zuhören) und Verlässlichkeit (feste Zeit). So entsteht Vertrauen trotz der Gedächtnislücken.",
+  erg:"Wenn deklarative Erinnerungen verloren gehen, bleibt die Beziehung. Sie kann am prozeduralen Gedächtnis (Klavier, Lieder) und an Gefühlen anknüpfen."}
+];
+
+const $=i=>document.getElementById(i);
+const esc=s=>String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;");
+function hash(s){let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)}return h>>>0}
+function mulberry(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function shuffle(a,r){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(r()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+const FAM=[["wiss","alltag","exp","erlv"],["erz","baum","roth","bez"],["wahr","gedm","mark","emo","weiner"],["pawlow","skinner","bandura","lernen"]];
+function distractors(c,side,r){
+  const own=side==="A"?c.ca:c.cb,other=side==="A"?c.cb:c.ca;
+  let banned=own.concat(other,TH[c.a].pool,TH[c.b].pool);
+  FAM.forEach(g=>{if(g.includes(c.a)||g.includes(c.b))g.forEach(k=>{banned=banned.concat(TH[k].pool)})});
+  const pool=[];Object.keys(TH).forEach(k=>{if(k!==c.a&&k!==c.b)TH[k].pool.forEach(t=>{if(!banned.includes(t))pool.push(t)})});
+  return shuffle(pool,r).slice(0,3);
+}
+/* Reihenfolge der Begriffe hängt nur von Fall und Ecke ab, damit Beamer und Handy dieselben Buchstaben zeigen */
+function itemsFor(ci,team){const c=CASES[ci],r=mulberry(hash("duell:"+ci+":"+team));return shuffle((team==="A"?c.ca:c.cb).concat(distractors(c,team,r)),r)}
+const L="ABCDEF";
+
+/* ---------- Beamer ---------- */
+let order=[],pos=0,step=0,sel={A:[],B:[]},score={A:0,B:0},votes={A:0,B:0,C:0},banked=false;
+function newGame(){order=shuffle(CASES.map((_,i)=>i),Math.random);pos=0;score={A:0,B:0};startCase()}
+function startCase(){step=0;sel={A:[],B:[]};votes={A:0,B:0,C:0};banked=false;render()}
+const cur=()=>CASES[order[pos]];
+function pts(team){const c=cur(),own=team==="A"?c.ca:c.cb,it=itemsFor(order[pos],team);let p=0;sel[team].forEach(i=>{p+=own.includes(it[i])?1:-1});return Math.max(0,p)}
+function colHtml(team){
+  const c=cur(),th=TH[team==="A"?c.a:c.b],it=itemsFor(order[pos],team),own=team==="A"?c.ca:c.cb,solved=step>=2,k=team.toLowerCase();
+  let h=`<section class="col ${k}" aria-label="Ecke ${team==="A"?"Rot":"Blau"}"><span class="lb">Ecke ${team==="A"?"Rot":"Blau"}</span><h3>${esc(th.n)}</h3>`;
+  if(step===0)h+=`<p class="muted">Gruppe ${team==="A"?"Rot":"Blau"}: Welche Begriffe passen zu eurer Theorie und diesem Fall? Gleich wählt ihr drei.</p>`;
+  else{
+    h+=it.map((t,i)=>{
+      const on=sel[team].includes(i),ok=own.includes(t);let cls="chip";if(solved){if(ok)cls+=" right";else if(on)cls+=" wrong"}
+      return`<button class="${cls}" data-act="pick" data-t="${team}" data-i="${i}" aria-pressed="${on}"${solved?" disabled":""}><kbd>${L[i]}</kbd><span>${solved&&ok?"✓ ":solved&&on?"✗ ":""}${esc(t)}</span></button>`}).join("");
+    if(step===1)h+=`<div style="display:flex;gap:.6rem;align-items:center;flex-wrap:wrap"><label class="hint" for="hc${team}">Code vom Handy:</label><input class="code" id="hc${team}" maxlength="3" autocomplete="off" placeholder="ABC"><button class="btn n" data-act="code" data-t="${team}">Übernehmen</button></div><p class="hint">${sel[team].length} von 3 gewählt</p>`;
+    if(solved)h+=`<div class="res"><b>${pts(team)} von 3 Punkten.</b> ${esc(team==="A"?c.ma:c.mb)}<div class="muted" style="margin-top:.4rem">${esc(th.k)}</div></div>`;
+  }
+  return h+"</section>";
+}
+function render(){
+  const c=cur(),m=document.querySelector("main");
+  const stepNames=["Fall lesen","Begriffe wählen","Auflösung","Urteil"];
+  let h=`<div class="top"><div><span class="lb">Pädagogik/Psychologie 11 · Fall ${pos+1} von ${order.length} · ${stepNames[step]}</span><h1 style="font-size:2rem;margin-top:.2rem">Theorie-Duell</h1></div><div class="score" aria-live="polite"><span class="sb a"><b>${score.A+(step===2&&!banked?0:0)}</b>Rot</span><span class="sb b"><b>${score.B}</b>Blau</span></div></div>`;
+  h+=`<div class="case"><span class="lb">Fall ${order[pos]+1} · ${esc(TH[c.a].lb)} gegen ${esc(TH[c.b].lb)}</span><h2>${esc(c.t)}</h2>${step>=2?"":`<p class="t">${esc(c.x)}</p>`}</div>`;
+  h+=`<div class="cols">${colHtml("A")}${colHtml("B")}</div>`;
+  if(step===3){
+    const tot=Math.max(1,votes.A+votes.B+votes.C);
+    h+=`<div style="margin-top:1rem"><h2 style="margin-bottom:.6rem">Wer erklärt den Fall besser? Handzeichen zählen</h2><div class="vote">`
+     +[["A",TH[c.a].n.split(" (")[0],"a"],["B",TH[c.b].n.split(" (")[0],"b"],["C","Beide ergänzen sich","n"]].map(v=>`<div><b>${esc(v[1])}</b><span class="n">${votes[v[0]]}</span><span class="pm"><button class="btn n" data-act="vm" data-v="${v[0]}" aria-label="eine Stimme weniger">−</button><button class="btn ${v[2]}" data-act="vp" data-v="${v[0]}" aria-label="eine Stimme mehr">+</button></span></div>`).join("")
+     +`</div><div class="case" style="margin-top:1rem"><h3>Zusammenspiel</h3><p class="t">${esc(c.erg)}</p><p class="hint" style="margin-top:.5rem">Kriterien fürs Urteil: Erklärungskraft für den Fall · empirische Überprüfbarkeit · Ableitung von Hilfen · Menschenbild</p></div></div>`;
+  }
+  m.innerHTML=h;
+  const nx=pos+1<order.length;
+  $("fnext").textContent=step===0?"Begriffe wählen":step===1?"Auflösen":step===2?"Zum Urteil":nx?"Nächster Fall":"Neues Spiel";
+  $("fback").disabled=step===0;
+  $("fcase").value=String(order[pos]);
+}
+function go(d){
+  if(d>0){
+    if(step===1&&!banked){score.A+=pts("A");score.B+=pts("B");banked=true}
+    if(step===3){if(pos+1<order.length){pos++;startCase()}else newGame();return}
+    step++;render();
+  }else if(step>0){
+    if(step===2&&banked){score.A-=pts("A");score.B-=pts("B");banked=false}
+    step--;render();
+  }
+}
+document.addEventListener("click",e=>{
+  const b=e.target.closest("[data-act]");if(!b)return;const a=b.getAttribute("data-act");
+  if(a==="pick"){const t=b.getAttribute("data-t"),i=+b.getAttribute("data-i"),s=sel[t],k=s.indexOf(i);if(k>-1)s.splice(k,1);else if(s.length<3)s.push(i);render()}
+  else if(a==="code"){const t=b.getAttribute("data-t"),v=$("hc"+t).value.toUpperCase().replace(/[^A-F]/g,"").split("").filter((x,i,arr)=>arr.indexOf(x)===i).slice(0,3);if(v.length){sel[t]=v.map(x=>L.indexOf(x));render()}}
+  else if(a==="vp"){votes[b.getAttribute("data-v")]++;render()}
+  else if(a==="vm"){const v=b.getAttribute("data-v");if(votes[v]>0)votes[v]--;render()}
+});
+$("fnext").onclick=()=>go(1);$("fback").onclick=()=>go(-1);
+$("fcase").innerHTML=CASES.map((c,i)=>`<option value="${i}">Fall ${i+1}: ${esc(c.t)}</option>`).join("");
+$("fcase").onchange=e=>{const i=+e.target.value;order=[i].concat(order.filter(x=>x!==i));pos=0;startCase()};
+$("fnew").onclick=newGame;
+$("ffull").onclick=()=>{try{document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}catch(e){}};
+$("fhandy").onclick=()=>{location.hash="handy";route()};
+document.addEventListener("keydown",e=>{
+  if(e.target.matches("input,select,textarea"))return;
+  if(e.key==="ArrowRight"||e.key===" "||e.key==="PageDown"){e.preventDefault();go(1)}
+  else if(e.key==="ArrowLeft"||e.key==="PageUp"){e.preventDefault();go(-1)}
+  else if(e.key==="f"||e.key==="F")$("ffull").click();
+});
+
+/* ---------- Handy-Modus (derselbe Datei-Inhalt, ohne Verbindung) ---------- */
+let hCase=0,hTeam="A",hSel=[];
+function handy(){
+  const items=itemsFor(hCase,hTeam),c=CASES[hCase],th=TH[hTeam==="A"?c.a:c.b],code=hSel.map(i=>L[i]).join("");
+  $("handy").innerHTML=`<h1 style="font-size:1.6rem">Theorie-Duell: Handy</h1><p class="muted">Wähle die Fallnummer vom Beamer und deine Ecke. Tippe drei Begriffe. Gib dann den Code auf dem Beamer ein.</p>
+  <label class="lb" for="hn">Fallnummer</label><select id="hn">${CASES.map((x,i)=>`<option value="${i}" ${i===hCase?"selected":""}>Fall ${i+1}: ${esc(x.t)}</option>`).join("")}</select>
+  <div style="display:flex;gap:.6rem"><button class="btn a" data-h="A" style="flex:1;${hTeam==="A"?"outline:4px solid var(--fg)":""}">Ecke Rot</button><button class="btn b" data-h="B" style="flex:1;${hTeam==="B"?"outline:4px solid var(--fg)":""}">Ecke Blau</button></div>
+  <h2>${esc(th.n)}</h2>${items.map((t,i)=>`<button class="chip" data-hi="${i}" aria-pressed="${hSel.includes(i)}"><kbd>${L[i]}</kbd><span>${esc(t)}</span></button>`).join("")}
+  <div class="case" style="text-align:center"><span class="lb">Dein Code</span><div class="bigcode">${esc(code)||"–––"}</div><p class="hint">${hSel.length} von 3 gewählt</p></div>
+  <button class="btn n" data-h="back">Zurück zur Beamer-Ansicht</button>`;
+}
+$("handy").addEventListener("click",e=>{
+  const h=e.target.closest("[data-h]"),i=e.target.closest("[data-hi]");
+  if(h){const v=h.getAttribute("data-h");if(v==="back"){location.hash="";route();return}hTeam=v;hSel=[];handy()}
+  else if(i){const n=+i.getAttribute("data-hi"),k=hSel.indexOf(n);if(k>-1)hSel.splice(k,1);else if(hSel.length<3)hSel.push(n);handy()}
+});
+$("handy").addEventListener("change",e=>{if(e.target.id==="hn"){hCase=+e.target.value;hSel=[];handy()}});
+function route(){
+  const hm=location.hash==="#handy";
+  $("handy").hidden=!hm;document.querySelector("main").hidden=hm;$("foot").hidden=hm;
+  if(hm)handy();
+}
+addEventListener("hashchange",route);
+newGame();route();
+</script></body></html>

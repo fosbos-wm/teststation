@@ -1,0 +1,317 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Memory Articoli</title>
+<style>
+/* Layout: Kopfzeile mit Zählern, darunter ein umbrechendes Kartenraster; Karten haben Wort+Bild oder Artikel-Paar. */
+:root{
+ --bg:#eef3f1; --panel:#ffffff; --fg:#17262b; --muted:#56696f; --line:#cfdcd8;
+ --accent:#1d6b61; --accent-ink:#ffffff; --back:#1d6b61; --back2:#2b8478;
+ --m:#2a62b0; --m-soft:#dce8f8; --f:#b8325f; --f-soft:#f9dde7; --ok:#1e7a46; --ok-soft:#d8f0e0;
+ --display:"Trebuchet MS",system-ui,sans-serif; --body:system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+ --bg:#10191b; --panel:#182427; --fg:#e8f1ef; --muted:#9db3b0; --line:#2b3d40;
+ --accent:#58c1b1; --accent-ink:#08201c; --back:#1f5d55; --back2:#2a7469;
+ --m:#8db6f2; --m-soft:#1c2c44; --f:#f08cae; --f-soft:#42202e; --ok:#7bd69f; --ok-soft:#173526; color-scheme:dark}}
+:root[data-theme="dark"]{
+ --bg:#10191b; --panel:#182427; --fg:#e8f1ef; --muted:#9db3b0; --line:#2b3d40;
+ --accent:#58c1b1; --accent-ink:#08201c; --back:#1f5d55; --back2:#2a7469;
+ --m:#8db6f2; --m-soft:#1c2c44; --f:#f08cae; --f-soft:#42202e; --ok:#7bd69f; --ok-soft:#173526; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:16px/1.45 var(--body);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 40px}
+.wrap{max-width:980px;width:100%;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+header{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:flex-end;justify-content:space-between}
+h1{font:800 clamp(1.7rem,5vw,2.6rem)/1.05 var(--display);margin:0;letter-spacing:-.01em;text-wrap:balance}
+.sub{margin:6px 0 0;color:var(--muted);max-width:52ch}
+.stats{display:flex;gap:10px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px 14px;min-width:84px}
+.stat b{display:block;font:800 1.5rem/1.1 var(--display);font-variant-numeric:tabular-nums}
+.stat span{font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.bar{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.seg button{border:0;background:none;color:var(--fg);font:600 .9rem var(--body);padding:9px 14px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.btn{border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink);font:600 .9rem var(--body);padding:9px 16px;border-radius:10px;cursor:pointer}
+.btn.alt{background:var(--panel);color:var(--fg);border-color:var(--line)}
+.chk{display:inline-flex;align-items:center;gap:8px;font-size:.92rem;cursor:pointer}
+.chk input{width:18px;height:18px;accent-color:var(--accent)}
+button:focus-visible,input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.msg{min-height:3.2em;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 14px;display:block}
+[hidden]{display:none!important}
+.msg.ok{background:var(--ok-soft);border-color:var(--ok)}
+.msg strong{font-family:var(--display)}
+.tag{display:inline-block;padding:1px 9px;border-radius:99px;font-size:.78rem;font-weight:600}
+.tag.m{background:var(--m-soft);color:var(--m)}.tag.f{background:var(--f-soft);color:var(--f)}
+.grid{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.card{width:calc((100% - 30px)/4);max-width:150px;position:relative;aspect-ratio:4/5;perspective:700px;border:0;background:none;padding:0;cursor:pointer;container-type:inline-size;font:inherit;color:inherit}
+@media (min-width:640px){.card{width:calc((100% - 50px)/6);max-width:150px}}
+.in{position:relative;display:block;width:100%;height:100%;transform-style:preserve-3d;transition:transform .45s}
+.card.up .in,.card.done .in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4cqw;padding:6cqw}
+.back{background:
+ repeating-conic-gradient(from 45deg at 50% 50%,var(--back2) 0 25%,var(--back) 0 50%) 0 0/22cqw 22cqw;border:2px solid var(--accent);color:#fff;font:800 36cqw var(--display)}
+.back span{background:var(--back);padding:0 .25em;border-radius:6px;opacity:.95}
+.front{transform:rotateY(180deg);background:var(--panel);border:2px solid var(--line)}
+.card.done .front{border-color:var(--ok);background:var(--ok-soft)}
+.card.wrong .front{border-color:#c2410c}
+.front svg{width:68%;height:auto;flex:none}
+.front .w{font:700 13cqw/1 var(--display)}
+.art{display:flex;flex-direction:column;gap:1.5cqw;align-items:center;font-weight:700;font-size:13.5cqw;line-height:1.1;text-align:center}
+.art.long{font-size:11.2cqw;white-space:nowrap}
+.art small{display:block;font:500 8.4cqw var(--body);color:var(--muted);letter-spacing:.04em;text-transform:uppercase;margin-top:3cqw}
+.art .m{color:var(--m)}.art .f{color:var(--f)}
+.art.plain span{color:var(--fg)}
+.front.gm{box-shadow:inset 0 -5px 0 var(--m)}.front.gf{box-shadow:inset 0 -5px 0 var(--f)}
+.card.done .front{box-shadow:none}
+.end{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:12px}
+.end h2{font:800 1.4rem var(--display);margin:0}
+.end .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.end ul{margin:6px 0 0;padding:0;list-style:none;display:grid;gap:4px}
+.end li{display:flex;justify-content:space-between;gap:10px;border-bottom:1px dashed var(--line);padding:3px 0;font-variant-numeric:tabular-nums}
+.rule{color:var(--muted);font-size:.92rem;margin:0}
+.rules{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 16px;font-size:.92rem;color:var(--muted)}
+.rules b{color:var(--fg)}
+@media (prefers-reduced-motion:reduce){.in{transition:none}}
+
+.tabs{display:flex;flex-wrap:wrap;gap:8px}
+.tabs button{border:1px solid var(--line);background:var(--panel);color:var(--fg);font:700 .95rem var(--display);padding:10px 18px;border-radius:12px;cursor:pointer}
+.tabs button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.field{display:inline-flex;align-items:center;gap:8px;font-size:.92rem}
+.field input,.field select{font:600 .95rem var(--body);background:var(--panel);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:7px 10px;width:auto}
+.field input[type=number]{width:5.2em}
+.stage{display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
+.board{min-width:0}
+.beamer .stage{grid-template-columns:minmax(0,1fr) 270px}
+.beamer .wrap{max-width:none;width:100%;margin:0}
+.beamer .sub,.beamer .rules{display:none}
+.beamer .grid{max-width:calc(6*((100vh - 395px)/4.4) + 50px);margin:0 auto}
+.beamer .card{width:calc((100% - 50px)/6);max-width:none;aspect-ratio:1/1.1}
+.back span.q,.back span.num{background:none;padding:0}
+.back .num{position:absolute;top:5cqw;left:7cqw;font:700 14cqw var(--body);color:#fff;opacity:.9}
+.beamer .back>span.q{font-size:44cqw}
+.teams{display:flex;flex-direction:column;gap:8px}
+.team{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--panel);border:2px solid var(--line);border-radius:12px;padding:8px 12px;font:700 1rem var(--display)}
+.team b{font:800 1.5rem var(--display);font-variant-numeric:tabular-nums}
+.team.turn{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 28%,transparent)}
+.team.turn::before{content:"▶";color:var(--accent);margin-right:6px}
+@media (max-width:900px){.beamer .stage{grid-template-columns:minmax(0,1fr)}.teams{flex-direction:row;flex-wrap:wrap}.team{flex:1 1 140px}}
+.turnmsg{font:800 1.4rem var(--display)}
+.code{font:800 clamp(2rem,8vw,3.6rem)/1 var(--display);letter-spacing:.04em;background:var(--accent);color:var(--accent-ink);border-radius:14px;padding:14px 20px;text-align:center;font-variant-numeric:tabular-nums}
+.rank{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;font-variant-numeric:tabular-nums}
+.rank th,.rank td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--line)}
+.rank th{font:600 .78rem var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.rank td{font:700 1.25rem var(--display)}
+.rank tr:first-child td{color:var(--ok)}
+.rank button{border:0;background:none;color:var(--muted);cursor:pointer;font-size:1.1rem}
+.rankbox{display:flex;flex-direction:column;gap:14px}
+.hint{color:var(--muted);font-size:.9rem;margin:0}
+.err{color:#c2410c;font-weight:600}
+.big .stat b{font-size:2rem}
+.beamer .stat b{font-size:1.9rem}
+
+</style></head><body>
+<div class="wrap" id="app">
+ <header>
+  <div>
+   <h1>Memory Articoli</h1>
+   <p class="sub">Finde zu jedem Bild den passenden Artikel: <b>il / la</b> (bestimmt) und <b>un / una</b> (unbestimmt).</p>
+  </div>
+  <div class="stats" aria-live="polite">
+   <div class="stat"><b id="moves">0</b><span>Züge</span></div>
+   <div class="stat"><b id="found">0/0</b><span>Paare</span></div>
+   <div class="stat" id="timebox"><b id="time">0:00</b><span>Zeit</span></div>
+  </div>
+ </header>
+ <nav class="tabs" aria-label="Spielart">
+  <button type="button" id="tab-tablet" aria-pressed="true">Tablet: ein Team</button>
+  <button type="button" id="tab-beamer" aria-pressed="false">Beamer: ganze Klasse</button>
+  <button type="button" id="tab-rank" aria-pressed="false">Rangliste</button>
+ </nav>
+
+ <section id="play" class="wrap">
+  <div class="bar" id="opts">
+   <label class="field" id="f-team">Team <select id="team"></select></label>
+   <label class="field" id="f-teams" hidden>Teams <select id="nteams"></select></label>
+   <label class="field">Spielnummer <input id="game" type="number" min="1" max="99" inputmode="numeric"></label>
+   <button class="btn alt" id="dice" type="button">Würfeln</button>
+   <div class="seg" role="group" aria-label="Anzahl der Wörter">
+    <button id="m6" aria-pressed="false" type="button">6 Wörter</button>
+    <button id="m11" aria-pressed="true" type="button">Alle 11</button>
+   </div>
+   <label class="chk"><input type="checkbox" id="help"> Farbhilfe</label>
+   <button class="btn" id="again" type="button">Neu starten</button>
+  </div>
+  <p class="hint" id="gamehint">Gleiche Spielnummer = gleiche Kartenanordnung. Alle Teams geben dieselbe Nummer ein, dann ist der Vergleich fair.</p>
+  <div class="msg" id="msg" aria-live="polite"></div>
+  <div class="stage">
+   <div class="board"><div class="grid" id="grid"></div></div>
+   <aside class="teams" id="teams" hidden aria-label="Punktestand"></aside>
+  </div>
+  <section class="end" id="end" hidden></section>
+  <div class="rules"><b>Merkhilfe:</b> Wörter auf <b>-a</b> sind meist feminin (<i>la / una</i>), Wörter auf <b>-o</b> meist maskulin (<i>il / un</i>). Vor einem Vokal wird <i>il</i> zu <i>l'</i>: <i>l'asciugamano</i>. Der unbestimmte Artikel bleibt <i>un</i>.</div>
+ </section>
+
+ <section id="rankview" class="rankbox" hidden>
+  <p class="hint">Für den Beamer: Jedes Team zeigt am Ende seinen <b>Ergebniscode</b> vom Tablet. Hier eintragen, die Rangliste sortiert sich selbst (weniger Züge, dann weniger Zeit).</p>
+  <div class="bar">
+   <label class="field">Spielnummer <input id="rgame" type="number" min="1" max="99" inputmode="numeric"></label>
+   <label class="field">Ergebniscode <input id="rcode" type="text" placeholder="03-47-14-092" autocomplete="off" style="width:11em"></label>
+   <button class="btn" id="radd" type="button">Eintragen</button>
+   <button class="btn alt" id="rclear" type="button">Liste leeren</button>
+  </div>
+  <div id="rerr" class="err" role="alert"></div>
+  <div id="rlist"></div>
+ </section>
+</div>
+<script>
+const W=[["casa", "f", "la casa", "una casa"], ["divano", "m", "il divano", "un divano"], ["lavabo", "m", "il lavabo", "un lavabo"], ["cucina", "f", "la cucina", "una cucina"], ["camera", "f", "la camera", "una camera"], ["doccia", "f", "la doccia", "una doccia"], ["forno", "m", "il forno", "un forno"], ["sedia", "f", "la sedia", "una sedia"], ["tavolo", "m", "il tavolo", "un tavolo"], ["pentola", "f", "la pentola", "una pentola"], ["asciugamano", "m", "l'asciugamano", "un asciugamano"]];
+const IMG={"casa": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\" fill=\"none\" stroke=\"#2b3a42\" stroke-width=\"2.6\" stroke-linejoin=\"round\" stroke-linecap=\"round\"><rect x=\"20\" y=\"46\" width=\"60\" height=\"40\" fill=\"#f3dcae\"/>\n<rect x=\"64\" y=\"22\" width=\"9\" height=\"20\" fill=\"#b9695a\"/>\n<polygon points=\"11,50 50,17 89,50\" fill=\"#cf5b45\"/>\n<rect x=\"43\" y=\"60\" width=\"15\" height=\"26\" rx=\"1\" fill=\"#7a4b2a\"/><circle cx=\"54\" cy=\"74\" r=\"1.2\" fill=\"#2b3a42\"/>\n<rect x=\"26\" y=\"56\" width=\"12\" height=\"12\" fill=\"#bfe3f2\"/><path d=\"M32 56v12M26 62h12\"/>\n<rect x=\"63\" y=\"56\" width=\"12\" height=\"12\" fill=\"#bfe3f2\"/><path d=\"M69 56v12M63 62h12\"/>\n<path d=\"M8 86h84\"/></svg>", "divano": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\" fill=\"none\" stroke=\"#2b3a42\" stroke-width=\"2.6\" stroke-linejoin=\"round\" stroke-linecap=\"round\"><rect x=\"17\" y=\"30\" width=\"66\" height=\"32\" rx=\"9\" fill=\"#4f84b0\"/>\n<rect x=\"8\" y=\"44\" width=\"16\" height=\"32\" rx=\"7\" fill=\"#5f95c2\"/><rect x=\"76\" y=\"44\" width=\"16\" height=\"32\" rx=\"7\" fill=\"#5f95c2\"/>\n<rect x=\"22\" y=\"52\" width=\"56\" height=\"22\" rx=\"5\" fill=\"#74a8d3\"/><path d=\"M50 52v22\"/>\n<path d=\"M18 76v8M82 76v8\"/></svg>", "lavabo": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\" fill=\"none\" stroke=\"#2b3a42\" stroke-width=\"2.6\" stroke-linejoin=\"round\" stroke-linecap=\"round\"><path d=\"M12 38h76q0 30-38 30t-38-30z\" fill=\"#e6f0f4\"/>\n<ellipse cx=\"50\" cy=\"38\" rx=\"38\" ry=\"5\" fill=\"#cfe3ec\"/>\n<path d=\"M42 66v20h16V66\" fill=\"#dfeaf0\"/><rect x=\"32\" y=\"86\" width=\"36\" height=\"6\" rx=\"2\" fill=\"#cdd9df\"/>\n<path d=\"M50 33V20q0-6 7-6h7\" /><rect x=\"60\" y=\"11\" width=\"7\" height=\"6\" rx=\"1\" fill=\"#9aa5ad\"/>\n<path d=\"M63 22q-3 5 0 8t0 0\" stroke=\"#3b88c3\" fill=\"#7fc0ea\"/><path d=\"M26 28v8M74 28v8\" stroke-width=\"3\"/></svg>", "cucina": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\" fill=\"none\" stroke=\"#2b3a42\" stroke-width=\"2.6\" stroke-linejoin=\"round\" stroke-linecap=\"round\"><rect x=\"10\" y=\"8\" width=\"80\" height=\"22\" rx=\"2\" fill=\"#d8a45f\"/><path d=\"M50 8v22\"/><circle cx=\"46\" cy=\"19\" r=\"1.4\" fill=\"#2b3a42\"/><circle cx=\"54\" cy=\"19\" r=\"1.4\" fill=\"#2b3a42\"/>\n<rect x=\"8\" y=\"58\" width=\"84\" height=\"7\" rx=\"2\" fill=\"#8f979e\"/>\n<rect x=\"11\" y=\"65\" width=\"78\" height=\"26\" fill=\"#e9cc92\"/><path d=\"M37 65v26M63 65v26\"/>\n<circle cx=\"32\" cy=\"78\" r=\"1.5\" fill=\"#2b3a42\"/><circle cx=\"68\" cy=\"78\" r=\"1.5\" fill=\"#2b3a42\"/>\n<path d=\"M30 58V50h26v8\" fill=\"#aab3ba\"/><path d=\"M56 53h12\" /><path d=\"M36 44q-3-4 0-8M44 44q-3-4 0-8\" stroke=\"#8fa0aa\"/></svg>", "camera": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\" fill=\"none\" stroke=\"#2b3a42\" stroke-width=\"2.6\" stroke-linejoin=\"round\" stroke-linecap=\"round\"><rect x=\"9\" y=\"22\" width=\"9\" height=\"62\" rx=\"3\" fill=\"#a67046\"/>\n<rect x=\"9\" y=\"54\" width=\"84\" height=\"18\" rx=\"3\" fill=\"#7fb09d\"/>\n<rect x=\"21\" y=\"44\" width=\"24\" height=\"13\" rx=\"6\" fill=\"#ffffff\"/>\n<path d=\"M44 57V50q0-3 4-3h40q5 0 5 5v6z\" fill=\"#dc7d68\"/><path d=\"M60 50v7M74 50v7\" stroke-width=\"2\"/>\n<path d=\"M12 72v12M90 72v12\"/><rect x=\"9\" y=\"84\" width=\"84\" height=\"0\"/></svg>", "doccia": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\" fill=\"none\" stroke=\"#2b3a42\" stroke-width=\"2.6\" stroke-linejoin=\"round\" stroke-linecap=\"round\"><path d=\"M84 90V16q0-6-6-6H58\" /><path d=\"M58 10h-6\" />\n<path d=\"M26 28h32l9 9H17z\" fill=\"#9aa5ad\"/><path d=\"M42 28v-8\" /><rect x=\"38\" y=\"14\" width=\"8\" height=\"7\" rx=\"1\" fill=\"#7c868e\"/>\n<path d=\"M22 46l-4 14M32 46l-4 14M42 46l-4 14M52 46l-4 14M62 46l-4 14\" stroke=\"#3b88c3\"/>\n<path d=\"M26 66l-3 12M38 66l-3 12M50 66l-3 12M62 66l-3 12\" stroke=\"#3b88c3\"/>\n<path d=\"M12 90h80\" /></svg>", "forno": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\" fill=\"none\" stroke=\"#2b3a42\" stroke-width=\"2.6\" stroke-linejoin=\"round\" stroke-linecap=\"round\"><rect x=\"13\" y=\"10\" width=\"74\" height=\"80\" rx=\"6\" fill=\"#d3d8dc\"/>\n<path d=\"M13 28h74\"/><circle cx=\"26\" cy=\"19\" r=\"3.5\" fill=\"#f6f7f8\"/><circle cx=\"38\" cy=\"19\" r=\"3.5\" fill=\"#f6f7f8\"/><circle cx=\"62\" cy=\"19\" r=\"3.5\" fill=\"#f6f7f8\"/><circle cx=\"74\" cy=\"19\" r=\"3.5\" fill=\"#f6f7f8\"/>\n<rect x=\"21\" y=\"36\" width=\"58\" height=\"46\" rx=\"4\" fill=\"#3b4148\"/>\n<rect x=\"27\" y=\"45\" width=\"46\" height=\"30\" rx=\"2\" fill=\"#f2a43d\"/><path d=\"M27 45h46\" stroke=\"#fbd28a\"/>\n<path d=\"M30 40h40\" stroke=\"#f6f7f8\" stroke-width=\"3\"/></svg>", "sedia": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\" fill=\"none\" stroke=\"#2b3a42\" stroke-width=\"2.6\" stroke-linejoin=\"round\" stroke-linecap=\"round\"><rect x=\"28\" y=\"8\" width=\"44\" height=\"40\" rx=\"5\" fill=\"#c98f52\"/><path d=\"M40 10v36M50 10v36M60 10v36\"/>\n<rect x=\"21\" y=\"48\" width=\"58\" height=\"10\" rx=\"3\" fill=\"#dcaa6a\"/>\n<rect x=\"24\" y=\"58\" width=\"7\" height=\"32\" rx=\"1\" fill=\"#b57c43\"/><rect x=\"69\" y=\"58\" width=\"7\" height=\"32\" rx=\"1\" fill=\"#b57c43\"/></svg>", "tavolo": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\" fill=\"none\" stroke=\"#2b3a42\" stroke-width=\"2.6\" stroke-linejoin=\"round\" stroke-linecap=\"round\"><rect x=\"8\" y=\"36\" width=\"84\" height=\"10\" rx=\"3\" fill=\"#c98f52\"/>\n<rect x=\"15\" y=\"46\" width=\"8\" height=\"42\" rx=\"1\" fill=\"#b57c43\"/><rect x=\"77\" y=\"46\" width=\"8\" height=\"42\" rx=\"1\" fill=\"#b57c43\"/>\n<path d=\"M28 46v8h44v-8\" fill=\"#b57c43\"/>\n<ellipse cx=\"50\" cy=\"32\" rx=\"16\" ry=\"4\" fill=\"#ffffff\"/><path d=\"M36 30q14-6 28 0\" stroke=\"none\"/></svg>", "pentola": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\" fill=\"none\" stroke=\"#2b3a42\" stroke-width=\"2.6\" stroke-linejoin=\"round\" stroke-linecap=\"round\"><rect x=\"22\" y=\"40\" width=\"56\" height=\"42\" rx=\"7\" fill=\"#9fabb3\"/>\n<rect x=\"18\" y=\"33\" width=\"64\" height=\"9\" rx=\"3\" fill=\"#bec8ce\"/><circle cx=\"50\" cy=\"27\" r=\"5\" fill=\"#7d8890\"/>\n<rect x=\"8\" y=\"49\" width=\"14\" height=\"7\" rx=\"3\" fill=\"#7d8890\"/><rect x=\"78\" y=\"49\" width=\"14\" height=\"7\" rx=\"3\" fill=\"#7d8890\"/>\n<path d=\"M32 50v24\" stroke=\"#d9e0e4\" stroke-width=\"3\"/>\n<path d=\"M38 20q-4-4 0-8t0-6M62 20q-4-4 0-8t0-6\" stroke=\"#8fa0aa\"/></svg>", "asciugamano": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\" fill=\"none\" stroke=\"#2b3a42\" stroke-width=\"2.6\" stroke-linejoin=\"round\" stroke-linecap=\"round\"><rect x=\"12\" y=\"12\" width=\"76\" height=\"6\" rx=\"3\" fill=\"#9aa5ad\"/><path d=\"M16 18v-4M84 18v-4\"/>\n<rect x=\"28\" y=\"14\" width=\"44\" height=\"14\" rx=\"3\" fill=\"#2f8c88\"/>\n<path d=\"M30 28h40v56H30z\" fill=\"#4fb0aa\"/>\n<rect x=\"30\" y=\"58\" width=\"40\" height=\"6\" fill=\"#ffffff\" stroke-width=\"2\"/><rect x=\"30\" y=\"68\" width=\"40\" height=\"4\" fill=\"#ffffff\" stroke-width=\"2\"/>\n<path d=\"M34 84v7M42 84v7M50 84v7M58 84v7M66 84v7\" stroke-width=\"2.2\"/></svg>"};
+const $=id=>document.getElementById(id);
+const QS=new URLSearchParams(location.search),TS=QS.get('ts')==='1';
+const M={mode:"tablet",words:11,game:1,team:1,nteams:3,cards:[],open:[],lock:false,moves:0,found:0,total:0,t0:0,tick:null,secs:0,turn:0,score:[],done:false};
+function rng(seed){let a=seed*2654435761>>>0;return()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function sh(arr,r){const a=arr.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(r()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function ls(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}}
+const fmt=s=>Math.floor(s/60)+":"+String(s%60).padStart(2,"0");
+function artHTML(w,help){const cls=help?w[1]:"";const long=(w[3].length>12||w[2].length>12)?" long":"";
+  return `<span class="art${long}"><span class="${cls}">${w[2]}<small>bestimmt</small></span><span class="${cls}">${w[3]}<small>unbestimmt</small></span></span>`}
+function build(){
+  clearInterval(M.tick);M.tick=null;M.secs=0;M.t0=0;M.done=false;
+  const r=rng(M.game*7919+(M.words===6?13:0));
+  const set=M.words===6?sh(W,r).slice(0,6):W.slice();
+  M.total=set.length;M.found=0;M.moves=0;M.open=[];M.lock=false;
+  M.cards=sh(set.flatMap(w=>[{w,t:"img"},{w,t:"art"}]),r);
+  M.turn=0;M.score=Array(M.nteams).fill(0);
+  $("end").hidden=true;
+  setMsg(M.mode==="beamer"?turnText():"Decke zwei Karten auf: ein <b>Wort mit Bild</b> und die passende <b>Artikelkarte</b>.");
+  render();stats();teams();
+}
+function setMsg(h,ok){$("msg").className="msg"+(ok?" ok":"");$("msg").innerHTML=h}
+function turnText(){return `<span class="turnmsg">Team ${M.turn+1} ist dran.</span> Nennt zwei Kartennummern.`}
+function render(){
+  const help=$("help").checked,bm=M.mode==="beamer";
+  $("grid").innerHTML=M.cards.map((c,i)=>{
+    const face=c.t==="img"?`<span class="front face">${IMG[c.w[0]]}<span class="w">${c.w[0]}</span></span>`
+      :`<span class="front face ${help?"g"+c.w[1]:""}">${artHTML(c.w,help)}</span>`;
+    return `<button type="button" class="card" data-i="${i}" aria-label="Karte ${i+1}, verdeckt"><span class="in"><span class="back face">${bm?`<span class="num">${i+1}</span>`:""}<span class="q">?</span></span>${face}</span></button>`;
+  }).join("");
+  document.querySelectorAll(".card").forEach(b=>b.addEventListener("click",()=>flip(+b.dataset.i)));
+}
+function stats(){$("moves").textContent=M.moves;$("found").textContent=M.found+"/"+M.total;$("time").textContent=fmt(M.secs);$("timebox").hidden=M.mode==="beamer"}
+function teams(){
+  const el=$("teams");el.hidden=M.mode!=="beamer";if(el.hidden)return;
+  el.innerHTML=M.score.map((s,i)=>`<div class="team${i===M.turn&&!M.done?" turn":""}"><span>Team ${i+1}</span><b>${s}</b></div>`).join("");
+}
+function startClock(){if(M.tick||M.mode==="beamer")return;M.t0=Date.now();M.tick=setInterval(()=>{M.secs=Math.round((Date.now()-M.t0)/1000);$("time").textContent=fmt(M.secs)},500)}
+function cardEl(i){return document.querySelector('.card[data-i="'+i+'"]')}
+function flip(i){
+  if(M.lock||M.done)return;const el=cardEl(i);
+  if(el.classList.contains("up")||el.classList.contains("done"))return;
+  startClock();el.classList.add("up");M.open.push(i);
+  const c=M.cards[i];el.setAttribute("aria-label","Karte "+(i+1)+": "+(c.t==="img"?c.w[0]+", Bildkarte":c.w[2]+" und "+c.w[3]));
+  if(M.open.length<2)return;
+  M.moves++;M.lock=true;
+  const [ia,ib]=M.open,a=M.cards[ia],b=M.cards[ib],ea=cardEl(ia),eb=el;
+  if(a.w===b.w&&a.t!==b.t){
+    setTimeout(()=>{
+      ea.classList.add("done");eb.classList.add("done");ea.classList.remove("up");eb.classList.remove("up");
+      M.found++;M.open=[];M.lock=false;
+      if(M.mode==="beamer")M.score[M.turn]++;
+      const w=a.w;setMsg(`<span><strong>${w[2]}</strong> / <strong>${w[3]}</strong> <span class="tag ${w[1]}">${w[1]==="m"?"maskulin":"feminin"}</span>${M.mode==="beamer"?` &nbsp; Team ${M.turn+1} darf weiter.`:""}</span>`,true);
+      stats();teams();
+      if(M.found===M.total)finish();
+    },600);
+  }else{
+    const same=a.t===b.t;
+    setMsg(same?"Zwei gleiche Kartenarten. Suche ein Wort mit Bild und eine Artikelkarte.":"Das passt nicht zusammen. Merkt euch die Karten.");
+    stats();
+    setTimeout(()=>{
+      [ea,eb].forEach(e=>{e.classList.remove("up");e.setAttribute("aria-label","Karte "+(+e.dataset.i+1)+", verdeckt")});
+      M.open=[];M.lock=false;
+      if(M.mode==="beamer"){M.turn=(M.turn+1)%M.nteams;teams();setMsg(turnText())}
+    },M.mode==="beamer"?2200:1100);
+  }
+}
+async function copy(txt,btn){try{await navigator.clipboard.writeText(txt);btn.textContent="Kopiert"}catch(e){const r=document.createRange();r.selectNodeContents($("codebox"));const s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent="Markiert, jetzt kopieren"}}
+function listHTML(){
+  const m=W.filter(w=>w[1]==="m"),f=W.filter(w=>w[1]==="f");
+  const list=a=>"<ul>"+a.map(w=>`<li><span>${w[2]}</span><span>${w[3]}</span></li>`).join("")+"</ul>";
+  return `<div class="cols"><div><span class="tag m">maskulin</span>${list(m)}</div><div><span class="tag f">feminin</span>${list(f)}</div></div>`;
+}
+function tsReport(){try{parent.postMessage({tsResult:{punkte:M.total,max:M.total,zuege:M.moves,sekunden:M.secs}},"*")}catch(e){}}
+function finish(){
+  M.done=true;clearInterval(M.tick);M.tick=null;
+  if(M.t0)M.secs=Math.round((Date.now()-M.t0)/1000);
+  stats();teams();$("end").hidden=false;
+  if(M.mode==="beamer"){
+    const mx=Math.max(...M.score),win=M.score.map((s,i)=>s===mx?i+1:0).filter(Boolean);
+    $("end").innerHTML=`<h2>${win.length>1?"Gleichstand: Teams "+win.join(" und "):"Team "+win[0]+" gewinnt"} mit ${mx} Paaren.</h2>`+listHTML()+
+     `<p class="rule">Auf <b>-o</b> endende Wörter sind maskulin, auf <b>-a</b> feminin. <i>l'asciugamano</i>: vor Vokal heißt es <i>l'</i> statt <i>il</i>.</p><div><button class="btn" id="again2" type="button">Noch einmal</button></div>`;
+  }else{
+    if(TS){tsReport();$("end").innerHTML=`<h2>Geschafft in ${M.moves} Zügen und ${fmt(M.secs)} min.</h2><p class="rule">Dein Ergebnis wird an die Lehrkraft gesendet. Du kannst noch einmal spielen, das bessere Ergebnis zählt.</p>`+listHTML()+`<div><button class="btn" id="again2" type="button">Noch einmal</button></div>`;$("again2").addEventListener("click",build);return}
+    const code=String(M.team).padStart(2,"0")+"-"+String(M.game).padStart(2,"0")+"-"+M.moves+"-"+String(M.secs).padStart(3,"0");
+    $("end").innerHTML=`<h2>Team ${M.team}: geschafft in ${M.moves} Zügen und ${fmt(M.secs)} min.</h2>
+     <p class="rule">Zeigt diesen Ergebniscode der Lehrkraft:</p><div class="code" id="codebox">${code}</div>
+     <div><button class="btn alt" id="copyc" type="button">Code kopieren</button></div>`+listHTML()+
+     `<div><button class="btn" id="again2" type="button">Noch einmal</button></div>`;
+    $("copyc").addEventListener("click",e=>copy(code,e.target));
+  }
+  $("again2").addEventListener("click",build);
+  $("end").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth",block:"nearest"});
+}
+/* Rangliste */
+let R=[];
+try{R=JSON.parse(ls("memory-articoli-rank")||"[]")}catch(e){R=[]}
+function rsave(){ls("memory-articoli-rank",JSON.stringify(R))}
+function rrender(){
+  const g=+$("rgame").value||1;
+  const rows=R.map((x,i)=>({...x,i})).filter(x=>x.g===g).sort((a,b)=>a.z-b.z||a.s-b.s);
+  const other=R.length-rows.length;
+  $("rlist").innerHTML=(rows.length?`<table class="rank"><thead><tr><th>Platz</th><th>Team</th><th>Züge</th><th>Zeit</th><th></th></tr></thead><tbody>${rows.map((x,k)=>`<tr><td>${k+1}</td><td>Team ${x.t}</td><td>${x.z}</td><td>${fmt(x.s)}</td><td><button type="button" data-del="${x.i}" aria-label="Eintrag von Team ${x.t} löschen">✕</button></td></tr>`).join("")}</tbody></table>`:`<p class="hint">Noch keine Ergebnisse für Spielnummer ${g}.</p>`)+(other?`<p class="hint">${other} Eintrag/Einträge aus anderen Spielnummern ausgeblendet.</p>`:"");
+  document.querySelectorAll("[data-del]").forEach(b=>b.addEventListener("click",()=>{R.splice(+b.dataset.del,1);rsave();rrender()}));
+}
+function radd(){
+  const v=$("rcode").value.trim(),m=v.match(/^(\d{1,2})\D(\d{1,2})\D(\d{1,3})\D(\d{1,4})$/);
+  if(!m){$("rerr").textContent="Der Code sieht so aus: 03-47-14-092 (Team, Spiel, Züge, Sekunden).";return}
+  const [_,t,g,z,s]=m.map(Number);$("rerr").textContent="";
+  R=R.filter(x=>!(x.t===t&&x.g===g));R.push({t,g,z,s});rsave();$("rgame").value=g;$("rcode").value="";rrender();$("rcode").focus();
+}
+/* Steuerung */
+function setTab(m){
+  M.mode=m;
+  ["tablet","beamer","rank"].forEach(k=>$("tab-"+k).setAttribute("aria-pressed",k===m));
+  document.body.classList.toggle("beamer",m==="beamer");
+  $("play").hidden=m==="rank";$("rankview").hidden=m!=="rank";
+  $("f-team").hidden=m!=="tablet";$("f-teams").hidden=m!=="beamer";
+  $("gamehint").hidden=m!=="tablet";
+  if(m==="rank"){$("rgame").value=M.game;rrender()}else build();
+}
+function setWords(n){M.words=n;$("m6").setAttribute("aria-pressed",n===6);$("m11").setAttribute("aria-pressed",n===11);build()}
+$("team").innerHTML=Array.from({length:12},(_,i)=>`<option value="${i+1}">${i+1}</option>`).join("");
+$("nteams").innerHTML=Array.from({length:11},(_,i)=>`<option value="${i+2}">${i+2}</option>`).join("");
+$("nteams").value=M.nteams;
+M.game=1+Math.floor(Math.random()*99);$("game").value=M.game;
+$("team").addEventListener("change",e=>{M.team=+e.target.value});
+$("nteams").addEventListener("change",e=>{M.nteams=+e.target.value;build()});
+$("game").addEventListener("change",e=>{let v=Math.max(1,Math.min(99,Math.round(+e.target.value)||1));e.target.value=v;M.game=v;build()});
+$("dice").addEventListener("click",()=>{M.game=1+Math.floor(Math.random()*99);$("game").value=M.game;build()});
+$("m6").addEventListener("click",()=>setWords(6));$("m11").addEventListener("click",()=>setWords(11));
+$("again").addEventListener("click",build);
+$("help").addEventListener("change",()=>{
+  const st=[...document.querySelectorAll(".card")].map(e=>[e.className,e.getAttribute("aria-label")]);
+  render();document.querySelectorAll(".card").forEach((e,i)=>{e.className=st[i][0];e.setAttribute("aria-label",st[i][1])});
+});
+["tablet","beamer","rank"].forEach(k=>$("tab-"+k).addEventListener("click",()=>setTab(k)));
+$("rgame").addEventListener("change",()=>{$("rgame").value=Math.max(1,Math.min(99,+$("rgame").value||1));rrender()});
+$("radd").addEventListener("click",radd);
+$("rcode").addEventListener("keydown",e=>{if(e.key==="Enter")radd()});
+$("rclear").addEventListener("click",()=>{if($("rclear").dataset.s==="1"){R=[];rsave();rrender();$("rclear").dataset.s="";$("rclear").textContent="Liste leeren"}else{$("rclear").dataset.s="1";$("rclear").textContent="Wirklich leeren?";setTimeout(()=>{$("rclear").dataset.s="";$("rclear").textContent="Liste leeren"},3000)}});
+if(TS){
+  document.querySelector(".tabs").hidden=true;$("f-team").hidden=true;$("f-teams").hidden=true;$("gamehint").hidden=true;
+  $("game").closest(".field").hidden=true;$("dice").hidden=true;
+  M.team=+QS.get("team")||1;M.game=Math.max(1,Math.min(99,+QS.get("spiel")||1));M.words=QS.get("woerter")==="6"?6:11;
+  $("game").value=M.game;$("m6").setAttribute("aria-pressed",M.words===6);$("m11").setAttribute("aria-pressed",M.words===11);
+  $("m6").hidden=true;$("m11").hidden=true;document.querySelector(".seg").hidden=true;
+}
+build();
+</script>
+</body></html>

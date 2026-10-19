@@ -1,0 +1,17 @@
+{"titel":"K-Prim: Attribution, Bandura, Gedächtnissysteme","anleitung":"Entscheide bei jeder Aussage, ob sie zutrifft.",
+"aufgaben":[
+{"frage":"Welche Aussagen zur Attributionstheorie nach Weiner treffen zu?","statements":[
+ {"text":"Freude über einen Erfolg ist eine ergebnisabhängige Emotion.","richtig":true},
+ {"text":"Stolz entsteht vor allem, wenn ein Erfolg internal, z. B. auf eigene Anstrengung, zurückgeführt wird.","richtig":true},
+ {"text":"Die Dimension stabil/variabel beeinflusst vor allem die Erfolgserwartung.","richtig":true},
+ {"text":"Wird Misserfolg auf mangelnde Begabung (internal, stabil) zurückgeführt, steigt meist die Erfolgserwartung.","richtig":false}]},
+{"frage":"Welche Aussagen zur sozial-kognitiven Theorie nach Bandura treffen zu?","statements":[
+ {"text":"Bandura unterscheidet zwischen einer Aneignungs- und einer Ausführungsphase.","richtig":true},
+ {"text":"Stellvertretende Bekräftigung: Der Beobachter nimmt wahr, dass das Modell für sein Verhalten belohnt wird.","richtig":true},
+ {"text":"Ein in der Aneignungsphase gelerntes Verhalten wird immer auch sofort ausgeführt.","richtig":false},
+ {"text":"Merkmale des Modells (z. B. Sympathie, Ansehen) beeinflussen die Aufmerksamkeit des Beobachters nicht.","richtig":false}]},
+{"frage":"Welche Aussagen zu den Speichersystemen nach Markowitsch treffen zu?","statements":[
+ {"text":"Das episodisch-autobiographische Gedächtnis gehört zu den deklarativen Speichersystemen.","richtig":true},
+ {"text":"Fahrradfahren ist typischerweise im prozeduralen Gedächtnis gespeichert.","richtig":true},
+ {"text":"Deklarative Inhalte sind dem Bewusstsein nicht zugänglich und lassen sich nicht in Worte fassen.","richtig":false},
+ {"text":"Priming zählt zum Wissenssystem (semantisches Gedächtnis).","richtig":false}]}]}

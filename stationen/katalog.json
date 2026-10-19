@@ -1,0 +1,14 @@
+[
+ {"id":"memory-articoli","titel":"Memory Articoli","fach":"Italienisch","beschreibung":"Wort mit Bild und passende Artikelkarte (il/la, un/una) finden.","datei":"memory-articoli.html","ergebnis":true,
+  "parameter":[{"name":"spiel","label":"Spielnummer","typ":"zahl","min":1,"max":99,"standard":1},{"name":"woerter","label":"Wörter","typ":"wahl","optionen":["6","11"],"standard":"11"}]},
+ {"id":"zuordnung-baumrind","titel":"Zuordnung: Erziehung und Erziehungsstile","fach":"Pädagogik/Psychologie","beschreibung":"Begriffe und Erklärungen verbinden: Baumrind, Roth, Merkmale von Erziehung.","datei":"zuordnung.html?set=zuordnung-baumrind","ergebnis":true,
+  "parameter":[{"name":"spiel","label":"Mischung (Nummer)","typ":"zahl","min":1,"max":99,"standard":1}]},
+ {"id":"zuordnung-konditionieren","titel":"Zuordnung: Konditionieren","fach":"Pädagogik/Psychologie","beschreibung":"Grundschema nach Pawlow und Kontingenzschema zuordnen.","datei":"zuordnung.html?set=zuordnung-konditionieren","ergebnis":true,
+  "parameter":[{"name":"spiel","label":"Mischung (Nummer)","typ":"zahl","min":1,"max":99,"standard":1}]},
+ {"id":"zuordnung-gedaechtnis","titel":"Zuordnung: Gedächtnis und Lernstrategien","fach":"Pädagogik/Psychologie","beschreibung":"Mehrspeichermodell, Kontrollprozesse und Gedächtnissysteme.","datei":"zuordnung.html?set=zuordnung-gedaechtnis","ergebnis":true,
+  "parameter":[{"name":"spiel","label":"Mischung (Nummer)","typ":"zahl","min":1,"max":99,"standard":1}]},
+ {"id":"kprim-lernen","titel":"K-Prim: Weiner, Bandura, Markowitsch","fach":"Pädagogik/Psychologie","beschreibung":"Drei K-Prim-Aufgaben mit je vier Aussagen.","datei":"kprim.html?set=kprim-lernen","ergebnis":true,"parameter":[]},
+ {"id":"theorie-duell-12","titel":"Theorie-Duell 12. Klasse","fach":"Pädagogik/Psychologie","beschreibung":"Beamer-Spiel: zwei Theorien, ein Fall (Freud, Bindung, Rogers, Bandura ...).","datei":"theorie-duell-12-beamer.html","ergebnis":false,"parameter":[]},
+ {"id":"theorie-duell-11","titel":"Theorie-Duell 11. Klasse","fach":"Pädagogik/Psychologie","beschreibung":"Beamer-Spiel: 20 Fälle zu Wissenschaft, Erziehung, Wahrnehmung, Gedächtnis, Emotion, Lernen.","datei":"theorie-duell-11-beamer.html","ergebnis":false,"parameter":[]},
+ {"id":"theorie-duell-lern","titel":"Theorie-Duell Lerntheorien und Menschenbild","fach":"Pädagogik/Psychologie","beschreibung":"Beamer-Spiel: Konditionieren, Bandura, Psychoanalyse, personenzentrierte Theorie.","datei":"theorie-duell-lern-beamer.html","ergebnis":false,"parameter":[]}
+]

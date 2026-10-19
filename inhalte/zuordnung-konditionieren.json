@@ -1,0 +1,11 @@
+{"titel":"Klassisches und operantes Konditionieren","anleitung":"Tippe zuerst einen Begriff links an, dann die passende Erklärung rechts.",
+"paare":[
+["neutraler Reiz","Löst zunächst keine bestimmte Reaktion aus (z. B. ein Glöckchen)."],
+["unkonditionierter Reiz","Löst von Natur aus eine Reaktion aus (z. B. Futter)."],
+["unkonditionierte Reaktion","Angeborene Reaktion auf den unkonditionierten Reiz (z. B. Speichelfluss beim Futter)."],
+["konditionierter Reiz","Früher neutraler Reiz, der nach der Kopplung die Reaktion auslöst."],
+["konditionierte Reaktion","Erlernte Reaktion auf den konditionierten Reiz."],
+["positive Verstärkung","Ein angenehmer Reiz folgt, das Verhalten wird häufiger."],
+["negative Verstärkung","Ein aversiver Reiz entfällt, das Verhalten wird häufiger."],
+["Bestrafung Typ I","Ein aversiver Reiz folgt, das Verhalten wird seltener."],
+["Bestrafung Typ II","Ein angenehmer Reiz entfällt, das Verhalten wird seltener."]]}
