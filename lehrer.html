@@ -3,25 +3,15 @@
 <title>Lehrkraft – Teststation</title><link rel="stylesheet" href="css/ts.css"></head>
 <body>
 <div class="wrap">
- <div class="top"><div class="brand"><span class="led on"></span><div>Teststation<small>Lehrkraft</small></div></div><a class="btn alt" href="index.html">Schüleransicht</a></div>
- <div class="tabs" style="margin-bottom:14px"><button type="button" data-tab="frei" aria-pressed="true">Klassen und Freigaben</button><button type="button" data-tab="rang" aria-pressed="false">Rangliste</button></div>
- <label style="display:block;margin-bottom:14px">Klasse<select id="ksel"></select></label>
+ <div class="top"><div class="brand"><span class="led on"></span><div>Teststation<small>Lehrkraft</small></div></div><a class="btn alt" href="index.html">Alle Übungen</a></div>
+ <div class="tabs" style="margin-bottom:14px"><button type="button" data-tab="link" aria-pressed="true">Link und QR-Code</button><button type="button" data-tab="rang" aria-pressed="false">Rangliste</button></div>
 
- <section id="p-frei">
-  <div class="card"><h2>Neue Klasse</h2><div class="row"><label>Name<input id="kname" maxlength="40" placeholder="z. B. F12Sb"></label><button id="kadd" type="button" style="align-self:flex-end">Anlegen</button></div></div>
-  <div class="card"><h2>Station auswählen</h2><div class="grid" id="katalog"></div></div>
-  <div class="card" id="fform" hidden>
-   <h2 id="ftitel"></h2><p class="muted small" id="fbesch" style="margin:0"></p>
-   <div class="row" id="fparams"></div>
-   <div class="row"><label>Titel für die Klasse<input id="ftxt" maxlength="60" style="min-width:18em"></label><button id="fgo" type="button" style="align-self:flex-end">Zur Klasse hinzufügen</button></div>
+ <section id="p-link">
+  <div class="card"><h2>1. Übung(en) wählen</h2><p class="muted small" style="margin:0">Eine Übung: der Link startet sie sofort. Mehrere Übungen: die Schüler sehen nur diese Auswahl.</p><div class="grid" id="katalog"></div></div>
+  <div class="card"><h2>2. Einstellungen</h2><div class="row" id="fparams"></div><p class="muted small" id="phint" style="margin:0"></p></div>
+  <div class="card"><h2>3. Link und QR-Code</h2>
+   <div class="row"><div id="qr"></div><div class="grow" style="flex:1 1 260px"><div class="muted small">Link</div><input id="url" readonly style="width:100%;font:.9rem ui-monospace,monospace"><div class="row" style="margin-top:8px"><button id="copy" type="button">Link kopieren</button><button class="alt" id="open" type="button">Selbst ausprobieren</button><button class="alt" id="bq" type="button">QR-Code groß (Beamer)</button><span class="muted small" id="cmsg"></span></div></div></div>
   </div>
-  <div class="card"><h2>Freigaben der Klasse</h2><div class="list" id="flist"></div></div>
-  <div class="card"><h2>Veröffentlichen</h2>
-   <p class="muted small" style="margin:0">Diese Seite speichert nichts auf einem Server. Kopiere den Text unten in die Datei <code>klassen.json</code> im GitHub-Repo (Commit). Nach ca. einer Minute sehen die Schüler die Änderung.</p>
-   <textarea id="json" rows="10" readonly style="width:100%;font:.85rem ui-monospace,monospace"></textarea>
-   <div class="row"><button id="copy" type="button">Kopieren</button><button class="alt" id="dl" type="button">Als Datei laden</button><button class="alt" id="reset" type="button">Auf Stand im Repo zurücksetzen</button><span class="muted small" id="cmsg"></span></div>
-  </div>
-  <div class="card"><h2>Zugang für die Klasse</h2><div class="row"><div><div class="muted small">Klassencode</div><div class="code" id="ccode" style="font:800 1.4rem ui-monospace,monospace"></div></div><div id="cqr"></div><div class="muted small" id="curl" style="word-break:break-all"></div></div></div>
  </section>
 
  <section id="p-rang" hidden>
@@ -36,59 +26,41 @@
 </div>
 <div class="beamer" id="beamer" hidden>
  <button class="alt close" id="bclose" type="button">Schließen</button>
- <div><h2 id="btitel"></h2><div class="muted" id="bcount" style="margin:6px 0 14px"></div><div id="btable"></div></div>
- <div class="side"><div class="muted">Beitreten mit dem Code</div><div class="code" id="bcode"></div><div id="bqr"></div></div>
+ <div id="bleft"><h2 id="btitel"></h2><div class="muted" id="bcount" style="margin:6px 0 14px"></div><div id="btable"></div></div>
+ <div class="side"><div class="muted">Scannen und loslegen</div><div id="bqr"></div><div class="muted small" id="burl" style="word-break:break-all;max-width:300px"></div></div>
 </div>
 <script type="module">
-import {esc,fmtTime,ls,loadKatalog,loadKlassen,qrSvg,joinUrl,parseCode,rankSort} from "./js/ts-core.js";
-const $=id=>document.getElementById(id),KEY="ts-lehrer-entwurf";
-let katalog=[],data={klassen:[]},cur=null,picked=null;
-const save=()=>{ls.set(KEY,JSON.stringify(data))};
-const klasse=()=>data.klassen.find(k=>k.code===cur);
-const newId=()=>Math.random().toString(36).slice(2,6);
+import {esc,fmtTime,loadKatalog,qrSvg,parseCode,rankSort} from "./js/ts-core.js";
+const $=id=>document.getElementById(id);
+let kat=[],sel=new Set(),url="";
 async function init(){
-  try{katalog=await loadKatalog()}catch(e){}
-  let repo={klassen:[]};try{repo=await loadKlassen()}catch(e){}
-  let draft=null;try{draft=JSON.parse(ls.get(KEY)||"null")}catch(e){}
-  data=draft&&Array.isArray(draft.klassen)?draft:repo;window._repo=repo;
-  cur=data.klassen[0]?data.klassen[0].code:null;renderAll();renderKatalog();
+  try{kat=await loadKatalog()}catch(e){}
+  $("katalog").innerHTML=kat.map((s,i)=>`<button class="station" type="button" data-id="${esc(s.id)}" aria-pressed="false"><span class="no">ÜBUNG ${String(i+1).padStart(2,"0")}</span><b>${esc(s.titel)}</b><span class="muted small">${esc(s.beschreibung||"")}</span><span><span class="tag">${esc(s.fach||"")}</span>${s.ergebnis===false?` <span class="tag">ohne Ergebniscode</span>`:""}</span></button>`).join("")||`<div class="msg err">Katalog nicht lesbar.</div>`;
+  document.querySelectorAll(".station").forEach(b=>b.addEventListener("click",()=>{const id=b.dataset.id;sel.has(id)?sel.delete(id):sel.add(id);b.setAttribute("aria-pressed",sel.has(id));update()}));
+  update();
 }
-function renderAll(){
-  $("ksel").innerHTML=data.klassen.map(k=>`<option value="${esc(k.code)}"${k.code===cur?" selected":""}>${esc(k.name)} (${esc(k.code)})</option>`).join("")||`<option value="">– keine Klasse –</option>`;
-  const k=klasse();
-  $("flist").innerHTML=k?((k.freigaben||[]).map(f=>`<div class="item"><span class="led${f.offen?" on":""}"></span><div class="grow"><b>${esc(f.titel)}</b><div class="muted small">${f.offen?"offen":"geschlossen"}</div></div><button class="alt" data-t="${esc(f.id)}" type="button">${f.offen?"Schließen":"Öffnen"}</button><button class="alt" data-d="${esc(f.id)}" type="button">Löschen</button></div>`).join("")||`<div class="msg">Noch nichts freigegeben.</div>`):`<div class="msg">Bitte zuerst eine Klasse anlegen.</div>`;
-  document.querySelectorAll("[data-t]").forEach(b=>b.addEventListener("click",()=>{const f=k.freigaben.find(x=>x.id===b.dataset.t);f.offen=!f.offen;save();renderAll()}));
-  document.querySelectorAll("[data-d]").forEach(b=>b.addEventListener("click",()=>{k.freigaben=k.freigaben.filter(x=>x.id!==b.dataset.d);save();renderAll()}));
-  $("json").value=JSON.stringify(data,null,1);
-  $("ccode").textContent=k?k.code:"";$("curl").textContent=k?joinUrl(k.code).replace(/^https?:\/\//,""):"";
-  if(k)qrSvg(joinUrl(k.code),150).then(s=>{$("cqr").innerHTML=s});else $("cqr").innerHTML="";
+async function update(){
+  const chosen=kat.filter(s=>sel.has(s.id));
+  const pm=new Map();chosen.forEach(s=>(s.parameter||[]).forEach(p=>{if(!pm.has(p.name))pm.set(p.name,p)}));
+  const old={};document.querySelectorAll("[data-p]").forEach(e=>old[e.dataset.p]=e.value);
+  $("fparams").innerHTML=[...pm.values()].map(p=>{const v=old[p.name]!==undefined?old[p.name]:(p.name==="spiel"?String(1+Math.floor(Math.random()*p.max)):String(p.standard));
+    return p.typ==="wahl"?`<label>${esc(p.label)}<select data-p="${esc(p.name)}">${p.optionen.map(o=>`<option${String(o)===v?" selected":""}>${esc(o)}</option>`).join("")}</select></label>`
+    :`<label>${esc(p.label)}<input data-p="${esc(p.name)}" type="number" min="${p.min}" max="${p.max}" value="${esc(v)}" style="width:6em"></label>`}).join("");
+  $("phint").textContent=chosen.length?(pm.size?"Gleiche Mischungsnummer = alle Teams haben dieselbe Aufgabe und sind vergleichbar.":"Diese Übung hat keine Einstellungen."):"Bitte oben mindestens eine Übung wählen.";
+  document.querySelectorAll("[data-p]").forEach(e=>e.addEventListener("input",build));
+  build();
 }
-function renderKatalog(){
-  $("katalog").innerHTML=katalog.map((s,i)=>`<button class="station" type="button" data-id="${esc(s.id)}" aria-pressed="${!!picked&&picked.id===s.id}"><span class="no">STATION ${String(i+1).padStart(2,"0")}</span><b>${esc(s.titel)}</b><span class="muted small">${esc(s.beschreibung||"")}</span><span><span class="tag">${esc(s.fach||"")}</span>${s.ergebnis===false?` <span class="tag">ohne Ergebniscode</span>`:""}</span></button>`).join("")||`<div class="msg err">Der Stationskatalog konnte nicht geladen werden.</div>`;
-  document.querySelectorAll(".station").forEach(b=>b.addEventListener("click",()=>pick(b.dataset.id)));
+async function build(){
+  const chosen=kat.filter(s=>sel.has(s.id));
+  if(!chosen.length){url="";$("url").value="";$("qr").innerHTML="";return}
+  const base=new URL(chosen.length===1?"station.html":"index.html",location.href);base.search="";base.hash="";
+  if(chosen.length===1)base.searchParams.set("s",chosen[0].id);else base.searchParams.set("auswahl",chosen.map(s=>s.id).join(","));
+  document.querySelectorAll("[data-p]").forEach(e=>{if(/^[A-Za-z0-9]{1,6}$/.test(e.value))base.searchParams.set(e.dataset.p,e.value)});
+  url=base.href;$("url").value=url;$("qr").innerHTML=await qrSvg(url,170);
 }
-function pick(id){
-  picked=katalog.find(s=>s.id===id);renderKatalog();$("fform").hidden=false;
-  $("ftitel").textContent=picked.titel;$("fbesch").textContent=picked.beschreibung||"";$("ftxt").value=picked.titel;
-  $("fparams").innerHTML=(picked.parameter||[]).map(p=>p.typ==="wahl"
-   ?`<label>${esc(p.label)}<select data-p="${esc(p.name)}">${p.optionen.map(o=>`<option value="${esc(o)}"${String(o)===String(p.standard)?" selected":""}>${esc(o)}</option>`).join("")}</select></label>`
-   :`<label>${esc(p.label)}<input data-p="${esc(p.name)}" type="number" min="${p.min}" max="${p.max}" value="${p.name==="spiel"?1+Math.floor(Math.random()*p.max):p.standard}" style="width:6em"></label>`).join("");
-}
-$("kadd").addEventListener("click",()=>{
-  const n=$("kname").value.trim();if(!n)return;
-  const base=n.toLowerCase().replace(/[^a-z0-9]/g,"").slice(0,10)||"klasse";
-  let code;do{code=base+"-"+Math.random().toString(36).slice(2,5)}while(data.klassen.some(k=>k.code===code));
-  data.klassen.push({code,name:n,freigaben:[]});cur=code;$("kname").value="";save();renderAll();
-});
-$("fgo").addEventListener("click",()=>{
-  const k=klasse();if(!k||!picked)return;
-  const params={};document.querySelectorAll("[data-p]").forEach(el=>{params[el.dataset.p]=String(el.value)});
-  (k.freigaben=k.freigaben||[]).push({id:newId(),station:picked.id,titel:($("ftxt").value||picked.titel).slice(0,60),params,offen:true});save();renderAll();
-});
-$("ksel").addEventListener("change",()=>{cur=$("ksel").value||null;renderAll()});
-$("copy").addEventListener("click",async()=>{try{await navigator.clipboard.writeText($("json").value);$("cmsg").textContent="Kopiert."}catch(e){$("json").select();$("cmsg").textContent="Bitte mit Strg+C kopieren."}});
-$("dl").addEventListener("click",()=>{const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([$("json").value],{type:"application/json"}));a.download="klassen.json";a.click()});
-$("reset").addEventListener("click",()=>{ls.del(KEY);data=JSON.parse(JSON.stringify(window._repo));cur=data.klassen[0]?data.klassen[0].code:null;renderAll()});
+$("copy").addEventListener("click",async()=>{if(!url)return;try{await navigator.clipboard.writeText(url);$("cmsg").textContent="Kopiert."}catch(e){$("url").select();$("cmsg").textContent="Bitte mit Strg+C kopieren."}});
+$("open").addEventListener("click",()=>{if(url)window.open(url,"_blank","noopener")});
+$("bq").addEventListener("click",async()=>{if(!url)return;$("btitel").textContent="";$("bleft").style.visibility="hidden";$("bqr").innerHTML=await qrSvg(url,360);$("burl").textContent=url.replace(/^https?:\/\//,"");$("beamer").hidden=false});
 /* Rangliste */
 function rows(){
   const err=[],best={};
@@ -97,10 +69,10 @@ function rows(){
   return Object.values(best).sort(rankSort);
 }
 const tbl=r=>r.length?`<table class="rank"><thead><tr><th>#</th><th>Team</th><th>Punkte</th><th>Züge</th><th>Zeit</th></tr></thead><tbody>${r.map((x,i)=>`<tr><td>${i+1}</td><td>Team ${x.team}</td><td>${x.punkte} / ${x.max}</td><td>${x.zuege}</td><td>${fmtTime(x.sekunden)}</td></tr>`).join("")}</tbody></table>`:`<div class="msg">Noch keine Codes.</div>`;
-function renderRang(){const r=rows();$("rtable").innerHTML=tbl(r);if(!$("beamer").hidden){$("btable").innerHTML=tbl(r);$("bcount").textContent=r.length+" Team(s)"}}
+function renderRang(){const r=rows();$("rtable").innerHTML=tbl(r);if(!$("beamer").hidden&&$("bleft").style.visibility!=="hidden"){$("btable").innerHTML=tbl(r);$("bcount").textContent=r.length+" Team(s)"}}
 $("codes").addEventListener("input",renderRang);
-$("bview").addEventListener("click",async()=>{const k=klasse();$("btitel").textContent=$("rtitel").value;$("bcode").textContent=k?k.code:"";$("bqr").innerHTML=k?await qrSvg(joinUrl(k.code),260):"";$("beamer").hidden=false;renderRang()});
+$("bview").addEventListener("click",async()=>{$("bleft").style.visibility="visible";$("btitel").textContent=$("rtitel").value;$("bqr").innerHTML=url?await qrSvg(url,260):"";$("burl").textContent=url?url.replace(/^https?:\/\//,""):"";$("beamer").hidden=false;renderRang()});
 $("bclose").addEventListener("click",()=>{$("beamer").hidden=true});
-document.querySelectorAll("[data-tab]").forEach(b=>b.addEventListener("click",()=>{["frei","rang"].forEach(t=>{$("p-"+t).hidden=t!==b.dataset.tab;document.querySelector(`[data-tab="${t}"]`).setAttribute("aria-pressed",t===b.dataset.tab)})}));
+document.querySelectorAll("[data-tab]").forEach(b=>b.addEventListener("click",()=>{["link","rang"].forEach(t=>{$("p-"+t).hidden=t!==b.dataset.tab;document.querySelector(`[data-tab="${t}"]`).setAttribute("aria-pressed",t===b.dataset.tab)})}));
 init();
 </script></body></html>

@@ -7,39 +7,35 @@
 iframe{flex:1;width:100%;border:0;background:var(--bg);min-height:0}
 .res{padding:10px 16px;font-size:.95rem}.res code{font:800 1.3rem var(--mono);letter-spacing:.06em}</style></head>
 <body>
-<div class="bar"><span class="led on"></span><span class="t" id="titel">Station</span><span class="muted small" id="team"></span><a class="btn alt" id="back" href="index.html">Zurück zur Klasse</a></div>
+<div class="bar"><span class="led on"></span><span class="t" id="titel">Station</span><span class="muted small" id="team"></span><a class="btn alt" id="back" href="index.html">Alle Übungen</a></div>
 <div class="res msg" id="res" hidden role="status"></div>
 <iframe id="frame" title="Station" allow="fullscreen" hidden></iframe>
 <div class="wrap" id="fehler" hidden><div class="msg err" id="ftext"></div></div>
 <script type="module">
-import {cleanCode,esc,fmtTime,SAFE_DATEI,loadKlassen,loadKatalog,makeCode,rankSort,ls} from "./js/ts-core.js";
+import {esc,fmtTime,SAFE_DATEI,loadKatalog,makeCode,rankSort,ls,cleanParams,cleanId} from "./js/ts-core.js";
 const $=id=>document.getElementById(id);
-const q=new URLSearchParams(location.search),code=cleanCode(q.get("k")),fid=(q.get("f")||"").replace(/[^A-Za-z0-9\-]/g,""),team=Math.max(1,Math.min(30,+q.get("t")||1));
-$("back").href="index.html?k="+code+"&t="+team;
+const q=new URLSearchParams(location.search),sid=cleanId(q.get("s")),team=Math.max(1,Math.min(30,+q.get("t")||+ls.get("ts-team")||1)),auswahl=(q.get("auswahl")||"").split(",").map(cleanId).filter(Boolean).join(",");
+$("back").href="index.html?t="+team+(auswahl?"&auswahl="+encodeURIComponent(auswahl):"");
 const fail=t=>{$("fehler").hidden=false;$("ftext").textContent=t};
 (async()=>{
   try{
-    const [kl,kat]=await Promise.all([loadKlassen(),loadKatalog()]);
-    const k=(kl.klassen||[]).find(x=>x.code===code),f=k&&(k.freigaben||[]).find(x=>x.id===fid);
-    if(!f||!f.offen){fail("Diese Station ist nicht freigegeben.");return}
-    const s=kat.find(x=>x.id===f.station);
-    if(!s||!SAFE_DATEI.test(s.datei||"")){fail("Ungültige Station.");return}
-    $("titel").textContent=f.titel;$("team").textContent="Team "+team;document.title=f.titel+" – Teststation";
+    const kat=await loadKatalog(),s=kat.find(x=>x.id===sid);
+    if(!s||!SAFE_DATEI.test(s.datei||"")){fail("Diese Übung gibt es nicht.");return}
+    $("titel").textContent=s.titel;$("team").textContent="Team "+team;document.title=s.titel+" – Teststation";
     const u=new URL("stationen/"+s.datei,location.href);
     u.searchParams.set("ts","1");u.searchParams.set("team",team);
-    Object.entries(f.params||{}).forEach(([a,v])=>u.searchParams.set(a,v));
+    Object.entries(cleanParams(s,q)).forEach(([a,v])=>u.searchParams.set(a,v));
     const fr=$("frame");fr.src=u.href;fr.hidden=false;
-    const key="ts-best-"+code+"-"+fid+"-"+team;
+    const key="ts-best-"+sid+"-"+q.toString().replace(/[^A-Za-z0-9=&]/g,"")+"-"+team;
     window.addEventListener("message",e=>{
       if(e.source!==fr.contentWindow)return;
       const r=e.data&&e.data.tsResult;if(!r||s.ergebnis===false)return;
       const n={team,punkte:Math.max(0,Math.round(+r.punkte||0)),max:Math.max(1,Math.round(+r.max||1)),zuege:Math.max(0,Math.round(+r.zuege||0)),sekunden:Math.max(0,Math.round(+r.sekunden||0))};
       let old=null;try{old=JSON.parse(ls.get(key)||"null")}catch(_){}
-      let best=n;if(old&&rankSort(old,n)<=0)best=old;
-      ls.set(key,JSON.stringify(best));
+      const best=old&&rankSort(old,n)<=0?old:n;ls.set(key,JSON.stringify(best));
       const box=$("res");box.hidden=false;box.className="res msg ok";
       box.innerHTML=`Dein bestes Ergebnis: ${best.punkte} von ${best.max} · ${best.zuege} Züge · ${fmtTime(best.sekunden)} min. Ergebniscode für die Lehrkraft: <code>${esc(makeCode(best))}</code>`;
     });
-  }catch(e){fail("Die Station konnte nicht geladen werden. Prüfe die Verbindung.")}
+  }catch(e){fail("Die Übung konnte nicht geladen werden. Prüfe die Verbindung.")}
 })();
 </script></body></html>

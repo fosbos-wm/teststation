@@ -4,44 +4,27 @@
 <body>
 <div class="wrap">
  <div class="top"><div class="brand"><span class="led on"></span><div>Teststation<small>Übungen für den Unterricht</small></div></div><a class="btn alt" href="lehrer.html">Lehrkraft</a></div>
- <section class="card" id="join">
-  <h2>Zur Klasse</h2>
-  <p class="muted small" style="margin:0">Den Klassencode zeigt dir deine Lehrkraft (oder scanne den QR-Code). Kein Name, kein Konto, es wird nichts gespeichert außer auf diesem Gerät.</p>
-  <div class="row">
-   <label>Klassencode<input class="code" id="code" maxlength="24" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="f12sb-k7m"></label>
-   <label>Teamnummer<select id="team"></select></label>
-  </div>
-  <div class="row"><button id="go" type="button">Weiter</button></div>
-  <div id="err" class="msg err" role="alert" hidden></div>
- </section>
- <section id="room" hidden class="wrap" style="padding:0">
-  <div class="card"><div class="row" style="justify-content:space-between"><div><h2 id="cname"></h2><div class="muted small" id="cinfo"></div></div><div class="row"><button class="alt" id="reload" type="button">Aktualisieren</button><button class="alt" id="leave" type="button">Andere Klasse</button></div></div></div>
-  <h2>Freigegebene Stationen</h2>
-  <div class="list" id="stations" aria-live="polite"></div>
- </section>
- <p class="muted small">Es werden keine Daten an einen Server gesendet. <a href="datenschutz.html">Datenschutz</a></p>
+ <div class="row" style="margin-bottom:14px"><label>Team (für die Rangliste)<select id="team"></select></label><span class="muted small">Tippe auf eine Übung, sie startet sofort.</span></div>
+ <div class="grid" id="grid" aria-live="polite"></div>
+ <p class="muted small" style="margin-top:20px">Keine Anmeldung, keine Namen, keine Daten an einen Server. <a href="datenschutz.html">Datenschutz</a></p>
 </div>
 <script type="module">
-import {cleanCode,esc,ls,loadKlassen} from "./js/ts-core.js";
-const $=id=>document.getElementById(id);
+import {esc,ls,loadKatalog,cleanId} from "./js/ts-core.js";
+const $=id=>document.getElementById(id),q=new URLSearchParams(location.search);
 $("team").innerHTML=Array.from({length:30},(_,i)=>`<option value="${i+1}">Team ${i+1}</option>`).join("");
-const q=new URLSearchParams(location.search);
-let saved={};try{saved=JSON.parse(ls.get("ts-schueler")||"{}")}catch(e){}
-$("code").value=cleanCode(q.get("k")||saved.code||"");if(saved.team)$("team").value=saved.team;
-const err=t=>{$("err").hidden=!t;$("err").textContent=t||""};
-async function join(){
-  err("");const code=cleanCode($("code").value),team=+$("team").value;
-  if(code.length<4){err("Bitte den Klassencode eingeben.");return}
-  let data;try{data=await loadKlassen()}catch(e){err("Die Klassenliste konnte nicht geladen werden. Prüfe die Verbindung.");return}
-  const k=(data.klassen||[]).find(x=>x.code===code);
-  if(!k){err("Diesen Klassencode gibt es nicht. Prüfe die Eingabe.");return}
-  ls.set("ts-schueler",JSON.stringify({code,team}));
-  $("join").hidden=true;$("room").hidden=false;$("cname").textContent=k.name;$("cinfo").textContent="Team "+team;
-  const offen=(k.freigaben||[]).filter(f=>f.offen);
-  $("stations").innerHTML=offen.length?offen.map(f=>`<div class="item"><span class="led on"></span><div class="grow"><b>${esc(f.titel)}</b></div><a class="btn" href="station.html?k=${encodeURIComponent(code)}&f=${encodeURIComponent(f.id)}&t=${team}">Starten</a></div>`).join(""):`<div class="msg">Noch nichts freigegeben. Tippe später auf „Aktualisieren“.</div>`;
+let t=+ls.get("ts-team")||+q.get("t")||1;$("team").value=Math.min(30,Math.max(1,t));
+$("team").addEventListener("change",()=>{ls.set("ts-team",$("team").value);draw()});
+let kat=[];
+const sel=(q.get("auswahl")||"").split(",").map(cleanId).filter(Boolean);
+function link(s){
+  const u=new URLSearchParams({s:s.id,t:$("team").value});
+  (s.parameter||[]).forEach(p=>{const v=q.get(p.name);if(v&&/^[A-Za-z0-9]{1,6}$/.test(v))u.set(p.name,v)});
+  if(sel.length)u.set("auswahl",sel.join(","));
+  return "station.html?"+u;
 }
-$("go").addEventListener("click",join);$("reload").addEventListener("click",join);
-$("code").addEventListener("keydown",e=>{if(e.key==="Enter")join()});
-$("leave").addEventListener("click",()=>{$("room").hidden=true;$("join").hidden=false});
-if(q.get("k")&&q.get("t")){$("team").value=q.get("t");join()}
+function draw(){
+  const list=sel.length?sel.map(id=>kat.find(s=>s.id===id)).filter(Boolean):kat;
+  $("grid").innerHTML=list.map((s,i)=>`<a class="station" href="${link(s)}" style="text-decoration:none;color:inherit"><span class="no">ÜBUNG ${String(i+1).padStart(2,"0")}</span><b>${esc(s.titel)}</b><span class="muted small">${esc(s.beschreibung||"")}</span><span><span class="tag">${esc(s.fach||"")}</span></span></a>`).join("")||`<div class="msg err">Keine Übungen gefunden.</div>`;
+}
+loadKatalog().then(k=>{kat=k;draw()}).catch(()=>{$("grid").innerHTML=`<div class="msg err">Die Übungen konnten nicht geladen werden. Prüfe die Verbindung.</div>`});
 </script></body></html>
