@@ -10,17 +10,18 @@
 </div>
 <script type="module">
 import {esc,ls,loadKatalog,cleanId,qrSvg} from "./js/ts-core.js";
-/* Gliederung Fach > Thema > Übungen */
-function gruppiere(kat){
-  const fs=[];
+/* Gliederung als Ordnerbaum: Fach > Lernbereich > Thema > Übungen (Feld "pfad" im Katalog) */
+function baum(kat){
+  const root={name:"",key:"",children:[],items:[],n:0};
   kat.forEach(s=>{
-    const fn=s.fach||"Weitere",tn=s.thema||"Allgemein";
-    let f=fs.find(x=>x.fach===fn);if(!f){f={fach:fn,themen:[],n:0};fs.push(f)}
-    let t=f.themen.find(x=>x.thema===tn);if(!t){t={thema:tn,items:[]};f.themen.push(t)}
-    t.items.push(s);f.n++;
+    const p=s.pfad||[s.fach||"Weitere",s.thema||"Allgemein"];let n=root;
+    p.forEach(name=>{let c=n.children.find(x=>x.name===name);if(!c){c={name,key:(n.key?n.key+"/":"")+name,children:[],items:[],n:0};n.children.push(c)}c.n++;n=c});
+    n.items.push(s);
   });
-  return fs;
+  return root;
 }
+function finde(n,key,pf=[]){if(n.key===key)return {n,pf};for(const c of n.children){const r=finde(c,key,pf.concat(c.name));if(r)return r}return null}
+const uebungen=n=>n+" "+(n===1?"Übung":"Übungen");
 
 const $=id=>document.getElementById(id),q=new URLSearchParams(location.search);
 $("team").innerHTML=Array.from({length:30},(_,i)=>`<option value="${i+1}">Team ${i+1}</option>`).join("");
@@ -53,25 +54,22 @@ function ordnerQR(root){
 }
 const ordner=(q.get("ordner")||"").slice(0,200);
 function karte(s,i){return `<a class="station" href="${link(s)}" style="text-decoration:none;color:inherit"><span class="no">ÜBUNG ${String(i+1).padStart(2,"0")}</span><b>${esc(s.titel)}</b><span class="muted small">${esc(s.beschreibung||"")}</span></a>`}
+function ordnerHtml(n,tiefe,aufF,offen,forceOpen,all){
+  const open=forceOpen||all||aufF.has(n.key)||offen===n.key.toLowerCase();
+  return `<details class="ordner${tiefe?" unter":""}" data-k="${esc(n.key)}" ${open?"open":""}><summary><span class="ico" aria-hidden="true">${tiefe?"📂":"📁"}</span><b>${esc(n.name)}</b><span class="muted small">${uebungen(n.n)}</span></summary>${n.children.map(c=>ordnerHtml(c,tiefe+1,aufF,offen,n.children.length===1,all)).join("")}${n.items.length?`<div class="grid">${n.items.map(karte).join("")}</div>`:""}</details>`;
+}
 function draw(){
   const list=sel.length?sel.map(id=>kat.find(s=>s.id===id)).filter(Boolean):kat;
   if(sel.length){$("grid").className="grid";$("grid").innerHTML=list.map(karte).join("")||`<div class="msg err">Keine Übungen gefunden.</div>`;return}
-  let fs=gruppiere(list);
-  if(ordner){
-    let fn=ordner,tn="";
-    const hit=fs.find(f=>f.fach===ordner)||fs.find(f=>ordner.startsWith(f.fach+"/"));
-    if(hit){fn=hit.fach;tn=ordner.slice(fn.length+1)}
-    fs=fs.filter(f=>f.fach===fn).map(f=>({...f,themen:f.themen.filter(t=>!tn||t.thema===tn)}));
-    fs.forEach(f=>f.n=f.themen.reduce((a,t)=>a+t.items.length,0));
-    if(fs.length&&fs[0].themen.length===1){
-      const t=fs[0].themen[0];$("grid").className="";
-      $("grid").innerHTML=`<h2 style="margin:0 0 4px">${esc(fs[0].fach)}</h2><p class="muted" style="margin:0 0 12px">${esc(t.thema)} · ${t.items.length} ${t.items.length===1?"Übung":"Übungen"}</p><div class="grid">${t.items.map(karte).join("")}</div>`;return;
-    }
-    if(!fs.length){$("grid").innerHTML=`<div class="msg err">Diesen Ordner gibt es nicht.</div>`;return}
-  }
+  const root=baum(list);$("grid").className="";
   const aufF=new Set(JSON.parse(ls.get("ts-open")||"[]"));
-  $("grid").className="";
-  $("grid").innerHTML=fs.map(f=>`<details class="ordner" data-k="${esc(f.fach)}" ${(aufF.has(f.fach)||offen===f.fach.toLowerCase()||fs.length===1||!!ordner)?"open":""}><summary><span class="ico" aria-hidden="true">📁</span><b>${esc(f.fach)}</b><span class="muted small">${f.n} ${f.n===1?"Übung":"Übungen"}</span></summary>${f.themen.map(t=>`<details class="ordner unter" data-k="${esc(f.fach+"/"+t.thema)}" ${(aufF.has(f.fach+"/"+t.thema)||f.themen.length===1||!!ordner)?"open":""}><summary><span class="ico" aria-hidden="true">📂</span><b>${esc(t.thema)}</b><span class="muted small">${t.items.length}</span></summary><div class="grid">${t.items.map(karte).join("")}</div></details>`).join("")}</details>`).join("")||`<div class="msg err">Keine Übungen gefunden.</div>`;
+  if(ordner){
+    const fr=finde(root,ordner,[]);const n=fr&&fr.n;
+    if(!n){$("grid").innerHTML=`<div class="msg err">Diesen Ordner gibt es nicht.</div>`;return}
+    $("grid").innerHTML=`<h2 style="margin:0 0 10px">${esc(fr.pf.join(" › "))}</h2>`+n.children.map(c=>ordnerHtml(c,1,aufF,"",true,true)).join("")+(n.items.length?`<div class="grid">${n.items.map(karte).join("")}</div>`:"");
+  }else{
+    $("grid").innerHTML=root.children.map(c=>ordnerHtml(c,0,aufF,offen,root.children.length===1,false)).join("")||`<div class="msg err">Keine Übungen gefunden.</div>`;
+  }
   ordnerQR($("grid"));
   $("grid").querySelectorAll("details").forEach(d=>d.addEventListener("toggle",()=>{
     const o=[...$("grid").querySelectorAll("details[open]")].map(x=>x.dataset.k);ls.set("ts-open",JSON.stringify(o));

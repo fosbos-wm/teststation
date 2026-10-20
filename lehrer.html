@@ -35,18 +35,18 @@
 </div>
 <script type="module">
 import {esc,fmtTime,loadKatalog,qrSvg,parseCode,rankSort} from "./js/ts-core.js";
-/* Gliederung Fach > Thema > Übungen */
-function gruppiere(kat){
-  const fs=[];
+/* Gliederung als Ordnerbaum (Feld "pfad" im Katalog) */
+function baum(kat){
+  const root={name:"",key:"",children:[],items:[],n:0};
   kat.forEach(s=>{
-    const fn=s.fach||"Weitere",tn=s.thema||"Allgemein";
-    let f=fs.find(x=>x.fach===fn);if(!f){f={fach:fn,themen:[],n:0};fs.push(f)}
-    let t=f.themen.find(x=>x.thema===tn);if(!t){t={thema:tn,items:[]};f.themen.push(t)}
-    t.items.push(s);f.n++;
+    const p=s.pfad||[s.fach||"Weitere",s.thema||"Allgemein"];let n=root;
+    p.forEach(name=>{let c=n.children.find(x=>x.name===name);if(!c){c={name,key:(n.key?n.key+"/":"")+name,children:[],items:[],n:0};n.children.push(c)}c.n++;n=c});
+    n.items.push(s);
   });
-  return fs;
+  return root;
 }
-
+const disp={};
+const uebungen=n=>n+" "+(n===1?"Übung":"Übungen");
 /* QR-Code im Ordner: beim Aufklappen wird Link + QR-Code für genau diesen Ordner gezeigt */
 function ordnerQR(root){
   root.querySelectorAll("details.ordner").forEach(d=>{
@@ -67,8 +67,8 @@ const $=id=>document.getElementById(id);
 let kat=[],sel=new Set(),url="",folder="";
 async function init(){
   try{kat=await loadKatalog()}catch(e){}
-  const fs=gruppiere(kat);
-  $("katalog").innerHTML=fs.map(f=>`<details class="ordner" data-k="${esc(f.fach)}" open><summary><span class="ico" aria-hidden="true">📁</span><b>${esc(f.fach)}</b><span class="muted small">${f.n} ${f.n===1?"Übung":"Übungen"}</span><button type="button" class="btn alt oqr" data-o="${esc(f.fach)}">QR-Code für Ordner</button></summary>${f.themen.map(t=>`<details class="ordner unter" data-k="${esc(f.fach+"/"+t.thema)}"><summary><span class="ico" aria-hidden="true">📂</span><b>${esc(t.thema)}</b><span class="muted small">${t.items.length}</span><button type="button" class="btn alt oqr" data-o="${esc(f.fach+"/"+t.thema)}">QR-Code für Ordner</button></summary><div class="grid">${t.items.map((s,i)=>`<button class="station" type="button" data-id="${esc(s.id)}" aria-pressed="false"><span class="no">ÜBUNG ${String(i+1).padStart(2,"0")}</span><b>${esc(s.titel)}</b><span class="muted small">${esc(s.beschreibung||"")}</span>${s.ergebnis===false?`<span><span class="tag">ohne Ergebniscode</span></span>`:""}</button>`).join("")}</div></details>`).join("")}</details>`).join("")||`<div class="msg err">Katalog nicht lesbar.</div>`;
+  const ord=(n,t,pf=[])=>{const p2=pf.concat(n.name);disp[n.key]=p2.join(" › ");return `<details class="ordner${t?" unter":""}" data-k="${esc(n.key)}" ${t===0?"open":""}><summary><span class="ico" aria-hidden="true">${t?"📂":"📁"}</span><b>${esc(n.name)}</b><span class="muted small">${uebungen(n.n)}</span><button type="button" class="btn alt oqr" data-o="${esc(n.key)}">QR-Code für Ordner</button></summary>${n.children.map(c=>ord(c,t+1,p2)).join("")}${n.items.length?`<div class="grid">${n.items.map((s,i)=>`<button class="station" type="button" data-id="${esc(s.id)}" aria-pressed="false"><span class="no">ÜBUNG ${String(i+1).padStart(2,"0")}</span><b>${esc(s.titel)}</b><span class="muted small">${esc(s.beschreibung||"")}</span>${s.ergebnis===false?`<span><span class="tag">ohne Ergebniscode</span></span>`:""}</button>`).join("")}</div>`:""}</details>`};
+  $("katalog").innerHTML=baum(kat).children.map(c=>ord(c,0)).join("")||`<div class="msg err">Katalog nicht lesbar.</div>`;
   document.querySelectorAll(".station").forEach(b=>b.addEventListener("click",()=>{folder="";document.querySelectorAll(".oqr").forEach(x=>x.setAttribute("aria-pressed","false"));const id=b.dataset.id;sel.has(id)?sel.delete(id):sel.add(id);b.setAttribute("aria-pressed",sel.has(id));update()}));
   ordnerQR($("katalog"));
   document.querySelectorAll(".oqr").forEach(b=>b.addEventListener("click",e=>{
@@ -95,7 +95,7 @@ async function build(){
   if(folder){
     const base=new URL("index.html",location.href);base.search="";base.hash="";base.searchParams.set("ordner",folder);
     url=base.href;$("url").value=url;$("qr").innerHTML=await qrSvg(url,150);
-    $("qrlabel").textContent="Scannen öffnet den Ordner „"+folder.replace("/"," › ")+"“. Die Schüler wählen darin selbst ihre Übungen.";return;
+    $("qrlabel").textContent="Scannen öffnet den Ordner „"+(disp[folder]||folder)+"“. Die Schüler wählen darin selbst ihre Übungen.";return;
   }
   const chosen=kat.filter(s=>sel.has(s.id));
   if(!chosen.length){url="";$("url").value="";$("qr").innerHTML="";$("qrlabel").textContent="Wähle unten eine Übung. Der QR-Code erscheint hier.";return}
