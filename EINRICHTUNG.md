@@ -19,3 +19,7 @@ Hinweis: Ergebniscodes lassen sich theoretisch selbst erzeugen – die Rangliste
 - Zuordnung: `inhalte/<name>.json` (`{titel, anleitung, paare:[[Begriff, Erklärung],…]}`); Eintrag in `stationen/katalog.json` mit `"datei":"zuordnung.html?set=<name>"`.
 - K-Prim: `inhalte/<name>.json` (`{titel, anleitung, aufgaben:[{frage, statements:[{text, richtig}]}]}`); `"datei":"kprim.html?set=<name>"`.
 - Eigene HTML-Seite in `stationen/`: erhält `?ts=1&team=N&…`; Ergebnis melden mit `parent.postMessage({tsResult:{punkte,max,zuege,sekunden}},"*")`. Keine externen Ressourcen laden.
+
+## Ordner (Fach > Thema)
+Die Startseite gliedert die Übungen automatisch in Ordner. In `stationen/katalog.json` bekommt jede Übung zwei Felder:
+`"fach": "Italienisch"` (Hauptordner) und `"thema": "Artikel"` (Unterordner). Neues Fach oder neues Thema = einfach neuen Namen eintragen, der Ordner entsteht von selbst.

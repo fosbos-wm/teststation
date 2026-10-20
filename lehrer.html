@@ -14,7 +14,7 @@
  <div class="tabs" style="margin-bottom:14px"><button type="button" data-tab="link" aria-pressed="true">Link und QR-Code</button><button type="button" data-tab="rang" aria-pressed="false">Rangliste</button></div>
 
  <section id="p-link">
-  <div class="card"><h2>1. Übung(en) wählen</h2><p class="muted small" style="margin:0">Eine Übung: der Link startet sie sofort. Mehrere Übungen: die Schüler sehen nur diese Auswahl.</p><div class="grid" id="katalog"></div></div>
+  <div class="card"><h2>1. Übung(en) wählen</h2><p class="muted small" style="margin:0">Eine Übung: der Link startet sie sofort. Mehrere Übungen: die Schüler sehen nur diese Auswahl.</p><div id="katalog" style="margin-top:12px"></div></div>
   <div class="card"><h2>2. Einstellungen (optional)</h2><div class="row" id="fparams"></div><p class="muted small" id="phint" style="margin:0"></p></div>
  </section>
 
@@ -34,12 +34,13 @@
  <div class="side"><div class="muted">Scannen und loslegen</div><div id="bqr"></div><div class="muted small" id="burl" style="word-break:break-all;max-width:300px"></div></div>
 </div>
 <script type="module">
-import {esc,fmtTime,loadKatalog,qrSvg,parseCode,rankSort} from "./js/ts-core.js";
+import {esc,fmtTime,loadKatalog,qrSvg,parseCode,rankSort,gruppiere} from "./js/ts-core.js";
 const $=id=>document.getElementById(id);
 let kat=[],sel=new Set(),url="";
 async function init(){
   try{kat=await loadKatalog()}catch(e){}
-  $("katalog").innerHTML=kat.map((s,i)=>`<button class="station" type="button" data-id="${esc(s.id)}" aria-pressed="false"><span class="no">ÜBUNG ${String(i+1).padStart(2,"0")}</span><b>${esc(s.titel)}</b><span class="muted small">${esc(s.beschreibung||"")}</span><span><span class="tag">${esc(s.fach||"")}</span>${s.ergebnis===false?` <span class="tag">ohne Ergebniscode</span>`:""}</span></button>`).join("")||`<div class="msg err">Katalog nicht lesbar.</div>`;
+  const fs=gruppiere(kat);
+  $("katalog").innerHTML=fs.map(f=>`<details class="ordner" open><summary><span class="ico" aria-hidden="true">📁</span><b>${esc(f.fach)}</b><span class="muted small">${f.n} ${f.n===1?"Übung":"Übungen"}</span></summary>${f.themen.map(t=>`<details class="ordner unter"><summary><span class="ico" aria-hidden="true">📂</span><b>${esc(t.thema)}</b><span class="muted small">${t.items.length}</span></summary><div class="grid">${t.items.map((s,i)=>`<button class="station" type="button" data-id="${esc(s.id)}" aria-pressed="false"><span class="no">ÜBUNG ${String(i+1).padStart(2,"0")}</span><b>${esc(s.titel)}</b><span class="muted small">${esc(s.beschreibung||"")}</span>${s.ergebnis===false?`<span><span class="tag">ohne Ergebniscode</span></span>`:""}</button>`).join("")}</div></details>`).join("")}</details>`).join("")||`<div class="msg err">Katalog nicht lesbar.</div>`;
   document.querySelectorAll(".station").forEach(b=>b.addEventListener("click",()=>{const id=b.dataset.id;sel.has(id)?sel.delete(id):sel.add(id);b.setAttribute("aria-pressed",sel.has(id));update()}));
   update();
 }
