@@ -23,3 +23,7 @@ Hinweis: Ergebniscodes lassen sich theoretisch selbst erzeugen – die Rangliste
 ## Ordner (Fach > Thema)
 Die Startseite gliedert die Übungen automatisch in Ordner. In `stationen/katalog.json` bekommt jede Übung zwei Felder:
 `"fach": "Italienisch"` (Hauptordner) und `"thema": "Artikel"` (Unterordner). Neues Fach oder neues Thema = einfach neuen Namen eintragen, der Ordner entsteht von selbst.
+
+## Neue Spiele
+- `stationen/tetris.html` (Begriffe-Tetris): Inhalte als `inhalte/kurz-tetris-*.json` mit `{"titel","anleitung","karten":[{"begriff","definition","t"}]}`. Mindestens 8 Karten, `t` = Unterthema (falsche Antworten kommen bevorzugt daraus).
+- `stationen/rennen.html` (Wichtel-Schubkarrenrennen für 2 Teams an einem Bildschirm): Inhalte als `inhalte/kurz-rennen-*.json` mit `{"titel","anleitung","fragen":[{"f","o":[Antworten],"r":Index der richtigen Antwort,"c":"Thema (optional)"}]}`. Mindestens 20 Fragen. Ohne Ergebniscode (`"ergebnis": false` im Katalog).

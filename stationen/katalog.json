@@ -524,5 +524,125 @@
    }
   ],
   "thema": "Artikel (il, la, un, una)"
+ },
+ {
+  "id": "kurz-tetris-psychoanalyse",
+  "titel": "Kurzarbeit: Begriffe-Tetris Psychoanalyse",
+  "fach": "Vorbereitung auf die Kurzarbeit",
+  "beschreibung": "Volle Reihe, Fachbegriff-Frage: 57 Definitionen von Determinismus bis Ich-Schwäche.",
+  "datei": "tetris.html?set=kurz-tetris-psychoanalyse",
+  "ergebnis": true,
+  "parameter": [
+   {
+    "name": "spiel",
+    "label": "Spielnummer",
+    "typ": "zahl",
+    "min": 1,
+    "max": 99,
+    "standard": 1
+   },
+   {
+    "name": "fragen",
+    "label": "Fragen pro Spiel",
+    "typ": "wahl",
+    "optionen": [
+     "8",
+     "12",
+     "16"
+    ],
+    "standard": "12"
+   }
+  ],
+  "thema": "Psychoanalyse (Freud)"
+ },
+ {
+  "id": "kurz-tetris-entwicklung",
+  "titel": "Kurzarbeit: Begriffe-Tetris Entwicklung",
+  "fach": "Vorbereitung auf die Kurzarbeit",
+  "beschreibung": "Volle Reihe, Fachbegriff-Frage: 30 Definitionen zu Entwicklung und Erziehungseinflüssen.",
+  "datei": "tetris.html?set=kurz-tetris-entwicklung",
+  "ergebnis": true,
+  "parameter": [
+   {
+    "name": "spiel",
+    "label": "Spielnummer",
+    "typ": "zahl",
+    "min": 1,
+    "max": 99,
+    "standard": 1
+   },
+   {
+    "name": "fragen",
+    "label": "Fragen pro Spiel",
+    "typ": "wahl",
+    "optionen": [
+     "8",
+     "12",
+     "16"
+    ],
+    "standard": "12"
+   }
+  ],
+  "thema": "Entwicklung"
+ },
+ {
+  "id": "kurz-tetris-alles",
+  "titel": "Kurzarbeit: Begriffe-Tetris Alle Fachbegriffe",
+  "fach": "Vorbereitung auf die Kurzarbeit",
+  "beschreibung": "Alle 87 Fachbegriffe gemischt: Reihen schaffen, Definitionen wissen.",
+  "datei": "tetris.html?set=kurz-tetris-alles",
+  "ergebnis": true,
+  "parameter": [
+   {
+    "name": "spiel",
+    "label": "Spielnummer",
+    "typ": "zahl",
+    "min": 1,
+    "max": 99,
+    "standard": 1
+   },
+   {
+    "name": "fragen",
+    "label": "Fragen pro Spiel",
+    "typ": "wahl",
+    "optionen": [
+     "8",
+     "12",
+     "16"
+    ],
+    "standard": "12"
+   }
+  ],
+  "thema": "Alle Bereiche gemischt"
+ },
+ {
+  "id": "kurz-rennen-psychoanalyse",
+  "titel": "Kurzarbeit: Wichtel-Schubkarrenrennen Psychoanalyse",
+  "fach": "Vorbereitung auf die Kurzarbeit",
+  "beschreibung": "Zwei Teams treten gegeneinander an: Richtig antworten, Schubkarre ein Stück weiter.",
+  "datei": "rennen.html?set=kurz-rennen-psychoanalyse",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Psychoanalyse (Freud)"
+ },
+ {
+  "id": "kurz-rennen-entwicklung",
+  "titel": "Kurzarbeit: Wichtel-Schubkarrenrennen Entwicklung",
+  "fach": "Vorbereitung auf die Kurzarbeit",
+  "beschreibung": "Zwei Teams treten gegeneinander an: Fragen zu Entwicklung und Wirkbeziehungen.",
+  "datei": "rennen.html?set=kurz-rennen-entwicklung",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Entwicklung"
+ },
+ {
+  "id": "kurz-rennen-alles",
+  "titel": "Kurzarbeit: Wichtel-Schubkarrenrennen Alle Bereiche",
+  "fach": "Vorbereitung auf die Kurzarbeit",
+  "beschreibung": "Zwei Teams, Fragen aus allen Bereichen der Kurzarbeit gemischt.",
+  "datei": "rennen.html?set=kurz-rennen-alles",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Alle Bereiche gemischt"
  }
 ]
