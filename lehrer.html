@@ -47,13 +47,30 @@ function gruppiere(kat){
   return fs;
 }
 
+/* QR-Code im Ordner: beim Aufklappen wird Link + QR-Code für genau diesen Ordner gezeigt */
+function ordnerQR(root){
+  root.querySelectorAll("details.ordner").forEach(d=>{
+    const fill=async()=>{
+      if(!d.open||d.querySelector(":scope>.oqrbox"))return;
+      const u=new URL("index.html",location.href);u.search="";u.hash="";u.searchParams.set("ordner",d.dataset.k);
+      const box=document.createElement("div");box.className="oqrbox";
+      box.innerHTML=`<div class="oqrimg"></div><div class="oqrtxt"><b>QR-Code für diesen Ordner</b><span class="muted small">Wer scannt, sieht nur die Übungen dieses Ordners.</span><input readonly value="${esc(u.href)}" aria-label="Link zum Ordner"><button type="button" class="btn alt">Link kopieren</button></div>`;
+      d.querySelector(":scope>summary").after(box);
+      box.querySelector(".oqrimg").innerHTML=await qrSvg(u.href,130);
+      const inp=box.querySelector("input");inp.addEventListener("focus",()=>inp.select());
+      box.querySelector("button").addEventListener("click",async e=>{try{await navigator.clipboard.writeText(u.href);e.target.textContent="Kopiert"}catch(x){inp.select()}});
+    };
+    d.addEventListener("toggle",fill);fill();
+  });
+}
 const $=id=>document.getElementById(id);
 let kat=[],sel=new Set(),url="",folder="";
 async function init(){
   try{kat=await loadKatalog()}catch(e){}
   const fs=gruppiere(kat);
-  $("katalog").innerHTML=fs.map(f=>`<details class="ordner" open><summary><span class="ico" aria-hidden="true">📁</span><b>${esc(f.fach)}</b><span class="muted small">${f.n} ${f.n===1?"Übung":"Übungen"}</span><button type="button" class="btn alt oqr" data-o="${esc(f.fach)}">QR-Code für Ordner</button></summary>${f.themen.map(t=>`<details class="ordner unter"><summary><span class="ico" aria-hidden="true">📂</span><b>${esc(t.thema)}</b><span class="muted small">${t.items.length}</span><button type="button" class="btn alt oqr" data-o="${esc(f.fach+"/"+t.thema)}">QR-Code für Ordner</button></summary><div class="grid">${t.items.map((s,i)=>`<button class="station" type="button" data-id="${esc(s.id)}" aria-pressed="false"><span class="no">ÜBUNG ${String(i+1).padStart(2,"0")}</span><b>${esc(s.titel)}</b><span class="muted small">${esc(s.beschreibung||"")}</span>${s.ergebnis===false?`<span><span class="tag">ohne Ergebniscode</span></span>`:""}</button>`).join("")}</div></details>`).join("")}</details>`).join("")||`<div class="msg err">Katalog nicht lesbar.</div>`;
+  $("katalog").innerHTML=fs.map(f=>`<details class="ordner" data-k="${esc(f.fach)}" open><summary><span class="ico" aria-hidden="true">📁</span><b>${esc(f.fach)}</b><span class="muted small">${f.n} ${f.n===1?"Übung":"Übungen"}</span><button type="button" class="btn alt oqr" data-o="${esc(f.fach)}">QR-Code für Ordner</button></summary>${f.themen.map(t=>`<details class="ordner unter" data-k="${esc(f.fach+"/"+t.thema)}"><summary><span class="ico" aria-hidden="true">📂</span><b>${esc(t.thema)}</b><span class="muted small">${t.items.length}</span><button type="button" class="btn alt oqr" data-o="${esc(f.fach+"/"+t.thema)}">QR-Code für Ordner</button></summary><div class="grid">${t.items.map((s,i)=>`<button class="station" type="button" data-id="${esc(s.id)}" aria-pressed="false"><span class="no">ÜBUNG ${String(i+1).padStart(2,"0")}</span><b>${esc(s.titel)}</b><span class="muted small">${esc(s.beschreibung||"")}</span>${s.ergebnis===false?`<span><span class="tag">ohne Ergebniscode</span></span>`:""}</button>`).join("")}</div></details>`).join("")}</details>`).join("")||`<div class="msg err">Katalog nicht lesbar.</div>`;
   document.querySelectorAll(".station").forEach(b=>b.addEventListener("click",()=>{folder="";document.querySelectorAll(".oqr").forEach(x=>x.setAttribute("aria-pressed","false"));const id=b.dataset.id;sel.has(id)?sel.delete(id):sel.add(id);b.setAttribute("aria-pressed",sel.has(id));update()}));
+  ordnerQR($("katalog"));
   document.querySelectorAll(".oqr").forEach(b=>b.addEventListener("click",e=>{
     e.preventDefault();e.stopPropagation();
     folder=b.dataset.o;sel.clear();

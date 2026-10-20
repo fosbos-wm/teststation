@@ -65,3 +65,9 @@ code{font-family:var(--mono);background:var(--pri-soft);padding:1px 6px;border-r
 .ordner>summary .oqr{margin-left:auto;padding:6px 12px;font-size:.85rem}
 .ordner>summary .oqr+*,.ordner>summary:has(.oqr)::after{margin-left:0}
 .oqr[aria-pressed="true"]{border-color:var(--pri);background:var(--pri-soft)}
+
+.oqrbox{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin:0 14px 12px;padding:12px;border:2px dashed var(--line);border-radius:12px;background:var(--panel)}
+.oqrimg{background:#fff;border-radius:8px;padding:6px;line-height:0}
+.oqrtxt{display:flex;flex-direction:column;gap:6px;flex:1;min-width:200px}
+.oqrtxt input{width:100%;font:.8rem var(--mono);padding:7px 9px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--fg)}
+.oqrtxt .btn{align-self:flex-start}
