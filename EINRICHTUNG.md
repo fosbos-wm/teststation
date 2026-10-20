@@ -29,3 +29,7 @@ Der QR-Code eines Ordners steht im aufgeklappten Ordner (Link: `index.html?ordne
 ## Neue Spiele
 - `stationen/tetris.html` (Begriffe-Tetris): Inhalte als `inhalte/kurz-tetris-*.json` mit `{"titel","art":"bedeutung","anleitung","karten":[{"begriff","bedeutung","t"}],"faelle":[{"f","o","r","c","fall":1}]}`. `art` ist `"bedeutung"` (fallbezogene Bedeutung und Verständnis von Fachbegriffen) oder `"definition"` (dann heißen die Fragen „Definition“; die Textfelder heißen weiterhin `bedeutung`, alternativ `definition`). `faelle` sind Zuordnungsfragen zu Fällen (`fall`:1) oder Aussagen (`fall`:0). Mindestens 8 Karten, `t` = Unterthema.
 - `stationen/rennen.html` (Wichtel-Schubkarrenrennen für 2 Teams an einem Bildschirm): Inhalte als `inhalte/kurz-rennen-*.json` mit `{"titel","anleitung","fragen":[{"f","o":[Antworten],"r":Index der richtigen Antwort,"c":"Thema (optional)"}]}`. Mindestens 20 Fragen. Ohne Ergebniscode (`"ergebnis": false` im Katalog).
+
+## Musik: Trompete in B (Noten und Griffe)
+
+`stationen/trompete.html` ist eine eigenständige Station ohne Datensatz (die 60 Töne der Grifftabelle stehen direkt in der Datei, geprüft gegen die Standard-Grifftabelle für Trompete in B). Katalogeintrag: Fach „Musik“, Pfad `["Musik","Trompete"]`, `ergebnis:false` (Selbstkontrolle, kein Ergebniscode). Auswahl von Umfang, Lage und Übungsart erfolgt in der Station selbst. Tasten: Leertaste = Aufdecken, → = gewusst, ← = nochmal, 1/2/3 = Ventile drücken.
