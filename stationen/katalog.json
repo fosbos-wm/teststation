@@ -784,5 +784,19 @@
    "LB 1",
    "Alle Bereiche gemischt"
   ]
+ },
+ {
+  "id": "musik-trompete-b",
+  "titel": "Trompete in B: Noten lesen und Griffe",
+  "fach": "Musik",
+  "beschreibung": "Note im Notensystem erkennen, Notennamen (c′, fis′, b …) nennen und den Ventilgriff (0, 1, 1+2, 1+2+3 …) auf der gezeichneten Trompete aufdecken. 60 Töne, Wiederholung der unsicheren Töne.",
+  "datei": "trompete.html",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Trompete",
+  "pfad": [
+   "Musik",
+   "Trompete"
+  ]
  }
 ]

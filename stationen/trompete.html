@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Trompete in B: Noten und Griffe</title>
+<style>
+:root{--bg:#f2f5f7;--panel:#fff;--fg:#14222c;--muted:#566872;--line:#d3dde3;--pri:#0e5a77;--pri-ink:#fff;--ok:#1b7f4b;--ok-soft:#d9f0e2;--bad:#b3261e;--bad-soft:#f9dedc;--brass:#c99a2e;--brass-d:#8a6414;--brass-l:#f0d58a;--press:#c2410c}
+@media (prefers-color-scheme:dark){:root{--bg:#0f171c;--panel:#17232a;--fg:#e6eff3;--muted:#9bb0ba;--line:#2a3b44;--pri:#5fb8d9;--pri-ink:#062029;--ok:#6fd49b;--ok-soft:#163626;--bad:#ff9a92;--bad-soft:#40201e;--brass:#d9aa3c;--brass-d:#f0d58a;--brass-l:#6b5319;--press:#ff8a4c;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding:12px max(14px,env(safe-area-inset-left,0px)) 28px;max-width:900px;margin-inline:auto}
+h1{font-size:1.15rem;margin:0 0 2px}.sub{color:var(--muted);margin:0 0 10px;font-size:.9rem}
+.opts{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;margin:0 0 10px;font-size:.9rem}
+.opts label{display:flex;gap:6px;align-items:center}
+select{font:inherit;padding:6px 8px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--fg)}
+.stats{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 10px}
+.chip{background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:3px 12px;font-size:.85rem;font-weight:600}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:10px;display:grid;gap:10px;grid-template-columns:1fr}
+@media (min-width:760px){.card{grid-template-columns:1fr 1fr;align-items:stretch}}
+.pane{border:1px solid var(--line);border-radius:10px;padding:8px;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:200px}
+.pane svg{width:100%;height:auto;max-height:340px}
+.q{font-weight:700;margin:0 0 4px;align-self:flex-start}
+.ans{min-height:3.2em;text-align:center;margin-top:4px}
+.name{font-size:2rem;font-weight:800;letter-spacing:.02em}
+.grif{font-size:1.1rem}.grif b{font-size:1.5rem;color:var(--press)}
+.hint{color:var(--muted);font-size:.85rem}
+.bar{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;align-items:center}
+.b{font:600 1rem inherit;font-family:inherit;border-radius:10px;border:1px solid var(--pri);background:var(--pri);color:var(--pri-ink);padding:12px 20px;cursor:pointer;min-height:46px}
+.b.alt{background:var(--panel);color:var(--fg);border-color:var(--line)}
+.b.ok{background:var(--ok);border-color:var(--ok);color:var(--panel)}.b.no{background:var(--bad-soft);color:var(--bad);border-color:var(--bad)}
+.b[hidden]{display:none}
+.valve{cursor:pointer}.valve:focus-visible{outline:none}.valve:focus-visible .cap{stroke:var(--pri);stroke-width:4}
+.sum{margin-top:12px;padding:12px 14px;border-radius:10px;background:var(--ok-soft);color:var(--ok);font-weight:700}
+.miss{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.miss span{background:var(--bad-soft);color:var(--bad);border-radius:8px;padding:2px 9px;font-weight:700}
+:focus-visible{outline:3px solid var(--pri);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style></head><body>
+<h1>Trompete in B: Noten und Griffe</h1>
+<p class="sub">Notenbild lesen, Notennamen und Ventilgriff wissen. Grifftabelle für Trompete in B (notiert, nicht klingend).</p>
+<div class="opts">
+ <label>Umfang <select id="umf"><option value="nat">Nur Stammtöne</option><option value="vz">Nur mit Vorzeichen (♯/♭)</option><option value="alle" selected>Alle 60 Töne</option></select></label>
+ <label>Lage <select id="lage"><option value="alle" selected>ganzer Bereich</option><option value="tief">tief (bis h)</option><option value="mitte">mittel (c' bis h')</option><option value="hoch">hoch (ab c'')</option></select></label>
+ <label>Übung <select id="modus"><option value="beides" selected>Note → Name und Griff</option><option value="griff">Note → Griff selbst tippen</option></select></label>
+</div>
+<div class="stats" aria-live="polite"><span class="chip" id="s1"></span><span class="chip" id="s2"></span><span class="chip" id="s3"></span></div>
+<div id="main">
+<div class="card">
+ <div class="pane"><p class="q">Welche Note ist das?</p><svg id="staff" viewBox="0 0 360 215" role="img" aria-label="Notenzeile"></svg><div class="ans" id="ansL"></div></div>
+ <div class="pane"><p class="q" id="qT">Wie wird sie gegriffen?</p><svg id="tp" viewBox="0 0 460 230" role="img" aria-label="Trompete mit drei Ventilen"></svg><div class="ans" id="ansR"></div></div>
+</div>
+<div class="bar">
+ <button class="b" id="rev" type="button">Aufdecken (Leertaste)</button>
+ <button class="b alt" id="snd" type="button" hidden>🔊 Anhören</button>
+ <button class="b ok" id="yes" type="button" hidden>Gewusst (→)</button>
+ <button class="b no" id="no" type="button" hidden>Nochmal üben (←)</button>
+</div>
+<p class="hint" id="tip">Tipp: Du kannst vor dem Aufdecken die Ventile antippen oder mit den Tasten 1, 2, 3 drücken, um deinen Griff zu zeigen.</p>
+</div>
+<div id="sum" role="status"></div>
+<script>
+const $=id=>document.getElementById(id);
+const ROWS=[
+ ["g a h c' d' e' f' g' a' h'","13 12 2 0 13 12 1 0 12 2"],
+ ["c\" d\" e\" f\" g\" a\" h\" c''' d''' e'''","0 1 0 1 0 12 2 0 1 0"],
+ ["fis gis ais his cis' dis' eis' fis' gis' ais'","123 23 1 0 123 23 1 2 23 1"],
+ ["his' cis\" dis\" eis\" fis\" gis\" ais\" his\" cis''' dis'''","0 12 2 1 2 23 1 0 12 2"],
+ ["ges as b ces' des' es' fes' ges' as' b'","123 23 1 2 123 23 12 2 23 1"],
+ ["ces\" des\" es\" fes\" ges\" as\" b\" ces''' des''' es'''","2 12 2 0 2 23 1 2 12 2"]];
+const IDX={c:0,d:1,e:2,f:3,g:4,a:5,h:6},SEMI={c:0,d:2,e:4,f:5,g:7,a:9,h:11};
+const NOTES=[];
+ROWS.forEach(r=>{const nm=r[0].split(" "),fg=r[1].split(" ");nm.forEach((raw,i)=>{
+  const n=raw.replace(/"/g,"''"),ap=(n.match(/'/g)||[]).length,b=n.replace(/'/g,"");let L,acc=0;
+  if(b==="b"){L="h";acc=-1}else if(b==="as"){L="a";acc=-1}else if(b==="es"){L="e";acc=-1}
+  else if(b.endsWith("is")){L=b[0];acc=1}else if(b.endsWith("es")){L=b[0];acc=-1}else L=b;
+  const oct=3+ap;
+  NOTES.push({n,L,acc,oct,fing:fg[i],step:oct*7+IDX[L]-30,midi:12*(oct+1)+SEMI[L]+acc,alt:(n==="a''")?"3":""});
+})});
+/* Anzeige: Kleinbuchstaben mit Strichen, z. B. c′ fis′ b */
+function pretty(n){const ap=(n.n.match(/'/g)||[]).length,b=n.n.replace(/'/g,"");return b+(ap?"′".repeat(ap):"")+(ap===0?" (kleine Oktave)":"")}
+function short(n){const ap=(n.n.match(/'/g)||[]).length;return n.n.replace(/'/g,"")+"′".repeat(ap)}
+const FS={"0":[],"1":[1],"2":[2],"3":[3],"12":[1,2],"13":[1,3],"23":[2,3],"123":[1,2,3]};
+const fgTxt=n=>n.fing==="0"?"ohne Ventil (0)":"Ventil "+n.fing.split("").join(" + ");
+/* ---- Notenzeile ---- */
+const YB=140,D=14,NX=235;
+const yOf=s=>YB-s*D/2;
+function staffSVG(n){
+  let g="";
+  for(let i=0;i<5;i++)g+=`<line x1="14" x2="346" y1="${YB-i*D}" y2="${YB-i*D}" stroke="var(--fg)" stroke-width="1.4"/>`;
+  g+=`<line x1="14" x2="14" y1="${YB}" y2="${YB-4*D}" stroke="var(--fg)" stroke-width="1.4"/>`;
+  /* Violinschlüssel (selbst gezeichnet), G-Linie = Schritt 2 */
+  const gy=yOf(2),u=D;
+  g+=`<g transform="translate(58 ${gy})" fill="none" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round">
+   <path transform="scale(${u})" stroke-width="0.24" d="M-0.9,2.9 C-1.0,3.9 0.7,3.9 0.6,2.5 L0.1,-3.7 C0.0,-5.1 -1.5,-5.0 -1.4,-3.4 C-1.3,-1.8 1.9,-1.4 1.9,0.5 C1.9,2.0 -1.9,2.1 -1.6,0.1 C-1.4,-1.2 0.5,-1.4 0.8,-0.2 C1.0,0.8 -0.3,1.1 -0.4,0.2" /></g>
+   <circle cx="${58-0.9*u}" cy="${gy+3.45*u}" r="${u*0.17}" fill="var(--fg)"/>`;
+  const s=n.step,y=yOf(s);
+  /* Hilfslinien */
+  if(s<=-2)for(let k=-2;k>=s-(s%2?0:0);k-=2){if(k>=s-1)g+=`<line x1="${NX-17}" x2="${NX+17}" y1="${yOf(k)}" y2="${yOf(k)}" stroke="var(--fg)" stroke-width="1.4"/>`}
+  if(s>=10)for(let k=10;k<=s+1;k+=2){if(k<=s+1)g+=`<line x1="${NX-17}" x2="${NX+17}" y1="${yOf(k)}" y2="${yOf(k)}" stroke="var(--fg)" stroke-width="1.4"/>`}
+  /* Vorzeichen */
+  if(n.acc===1){const x=NX-30;g+=`<g stroke="var(--fg)" stroke-linecap="round"><path d="M${x-3} ${y-16}V${y+18}M${x+4} ${y-18}V${y+16}" stroke-width="1.6"/><path d="M${x-8} ${y-3}L${x+9} ${y-8}M${x-8} ${y+8}L${x+9} ${y+3}" stroke-width="4"/></g>`}
+  if(n.acc===-1){const x=NX-30;g+=`<g fill="none" stroke="var(--fg)" stroke-linecap="round" stroke-linejoin="round"><path d="M${x-4} ${y-24}V${y+6}" stroke-width="1.8"/><path d="M${x-4} ${y+6}C${x+10} ${y-2} ${x+11} ${y-14} ${x-4} ${y-8}" stroke-width="2.4"/></g>`}
+  /* Notenkopf und Hals */
+  const up=s<6;let end;
+  if(up){end=Math.max(s+7,4)}else{end=Math.min(s-7,4)}
+  const sx=up?NX+8:NX-8;
+  g+=`<line x1="${sx}" x2="${sx}" y1="${y}" y2="${yOf(end)}" stroke="var(--fg)" stroke-width="2"/>`;
+  g+=`<ellipse cx="${NX}" cy="${y}" rx="9.5" ry="6.6" transform="rotate(-20 ${NX} ${y})" fill="var(--fg)"/>`;
+  return g;
+}
+/* ---- Trompete ---- */
+function tpSVG(pressed,guess,revealed){
+  const vx=[190,240,290];
+  let g=`<g fill="none" stroke="var(--brass-d)" stroke-linecap="round" stroke-linejoin="round">
+   <path d="M40 120H175" stroke-width="10" stroke="var(--brass)"/>
+   <path d="M305 120H350" stroke-width="10" stroke="var(--brass)"/>
+   <path d="M350 120 L450 85 M350 120 L450 155" stroke-width="10" stroke="var(--brass)"/>
+   <path d="M450 80 Q462 120 450 160" stroke-width="8" stroke="var(--brass)"/>
+   <path d="M175 145 C120 210 60 205 60 175 C60 150 110 150 175 150" stroke-width="7" stroke="var(--brass)"/>
+   <path d="M305 145 C330 190 380 190 380 160 L350 130" stroke-width="7" stroke="var(--brass)"/>
+   <path d="M30 120H44" stroke-width="16" stroke="var(--brass-d)"/>
+   <path d="M20 112V128" stroke-width="5" stroke="var(--brass-d)"/></g>`;
+  vx.forEach((x,i)=>{const v=i+1,on=pressed.includes(v),gs=guess.includes(v),dy=on?14:0;
+    const stroke=revealed?(on?"var(--press)":"var(--brass-d)"):(gs?"var(--pri)":"var(--brass-d)");
+    const fill=revealed?(on?"var(--press)":"var(--panel)"):(gs?"var(--pri)":"var(--panel)");
+    g+=`<g class="valve" data-v="${v}" tabindex="0" role="button" aria-pressed="${revealed?on:gs}" aria-label="Ventil ${v}">
+     <rect x="${x-15}" y="78" width="30" height="86" rx="7" fill="var(--brass-l)" stroke="var(--brass-d)" stroke-width="3"/>
+     <rect x="${x-3}" y="${42+dy}" width="6" height="40" fill="var(--brass-d)"/>
+     <rect class="cap" x="${x-14}" y="${28+dy}" width="28" height="16" rx="8" fill="${fill}" stroke="${stroke}" stroke-width="3"/>
+     <text x="${x}" y="196" text-anchor="middle" font-size="20" font-weight="800" fill="var(--fg)">${v}</text></g>`});
+  return g;
+}
+/* ---- Zustand ---- */
+let deck=[],cur=null,revealed=false,guess=[],ok=0,again=0,done=0,total=0,missed=[],queue=[];
+function pool(){
+  const u=$("umf").value,l=$("lage").value;
+  return NOTES.filter(n=>(u==="alle"||(u==="nat"?n.acc===0:n.acc!==0))&&(l==="alle"||(l==="tief"?n.step<0:l==="mitte"?(n.step>=0&&n.step<=7):n.step>=7)));
+}
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function start(){
+  queue=shuffle(pool().slice());total=queue.length;ok=0;again=0;done=0;missed=[];
+  $("sum").innerHTML="";$("main").hidden=false;
+  if(!total){$("ansL").textContent="Für diese Auswahl gibt es keine Töne.";return}
+  next();
+}
+function stats(){$("s1").textContent="Noch offen: "+queue.length+(cur?" (+1)":"");$("s2").textContent="Gewusst: "+ok;$("s3").textContent="Nochmal: "+again}
+function next(){
+  if(!queue.length){finish();return}
+  cur=queue.shift();revealed=false;guess=[];draw();stats();
+}
+function draw(){
+  $("staff").innerHTML=staffSVG(cur);
+  $("tp").innerHTML=tpSVG(revealed?FS[cur.fing]:[],guess,revealed);
+  $("tp").querySelectorAll(".valve").forEach(v=>{const f=()=>toggle(+v.dataset.v);v.addEventListener("click",f);v.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();e.stopPropagation();f()}})});
+  $("qT").textContent=$("modus").value==="griff"&&!revealed?"Dein Griff: Ventile antippen":"Wie wird sie gegriffen?";
+  if(revealed){
+    const r=FS[cur.fing].join(),g=guess.slice().sort().join(),hit=guess.length&&r===g;
+    $("ansL").innerHTML=`<div class="name">${short(cur)}</div><div class="hint">${cur.acc?(cur.acc>0?"mit Kreuz (♯)":"mit b (♭)"):"Stammton"} · klingt als ${klingend(cur)}</div>`;
+    $("ansR").innerHTML=`<div class="grif">Griff: <b>${cur.fing==="0"?"0":cur.fing.split("").join(" + ")}</b>${cur.alt?` <span class="hint">(auch ${cur.alt})</span>`:""}</div><div class="hint">${fgTxt(cur)}${guess.length?(hit?" · dein Griff stimmt ✓":" · dein Griff weicht ab"):""}</div>`;
+  }else{$("ansL").innerHTML=`<span class="hint">Überlege: Name und Griff.</span>`;$("ansR").innerHTML=guess.length?`<span class="hint">Dein Griff: ${guess.slice().sort().join(" + ")}</span>`:`<span class="hint">0 = kein Ventil</span>`}
+  $("rev").hidden=revealed;$("snd").hidden=!revealed;$("yes").hidden=!revealed;$("no").hidden=!revealed;
+}
+const KL=["c","cis","d","es","e","f","fis","g","as","a","b","h"];
+function klingend(n){const m=n.midi-2;return KL[((m%12)+12)%12]}
+function toggle(v){if(revealed)return;const i=guess.indexOf(v);if(i<0)guess.push(v);else guess.splice(i,1);draw()}
+function reveal(){if(!cur||revealed)return;revealed=true;draw()}
+function rate(good){
+  if(!cur||!revealed)return;
+  if(good){ok++;done++}else{again++;missed.push(cur);const pos=Math.min(queue.length,3+Math.floor(Math.random()*4));queue.splice(pos,0,cur)}
+  cur=null;next();
+}
+function finish(){
+  cur=null;stats();$("main").hidden=true;
+  const m=[...new Set(missed.map(short))];
+  $("sum").innerHTML=`<div class="sum">Geschafft! ${total} Töne durchgearbeitet, ${again} Mal „nochmal“ gebraucht.</div>`+(m.length?`<p class="hint">Hier hast du dich mindestens einmal unsicher gefühlt:</p><div class="miss">${m.map(x=>`<span>${x}</span>`).join("")}</div>`:"")+`<div class="bar"><button class="b" id="rst" type="button">Neue Runde</button></div>`;
+  $("rst").addEventListener("click",start);
+}
+function play(){
+  try{const A=new (window.AudioContext||window.webkitAudioContext)(),o=A.createOscillator(),g=A.createGain(),f=440*Math.pow(2,(cur.midi-2-69)/12);
+   o.type="sawtooth";o.frequency.value=f;const lp=A.createBiquadFilter();lp.type="lowpass";lp.frequency.value=Math.min(2400,f*5);
+   g.gain.setValueAtTime(0,A.currentTime);g.gain.linearRampToValueAtTime(.22,A.currentTime+.04);g.gain.setValueAtTime(.22,A.currentTime+.7);g.gain.linearRampToValueAtTime(0,A.currentTime+.95);
+   o.connect(lp);lp.connect(g);g.connect(A.destination);o.start();o.stop(A.currentTime+1);}catch(e){}
+}
+$("rev").addEventListener("click",reveal);$("yes").addEventListener("click",()=>rate(true));$("no").addEventListener("click",()=>rate(false));$("snd").addEventListener("click",play);
+["umf","lage","modus"].forEach(i=>$(i).addEventListener("change",start));
+document.addEventListener("keydown",e=>{
+  if(e.target.closest&&e.target.closest("select,button"))return;
+  if(e.key===" "||e.key==="Enter"){e.preventDefault();revealed?rate(true):reveal()}
+  else if(e.key==="ArrowRight")rate(true);else if(e.key==="ArrowLeft")rate(false);
+  else if("123".includes(e.key)&&e.key)toggle(+e.key);
+});
+start();
+</script></body></html>
