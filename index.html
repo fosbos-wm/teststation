@@ -9,7 +9,19 @@
  <p class="muted small" style="margin-top:20px">Keine Anmeldung, keine Namen, keine Daten an einen Server. <a href="datenschutz.html">Datenschutz</a></p>
 </div>
 <script type="module">
-import {esc,ls,loadKatalog,cleanId,gruppiere} from "./js/ts-core.js";
+import {esc,ls,loadKatalog,cleanId} from "./js/ts-core.js";
+/* Gliederung Fach > Thema > Übungen */
+function gruppiere(kat){
+  const fs=[];
+  kat.forEach(s=>{
+    const fn=s.fach||"Weitere",tn=s.thema||"Allgemein";
+    let f=fs.find(x=>x.fach===fn);if(!f){f={fach:fn,themen:[],n:0};fs.push(f)}
+    let t=f.themen.find(x=>x.thema===tn);if(!t){t={thema:tn,items:[]};f.themen.push(t)}
+    t.items.push(s);f.n++;
+  });
+  return fs;
+}
+
 const $=id=>document.getElementById(id),q=new URLSearchParams(location.search);
 $("team").innerHTML=Array.from({length:30},(_,i)=>`<option value="${i+1}">Team ${i+1}</option>`).join("");
 let t=+ls.get("ts-team")||+q.get("t")||1;$("team").value=Math.min(30,Math.max(1,t));
@@ -23,14 +35,27 @@ function link(s){
   return "station.html?"+u;
 }
 const offen=(q.get("fach")||"").toLowerCase();
+const ordner=(q.get("ordner")||"").slice(0,200);
 function karte(s,i){return `<a class="station" href="${link(s)}" style="text-decoration:none;color:inherit"><span class="no">ÜBUNG ${String(i+1).padStart(2,"0")}</span><b>${esc(s.titel)}</b><span class="muted small">${esc(s.beschreibung||"")}</span></a>`}
 function draw(){
   const list=sel.length?sel.map(id=>kat.find(s=>s.id===id)).filter(Boolean):kat;
   if(sel.length){$("grid").className="grid";$("grid").innerHTML=list.map(karte).join("")||`<div class="msg err">Keine Übungen gefunden.</div>`;return}
-  const fs=gruppiere(list);
+  let fs=gruppiere(list);
+  if(ordner){
+    let fn=ordner,tn="";
+    const hit=fs.find(f=>f.fach===ordner)||fs.find(f=>ordner.startsWith(f.fach+"/"));
+    if(hit){fn=hit.fach;tn=ordner.slice(fn.length+1)}
+    fs=fs.filter(f=>f.fach===fn).map(f=>({...f,themen:f.themen.filter(t=>!tn||t.thema===tn)}));
+    fs.forEach(f=>f.n=f.themen.reduce((a,t)=>a+t.items.length,0));
+    if(fs.length&&fs[0].themen.length===1){
+      const t=fs[0].themen[0];$("grid").className="";
+      $("grid").innerHTML=`<h2 style="margin:0 0 4px">${esc(fs[0].fach)}</h2><p class="muted" style="margin:0 0 12px">${esc(t.thema)} · ${t.items.length} ${t.items.length===1?"Übung":"Übungen"}</p><div class="grid">${t.items.map(karte).join("")}</div>`;return;
+    }
+    if(!fs.length){$("grid").innerHTML=`<div class="msg err">Diesen Ordner gibt es nicht.</div>`;return}
+  }
   const aufF=new Set(JSON.parse(ls.get("ts-open")||"[]"));
   $("grid").className="";
-  $("grid").innerHTML=fs.map(f=>`<details class="ordner" data-k="${esc(f.fach)}" ${(aufF.has(f.fach)||offen===f.fach.toLowerCase()||fs.length===1)?"open":""}><summary><span class="ico" aria-hidden="true">📁</span><b>${esc(f.fach)}</b><span class="muted small">${f.n} ${f.n===1?"Übung":"Übungen"}</span></summary>${f.themen.map(t=>`<details class="ordner unter" data-k="${esc(f.fach+"/"+t.thema)}" ${(aufF.has(f.fach+"/"+t.thema)||f.themen.length===1)?"open":""}><summary><span class="ico" aria-hidden="true">📂</span><b>${esc(t.thema)}</b><span class="muted small">${t.items.length}</span></summary><div class="grid">${t.items.map(karte).join("")}</div></details>`).join("")}</details>`).join("")||`<div class="msg err">Keine Übungen gefunden.</div>`;
+  $("grid").innerHTML=fs.map(f=>`<details class="ordner" data-k="${esc(f.fach)}" ${(aufF.has(f.fach)||offen===f.fach.toLowerCase()||fs.length===1||!!ordner)?"open":""}><summary><span class="ico" aria-hidden="true">📁</span><b>${esc(f.fach)}</b><span class="muted small">${f.n} ${f.n===1?"Übung":"Übungen"}</span></summary>${f.themen.map(t=>`<details class="ordner unter" data-k="${esc(f.fach+"/"+t.thema)}" ${(aufF.has(f.fach+"/"+t.thema)||f.themen.length===1||!!ordner)?"open":""}><summary><span class="ico" aria-hidden="true">📂</span><b>${esc(t.thema)}</b><span class="muted small">${t.items.length}</span></summary><div class="grid">${t.items.map(karte).join("")}</div></details>`).join("")}</details>`).join("")||`<div class="msg err">Keine Übungen gefunden.</div>`;
   $("grid").querySelectorAll("details").forEach(d=>d.addEventListener("toggle",()=>{
     const o=[...$("grid").querySelectorAll("details[open]")].map(x=>x.dataset.k);ls.set("ts-open",JSON.stringify(o));
   }));

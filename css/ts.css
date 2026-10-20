@@ -62,3 +62,6 @@ code{font-family:var(--mono);background:var(--pri-soft);padding:1px 6px;border-r
 .ordner.unter{background:var(--bg,transparent);margin-bottom:10px}
 .ordner.unter>summary{font-size:1rem;padding:11px 14px}
 .ordner>summary:focus-visible{outline:3px solid var(--pri);outline-offset:2px;border-radius:12px}
+.ordner>summary .oqr{margin-left:auto;padding:6px 12px;font-size:.85rem}
+.ordner>summary .oqr+*,.ordner>summary:has(.oqr)::after{margin-left:0}
+.oqr[aria-pressed="true"]{border-color:var(--pri);background:var(--pri-soft)}
