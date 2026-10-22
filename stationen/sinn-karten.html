@@ -50,7 +50,18 @@ textarea{font:1rem/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;back
 .dok h2{font-size:1.3rem}.dok .blk{break-inside:avoid;border-top:1px solid var(--line);padding-top:10px;display:flex;flex-direction:column;gap:6px}
 .dok .a{white-space:pre-wrap;border-left:3px solid var(--line);padding-left:10px}
 .dok .leer{color:var(--muted);font-style:italic}
-@media (max-width:520px){.karte{font-size:1.15rem;padding:22px 16px}.wahl button{font-size:.85rem}}
+/* Vergleich */
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
+.vk{display:flex;flex-direction:column;gap:8px;justify-content:space-between;text-align:left;min-height:150px;border-radius:14px;background:linear-gradient(150deg,var(--card1),var(--card2));color:var(--card-ink);border:2px solid transparent;padding:14px;font-weight:500;font-size:1rem;line-height:1.35;box-shadow:0 4px 12px rgba(0,0,0,.15)}
+.vk:hover:not(:disabled){border-color:var(--bad)}
+.vk:disabled{opacity:1;cursor:default}
+.vk .vh{font-size:.74rem;opacity:.7;text-transform:uppercase;letter-spacing:.05em}
+.vk .vt{flex:1}
+.chipwrap{display:block}
+.vout{display:flex;flex-direction:column;gap:8px}
+.vo{text-align:left;background:var(--panel);color:var(--muted);border:2px dashed var(--line);border-radius:12px;padding:10px 12px;font-weight:500;font-size:.92rem;display:flex;flex-direction:column;gap:4px}
+.vo:hover{border-color:var(--pri);color:var(--fg)}
+@media (max-width:520px){.vgrid{grid-template-columns:1fr 1fr;gap:8px}.vk{min-height:130px;padding:10px;font-size:.92rem}.karte{font-size:1.15rem;padding:22px 16px}.wahl button{font-size:.85rem}}
 @media print{body{background:#fff;color:#000;padding:0}.noprint{display:none!important}.panel,.sel{border-color:#999;box-shadow:none}.chip{color:#fff;background:#444;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
 </style></head><body>
 <main id="app" aria-live="polite"><p class="muted">Lädt …</p></main>
@@ -59,14 +70,14 @@ const QS=new URLSearchParams(location.search),SET=(QS.get("set")||"").replace(/[
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
-const ZIEL=5,MAXRUNDEN=4;
+const ZIEL=5;
 let D=null,K={},DIM={};
 const S={phase:"intro",round:0,deck:[],i:0,piles:{yes:[],no:[],unsure:[]},hist:[],score:{},chosen:[],pool:[],need:0,mode:"",sel:new Set(),zw:null,antw:{},cur:0};
 
 /* Schrittanzeige */
 const SCHRITTE=[["sort","1 Sortieren"],["pick","2 Auswählen"],["result","3 Meine fünf"],["reflect","4 Fragen"],["doc","5 Mitnehmen"]];
 function steps(){
-  const m={intro:-1,sort:0,zwischen:0,pick:1,result:2,reflect:3,doc:4}[S.phase];
+  const m={intro:-1,sort:0,zwischen:0,vergleich:1,pick:1,result:2,reflect:3,doc:4}[S.phase];
   return `<div class="steps noprint" aria-label="Schritte">${SCHRITTE.map((s,i)=>`<span class="${i===m?"on":""}">${s[1]}</span>`).join("")}</div>`;
 }
 const chip=d=>`<span class="chip" style="--c:var(--${d})">${esc(DIM[d].name)}</span>`;
@@ -78,7 +89,7 @@ function intro(){
   <p>${esc(D.anleitung)}</p>
   <ol style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px">
    <li><b>Sortieren:</b> Du liest ${D.karten.length} Karten nacheinander und legst jede auf einen von drei Stapeln: wichtig für mich, nicht wichtig für mich oder unklar.</li>
-   <li><b>Auswählen:</b> Was dir wichtig ist, sortierst du noch einmal feiner, bis genau ${ZIEL} Karten übrig sind.</li>
+   <li><b>Vergleichen:</b> Die Karten, die dir wichtig sind, legst du nebeneinander. Du wägst ab und sortierst aus, bis genau ${ZIEL} Karten übrig sind.</li>
    <li><b>Fragen:</b> Zu jeder der ${ZIEL} Karten beantwortest du Fragen, wie du das im Alltag leben kannst.</li>
   </ol>
   <div class="msg small">Es gibt kein Richtig und kein Falsch. Das ist eine Reflexion über dich, kein Test. Nichts wird gespeichert oder gesendet. Was du schreibst, bleibt auf diesem Gerät und ist weg, wenn du die Seite schließt. Wenn du magst, besprich die Ergebnisse mit einer vertrauten Person.</div>
@@ -128,12 +139,9 @@ function endRound(){
   S.piles.unsure.forEach(id=>S.score[id]=(S.score[id]||0)+1);
   const cand=S.piles.yes.slice(),n=cand.length,r=S.round;
   let msg,weiter;
-  if(n>ZIEL&&r<MAXRUNDEN){
-    msg=`${n} Karten sind dir wichtig. Das sind noch mehr als ${ZIEL}. Sortiere nur diese noch einmal und überlege, welche dir von allen am wichtigsten sind.`;
-    weiter=()=>startRound(cand,r+1);
-  }else if(n>ZIEL){
-    msg=`${n} Karten sind noch im Rennen. Wähle jetzt selbst die ${ZIEL}, die dir am wichtigsten sind. Es ist in Ordnung, wenn es schwerfällt.`;
-    weiter=()=>openPick("kuerzen",cand,ZIEL,[]);
+  if(n>ZIEL){
+    msg=`${n} Karten sind dir wichtig. Das sind mehr als ${ZIEL}. Im nächsten Schritt liegen alle nebeneinander. Vergleiche sie und sortiere die aus, die dir weniger wichtig sind, bis ${ZIEL} übrig sind.`;
+    weiter=()=>{S.cmp={keep:cand.slice(),out:[]};S.phase="vergleich";render()};
   }else if(n===ZIEL){
     msg=`Genau ${ZIEL} Karten sind übrig geblieben. Das sind deine fünf.`;
     weiter=()=>{S.chosen=cand;S.phase="result";render()};
@@ -155,7 +163,23 @@ function zwischen(){
   $("back").onclick=undo;$("weiter").onclick=z.weiter;
 }
 
-/* 2 Auswählen (Eingrenzen oder Auffüllen) */
+/* 2a Vergleichen: Karten liegen nebeneinander, Unwichtigeres wird aussortiert */
+function vergleichView(){
+  const c=S.cmp,n=c.keep.length,fertig=n===ZIEL;
+  set(`${steps()}<div class="panel"><h2>Vergleiche deine Karten</h2>
+  <p>Diese Karten sind dir wichtig. Lies sie nebeneinander und frag dich: <b>Welche ist mir weniger wichtig als die anderen?</b> Tippe sie an, dann wird sie aussortiert. Du suchst die ${ZIEL} Karten, auf die du am wenigsten verzichten kannst.</p>
+  <div class="row"><span class="grow"><b>${n}</b> Karten liegen vor dir${fertig?"":`, noch <b>${n-ZIEL}</b> aussortieren`}</span></div>
+  <div class="vgrid">${c.keep.map(id=>`<button type="button" class="vk" data-k="${id}" aria-label="Aussortieren: ${esc(K[id].text)}" ${fertig?"disabled":""}><span class="chipwrap">${chip(K[id].dim)}</span><span class="vt">${esc(K[id].text)}</span>${fertig?"":`<span class="vh">tippen zum Aussortieren</span>`}</button>`).join("")}</div>
+  ${fertig?`<div class="msg">Du hast jetzt genau ${ZIEL} Karten. Wenn du noch tauschen möchtest, hol unten eine Karte zurück und sortiere dafür eine andere aus.</div>`:""}
+  ${c.out.length?`<h3>Aussortiert</h3><p class="muted small">Tippe eine Karte an, um sie zurückzulegen.</p><div class="vout">${c.out.map(id=>`<button type="button" class="vo" data-o="${id}" ${n>=ZIEL&&fertig?"":""}><span class="chipwrap">${chip(K[id].dim)}</span>${esc(K[id].text)}</button>`).join("")}</div>`:""}
+  <div class="row"><button class="alt" type="button" id="zur">Zurück zum Sortieren</button><span class="grow"></span><button type="button" id="ok" ${fertig?"":"disabled"}>Weiter</button></div></div>`);
+  document.querySelectorAll("[data-k]").forEach(b=>b.onclick=()=>{if(c.keep.length<=ZIEL)return;const id=b.dataset.k;c.keep=c.keep.filter(x=>x!==id);c.out.push(id);render()});
+  document.querySelectorAll("[data-o]").forEach(b=>b.onclick=()=>{const id=b.dataset.o;c.out=c.out.filter(x=>x!==id);c.keep.push(id);render()});
+  $("zur").onclick=()=>{S.phase="zwischen";undo()};
+  $("ok").onclick=()=>{S.chosen=c.keep.slice();S.phase="result";render()};
+}
+
+/* 2b Auswählen (nur Auffüllen, wenn weniger als 5 Karten übrig sind) */
 function openPick(mode,pool,need,fest){S.mode=mode;S.pool=pool;S.need=need;S.fest=fest;S.sel=new Set();S.phase="pick";render()}
 function pickView(){
   const k=S.mode==="kuerzen",n=S.sel.size,need=S.need;
@@ -232,7 +256,7 @@ function docView(){
 }
 
 function render(){
-  ({intro,sort:sortView,zwischen,pick:pickView,result:resultView,reflect:reflectView,doc:docView})[S.phase]();
+  ({intro,sort:sortView,zwischen,pick:pickView,vergleich:vergleichView,result:resultView,reflect:reflectView,doc:docView})[S.phase]();
   window.scrollTo({top:0});
 }
 fetch("../inhalte/"+SET+".json").then(r=>{if(!r.ok)throw 0;return r.json()}).then(d=>{
