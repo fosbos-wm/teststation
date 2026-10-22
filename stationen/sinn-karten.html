@@ -52,6 +52,11 @@ button:disabled{opacity:.45;cursor:default}
 label.f{display:flex;flex-direction:column;gap:4px;font-weight:700;font-size:.95rem}
 label.f span.q{font-weight:500;color:var(--muted);font-size:.9rem}
 textarea{font:1rem/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-height:76px;resize:vertical;width:100%}
+.code{font:700 1.7rem/1.2 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.2em;text-align:center;text-transform:uppercase;background:var(--bg);color:var(--fg);border:2px solid var(--line);border-radius:12px;padding:12px;width:100%}
+.code:focus{border-color:var(--pri);outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--pri) 25%,transparent)}
+.fehler{padding:10px 14px;border-radius:10px;background:var(--bad-soft);color:var(--bad);font-weight:600}
+.dok{position:relative;padding-left:68px;padding-right:68px;background:var(--ranke-l,none) left 6px top 0/56px 220px repeat-y,var(--ranke-r,none) right 6px top 110px/56px 220px repeat-y,var(--panel);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+@media (max-width:520px){.dok{padding-left:48px;padding-right:48px;background:var(--ranke-l,none) left 2px top 0/42px 165px repeat-y,var(--ranke-r,none) right 2px top 82px/42px 165px repeat-y,var(--panel)}}
 .dok h2{font-size:1.3rem}.dok .blk{break-inside:avoid;border-top:1px solid var(--line);padding-top:10px;display:flex;flex-direction:column;gap:6px}
 .dok .a{white-space:pre-wrap;border-left:3px solid var(--line);padding-left:10px}
 .dok .leer{color:var(--muted);font-style:italic}
@@ -299,6 +304,13 @@ function docText(){
     D.fragen.forEach(f=>{const v=(a[f.id]||"").trim();if(v)L.push("   "+f.label+": "+v.replace(/\n/g,"\n      "))});L.push("")});
   return L.join("\n");
 }
+/* Dekoration: grüne Blätterranken links und rechts am Rand des Dokuments (nur Hintergrundbild, kein Inhalt) */
+function rankeUri(spiegel){
+  const leaf=(x,y,a,sc,c)=>`<g transform="translate(${x} ${y}) rotate(${a}) scale(${sc})"><path d="M0 0C6-9 17-9 24 0 17 9 6 9 0 0Z" fill="${c}"/><path d="M2 0H20" stroke="#fff" stroke-opacity=".5" stroke-width="1"/></g>`;
+  const L=[[33,23,-38,1,"#6cbf7a"],[28,47,148,1.1,"#3f9a58"],[23,76,-12,1,"#6cbf7a"],[28,110,160,1.15,"#3f9a58"],[33,144,-42,1,"#6cbf7a"],[28,172,142,1.1,"#3f9a58"],[23,197,-8,1,"#6cbf7a"]];
+  const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="56" height="220" viewBox="0 0 56 220"><g${spiegel?' transform="translate(56 0) scale(-1 1)"':""}><path d="M28 0C46 30 10 60 28 110C46 160 10 190 28 220" fill="none" stroke="#4f9a5c" stroke-width="2.5" stroke-linecap="round"/>${L.map(l=>leaf(...l)).join("")}</g></svg>`;
+  return `url("data:image/svg+xml,${encodeURIComponent(svg)}")`;
+}
 function docView(){
   set(`${steps()}<div class="panel dok"><h2>Mein Sinn-Dokument</h2>
   <p class="muted small">${new Date().toLocaleDateString("de-DE")} · Das Dokument bleibt auf deinem Gerät. Speichere oder drucke es, wenn du es behalten möchtest.</p>
@@ -309,6 +321,7 @@ function docView(){
   <div class="row noprint"><button type="button" id="druck">Drucken / als PDF speichern</button><button class="alt" type="button" id="txt">Als Textdatei speichern</button><button class="alt" type="button" id="kop">Text kopieren</button></div>
   <div class="row noprint"><button class="alt" type="button" id="edit">Antworten ändern</button><button class="alt" type="button" id="neu">Ganz neu beginnen</button></div>
   <div id="hint" class="msg small noprint" hidden></div></div>`);
+  const dk=document.querySelector(".dok");dk.style.setProperty("--ranke-l",rankeUri(false));dk.style.setProperty("--ranke-r",rankeUri(true));
   const hint=t=>{const h=$("hint");h.hidden=false;h.textContent=t};
   $("druck").onclick=()=>{try{window.print()}catch(e){hint("Drucken ist hier nicht möglich. Nutze „Als Textdatei speichern“.")}};
   $("txt").onclick=()=>{try{const b=new Blob([docText()],{type:"text/plain;charset=utf-8"}),a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="sinn-suchen-sinn-finden.txt";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),2000);hint("Die Datei wurde erstellt.")}catch(e){hint("Speichern geht hier nicht. Nutze „Text kopieren“.")}};
@@ -321,7 +334,38 @@ function render(){
   ({intro,sort:sortView,zwischen,pick:pickView,vergleich:vergleichView,result:resultView,reflect:reflectView,doc:docView})[S.phase]();
   window.scrollTo({top:0});
 }
+/* Zugangscode: Inhalt liegt verschlüsselt (AES-256-GCM, Schlüssel aus dem Code per PBKDF2) in der JSON-Datei */
+const b64=x=>Uint8Array.from(atob(x),c=>c.charCodeAt(0));
+const normCode=x=>String(x||"").toUpperCase().replace(/[^A-Z0-9]/g,"").slice(0,8);
+async function entschluesseln(env,code){
+  const km=await crypto.subtle.importKey("raw",new TextEncoder().encode(code),"PBKDF2",false,["deriveKey"]);
+  const key=await crypto.subtle.deriveKey({name:"PBKDF2",salt:b64(env.salt),iterations:env.iter,hash:"SHA-256"},km,{name:"AES-GCM",length:256},false,["decrypt"]);
+  const pt=await crypto.subtle.decrypt({name:"AES-GCM",iv:b64(env.iv)},key,b64(env.ct));
+  return JSON.parse(new TextDecoder().decode(pt));
+}
+function gateView(env){
+  const ok=!!(window.crypto&&crypto.subtle);
+  set(`<div class="panel"><div class="hero"><h1>${esc(env.titel||"Übung")}</h1><p>Diese Übung ist mit einem Code geschützt.</p></div>
+  <p>Gib den 8-stelligen Code ein, den du von deiner Lehrkraft bekommst. Groß- und Kleinschreibung ist egal.</p>
+  ${ok?"":`<div class="fehler">Dieser Browser kann den Code hier nicht prüfen. Bitte öffne die Seite über den https-Link der Schule.</div>`}
+  <form id="gf" autocomplete="off" style="display:flex;flex-direction:column;gap:12px">
+   <label class="f">Code<input id="code" class="code" type="text" inputmode="text" autocapitalize="characters" autocomplete="off" autocorrect="off" spellcheck="false" maxlength="9" placeholder="XXXX-XXXX" aria-describedby="gerr" ${ok?"":"disabled"}></label>
+   <div id="gerr" role="alert"></div>
+   <div class="row"><button type="submit" id="gb" ${ok?"":"disabled"}>Freischalten</button></div></form>
+  <p class="muted small">Es wird nichts gespeichert oder gesendet. Der Code wird nur auf diesem Gerät geprüft.</p></div>`);
+  const inp=$("code");
+  inp.oninput=()=>{const n=normCode(inp.value);inp.value=n.length>4?n.slice(0,4)+"-"+n.slice(4):n;$("gerr").innerHTML=""};
+  $("gf").onsubmit=async e=>{
+    e.preventDefault();const c=normCode(inp.value);
+    if(c.length!==8){$("gerr").innerHTML=`<div class="fehler">Bitte alle 8 Zeichen eingeben.</div>`;return}
+    $("gb").disabled=true;$("gb").textContent="Prüfe …";
+    try{start(await entschluesseln(env,c))}
+    catch(err){$("gb").disabled=false;$("gb").textContent="Freischalten";$("gerr").innerHTML=`<div class="fehler">Dieser Code stimmt nicht. Bitte prüfe ihn und versuche es noch einmal.</div>`;inp.focus();inp.select()}
+  };
+  inp.focus();
+}
+function start(d){D=d;K={};DIM={};d.karten.forEach(k=>K[k.id]=k);d.dimensionen.forEach(x=>DIM[x.id]=x);S.phase="intro";render()}
 fetch("../inhalte/"+SET+".json").then(r=>{if(!r.ok)throw 0;return r.json()}).then(d=>{
-  D=d;d.karten.forEach(k=>K[k.id]=k);d.dimensionen.forEach(x=>DIM[x.id]=x);render();
+  if(d&&d.verschluesselt){gateView(d)}else{start(d)}
 }).catch(()=>{set(`<div class="panel"><p>Die Übung konnte nicht geladen werden.</p></div>`)});
 </script></body></html>
