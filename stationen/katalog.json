@@ -798,5 +798,18 @@
    "Musik",
    "Trompete"
   ]
+ },
+ {
+  "id": "resilienz-sinn-suchen-sinn-finden",
+  "titel": "Sinn suchen – Sinn finden",
+  "fach": "Resilienz",
+  "beschreibung": "Kartenset sortieren: Aus 26 Lebensbedeutungen die fünf wichtigsten finden und mit Fragen für den Alltag verbinden. Einzelübung, ohne Punkte.",
+  "datei": "sinn-karten.html?set=resilienz-sinn-suchen-sinn-finden",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Sinn im Alltag",
+  "pfad": [
+   "Resilienz"
+  ]
  }
 ]
