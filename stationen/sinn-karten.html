@@ -3,26 +3,31 @@
 <title>Sinn suchen – Sinn finden</title>
 <style>
 :root{--bg:#f2f5f7;--panel:#fff;--fg:#14222c;--muted:#566872;--line:#d3dde3;--pri:#0e5a77;--pri-ink:#fff;--pri-soft:#dcedf4;--ok:#1b7f4b;--ok-soft:#d9f0e2;--bad:#b3261e;--bad-soft:#f9dedc;
- --card1:#2f5560;--card2:#1f3a44;--card-ink:#fff;
+ --card1:#2f6f86;--card2:#1b3f52;--card-ink:#fff;--paper:#fffdf8;--paper-ink:#1a2a33;--hero1:#0e5a77;--hero2:#2a8f8a;
  --d1:#6a3fb5;--d2:#1b7f4b;--d3:#b3541e;--d4:#4d5d6b;--d5:#b8325f}
 @media (prefers-color-scheme:dark){:root{--bg:#0f171c;--panel:#17232a;--fg:#e6eff3;--muted:#9bb0ba;--line:#2a3b44;--pri:#5fb8d9;--pri-ink:#062029;--pri-soft:#173845;--ok:#6fd49b;--ok-soft:#163626;--bad:#ff9a92;--bad-soft:#40201e;
- --card1:#35606c;--card2:#244650;
+ --card1:#35788f;--card2:#21495c;--paper:#1e2d35;--paper-ink:#e6eff3;--hero1:#164b62;--hero2:#1f6f6c;
  --d1:#b9a0ee;--d2:#6fd49b;--d3:#f0a070;--d4:#a9b8c4;--d5:#f08cae;color-scheme:dark}}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding:14px max(14px,env(safe-area-inset-left,0px)) 40px}
+body{margin:0;background:radial-gradient(1200px 500px at 50% -120px,color-mix(in srgb,var(--pri) 14%,transparent),transparent),var(--bg);color:var(--fg);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding:14px max(14px,env(safe-area-inset-left,0px)) 40px}
 main{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
 h1{font-size:1.35rem;margin:0}h2{font-size:1.15rem;margin:0}h3{font-size:1rem;margin:0}
 p{margin:0}.muted{color:var(--muted)}.small{font-size:.88rem}
-.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:12px}
-button{font:600 .98rem inherit;font-family:inherit;border-radius:10px;border:1px solid var(--pri);background:var(--pri);color:var(--pri-ink);padding:10px 18px;cursor:pointer}
-button.alt{background:var(--panel);color:var(--fg);border-color:var(--line)}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:18px 20px;box-shadow:0 8px 28px rgba(10,40,60,.08);display:flex;flex-direction:column;gap:12px}
+button{font:600 .98rem inherit;font-family:inherit;border-radius:12px;border:1px solid var(--pri);background:linear-gradient(160deg,var(--pri),color-mix(in srgb,var(--pri) 72%,#000));color:var(--pri-ink);padding:11px 20px;cursor:pointer;box-shadow:0 2px 8px color-mix(in srgb,var(--pri) 35%,transparent);transition:transform .12s,box-shadow .12s}
+button:hover:not(:disabled){transform:translateY(-1px)}
+button.alt{background:var(--panel);color:var(--fg);border-color:var(--line);box-shadow:none}
 button:disabled{opacity:.45;cursor:default}
 :focus-visible{outline:3px solid var(--pri);outline-offset:2px}
 .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
 .row.end{justify-content:flex-end}.grow{flex:1}
 .steps{display:flex;gap:6px;flex-wrap:wrap}
-.steps span{font-size:.78rem;font-weight:700;padding:3px 10px;border-radius:99px;background:var(--line);color:var(--muted)}
-.steps span.on{background:var(--pri);color:var(--pri-ink)}
+.steps span{font-size:.78rem;font-weight:700;padding:4px 12px;border-radius:99px;background:var(--line);color:var(--muted)}
+.steps span.on{background:var(--pri);color:var(--pri-ink);box-shadow:0 2px 8px color-mix(in srgb,var(--pri) 40%,transparent)}
+.hero{margin:-18px -20px 4px;padding:26px 22px 22px;border-radius:20px 20px 0 0;color:#fff;background:radial-gradient(circle at 85% 20%,rgba(255,255,255,.22),transparent 40%),linear-gradient(135deg,var(--hero1),var(--hero2))}
+.hero h1{font-size:1.6rem;line-height:1.2}.hero p{opacity:.92;margin-top:6px}
+.hero .fan{display:flex;gap:6px;margin-top:14px}.hero .fan i{width:34px;height:48px;border-radius:7px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);transform:rotate(var(--r))}
+.num{display:inline-flex;width:24px;height:24px;border-radius:50%;background:var(--pri);color:var(--pri-ink);font-weight:700;font-size:.8rem;align-items:center;justify-content:center;margin-right:8px;flex:none}
 .bar{height:8px;background:var(--line);border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;background:var(--pri);transition:width .2s}
 .karte{border-radius:18px;background:linear-gradient(150deg,var(--card1),var(--card2));color:var(--card-ink);padding:28px 24px;min-height:200px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;font-size:1.32rem;line-height:1.4;box-shadow:0 6px 18px rgba(0,0,0,.18)}
 .karte small{display:block;margin-top:14px;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;opacity:.75}
@@ -50,18 +55,52 @@ textarea{font:1rem/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;back
 .dok h2{font-size:1.3rem}.dok .blk{break-inside:avoid;border-top:1px solid var(--line);padding-top:10px;display:flex;flex-direction:column;gap:6px}
 .dok .a{white-space:pre-wrap;border-left:3px solid var(--line);padding-left:10px}
 .dok .leer{color:var(--muted);font-style:italic}
+.wiss{border-radius:16px;padding:16px 18px;background:color-mix(in srgb,var(--pri) 8%,var(--panel));border:1px solid var(--line);display:flex;flex-direction:column;gap:10px}
+.wiss .kick{font-size:.76rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--pri)}
+.wiss h2{font-size:1.25rem}
+.pillars{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.pillars div{background:var(--paper);color:var(--paper-ink);border:1px solid var(--line);border-radius:14px;padding:10px 12px;font-size:.92rem;line-height:1.35}
+.pillars b{display:block;font-size:1rem;margin-bottom:2px}
+.pillars .ic{font-size:1.3rem;display:block;margin-bottom:2px}
+.quelle{display:flex;flex-direction:column;gap:6px}
+.quelle div{display:flex;gap:8px;align-items:baseline;font-size:.92rem;flex-wrap:wrap}
+/* Aufdecken (Phase 1) */
+.kgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px}
+.kk{position:relative;min-height:215px;border-radius:16px;display:flex;flex-direction:column;overflow:hidden}
+.kk.back{cursor:pointer;color:#fff;border:2px solid rgba(255,255,255,.28);align-items:center;justify-content:center;gap:6px;padding:10px;
+ background:radial-gradient(circle at 22% 18%,rgba(255,255,255,.22),transparent 42%),radial-gradient(circle at 82% 88%,rgba(255,255,255,.14),transparent 40%),repeating-linear-gradient(45deg,rgba(255,255,255,.05) 0 8px,transparent 8px 16px),linear-gradient(150deg,var(--card1),var(--card2));box-shadow:0 6px 16px rgba(10,40,60,.22)}
+.kk.back:hover{transform:translateY(-3px) rotate(-.6deg)}
+.kk.back .bn{font-size:2.3rem;font-weight:800;line-height:1;text-shadow:0 2px 6px rgba(0,0,0,.25)}
+.kk.back .bs{font-size:1.4rem;opacity:.85}
+.kk.back .bh{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;opacity:.8}
+.kk.front{background:var(--paper);color:var(--paper-ink);border:2px solid var(--line);padding:12px;gap:10px;box-shadow:0 6px 16px rgba(10,40,60,.12)}
+.kk.front .tx{flex:1;font-size:1rem;line-height:1.4;display:flex;align-items:center}
+.kk.front .dec{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.kk.front .dec button{padding:7px 0;font-size:1.05rem;background:var(--bg);color:var(--fg);border:2px solid var(--line);box-shadow:none;border-radius:10px}
+.kk.front .dec button[aria-pressed="true"].no{background:var(--bad-soft);border-color:var(--bad);color:var(--bad)}
+.kk.front .dec button[aria-pressed="true"].un{background:var(--line);border-color:var(--muted)}
+.kk.front .dec button[aria-pressed="true"].ja{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.kk.s-yes{border-color:var(--ok);box-shadow:0 0 0 3px color-mix(in srgb,var(--ok) 25%,transparent),0 6px 16px rgba(10,40,60,.12)}
+.kk.s-un{border-color:var(--muted)}
+.kk.s-no{opacity:.55}
+.kk.fresh{animation:flipin .45s ease-out}
+@keyframes flipin{from{transform:perspective(600px) rotateY(90deg)}to{transform:perspective(600px) rotateY(0)}}
+@media (prefers-reduced-motion:reduce){.kk.fresh{animation:none}button,.kk.back{transition:none}}
+.legend{display:flex;gap:8px;flex-wrap:wrap;font-size:.85rem}
+.legend span{border-radius:99px;padding:3px 12px;background:var(--bg);border:1px solid var(--line);font-weight:600}
+.legend .ja{color:var(--ok);border-color:var(--ok)}.legend .no{color:var(--bad);border-color:var(--bad)}
 /* Vergleich */
 .vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
-.vk{display:flex;flex-direction:column;gap:8px;justify-content:space-between;text-align:left;min-height:150px;border-radius:14px;background:linear-gradient(150deg,var(--card1),var(--card2));color:var(--card-ink);border:2px solid transparent;padding:14px;font-weight:500;font-size:1rem;line-height:1.35;box-shadow:0 4px 12px rgba(0,0,0,.15)}
-.vk:hover:not(:disabled){border-color:var(--bad)}
-.vk:disabled{opacity:1;cursor:default}
-.vk .vh{font-size:.74rem;opacity:.7;text-transform:uppercase;letter-spacing:.05em}
+.vk{display:flex;flex-direction:column;gap:10px;justify-content:space-between;align-items:flex-start;text-align:left;min-height:170px;border-radius:16px;background:var(--paper);color:var(--paper-ink);border:2px solid var(--line);border-top:7px solid var(--c);padding:12px 14px;font-weight:500;font-size:1rem;line-height:1.4;box-shadow:0 6px 16px rgba(10,40,60,.12)}
+.vk:hover:not(:disabled){border-color:var(--bad);border-top-color:var(--c);transform:translateY(-2px)}
+.vk:disabled{opacity:1;cursor:default;transform:none}
+.vk .vh{font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
 .vk .vt{flex:1}
 .chipwrap{display:block}
 .vout{display:flex;flex-direction:column;gap:8px}
-.vo{text-align:left;background:var(--panel);color:var(--muted);border:2px dashed var(--line);border-radius:12px;padding:10px 12px;font-weight:500;font-size:.92rem;display:flex;flex-direction:column;gap:4px}
+.vo{text-align:left;background:var(--panel);color:var(--muted);border:2px dashed var(--line);border-radius:12px;padding:10px 12px;font-weight:500;font-size:.92rem;display:flex;flex-direction:column;gap:4px;box-shadow:none}
 .vo:hover{border-color:var(--pri);color:var(--fg)}
-@media (max-width:520px){.vgrid{grid-template-columns:1fr 1fr;gap:8px}.vk{min-height:130px;padding:10px;font-size:.92rem}.karte{font-size:1.15rem;padding:22px 16px}.wahl button{font-size:.85rem}}
+@media (max-width:520px){.vgrid,.kgrid{grid-template-columns:1fr 1fr;gap:8px}.vk{min-height:140px;padding:10px;font-size:.9rem}.kk{min-height:200px}.kk.front .tx{font-size:.9rem}.hero h1{font-size:1.35rem}}
 @media print{body{background:#fff;color:#000;padding:0}.noprint{display:none!important}.panel,.sel{border-color:#999;box-shadow:none}.chip{color:#fff;background:#444;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
 </style></head><body>
 <main id="app" aria-live="polite"><p class="muted">Lädt …</p></main>
@@ -75,7 +114,7 @@ let D=null,K={},DIM={};
 const S={phase:"intro",round:0,deck:[],i:0,piles:{yes:[],no:[],unsure:[]},hist:[],score:{},chosen:[],pool:[],need:0,mode:"",sel:new Set(),zw:null,antw:{},cur:0};
 
 /* Schrittanzeige */
-const SCHRITTE=[["sort","1 Sortieren"],["pick","2 Auswählen"],["result","3 Meine fünf"],["reflect","4 Fragen"],["doc","5 Mitnehmen"]];
+const SCHRITTE=[["sort","1 Aufdecken"],["pick","2 Auswählen"],["result","3 Meine fünf"],["reflect","4 Fragen"],["doc","5 Mitnehmen"]];
 function steps(){
   const m={intro:-1,sort:0,zwischen:0,vergleich:1,pick:1,result:2,reflect:3,doc:4}[S.phase];
   return `<div class="steps noprint" aria-label="Schritte">${SCHRITTE.map((s,i)=>`<span class="${i===m?"on":""}">${s[1]}</span>`).join("")}</div>`;
@@ -85,11 +124,25 @@ const set=h=>{$("app").innerHTML=h};
 
 /* 0 Einstieg */
 function intro(){
-  set(`<div class="panel"><h1>${esc(D.titel)}</h1>
+  set(`<div class="panel"><div class="hero"><h1>${esc(D.titel)}</h1><p>Finde heraus, was dir im Alltag Sinn gibt.</p><div class="fan" aria-hidden="true"><i style="--r:-12deg"></i><i style="--r:-5deg"></i><i style="--r:2deg"></i><i style="--r:9deg"></i><i style="--r:16deg"></i></div></div>
+  <section class="wiss" aria-labelledby="wt"><span class="kick">Zum Einstieg</span><h2 id="wt">Was bedeutet eigentlich „Sinn“?</h2>
+   <p>Die Psychologin <b>Prof. Dr. Tatjana Schnell</b> (Universität Innsbruck) erforscht seit vielen Jahren, wie Menschen Sinn in ihrem Leben erleben. Ihr Kernergebnis: <b>Sinn ist kein großes Rätsel, das man einmal löst.</b> Er entsteht im Alltag, in dem, was wir tun und was uns wichtig ist. Und er sieht bei jedem Menschen anders aus.</p>
+   <p>Ein Leben fühlt sich nach Schnell dann sinnvoll an, wenn vier Dinge zusammenkommen:</p>
+   <div class="pillars">
+    <div><span class="ic" aria-hidden="true">🧩</span><b>Zusammenhang</b>Mein Leben ergibt ein stimmiges Ganzes. Was ich tue, passt zu dem, was mir wichtig ist.</div>
+    <div><span class="ic" aria-hidden="true">⭐</span><b>Bedeutsamkeit</b>Was ich tue, zählt. Es macht für mich oder andere einen Unterschied.</div>
+    <div><span class="ic" aria-hidden="true">🧭</span><b>Richtung</b>Ich habe Ziele und Werte, an denen ich mich ausrichte.</div>
+    <div><span class="ic" aria-hidden="true">🤝</span><b>Zugehörigkeit</b>Ich gehöre dazu. Ich bin mit Menschen oder etwas Größerem verbunden.</div>
+   </div>
+   <p>Woraus Menschen Sinn schöpfen, ist dabei sehr verschieden. Schnell nennt das <b>Sinnquellen</b> und ordnet sie in fünf Bereiche:</p>
+   <div class="quelle">${D.dimensionen.map(x=>`<div>${chip(x.id)}<span>${esc(x.kurz)}</span></div>`).join("")}</div>
+   <p class="small muted">Kein Bereich ist besser als ein anderer. Gesund ist oft, auf mehreren Säulen zu stehen. Wenn eine wegbricht, tragen die anderen weiter. Genau das schauen wir uns jetzt für dich an. Zusammenfassung in eigenen Worten nach Schnell, T. (2016/2020), Forschung zu Lebensbedeutungen und Lebenssinn.</p>
+  </section>
+  <h2>So läuft die Übung ab</h2>
   <p>${esc(D.anleitung)}</p>
-  <ol style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px">
-   <li><b>Sortieren:</b> Du liest ${D.karten.length} Karten nacheinander und legst jede auf einen von drei Stapeln: wichtig für mich, nicht wichtig für mich oder unklar.</li>
-   <li><b>Vergleichen:</b> Die Karten, die dir wichtig sind, legst du nebeneinander. Du wägst ab und sortierst aus, bis genau ${ZIEL} Karten übrig sind.</li>
+  <ol style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px">
+   <li><b>Aufdecken:</b> ${D.karten.length} Karten liegen verdeckt vor dir. Du deckst sie auf, liest sie und entscheidest bei jeder: wichtig für mich, nicht wichtig oder unklar.</li>
+   <li><b>Vergleichen:</b> Die Karten, die dir wichtig sind, liegen nebeneinander. Du fragst dich: Was brauche ich gerade besonders? Alles andere legst du ab, bis genau ${ZIEL} Karten übrig sind.</li>
    <li><b>Fragen:</b> Zu jeder der ${ZIEL} Karten beantwortest du Fragen, wie du das im Alltag leben kannst.</li>
   </ol>
   <div class="msg small">Es gibt kein Richtig und kein Falsch. Das ist eine Reflexion über dich, kein Test. Nichts wird gespeichert oder gesendet. Was du schreibst, bleibt auf diesem Gerät und ist weg, wenn du die Seite schließt. Wenn du magst, besprich die Ergebnisse mit einer vertrauten Person.</div>
@@ -98,40 +151,49 @@ function intro(){
   $("go").onclick=()=>startRound(D.karten.map(k=>k.id),1);
 }
 
-/* 1 Sortieren */
-function startRound(ids,r){S.round=r;S.deck=shuffle(ids);S.i=0;S.piles={yes:[],no:[],unsure:[]};S.hist=[];S.phase="sort";render()}
-function labels(){
-  return S.round===1
-   ?{yes:["Wichtig für mich","✔"],un:["Unklar","?"],no:["Nicht wichtig","✖"],frage:"Ist diese Aussage wichtig für dein Leben?"}
-   :{yes:["Am wichtigsten","★"],un:["Schwer zu sagen","?"],no:["Weniger wichtig","–"],frage:"Welche dieser Karten sind dir von allen am wichtigsten?"};
+/* 1 Aufdecken und sortieren */
+function startRound(ids,r){S.round=r;S.ids=shuffle(ids);S.cards={};S.open=new Set();S.fresh=null;S.piles={yes:[],no:[],unsure:[]};S.phase="sort";render()}
+function kkHTML(id,i){
+  const st=S.cards[id],c=st?"s-"+({yes:"yes",unsure:"un",no:"no"}[st]):"";
+  if(!S.open.has(id))return `<button type="button" class="kk back" data-open="${id}" aria-label="Karte ${i+1} aufdecken"><span class="bs" aria-hidden="true">✦</span><span class="bn">${i+1}</span><span class="bh">Aufdecken</span></button>`;
+  const f=S.fresh===id?" fresh":"";
+  return `<div class="kk front ${c}${f}" role="group" aria-label="Karte ${i+1}"><div class="tx">${esc(K[id].text)}</div><div class="dec">
+   <button type="button" class="no" data-d="no" data-id="${id}" aria-pressed="${st==="no"}" aria-label="Nicht wichtig">✖</button>
+   <button type="button" class="un" data-d="unsure" data-id="${id}" aria-pressed="${st==="unsure"}" aria-label="Unklar">?</button>
+   <button type="button" class="ja" data-d="yes" data-id="${id}" aria-pressed="${st==="yes"}" aria-label="Wichtig für mich">✔</button></div></div>`;
 }
 function sortView(){
-  const id=S.deck[S.i],k=K[id],L=labels(),n=S.deck.length;
   set(`${steps()}<div class="panel">
-  <div class="row"><b>${S.round===1?"Alle Karten":"Runde "+S.round+": engere Auswahl"}</b><span class="muted small grow" style="text-align:right">Karte ${S.i+1} von ${n}</span></div>
-  <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="${n}" aria-valuenow="${S.i}"><i style="width:${S.i/n*100}%"></i></div>
-  <p class="muted small">${esc(L.frage)}</p>
-  <div class="karte" role="group" aria-label="Karte ${S.i+1}">${esc(k.text)}</div>
-  <div class="wahl">
-   <button class="no" type="button" data-a="no"><b aria-hidden="true">${L.no[1]}</b>${L.no[0]}</button>
-   <button class="un" type="button" data-a="unsure"><b aria-hidden="true">${L.un[1]}</b>${L.un[0]}</button>
-   <button class="ja" type="button" data-a="yes"><b aria-hidden="true">${L.yes[1]}</b>${L.yes[0]}</button>
-  </div>
-  <div class="row"><div class="stapel grow"><span>${L.no[0]}: ${S.piles.no.length}</span><span>${L.un[0]}: ${S.piles.unsure.length}</span><span>${L.yes[0]}: ${S.piles.yes.length}</span></div>
-  <button class="alt" type="button" id="undo" ${S.hist.length?"":"disabled"}>Zurück</button></div>
-  <p class="muted small">Tastatur: Pfeil links, unten, rechts. Rücktaste für Zurück.</p></div>`);
-  document.querySelectorAll("[data-a]").forEach(b=>b.onclick=()=>answer(b.dataset.a));
-  $("undo").onclick=undo;
+  <h2>Deck die Karten auf</h2>
+  <p>Tippe eine Karte an, lies sie und entscheide: <b>Ist das wichtig für mein Leben?</b> Du kannst viele Karten gleichzeitig offen lassen und sie nebeneinander lesen. Deine Entscheidung kannst du jederzeit ändern.</p>
+  <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="${S.ids.length}" id="pbar"><i></i></div>
+  <div class="row"><div class="legend grow" id="leg"></div><button class="alt" type="button" id="alle">Alle aufdecken</button></div>
+  <div class="kgrid" id="kgrid"></div>
+  <div class="row"><span class="muted grow small" id="rest"></span><button type="button" id="ok">Weiter</button></div></div>`);
+  $("alle").onclick=()=>{S.ids.forEach(id=>S.open.add(id));S.fresh=null;gridUpdate()};
+  $("kgrid").onclick=e=>{
+    const d=e.target.closest("[data-d]"),o=e.target.closest("[data-open]");
+    if(d){const id=d.dataset.id;if(S.cards[id]===d.dataset.d)delete S.cards[id];else S.cards[id]=d.dataset.d;S.fresh=null}
+    else if(o){S.open.add(o.dataset.open);S.fresh=o.dataset.open}else return;
+    gridUpdate();
+  };
+  $("ok").onclick=()=>{S.piles={yes:[],unsure:[],no:[]};S.ids.forEach(id=>S.piles[S.cards[id]].push(id));endRound()};
+  gridUpdate();
 }
-function answer(a){S.piles[a].push(S.deck[S.i]);S.hist.push(a);S.i++;S.i>=S.deck.length?endRound():render()}
-function undo(){if(!S.hist.length)return;
-  if(S.phase==="zwischen"){S.piles.yes.forEach(id=>S.score[id]-=10);S.piles.unsure.forEach(id=>S.score[id]-=1)}
-  const a=S.hist.pop();S.piles[a].pop();S.i--;if(S.phase!=="sort")S.phase="sort";render()}
-document.addEventListener("keydown",e=>{
-  if(S.phase!=="sort"||/^(TEXTAREA|INPUT)$/.test(e.target.tagName))return;
-  const m={ArrowLeft:"no",ArrowDown:"unsure",ArrowRight:"yes"}[e.key];
-  if(m){e.preventDefault();answer(m)}else if(e.key==="Backspace"){e.preventDefault();undo()}
-});
+function gridUpdate(){
+  const n=S.ids.length,done=S.ids.filter(id=>S.cards[id]).length,c=a=>S.ids.filter(id=>S.cards[id]===a).length;
+  const y=document.activeElement&&document.activeElement.dataset?{d:document.activeElement.dataset.d,id:document.activeElement.dataset.id,o:document.activeElement.dataset.open}:{};
+  $("kgrid").innerHTML=S.ids.map(kkHTML).join("");
+  const foc=y.d?document.querySelector(`[data-d="${y.d}"][data-id="${y.id}"]`):null;if(foc)foc.focus();
+  const bar=$("pbar");bar.setAttribute("aria-valuenow",done);bar.firstElementChild.style.width=done/n*100+"%";
+  $("leg").innerHTML=`<span class="ja">✔ ${c("yes")}</span><span>? ${c("unsure")}</span><span class="no">✖ ${c("no")}</span>`;
+  $("rest").textContent=done===n?"Alle Karten sind sortiert.":`${done} von ${n} entschieden, noch ${n-done} offen.`;
+  $("ok").disabled=done!==n;
+}
+function backToSort(){
+  S.piles.yes.forEach(id=>S.score[id]-=10);S.piles.unsure.forEach(id=>S.score[id]-=1);
+  S.phase="sort";render();
+}
 
 /* Runde auswerten: weiter eingrenzen, auffüllen oder fertig */
 function endRound(){
@@ -140,7 +202,7 @@ function endRound(){
   const cand=S.piles.yes.slice(),n=cand.length,r=S.round;
   let msg,weiter;
   if(n>ZIEL){
-    msg=`${n} Karten sind dir wichtig. Das sind mehr als ${ZIEL}. Im nächsten Schritt liegen alle nebeneinander. Vergleiche sie und sortiere die aus, die dir weniger wichtig sind, bis ${ZIEL} übrig sind.`;
+    msg=`${n} Karten sind dir wichtig. Das sind mehr als ${ZIEL}. Im nächsten Schritt liegen sie nebeneinander. Frag dich: Was brauche ich gerade besonders? Alles andere legst du ab, bis ${ZIEL} übrig sind.`;
     weiter=()=>{S.cmp={keep:cand.slice(),out:[]};S.phase="vergleich";render()};
   }else if(n===ZIEL){
     msg=`Genau ${ZIEL} Karten sind übrig geblieben. Das sind deine fünf.`;
@@ -155,27 +217,27 @@ function endRound(){
   S.zw={msg,weiter,counts:{yes:n,un:S.piles.unsure.length,no:S.piles.no.length}};S.phase="zwischen";render();
 }
 function zwischen(){
-  const z=S.zw,L=labels();
+  const z=S.zw,L={yes:["Wichtig für mich"],un:["Unklar"],no:["Nicht wichtig"]};
   set(`${steps()}<div class="panel"><h2>Zwischenstand</h2>
   <div class="stapel"><span>${L.yes[0]}: ${z.counts.yes}</span><span>${L.un[0]}: ${z.counts.un}</span><span>${L.no[0]}: ${z.counts.no}</span></div>
   <p>${esc(z.msg)}</p>
-  <div class="row"><button class="alt" type="button" id="back">Zurück zur letzten Karte</button><button type="button" id="weiter">Weiter</button></div></div>`);
-  $("back").onclick=undo;$("weiter").onclick=z.weiter;
+  <div class="row"><button class="alt" type="button" id="back">Zurück zu den Karten</button><button type="button" id="weiter">Weiter</button></div></div>`);
+  $("back").onclick=backToSort;$("weiter").onclick=z.weiter;
 }
 
 /* 2a Vergleichen: Karten liegen nebeneinander, Unwichtigeres wird aussortiert */
 function vergleichView(){
   const c=S.cmp,n=c.keep.length,fertig=n===ZIEL;
-  set(`${steps()}<div class="panel"><h2>Vergleiche deine Karten</h2>
-  <p>Diese Karten sind dir wichtig. Lies sie nebeneinander und frag dich: <b>Welche ist mir weniger wichtig als die anderen?</b> Tippe sie an, dann wird sie aussortiert. Du suchst die ${ZIEL} Karten, auf die du am wenigsten verzichten kannst.</p>
-  <div class="row"><span class="grow"><b>${n}</b> Karten liegen vor dir${fertig?"":`, noch <b>${n-ZIEL}</b> aussortieren`}</span></div>
-  <div class="vgrid">${c.keep.map(id=>`<button type="button" class="vk" data-k="${id}" aria-label="Aussortieren: ${esc(K[id].text)}" ${fertig?"disabled":""}><span class="chipwrap">${chip(K[id].dim)}</span><span class="vt">${esc(K[id].text)}</span>${fertig?"":`<span class="vh">tippen zum Aussortieren</span>`}</button>`).join("")}</div>
-  ${fertig?`<div class="msg">Du hast jetzt genau ${ZIEL} Karten. Wenn du noch tauschen möchtest, hol unten eine Karte zurück und sortiere dafür eine andere aus.</div>`:""}
-  ${c.out.length?`<h3>Aussortiert</h3><p class="muted small">Tippe eine Karte an, um sie zurückzulegen.</p><div class="vout">${c.out.map(id=>`<button type="button" class="vo" data-o="${id}" ${n>=ZIEL&&fertig?"":""}><span class="chipwrap">${chip(K[id].dim)}</span>${esc(K[id].text)}</button>`).join("")}</div>`:""}
-  <div class="row"><button class="alt" type="button" id="zur">Zurück zum Sortieren</button><span class="grow"></span><button type="button" id="ok" ${fertig?"":"disabled"}>Weiter</button></div></div>`);
+  set(`${steps()}<div class="panel"><h2>Was brauchst du gerade besonders?</h2>
+  <p>Diese Karten sind dir wichtig. Lies sie nebeneinander und frag dich: <b>Was brauche ich in meinem Leben im Moment am dringendsten?</b> Tippe auf eine Karte, die du gerade weniger brauchst, und leg sie ab. Am Ende bleiben ${ZIEL} Karten.</p>
+  <div class="row"><span class="grow"><b>${n}</b> Karten liegen vor dir${fertig?"":`, noch <b>${n-ZIEL}</b> ablegen`}</span></div><div class="bar" aria-hidden="true"><i style="width:${Math.min(100,ZIEL/n*100)}%"></i></div>
+  <div class="vgrid">${c.keep.map(id=>`<button type="button" class="vk" style="--c:var(--${K[id].dim})" data-k="${id}" aria-label="Ablegen: ${esc(K[id].text)}" ${fertig?"disabled":""}><span class="chipwrap">${chip(K[id].dim)}</span><span class="vt">${esc(K[id].text)}</span>${fertig?"":`<span class="vh">brauche ich gerade weniger</span>`}</button>`).join("")}</div>
+  ${fertig?`<div class="msg">Du hast jetzt genau ${ZIEL} Karten. Das sind die Themen, die du gerade am meisten brauchst. Wenn du noch tauschen möchtest, hol unten eine Karte zurück und leg dafür eine andere ab.</div>`:""}
+  ${c.out.length?`<h3>Abgelegt</h3><p class="muted small">Tippe eine Karte an, um sie zurückzuholen.</p><div class="vout">${c.out.map(id=>`<button type="button" class="vo" data-o="${id}" ${n>=ZIEL&&fertig?"":""}><span class="chipwrap">${chip(K[id].dim)}</span>${esc(K[id].text)}</button>`).join("")}</div>`:""}
+  <div class="row"><button class="alt" type="button" id="zur">Zurück zu den Karten</button><span class="grow"></span><button type="button" id="ok" ${fertig?"":"disabled"}>Weiter</button></div></div>`);
   document.querySelectorAll("[data-k]").forEach(b=>b.onclick=()=>{if(c.keep.length<=ZIEL)return;const id=b.dataset.k;c.keep=c.keep.filter(x=>x!==id);c.out.push(id);render()});
   document.querySelectorAll("[data-o]").forEach(b=>b.onclick=()=>{const id=b.dataset.o;c.out=c.out.filter(x=>x!==id);c.keep.push(id);render()});
-  $("zur").onclick=()=>{S.phase="zwischen";undo()};
+  $("zur").onclick=backToSort;
   $("ok").onclick=()=>{S.chosen=c.keep.slice();S.phase="result";render()};
 }
 
