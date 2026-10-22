@@ -1,0 +1,249 @@
+{
+ "titel": "Sinn suchen – Sinn finden",
+ "anleitung": "Sortiere Karten mit Aussagen über das, was im Leben Sinn stiften kann. Am Ende hast du fünf Themen, die dir wichtig sind, und Fragen, wie du sie im Alltag leben kannst.",
+ "quelle": "Idee und Ablauf angelehnt an die LeBe-Kartenmethode (Lebensbedeutungen und Lebenssinn) von Tatjana Schnell. Die Kartentexte und Fragen sind hier eigens formuliert.",
+ "dimensionen": [
+  {
+   "id": "d1",
+   "name": "Eine höhere Macht",
+   "kurz": "Ausrichtung auf etwas, das über die sichtbare Welt hinausgeht"
+  },
+  {
+   "id": "d2",
+   "name": "Das größere Ganze",
+   "kurz": "Engagement für etwas jenseits des eigenen Vorteils"
+  },
+  {
+   "id": "d3",
+   "name": "Selbstverwirklichung",
+   "kurz": "Sich selbst entfalten, wachsen und selbst bestimmen"
+  },
+  {
+   "id": "d4",
+   "name": "Struktur und Sicherheit",
+   "kurz": "Halt durch Bewährtes, klare Werte und Vernunft"
+  },
+  {
+   "id": "d5",
+   "name": "Wir- und Wohlgefühl",
+   "kurz": "Nähe, Fürsorge, Freude und innere Ausgeglichenheit"
+  }
+ ],
+ "karten": [
+  {
+   "id": "religion",
+   "thema": "Religion",
+   "dim": "d1",
+   "text": "Mein Glaube trägt mich, auch wenn es schwierig wird.",
+   "kurz": "Religiöses Leben und die Beziehung zu Gott"
+  },
+  {
+   "id": "spiritualitaet",
+   "thema": "Spiritualität",
+   "dim": "d1",
+   "text": "Ich spüre manchmal, dass es mehr gibt als das, was man sehen kann.",
+   "kurz": "Ein persönlicher Zugang zu etwas Unsichtbarem oder Heiligem"
+  },
+  {
+   "id": "engagement",
+   "thema": "Soziales Engagement",
+   "dim": "d2",
+   "text": "Ich übernehme gern Verantwortung für etwas, das größer ist als ich selbst.",
+   "kurz": "Sich für das Gemeinwohl oder für Menschenrechte einsetzen"
+  },
+  {
+   "id": "natur",
+   "thema": "Naturverbundenheit",
+   "dim": "d2",
+   "text": "In der Natur fühle ich mich zu Hause und tanke auf.",
+   "kurz": "Einklang und Verbundenheit mit der Natur"
+  },
+  {
+   "id": "selbsterkenntnis",
+   "thema": "Selbsterkenntnis",
+   "dim": "d2",
+   "text": "Ich nehme mir Zeit, in mich hineinzuhorchen und mich besser kennenzulernen.",
+   "kurz": "Sich mit dem eigenen „wahren“ Selbst auseinandersetzen"
+  },
+  {
+   "id": "gesundheit",
+   "thema": "Gesundheit",
+   "dim": "d2",
+   "text": "Auf meinen Körper und meine Gesundheit achte ich bewusst.",
+   "kurz": "Gesundheit bewahren und fördern"
+  },
+  {
+   "id": "spuren",
+   "thema": "Spuren hinterlassen",
+   "dim": "d2",
+   "text": "Ich möchte etwas schaffen, das mich überdauert.",
+   "kurz": "Dinge tun oder schaffen, die bleibenden Wert haben"
+  },
+  {
+   "id": "herausforderung",
+   "thema": "Herausforderung",
+   "dim": "d3",
+   "text": "Ich wachse an Aufgaben, bei denen ich nicht sicher bin, ob ich sie schaffe.",
+   "kurz": "Das Neue, die Abwechslung und das Risiko suchen"
+  },
+  {
+   "id": "einzigartigkeit",
+   "thema": "Einzigartigkeit",
+   "dim": "d3",
+   "text": "Ich will meinen ganz eigenen Weg gehen und mich nicht verbiegen.",
+   "kurz": "Individualität leben und eigene Möglichkeiten ausschöpfen"
+  },
+  {
+   "id": "macht",
+   "thema": "Macht",
+   "dim": "d3",
+   "text": "Ich möchte Einfluss haben und Entscheidungen mitgestalten.",
+   "kurz": "Durchsetzungskraft, Einfluss und Dominanz"
+  },
+  {
+   "id": "entwicklung",
+   "thema": "Entwicklung",
+   "dim": "d3",
+   "text": "Ich setze mir Ziele und arbeite Schritt für Schritt darauf hin.",
+   "kurz": "Zielstrebigkeit und Wachstum"
+  },
+  {
+   "id": "leistung",
+   "thema": "Leistung",
+   "dim": "d3",
+   "text": "Es macht mich stolz, wenn ich etwas richtig gut kann.",
+   "kurz": "Kompetenz und Erfolg"
+  },
+  {
+   "id": "freiheit",
+   "thema": "Freiheit",
+   "dim": "d3",
+   "text": "Ich will selbst entscheiden, wie ich meine Zeit und mein Leben gestalte.",
+   "kurz": "Ungebundenheit und Unabhängigkeit"
+  },
+  {
+   "id": "wissen",
+   "thema": "Wissen",
+   "dim": "d3",
+   "text": "Ich will die Dinge verstehen und lerne gern dazu.",
+   "kurz": "Hinterfragen, sich informieren und verstehen"
+  },
+  {
+   "id": "kreativitaet",
+   "thema": "Kreativität",
+   "dim": "d3",
+   "text": "Wenn ich etwas Eigenes erschaffe oder gestalte, blühe ich auf.",
+   "kurz": "Fantasie und schöpferisches Gestalten"
+  },
+  {
+   "id": "tradition",
+   "thema": "Tradition",
+   "dim": "d4",
+   "text": "Feste Gewohnheiten und Bräuche geben meinem Alltag Halt.",
+   "kurz": "Am Bewährten und Gewohnten festhalten"
+  },
+  {
+   "id": "bodenstaendigkeit",
+   "thema": "Bodenständigkeit",
+   "dim": "d4",
+   "text": "Ich bleibe lieber realistisch und kümmere mich um das, was praktisch nützt.",
+   "kurz": "Pragmatismus und Bezug zum Alltag"
+  },
+  {
+   "id": "moral",
+   "thema": "Moral",
+   "dim": "d4",
+   "text": "Mein Handeln richtet sich nach klaren Grundsätzen, was richtig und falsch ist.",
+   "kurz": "Sittlichkeit und klare Richtlinien"
+  },
+  {
+   "id": "vernunft",
+   "thema": "Vernunft",
+   "dim": "d4",
+   "text": "Bevor ich entscheide, wäge ich in Ruhe ab.",
+   "kurz": "Klugheit, Abwägung und Rationalität"
+  },
+  {
+   "id": "gemeinschaft",
+   "thema": "Gemeinschaft",
+   "dim": "d5",
+   "text": "Freundschaften und Menschen, auf die ich zählen kann, sind mir am wichtigsten.",
+   "kurz": "Menschliche Nähe und Freundschaft"
+  },
+  {
+   "id": "spass",
+   "thema": "Spaß",
+   "dim": "d5",
+   "text": "Lachen und Leichtigkeit gehören für mich fest zu einem guten Leben.",
+   "kurz": "Vergnügen und Humor"
+  },
+  {
+   "id": "liebe",
+   "thema": "Liebe",
+   "dim": "d5",
+   "text": "Eine liebevolle Beziehung ist für mich ein zentraler Teil meines Lebens.",
+   "kurz": "Romantik und Intimität"
+  },
+  {
+   "id": "genuss",
+   "thema": "Genuss",
+   "dim": "d5",
+   "text": "Ich gönne mir bewusst Dinge, die mir guttun und die ich auskosten kann.",
+   "kurz": "Wohlgefühl und Genießen"
+  },
+  {
+   "id": "fuersorge",
+   "thema": "Fürsorge",
+   "dim": "d5",
+   "text": "Ich kümmere mich gern um andere und merke, wenn jemand Hilfe braucht.",
+   "kurz": "Fürsorglichkeit und Hilfsbereitschaft"
+  },
+  {
+   "id": "erleben",
+   "thema": "Bewusstes Erleben",
+   "dim": "d5",
+   "text": "Ich nehme kleine Momente im Alltag bewusst wahr.",
+   "kurz": "Achtsamkeit und Rituale"
+  },
+  {
+   "id": "harmonie",
+   "thema": "Harmonie",
+   "dim": "d5",
+   "text": "Ich brauche Ausgeglichenheit in mir und ein gutes Miteinander um mich herum.",
+   "kurz": "Ausgewogenheit und Gleichklang mit sich selbst und anderen"
+  }
+ ],
+ "fragen": [
+  {
+   "id": "f1",
+   "label": "Mein erster Gedanke",
+   "frage": "Was ist dir durch den Kopf gegangen, als du diese Karte ausgewählt hast?"
+  },
+  {
+   "id": "f2",
+   "label": "Was mir das bedeutet",
+   "frage": "Warum ist dir das wichtig? Was gibt es dir?"
+  },
+  {
+   "id": "f3",
+   "label": "Im Lauf der Zeit",
+   "frage": "Hat sich das in deinem Leben verändert? Wie war es früher, wie ist es heute?"
+  },
+  {
+   "id": "f4",
+   "label": "Heute im Alltag",
+   "frage": "Lebst du das im Moment so, wie du es dir wünschst? Oder steht dir etwas im Weg?"
+  },
+  {
+   "id": "f5",
+   "label": "Was sich ändern könnte",
+   "frage": "Was müsste sich ändern, damit das in deinem Leben mehr (oder auch weniger) Raum bekommt?"
+  },
+  {
+   "id": "f6",
+   "label": "Mein nächster Schritt",
+   "frage": "Welcher kleine, konkrete Schritt passt in diese Woche? Wann und wo setzt du ihn um?",
+   "extra": true
+  }
+ ]
+}

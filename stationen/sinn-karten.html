@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sinn suchen – Sinn finden</title>
+<style>
+:root{--bg:#f2f5f7;--panel:#fff;--fg:#14222c;--muted:#566872;--line:#d3dde3;--pri:#0e5a77;--pri-ink:#fff;--pri-soft:#dcedf4;--ok:#1b7f4b;--ok-soft:#d9f0e2;--bad:#b3261e;--bad-soft:#f9dedc;
+ --card1:#2f5560;--card2:#1f3a44;--card-ink:#fff;
+ --d1:#6a3fb5;--d2:#1b7f4b;--d3:#b3541e;--d4:#4d5d6b;--d5:#b8325f}
+@media (prefers-color-scheme:dark){:root{--bg:#0f171c;--panel:#17232a;--fg:#e6eff3;--muted:#9bb0ba;--line:#2a3b44;--pri:#5fb8d9;--pri-ink:#062029;--pri-soft:#173845;--ok:#6fd49b;--ok-soft:#163626;--bad:#ff9a92;--bad-soft:#40201e;
+ --card1:#35606c;--card2:#244650;
+ --d1:#b9a0ee;--d2:#6fd49b;--d3:#f0a070;--d4:#a9b8c4;--d5:#f08cae;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding:14px max(14px,env(safe-area-inset-left,0px)) 40px}
+main{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+h1{font-size:1.35rem;margin:0}h2{font-size:1.15rem;margin:0}h3{font-size:1rem;margin:0}
+p{margin:0}.muted{color:var(--muted)}.small{font-size:.88rem}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:12px}
+button{font:600 .98rem inherit;font-family:inherit;border-radius:10px;border:1px solid var(--pri);background:var(--pri);color:var(--pri-ink);padding:10px 18px;cursor:pointer}
+button.alt{background:var(--panel);color:var(--fg);border-color:var(--line)}
+button:disabled{opacity:.45;cursor:default}
+:focus-visible{outline:3px solid var(--pri);outline-offset:2px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.row.end{justify-content:flex-end}.grow{flex:1}
+.steps{display:flex;gap:6px;flex-wrap:wrap}
+.steps span{font-size:.78rem;font-weight:700;padding:3px 10px;border-radius:99px;background:var(--line);color:var(--muted)}
+.steps span.on{background:var(--pri);color:var(--pri-ink)}
+.bar{height:8px;background:var(--line);border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;background:var(--pri);transition:width .2s}
+.karte{border-radius:18px;background:linear-gradient(150deg,var(--card1),var(--card2));color:var(--card-ink);padding:28px 24px;min-height:200px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;font-size:1.32rem;line-height:1.4;box-shadow:0 6px 18px rgba(0,0,0,.18)}
+.karte small{display:block;margin-top:14px;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;opacity:.75}
+.wahl{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.wahl button{display:flex;flex-direction:column;gap:2px;align-items:center;padding:12px 8px;font-size:.95rem;background:var(--panel);color:var(--fg);border:2px solid var(--line)}
+.wahl button b{font-size:1.4rem;line-height:1}
+.wahl .no{border-color:var(--bad)}.wahl .un{border-color:var(--muted)}.wahl .ja{border-color:var(--ok)}
+.wahl button:hover{background:var(--pri-soft)}
+.stapel{display:flex;gap:8px;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+.stapel span{border:1px solid var(--line);border-radius:99px;padding:2px 10px;background:var(--panel)}
+.chip{display:inline-block;font-size:.76rem;font-weight:700;border-radius:99px;padding:2px 10px;color:var(--bg);background:var(--c,var(--muted))}
+.msg{padding:10px 14px;border-radius:10px;background:var(--pri-soft)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+.pick{text-align:left;background:var(--panel);color:var(--fg);border:2px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:6px;font-weight:500;font-size:.95rem}
+.pick[aria-pressed="true"]{border-color:var(--pri);background:var(--pri-soft);box-shadow:0 0 0 3px color-mix(in srgb,var(--pri) 25%,transparent)}
+.pick.fest{border-style:dashed;cursor:default}
+.sel{border-left:6px solid var(--c);border-radius:12px;background:var(--panel);border-top:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 14px;display:flex;flex-direction:column;gap:4px}
+.sel .t{font-size:1.02rem}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tabs button{background:var(--panel);color:var(--fg);border-color:var(--line);padding:6px 12px;font-size:.88rem}
+.tabs button[aria-pressed="true"]{background:var(--pri);color:var(--pri-ink);border-color:var(--pri)}
+label.f{display:flex;flex-direction:column;gap:4px;font-weight:700;font-size:.95rem}
+label.f span.q{font-weight:500;color:var(--muted);font-size:.9rem}
+textarea{font:1rem/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-height:76px;resize:vertical;width:100%}
+.dok h2{font-size:1.3rem}.dok .blk{break-inside:avoid;border-top:1px solid var(--line);padding-top:10px;display:flex;flex-direction:column;gap:6px}
+.dok .a{white-space:pre-wrap;border-left:3px solid var(--line);padding-left:10px}
+.dok .leer{color:var(--muted);font-style:italic}
+@media (max-width:520px){.karte{font-size:1.15rem;padding:22px 16px}.wahl button{font-size:.85rem}}
+@media print{body{background:#fff;color:#000;padding:0}.noprint{display:none!important}.panel,.sel{border-color:#999;box-shadow:none}.chip{color:#fff;background:#444;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style></head><body>
+<main id="app" aria-live="polite"><p class="muted">Lädt …</p></main>
+<script>
+const QS=new URLSearchParams(location.search),SET=(QS.get("set")||"").replace(/[^a-z0-9\-]/gi,"");
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const ZIEL=5,MAXRUNDEN=4;
+let D=null,K={},DIM={};
+const S={phase:"intro",round:0,deck:[],i:0,piles:{yes:[],no:[],unsure:[]},hist:[],score:{},chosen:[],pool:[],need:0,mode:"",sel:new Set(),zw:null,antw:{},cur:0};
+
+/* Schrittanzeige */
+const SCHRITTE=[["sort","1 Sortieren"],["pick","2 Auswählen"],["result","3 Meine fünf"],["reflect","4 Fragen"],["doc","5 Mitnehmen"]];
+function steps(){
+  const m={intro:-1,sort:0,zwischen:0,pick:1,result:2,reflect:3,doc:4}[S.phase];
+  return `<div class="steps noprint" aria-label="Schritte">${SCHRITTE.map((s,i)=>`<span class="${i===m?"on":""}">${s[1]}</span>`).join("")}</div>`;
+}
+const chip=d=>`<span class="chip" style="--c:var(--${d})">${esc(DIM[d].name)}</span>`;
+const set=h=>{$("app").innerHTML=h};
+
+/* 0 Einstieg */
+function intro(){
+  set(`<div class="panel"><h1>${esc(D.titel)}</h1>
+  <p>${esc(D.anleitung)}</p>
+  <ol style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px">
+   <li><b>Sortieren:</b> Du liest ${D.karten.length} Karten nacheinander und legst jede auf einen von drei Stapeln: wichtig für mich, nicht wichtig für mich oder unklar.</li>
+   <li><b>Auswählen:</b> Was dir wichtig ist, sortierst du noch einmal feiner, bis genau ${ZIEL} Karten übrig sind.</li>
+   <li><b>Fragen:</b> Zu jeder der ${ZIEL} Karten beantwortest du Fragen, wie du das im Alltag leben kannst.</li>
+  </ol>
+  <div class="msg small">Es gibt kein Richtig und kein Falsch. Das ist eine Reflexion über dich, kein Test. Nichts wird gespeichert oder gesendet. Was du schreibst, bleibt auf diesem Gerät und ist weg, wenn du die Seite schließt. Wenn du magst, besprich die Ergebnisse mit einer vertrauten Person.</div>
+  <div class="row"><button id="go" type="button">Los geht’s</button></div>
+  <p class="muted small">${esc(D.quelle)}</p></div>`);
+  $("go").onclick=()=>startRound(D.karten.map(k=>k.id),1);
+}
+
+/* 1 Sortieren */
+function startRound(ids,r){S.round=r;S.deck=shuffle(ids);S.i=0;S.piles={yes:[],no:[],unsure:[]};S.hist=[];S.phase="sort";render()}
+function labels(){
+  return S.round===1
+   ?{yes:["Wichtig für mich","✔"],un:["Unklar","?"],no:["Nicht wichtig","✖"],frage:"Ist diese Aussage wichtig für dein Leben?"}
+   :{yes:["Am wichtigsten","★"],un:["Schwer zu sagen","?"],no:["Weniger wichtig","–"],frage:"Welche dieser Karten sind dir von allen am wichtigsten?"};
+}
+function sortView(){
+  const id=S.deck[S.i],k=K[id],L=labels(),n=S.deck.length;
+  set(`${steps()}<div class="panel">
+  <div class="row"><b>${S.round===1?"Alle Karten":"Runde "+S.round+": engere Auswahl"}</b><span class="muted small grow" style="text-align:right">Karte ${S.i+1} von ${n}</span></div>
+  <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="${n}" aria-valuenow="${S.i}"><i style="width:${S.i/n*100}%"></i></div>
+  <p class="muted small">${esc(L.frage)}</p>
+  <div class="karte" role="group" aria-label="Karte ${S.i+1}">${esc(k.text)}</div>
+  <div class="wahl">
+   <button class="no" type="button" data-a="no"><b aria-hidden="true">${L.no[1]}</b>${L.no[0]}</button>
+   <button class="un" type="button" data-a="unsure"><b aria-hidden="true">${L.un[1]}</b>${L.un[0]}</button>
+   <button class="ja" type="button" data-a="yes"><b aria-hidden="true">${L.yes[1]}</b>${L.yes[0]}</button>
+  </div>
+  <div class="row"><div class="stapel grow"><span>${L.no[0]}: ${S.piles.no.length}</span><span>${L.un[0]}: ${S.piles.unsure.length}</span><span>${L.yes[0]}: ${S.piles.yes.length}</span></div>
+  <button class="alt" type="button" id="undo" ${S.hist.length?"":"disabled"}>Zurück</button></div>
+  <p class="muted small">Tastatur: Pfeil links, unten, rechts. Rücktaste für Zurück.</p></div>`);
+  document.querySelectorAll("[data-a]").forEach(b=>b.onclick=()=>answer(b.dataset.a));
+  $("undo").onclick=undo;
+}
+function answer(a){S.piles[a].push(S.deck[S.i]);S.hist.push(a);S.i++;S.i>=S.deck.length?endRound():render()}
+function undo(){if(!S.hist.length)return;
+  if(S.phase==="zwischen"){S.piles.yes.forEach(id=>S.score[id]-=10);S.piles.unsure.forEach(id=>S.score[id]-=1)}
+  const a=S.hist.pop();S.piles[a].pop();S.i--;if(S.phase!=="sort")S.phase="sort";render()}
+document.addEventListener("keydown",e=>{
+  if(S.phase!=="sort"||/^(TEXTAREA|INPUT)$/.test(e.target.tagName))return;
+  const m={ArrowLeft:"no",ArrowDown:"unsure",ArrowRight:"yes"}[e.key];
+  if(m){e.preventDefault();answer(m)}else if(e.key==="Backspace"){e.preventDefault();undo()}
+});
+
+/* Runde auswerten: weiter eingrenzen, auffüllen oder fertig */
+function endRound(){
+  S.piles.yes.forEach(id=>S.score[id]=(S.score[id]||0)+10);
+  S.piles.unsure.forEach(id=>S.score[id]=(S.score[id]||0)+1);
+  const cand=S.piles.yes.slice(),n=cand.length,r=S.round;
+  let msg,weiter;
+  if(n>ZIEL&&r<MAXRUNDEN){
+    msg=`${n} Karten sind dir wichtig. Das sind noch mehr als ${ZIEL}. Sortiere nur diese noch einmal und überlege, welche dir von allen am wichtigsten sind.`;
+    weiter=()=>startRound(cand,r+1);
+  }else if(n>ZIEL){
+    msg=`${n} Karten sind noch im Rennen. Wähle jetzt selbst die ${ZIEL}, die dir am wichtigsten sind. Es ist in Ordnung, wenn es schwerfällt.`;
+    weiter=()=>openPick("kuerzen",cand,ZIEL,[]);
+  }else if(n===ZIEL){
+    msg=`Genau ${ZIEL} Karten sind übrig geblieben. Das sind deine fünf.`;
+    weiter=()=>{S.chosen=cand;S.phase="result";render()};
+  }else{
+    const need=ZIEL-n;
+    msg=n===0?`Du hast keine Karte als wichtig markiert. Das passiert, wenn man vorsichtig sortiert. Wähle jetzt ${ZIEL} Karten aus, die dir am ehesten etwas bedeuten.`:`Nur ${n} Karte${n===1?"":"n"} ${n===1?"ist":"sind"} übrig. Für die nächsten Schritte brauchst du ${ZIEL}. Wähle ${need} weitere aus den übrigen Karten aus, zuerst die, die dir vorher wichtig oder unklar waren.`;
+    const rest=D.karten.map(k=>k.id).filter(id=>!cand.includes(id));
+    rest.sort((a,b)=>(S.score[b]||0)-(S.score[a]||0));
+    weiter=()=>openPick("auffuellen",rest,need,cand);
+  }
+  S.zw={msg,weiter,counts:{yes:n,un:S.piles.unsure.length,no:S.piles.no.length}};S.phase="zwischen";render();
+}
+function zwischen(){
+  const z=S.zw,L=labels();
+  set(`${steps()}<div class="panel"><h2>Zwischenstand</h2>
+  <div class="stapel"><span>${L.yes[0]}: ${z.counts.yes}</span><span>${L.un[0]}: ${z.counts.un}</span><span>${L.no[0]}: ${z.counts.no}</span></div>
+  <p>${esc(z.msg)}</p>
+  <div class="row"><button class="alt" type="button" id="back">Zurück zur letzten Karte</button><button type="button" id="weiter">Weiter</button></div></div>`);
+  $("back").onclick=undo;$("weiter").onclick=z.weiter;
+}
+
+/* 2 Auswählen (Eingrenzen oder Auffüllen) */
+function openPick(mode,pool,need,fest){S.mode=mode;S.pool=pool;S.need=need;S.fest=fest;S.sel=new Set();S.phase="pick";render()}
+function pickView(){
+  const k=S.mode==="kuerzen",n=S.sel.size,need=S.need;
+  set(`${steps()}<div class="panel"><h2>${k?`Wähle deine ${ZIEL} wichtigsten Karten`:`Wähle noch ${need} Karte${need===1?"":"n"} dazu`}</h2>
+  <p class="muted small">${k?"Tippe auf die Karten, die dabei sein sollen.":"Die Karten, die dir vorher wichtig oder unklar waren, stehen oben."}</p>
+  ${S.fest.length?`<h3>Schon dabei</h3><div class="grid">${S.fest.map(id=>`<div class="pick fest">${chip(K[id].dim)}<span>${esc(K[id].text)}</span></div>`).join("")}</div>`:""}
+  <h3>${k?"Zur Auswahl":"Zur Auswahl"}</h3>
+  <div class="grid">${S.pool.map(id=>`<button type="button" class="pick" data-id="${id}" aria-pressed="${S.sel.has(id)}">${chip(K[id].dim)}<span>${esc(K[id].text)}</span></button>`).join("")}</div>
+  <div class="row"><span class="muted grow" id="zaehl">${n} von ${need} gewählt</span><button type="button" id="ok" ${n===need?"":"disabled"}>Weiter</button></div></div>`);
+  document.querySelectorAll(".pick[data-id]").forEach(b=>b.onclick=()=>{
+    const id=b.dataset.id;
+    if(S.sel.has(id))S.sel.delete(id);else if(S.sel.size<need)S.sel.add(id);else return;
+    b.setAttribute("aria-pressed",S.sel.has(id));$("zaehl").textContent=S.sel.size+" von "+need+" gewählt";$("ok").disabled=S.sel.size!==need;
+  });
+  $("ok").onclick=()=>{S.chosen=S.fest.concat([...S.sel]);S.phase="result";render()};
+}
+
+/* 3 Meine fünf + Sinndimensionen */
+function resultView(){
+  const dims=[...new Set(S.chosen.map(id=>K[id].dim))],nd=dims.length;
+  const fehlt=Object.keys(DIM).filter(d=>!dims.includes(d));
+  const text=nd<=2?`Deine fünf Karten stammen nur aus ${nd===1?"einer Sinndimension":"zwei Sinndimensionen"}. Das ist nicht schlecht. Es zeigt, woraus du gerade Sinn schöpfst. Frag dich, ob dir eine andere Dimension fehlen könnte.`
+   :nd>=4?`Deine fünf Karten verteilen sich auf ${nd} Sinndimensionen. Dein Sinn ruht damit auf mehreren Säulen.`
+   :`Deine fünf Karten verteilen sich auf ${nd} Sinndimensionen.`;
+  set(`${steps()}<div class="panel"><h2>Meine fünf Sinn-Themen</h2>
+  <div class="row" style="flex-direction:column;align-items:stretch;gap:8px">${S.chosen.map((id,i)=>{const k=K[id];return `<div class="sel" style="--c:var(--${k.dim})"><div class="row"><b>${i+1}. ${esc(k.thema)}</b>${chip(k.dim)}</div><div class="t">${esc(k.text)}</div><div class="muted small">${esc(k.kurz)}</div></div>`}).join("")}</div>
+  <h3>Wie verteilt sich dein Sinn?</h3>
+  <p>${esc(text)}</p>
+  ${fehlt.length?`<p class="muted small">Kaum oder gar nicht vertreten: ${fehlt.map(d=>esc(DIM[d].name)).join(", ")}. Gibt es dort etwas, das du dir mehr Raum wünschst?</p>`:""}
+  <div class="row"><button class="alt" type="button" id="neu">Neu sortieren</button><button type="button" id="weiter">Weiter zu den Fragen</button></div></div>`);
+  $("neu").onclick=()=>{S.score={};S.chosen=[];startRound(D.karten.map(k=>k.id),1)};
+  $("weiter").onclick=()=>{S.cur=0;S.phase="reflect";render()};
+}
+
+/* 4 Umsetzungsfragen */
+function saveAnt(){document.querySelectorAll("textarea[data-q]").forEach(t=>{const id=S.chosen[S.cur];(S.antw[id]=S.antw[id]||{})[t.dataset.q]=t.value})}
+function reflectView(){
+  const id=S.chosen[S.cur],k=K[id],a=S.antw[id]||{},last=S.cur===S.chosen.length-1;
+  set(`${steps()}<div class="panel"><h2>Fragen für die Praxis</h2>
+  <div class="tabs">${S.chosen.map((c,i)=>`<button type="button" data-t="${i}" aria-pressed="${i===S.cur}">${i+1}. ${esc(K[c].thema)}</button>`).join("")}</div>
+  <div class="sel" style="--c:var(--${k.dim})"><div class="row"><b>${esc(k.thema)}</b>${chip(k.dim)}</div><div class="t">${esc(k.text)}</div></div>
+  ${D.fragen.map(f=>`<label class="f">${esc(f.label)}<span class="q">${esc(f.frage)}</span><textarea data-q="${f.id}" rows="3">${esc(a[f.id]||"")}</textarea></label>`).join("")}
+  <p class="muted small">Du musst nicht alles beantworten. Stichworte reichen.</p>
+  <div class="row"><button class="alt" type="button" id="prev" ${S.cur?"":"disabled"}>Zurück</button><span class="grow"></span><button type="button" id="next">${last?"Mein Dokument ansehen":"Nächste Karte"}</button></div></div>`);
+  document.querySelectorAll("[data-t]").forEach(b=>b.onclick=()=>{saveAnt();S.cur=+b.dataset.t;render()});
+  $("prev").onclick=()=>{saveAnt();S.cur--;render()};
+  $("next").onclick=()=>{saveAnt();if(last){S.phase="doc"}else S.cur++;render()};
+}
+
+/* 5 Dokument zur Mitnahme */
+function docText(){
+  const L=["SINN SUCHEN – SINN FINDEN","Meine fünf Sinn-Themen ("+new Date().toLocaleDateString("de-DE")+")",""];
+  S.chosen.forEach((id,i)=>{const k=K[id],a=S.antw[id]||{};
+    L.push((i+1)+". "+k.thema+" ("+DIM[k.dim].name+")","   „"+k.text+"“");
+    D.fragen.forEach(f=>{const v=(a[f.id]||"").trim();if(v)L.push("   "+f.label+": "+v.replace(/\n/g,"\n      "))});L.push("")});
+  return L.join("\n");
+}
+function docView(){
+  set(`${steps()}<div class="panel dok"><h2>Mein Sinn-Dokument</h2>
+  <p class="muted small">${new Date().toLocaleDateString("de-DE")} · Das Dokument bleibt auf deinem Gerät. Speichere oder drucke es, wenn du es behalten möchtest.</p>
+  ${S.chosen.map((id,i)=>{const k=K[id],a=S.antw[id]||{};
+   return `<div class="blk"><div class="row"><b>${i+1}. ${esc(k.thema)}</b>${chip(k.dim)}</div><div>„${esc(k.text)}“</div>
+   ${D.fragen.map(f=>{const v=(a[f.id]||"").trim();return `<div><div class="muted small">${esc(f.label)}</div>${v?`<div class="a">${esc(v)}</div>`:`<div class="leer">noch offen</div>`}</div>`}).join("")}</div>`}).join("")}
+  <p class="muted small">${esc(D.quelle)}</p>
+  <div class="row noprint"><button type="button" id="druck">Drucken / als PDF speichern</button><button class="alt" type="button" id="txt">Als Textdatei speichern</button><button class="alt" type="button" id="kop">Text kopieren</button></div>
+  <div class="row noprint"><button class="alt" type="button" id="edit">Antworten ändern</button><button class="alt" type="button" id="neu">Ganz neu beginnen</button></div>
+  <div id="hint" class="msg small noprint" hidden></div></div>`);
+  const hint=t=>{const h=$("hint");h.hidden=false;h.textContent=t};
+  $("druck").onclick=()=>{try{window.print()}catch(e){hint("Drucken ist hier nicht möglich. Nutze „Als Textdatei speichern“.")}};
+  $("txt").onclick=()=>{try{const b=new Blob([docText()],{type:"text/plain;charset=utf-8"}),a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="sinn-suchen-sinn-finden.txt";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),2000);hint("Die Datei wurde erstellt.")}catch(e){hint("Speichern geht hier nicht. Nutze „Text kopieren“.")}};
+  $("kop").onclick=async()=>{try{await navigator.clipboard.writeText(docText());hint("Der Text liegt in der Zwischenablage.")}catch(e){hint("Kopieren ist hier nicht erlaubt. Markiere den Text auf der Seite von Hand.")}};
+  $("edit").onclick=()=>{S.cur=0;S.phase="reflect";render()};
+  $("neu").onclick=()=>{if(confirm("Alles löschen und neu beginnen?")){S.score={};S.chosen=[];S.antw={};S.phase="intro";render()}};
+}
+
+function render(){
+  ({intro,sort:sortView,zwischen,pick:pickView,result:resultView,reflect:reflectView,doc:docView})[S.phase]();
+  window.scrollTo({top:0});
+}
+fetch("../inhalte/"+SET+".json").then(r=>{if(!r.ok)throw 0;return r.json()}).then(d=>{
+  D=d;d.karten.forEach(k=>K[k.id]=k);d.dimensionen.forEach(x=>DIM[x.id]=x);render();
+}).catch(()=>{set(`<div class="panel"><p>Die Übung konnte nicht geladen werden.</p></div>`)});
+</script></body></html>
