@@ -16,8 +16,13 @@ iframe{flex:1;width:100%;border:0;background:var(--bg);min-height:0}
 import {qrSvg,esc,fmtTime,SAFE_DATEI,loadKatalog,makeCode,rankSort,ls,cleanParams,cleanId} from "./js/ts-core.js";
 const $=id=>document.getElementById(id);
 const q=new URLSearchParams(location.search),sid=cleanId(q.get("s")),team=Math.max(1,Math.min(30,+q.get("t")||+ls.get("ts-team")||1)),auswahl=(q.get("auswahl")||"").split(",").map(cleanId).filter(Boolean).join(",");
-$("back").href="index.html?t="+team+(auswahl?"&auswahl="+encodeURIComponent(auswahl):"");
-const shareUrl=(()=>{const u=new URL(location.href);u.searchParams.delete("t");u.hash="";return u.href})();
+const ordnerQ=(q.get("ordner")||"").slice(0,200),von=q.get("von")==="1";
+/* Rückweg nur dorthin, wo man hergekommen ist: Auswahl der Lehrkraft, Ordner oder Gesamtübersicht. Direkter Link zu einer einzelnen Übung: kein Weg zu „Alle Übungen“. */
+if(auswahl){$("back").href="index.html?t="+team+"&auswahl="+encodeURIComponent(auswahl);$("back").textContent="Zurück zur Auswahl"}
+else if(ordnerQ){$("back").href="index.html?t="+team+"&ordner="+encodeURIComponent(ordnerQ);$("back").textContent="Zurück zum Ordner"}
+else if(von){$("back").href="index.html?t="+team}
+else{$("back").remove()}
+const shareUrl=(()=>{const u=new URL(location.href);u.searchParams.delete("t");u.searchParams.delete("von");u.hash="";return u.href})();
 qrSvg(shareUrl,56).then(v=>{$("qrs").innerHTML=v});
 $("qrmini").addEventListener("click",async()=>{$("qrb").innerHTML=await qrSvg(shareUrl,340);$("qru").textContent=shareUrl.replace(/^https?:\/\//,"");$("qrbig").hidden=false;$("qrbig").style.display="flex"});
 $("qrclose").addEventListener("click",()=>{$("qrbig").hidden=true;$("qrbig").style.display="none"});

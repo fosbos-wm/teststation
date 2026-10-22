@@ -30,7 +30,8 @@ $("team").addEventListener("change",()=>{ls.set("ts-team",$("team").value);draw(
 let kat=[];
 const sel=(q.get("auswahl")||"").split(",").map(cleanId).filter(Boolean);
 function link(s){
-  const u=new URLSearchParams({s:s.id,t:$("team").value});
+  const u=new URLSearchParams({s:s.id,t:$("team").value,von:"1"});
+  const o=(q.get("ordner")||"").slice(0,200);if(o)u.set("ordner",o);
   (s.parameter||[]).forEach(p=>{const v=q.get(p.name);if(v&&/^[A-Za-z0-9]{1,6}$/.test(v))u.set(p.name,v)});
   if(sel.length)u.set("auswahl",sel.join(","));
   return "station.html?"+u;

@@ -20,3 +20,7 @@ Die Datei `inhalte/resilienz-sinn-suchen-sinn-finden.json` liegt verschlüsselt 
 Neue Datei oder neuer Code: `werkzeug/verschluesseln.html` öffnen (läuft nur im Browser), die Klartext-Datei der Übung wählen, Code festlegen oder Zufallscode erzeugen, „Verschlüsseln“, die heruntergeladene Datei ersetzt die Datei in `inhalte/`. Die Klartext-Datei und den Code nicht ins Repo legen, sondern bei sich aufbewahren. Der Code lässt sich nicht wiederherstellen.
 
 Dateien im Repo: `stationen/sinn-karten.html` (geändert), `inhalte/resilienz-sinn-suchen-sinn-finden.json` (ersetzt durch die verschlüsselte Fassung), `werkzeug/verschluesseln.html` (neu, Ordner `werkzeug/` anlegen), `LIESMICH.md` (optional).
+
+## Rückweg aus einer Übung
+In `station.html` führt der Knopf oben nur dorthin, wo man hergekommen ist: bei einem Link mit Auswahl zurück zur Auswahl, bei einem Ordner-Link zurück zum Ordner, bei einem Klick aus der Gesamtübersicht zurück zu „Alle Übungen“. Bei einem direkten Link zu genau einer Übung (z. B. aus `lehrer.html` oder per QR-Code) gibt es keinen Knopf zu „Alle Übungen“. Dazu hängt `index.html` an die Übungs-Links `von=1` (und `ordner=…`). Das ist keine Sicherheitssperre: Die Zurück-Taste des Browsers und das Eintippen der Startadresse bleiben möglich.
+Geänderte Dateien: `station.html`, `index.html`.

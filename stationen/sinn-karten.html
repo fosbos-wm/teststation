@@ -365,7 +365,7 @@ function gateView(env){
   inp.focus();
 }
 function start(d){D=d;K={};DIM={};d.karten.forEach(k=>K[k.id]=k);d.dimensionen.forEach(x=>DIM[x.id]=x);S.phase="intro";render()}
-fetch("../inhalte/"+SET+".json").then(r=>{if(!r.ok)throw 0;return r.json()}).then(d=>{
+fetch("../inhalte/"+SET+".json",{cache:"no-store"}).then(r=>{if(!r.ok)throw 0;return r.json()}).then(d=>{
   if(d&&d.verschluesselt){gateView(d)}else{start(d)}
 }).catch(()=>{set(`<div class="panel"><p>Die Übung konnte nicht geladen werden.</p></div>`)});
 </script></body></html>
