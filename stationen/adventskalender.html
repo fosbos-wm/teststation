@@ -147,7 +147,7 @@ const SANTA_SVG=`<g id="santa" style="display:none"><g id="santaS">
 <g id="funken"></g>`;
 
 function santaStart(CH){
-  if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  if(q.get("ruhig")==="1")return; /* ?ruhig=1 schaltet den Weihnachtsmann ab */
   const NS="http://www.w3.org/2000/svg",$$=id=>document.getElementById(id);
   const el=$$("santa"),body=$$("santaS"),gift=$$("gift"),giftB=$$("giftB"),ho=$$("ho"),fk=$$("funken");
   el.style.display="";
