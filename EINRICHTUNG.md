@@ -40,3 +40,11 @@ Der QR-Code eines Ordners steht im aufgeklappten Ordner (Link: `index.html?ordne
 - **Rollen:** Pilot:in steuert und sieht nur einen Lichtkreis. Navigator:in scannt den QR-Code der Startseite und sieht auf dem Handy die ganze Karte mit allen Fallgruben (aber nicht den Standort des Teams). Die Karte wird nur aus der Kartennummer berechnet, es gibt keine Verbindung zwischen Handy und Monitor und es werden keine Daten gespeichert oder gesendet.
 - **Spiel:** Erst fünf Schlüsselrunen einsammeln (Reihenfolge frei), dann den Tresor erreichen. Zauberkugeln, Chaos-Ereignisse und der Aufholbonus für das hintere Team sorgen für Überraschungen. Nach 7 Minuten gewinnt das Team, das dem Tresor näher ist.
 - **Anpassen:** Zeitlimit `ZEITLIMIT`, Anzahl der Schlüssel `NK`, Tempo in `speedOf` (oben in der Datei).
+
+## Aula: Lichterkalender
+`stationen/lichterkalender.html` mit den Inhalten in `inhalte/lichterkalender.json` (Ordner **Aula**, ohne Ergebniscode). Ein Winterdorf mit 24 Fenstern auf dem Aula-Monitor; jedes Fenster ist ein Türchen, das sich an einem Schultag öffnet (20.11. bis 23.12.2026, Türchen 24 am letzten Schultag). Ein QR-Code führt zur Tagesaufgabe auf dem Handy.
+- **Aula-Monitor:** die Seite im Vollbild öffnen (`…/stationen/lichterkalender.html`). Sie zeigt automatisch das Türchen des Tages. An Wochenenden und in den Ferien bleibt das zuletzt geöffnete Türchen stehen.
+- **Handy:** der QR-Code öffnet `…?rolle=tag&tag=N`. Es werden keine Daten gesendet oder gespeichert; nur der Haken „erledigt“ bleibt auf dem Handy.
+- **Inhalte:** in `inhalte/lichterkalender.json`. Je Türchen: `art` (Aktion, Nur gemeinsam, Quiz, Mitmachen), `titel`, `text`, `dauer`, `spruch` (Muffelwicht), bei „Nur gemeinsam“ `hinweise` (Liste, je Handy ein Hinweis) und `loesung`, beim Quiz `antworten` (die erste Antwort ist die richtige) und `erklaerung`. Die Lösung steht im Klartext in der Datei und ist im Quelltext lesbar.
+- **Gemeinsame Lichter:** `lichter` ist die Liste der Türchen-Nummern, deren Fenster leuchten. Das trägt die SMV oder die Lehrkraft von Hand nach (z. B. Tür 1, 2, 3 …). Die Stimmung des Muffelwichts hängt von der Anzahl der Lichter ab.
+- **Vorschau:** `?heute=2026-11-26` simuliert ein Datum (auch auf dem Handy).

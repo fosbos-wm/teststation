@@ -825,5 +825,19 @@
    "Aula",
    "Blindflug"
   ]
+ },
+ {
+  "id": "aula-lichterkalender",
+  "titel": "Lichterkalender (Prototyp)",
+  "fach": "Aula",
+  "beschreibung": "Winterdorf als Kalender für den Aula-Monitor: 24 Türchen an den Schultagen vom 20.11. bis 23.12., Aufgaben per QR-Code am Handy, gemeinsames Licht, der Muffelwicht. Vorschau mit ?heute=2026-11-26.",
+  "datei": "lichterkalender.html",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Lichterkalender",
+  "pfad": [
+   "Aula",
+   "Lichterkalender"
+  ]
  }
 ]
