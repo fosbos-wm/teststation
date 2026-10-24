@@ -559,7 +559,7 @@ function drawPanel(c,t,px,py,pw,ph,time){
   /* Effekte */
   if(t.fx.frost>0){c.fillStyle="rgba(150,210,255,.28)";c.fillRect(0,0,pw,ph);c.strokeStyle="rgba(210,240,255,.8)";c.lineWidth=ts*.14;c.strokeRect(ts*.07,ts*.07,pw-ts*.14,ph-ts*.14)}
   if(t.fx.spiegel>0){c.fillStyle="rgba(190,110,255,"+(.12+.06*Math.sin(time*8))+")";c.fillRect(0,0,pw,ph)}
-  if(t.flash>0){c.fillStyle="rgba(255,255,255,"+Math.min(.5,t.flash*.5)+")";c.fillRect(0,0,pw,ph)}
+  if(t.flash>0){c.strokeStyle="rgba(255,247,194,"+Math.min(.9,t.flash)+")";c.lineWidth=ts*.16;c.strokeRect(ts*.08,ts*.08,pw-ts*.16,ph-ts*.16)}
   /* Kopf */
   c.fillStyle="rgba(8,7,20,.78)";c.fillRect(0,0,pw,ts*.95);
   txt(c,t.name,ts*.3,ts*.34,ts*.46,t.col,"left","800","Georgia,serif");
