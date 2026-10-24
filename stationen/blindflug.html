@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Blindflug – Das Nebelgewölbe</title>
+<style>
+:root{--bg:#0b0a17;--panel:#16142b;--panel2:#1e1b3a;--fg:#f1ecff;--muted:#a79fcb;--line:#38326a;--gold:#f2c14e;--ra:#ff5d6c;--rb:#3ddc97;--ok:#3ddc97;--bad:#ff7a86}
+*{box-sizing:border-box}html,body{margin:0;height:100%}
+body{background:var(--bg);color:var(--fg);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow:hidden}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;margin:0;line-height:1.15;letter-spacing:.01em}
+button{font:inherit;color:inherit;cursor:pointer}
+.b{font-weight:800;border-radius:14px;border:2px solid var(--gold);background:var(--gold);color:#241a00;padding:12px 26px}
+.b.alt{background:transparent;color:var(--fg);border-color:var(--line)}
+.b:hover{filter:brightness(1.1)}
+[hidden]{display:none!important}
+:focus-visible{outline:3px solid #fff;outline-offset:2px}
+#cv{position:fixed;inset:0;width:100%;height:100%;display:block}
+.ov{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:2vmin;background:radial-gradient(ellipse at 50% 20%,rgba(60,40,120,.55),rgba(8,7,20,.94) 70%);overflow:auto}
+.card{width:min(1180px,100%);background:linear-gradient(160deg,var(--panel2),var(--panel));border:2px solid var(--line);border-radius:22px;padding:clamp(14px,2.4vmin,30px);display:flex;flex-direction:column;gap:clamp(10px,1.8vmin,20px)}
+.title{text-align:center}
+.title h1{font-size:clamp(28px,5.4vmin,58px);color:var(--gold);text-shadow:0 0 24px rgba(242,193,78,.4)}
+.title p{margin:6px 0 0;color:var(--muted);font-size:clamp(14px,2.2vmin,22px)}
+.teams{display:grid;grid-template-columns:1fr auto 1fr;gap:clamp(10px,2vmin,24px);align-items:stretch}
+.team{border:2px solid var(--line);border-radius:16px;padding:clamp(10px,1.6vmin,18px);display:flex;flex-direction:column;gap:8px;background:rgba(0,0,0,.18)}
+.team.a{border-color:var(--ra)}.team.b{border-color:var(--rb)}
+.team label{font-size:.85rem;color:var(--muted);display:flex;flex-direction:column;gap:4px}
+.team input{font:700 clamp(16px,2.6vmin,26px) Georgia,serif;padding:8px 12px;border-radius:10px;border:2px solid var(--line);background:#0e0c20;color:var(--fg);width:100%}
+.team .ctl{font-size:clamp(13px,1.9vmin,18px);color:var(--muted)}
+.team kbd{font:700 .92em ui-monospace,Menlo,Consolas,monospace;background:#0e0c20;border:1px solid var(--line);border-bottom-width:3px;border-radius:6px;padding:1px 7px;color:var(--fg)}
+.team .mini{align-self:flex-start;font-size:.85rem;padding:5px 12px;border-radius:9px}
+.mid{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;min-width:clamp(150px,22vmin,230px)}
+.mid .qr{background:#fff;border-radius:12px;padding:6px;line-height:0}
+.mid .qr svg{width:clamp(110px,17vmin,180px);height:clamp(110px,17vmin,180px)}
+.mid b{font-size:clamp(13px,1.9vmin,18px)}
+.mid small{color:var(--muted);font-size:clamp(11px,1.5vmin,14px)}
+.roles{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(8px,1.4vmin,16px)}
+.roles div{border-radius:14px;background:rgba(255,255,255,.04);border:1px solid var(--line);padding:10px 14px;font-size:clamp(13px,1.9vmin,19px)}
+.roles b{display:block;color:var(--gold);margin-bottom:2px;font-family:Georgia,serif}
+.go{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;align-items:center}
+.go .b.big{font-size:clamp(20px,3.4vmin,34px);padding:clamp(10px,1.8vmin,18px) clamp(30px,6vmin,70px)}
+.tiny{text-align:center;color:var(--muted);font-size:.82rem}
+.tiny a{color:inherit}
+.endcard{text-align:center;align-items:center;max-width:860px}
+.endcard h1{font-size:clamp(34px,7vmin,72px);color:var(--gold)}
+.endcard .w{font:800 clamp(26px,5vmin,52px) Georgia,serif}
+.stats{display:flex;gap:clamp(10px,2vmin,24px);flex-wrap:wrap;justify-content:center}
+.stats div{border:1px solid var(--line);border-radius:14px;padding:10px 18px;background:rgba(0,0,0,.2);min-width:150px}
+.stats b{display:block;font-size:clamp(18px,3vmin,30px)}
+.stats span{color:var(--muted);font-size:.85rem}
+/* Navigator-Karte (Handy) */
+#kartePage{position:fixed;inset:0;overflow:auto;background:var(--bg);padding:14px max(14px,env(safe-area-inset-left,0px)) 40px;display:flex;flex-direction:column;gap:12px;align-items:center}
+#kartePage h1{font-size:1.5rem;color:var(--gold);text-align:center}
+#kartePage .hint{max-width:640px;color:var(--muted);text-align:center;margin:0}
+#kartePage .bar{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+#kartePage .b{padding:9px 18px}
+#kwrap{max-width:100%;overflow:auto;border:2px solid var(--line);border-radius:12px;background:#0e0c20;touch-action:pan-x pan-y pinch-zoom}
+#kcv{display:block}
+#cover{max-width:640px;width:100%;border:2px dashed var(--line);border-radius:16px;padding:34px 18px;text-align:center;color:var(--muted)}
+.legend{max-width:640px;width:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:6px 14px;font-size:.92rem;color:var(--muted)}
+.legend span{display:flex;gap:8px;align-items:center}
+.legend i{display:inline-block;width:20px;height:20px;flex:none}
+@media (max-width:900px){.teams{grid-template-columns:1fr}.roles{grid-template-columns:1fr}.mid{flex-direction:row;gap:14px}}
+</style></head>
+<body>
+<canvas id="cv" aria-label="Spielfeld Blindflug"></canvas>
+
+<div class="ov" id="start" hidden>
+ <div class="card">
+  <div class="title"><h1>Blindflug · Das Nebelgewölbe</h1><p>Zwei Teams, ein Labyrinth. Wer zuerst die fünf Schlüsselrunen findet und den Tresor öffnet, gewinnt – aber nur zusammen mit dem Menschen am Handy.</p></div>
+  <div class="teams">
+   <div class="team a"><label>Team links<input id="nA" maxlength="22" autocomplete="off" spellcheck="false"></label>
+    <div class="ctl"><b>Pilot:in</b> steuert mit <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> · Zauber mit <kbd>E</kbd></div>
+    <button type="button" class="b alt mini" id="rA">Zufallsname</button></div>
+   <div class="mid"><div class="qr" id="qr"></div><b>Karte für die Navigator:innen</b><small>Beide scannen. Erst aufdecken, wenn „LOS!“ erscheint.</small><small>Karte Nr. <b id="kn"></b></small><button type="button" class="b alt mini" id="newMap" style="padding:5px 12px;font-size:.85rem">Neue Karte</button></div>
+   <div class="team b"><label>Team rechts<input id="nB" maxlength="22" autocomplete="off" spellcheck="false"></label>
+    <div class="ctl"><b>Pilot:in</b> steuert mit <kbd>←</kbd><kbd>↑</kbd><kbd>↓</kbd><kbd>→</kbd> · Zauber mit <kbd>Shift rechts</kbd></div>
+    <button type="button" class="b alt mini" id="rB">Zufallsname</button></div>
+  </div>
+  <div class="roles">
+   <div><b>Pilot:in</b>Steuert die Figur, sieht aber nur einen kleinen Lichtkreis. Fallgruben sind unsichtbar.</div>
+   <div><b>Navigator:in</b>Hat die ganze Karte mit allen Fallgruben am Handy – sieht aber nicht, wo ihr gerade steht. Sprecht euch ab: „Ich sehe ein goldenes Dreieck!“</div>
+   <div><b>Ziel &amp; Zauber</b>Erst fünf Schlüsselrunen einsammeln, dann zum Tresor ★. Zauberkugeln ✦ helfen dir oder bremsen das andere Team. Wer hinten liegt, bekommt Rückenwind. Eine Runde dauert etwa 5–7 Minuten.</div>
+  </div>
+  <div class="go"><button type="button" class="b big" id="goBtn">Los!</button><button type="button" class="b alt" id="fsBtn">Vollbild</button><button type="button" class="b alt" id="muteBtn">Ton an</button></div>
+  <div class="tiny">Keine Konten, keine Namen werden gespeichert. Mit Gamepads (Anschluss 1 und 2) geht es auch. Pause: Esc · Ton: M · Vollbild: F</div>
+ </div>
+</div>
+
+<div class="ov" id="pause" hidden><div class="card endcard"><h1>Pause</h1><p class="muted" style="margin:0;color:var(--muted)">Das Gewölbe hält den Atem an.</p><div class="go"><button type="button" class="b" id="resumeBtn">Weiter</button><button type="button" class="b alt" id="quitBtn">Zum Start</button></div></div></div>
+
+<div class="ov" id="end" hidden><div class="card endcard"><h1 id="endT">Tresor geknackt!</h1><div class="w" id="endW"></div><p id="endS" style="margin:0;color:var(--muted);font-size:1.1rem"></p><div class="stats" id="endStats"></div><div class="go"><button type="button" class="b" id="againBtn">Gleiche Karte nochmal</button><button type="button" class="b alt" id="newBtn">Neue Karte</button><button type="button" class="b alt" id="toStartBtn">Zum Start</button></div></div></div>
+
+<div id="kartePage" hidden>
+ <h1>Karte des Nebelgewölbes</h1>
+ <p class="hint">Du bist die Navigation. Du siehst das ganze Labyrinth mit allen Fallgruben – aber <b>nicht</b>, wo euer Pilot gerade steht. Beschreibt euch Runen und Abzweigungen. Erst die <b>fünf Schlüsselrunen</b> (goldener Ring) einsammeln, dann zum Tresor ★. Karte Nr. <b id="kartenNr"></b></p>
+ <div id="cover"><p style="margin:0 0 14px">Die Karte bleibt verdeckt, bis das Spiel auf dem Monitor „LOS!“ zeigt.</p><button type="button" class="b" id="reveal">Karte aufdecken</button></div>
+ <div id="kmap" hidden style="display:flex;flex-direction:column;gap:10px;align-items:center;max-width:100%">
+  <div class="bar"><button type="button" class="b alt" id="zoomOut">Kleiner −</button><button type="button" class="b alt" id="zoomIn">Größer +</button><button type="button" class="b alt" id="hide">Verdecken</button></div>
+  <div id="kwrap"><canvas id="kcv"></canvas></div>
+  <div class="legend" id="legend"></div>
+ </div>
+</div>
+
+<script type="module">
+import {qrSvg} from "../js/ts-core.js";
+const $=id=>document.getElementById(id);
+const q=new URLSearchParams(location.search);
+
+/* ================= Labyrinth (deterministisch aus der Kartennummer) ================= */
+function rng(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+const NK=5; /* Schlüsselrunen pro Spiel */
+const NKW=["","eine","zwei","drei","vier","fünf"];
+const SHAPES=["raute","dreieck","kreis","quadrat","kreuz","mond"];
+const RCOL=["#f2c14e","#4fd1e8","#ee6fd4"];
+const RCOLN=["golden","blau","rosa"];
+const SHAPEN={raute:"Raute",dreieck:"Dreieck",kreis:"Kreis",quadrat:"Quadrat",kreuz:"Kreuz",mond:"Mondsichel"};
+function bfs(g,W,H,src,blocked){
+  const d=new Int16Array(W*H).fill(-1),qu=[src[1]*W+src[0]];d[qu[0]]=0;
+  for(let i=0;i<qu.length;i++){const c=qu[i],x=c%W,y=(c-x)/W;
+    for(const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1]]){const nx=x+dx,ny=y+dy;
+      if(nx<0||ny<0||nx>=W||ny>=H||g[ny][nx]||d[ny*W+nx]>=0||(blocked&&blocked.has(ny*W+nx)))continue;
+      d[ny*W+nx]=d[c]+1;qu.push(ny*W+nx)}}
+  return d;
+}
+function buildLevelRaw(seed,salt){
+  const r=rng(seed*7919+13+salt*104729),CW=20,CH=12,W=CW*2+1,H=CH*2+1;
+  const g=Array.from({length:H},()=>new Array(W).fill(1));
+  const vis=Array.from({length:CH},()=>new Array(CW).fill(false));
+  let cx=0,cy=CH-1;vis[cy][cx]=true;g[cy*2+1][cx*2+1]=0;const st=[[cx,cy]];
+  while(st.length){
+    const [x,y]=st[st.length-1];
+    const nb=[[1,0],[-1,0],[0,1],[0,-1]].map(d=>[x+d[0],y+d[1],d]).filter(([a,b])=>a>=0&&b>=0&&a<CW&&b<CH&&!vis[b][a]);
+    if(!nb.length){st.pop();continue}
+    const [a,b,d]=nb[Math.floor(r()*nb.length)];
+    vis[b][a]=true;g[b*2+1][a*2+1]=0;g[y*2+1+d[1]][x*2+1+d[0]]=0;st.push([a,b]);
+  }
+  const shuf=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(r()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+  /* Schleifen einbauen, damit es echte Entscheidungen gibt */
+  const wl=[];
+  for(let y=1;y<H-1;y++)for(let x=1;x<W-1;x++)if(g[y][x]&&((x%2===0&&y%2===1&&!g[y][x-1]&&!g[y][x+1])||(x%2===1&&y%2===0&&!g[y-1][x]&&!g[y+1][x])))wl.push([x,y]);
+  shuf(wl).slice(0,12).forEach(([x,y])=>{g[y][x]=0});
+  const start=[1,H-2],goal=[W-2,1],distG=bfs(g,W,H,goal,null);
+  const floors=[];for(let y=0;y<H;y++)for(let x=0;x<W;x++)if(!g[y][x])floors.push([x,y]);
+  const man=(a,b)=>Math.abs(a[0]-b[0])+Math.abs(a[1]-b[1]);
+  const deg=(x,y)=>[[1,0],[-1,0],[0,1],[0,-1]].filter(([dx,dy])=>!g[y+dy]?.[x+dx]&&g[y+dy]?.[x+dx]!==undefined).length;
+  /* Runen: Orientierungspunkte, gleichzeitig Wiedereinstiegspunkte nach einem Sturz */
+  const combos=[];SHAPES.forEach(s=>RCOL.forEach((c,ci)=>combos.push({shape:s,color:c,cn:RCOLN[ci]})));shuf(combos);
+  const runes=[];
+  shuf(floors.filter(([x,y])=>x%2===1&&y%2===1&&man([x,y],start)>=4&&man([x,y],goal)>=4)).forEach(p=>{
+    if(runes.length<16&&runes.every(u=>man(u.pos,p)>=5)){const cb=combos[runes.length];runes.push({pos:p,x:p[0],y:p[1],shape:cb.shape,color:cb.color,cn:cb.cn})}});
+  const taken=new Set(runes.map(u=>u.y*W+u.x));taken.add(start[1]*W+start[0]);taken.add(goal[1]*W+goal[0]);
+  /* Zauberkugeln bevorzugt in Sackgassen */
+  const orbs=[],dead=shuf(floors.filter(([x,y])=>deg(x,y)===1)),rest=shuf(floors.filter(([x,y])=>deg(x,y)>=2));
+  dead.concat(rest).forEach(p=>{
+    if(orbs.length<14&&!taken.has(p[1]*W+p[0])&&man(p,start)>=4&&man(p,goal)>=4&&orbs.every(o=>man([o.x,o.y],p)>=5)){orbs.push({x:p[0],y:p[1]});taken.add(p[1]*W+p[0])}});
+  /* Fallgruben: unsichtbar für die Piloten, Erreichbarkeit des Ziels bleibt garantiert */
+  const pits=new Set(),pl=[];
+  shuf(floors.filter(([x,y])=>deg(x,y)>=2&&!taken.has(y*W+x)&&man([x,y],start)>=5&&man([x,y],goal)>=3)).forEach(p=>{
+    if(pits.size>=16||!pl.every(u=>man(u,p)>=3))return;
+    const k=p[1]*W+p[0];pits.add(k);
+    const d=bfs(g,W,H,start,pits);
+    if(d[goal[1]*W+goal[0]]<0)pits.delete(k);else pl.push(p)});
+  /* Drei Schlüsselrunen: erst alle drei einsammeln (Reihenfolge frei), dann öffnet sich der Tresor */
+  /* Entfernungen immer um die Fallgruben herum; die Gruben selbst zählen wie ihr Nachbarfeld */
+  const bfsP=src=>{const d=bfs(g,W,H,src,pits);pits.forEach(k=>{let m=1e9;[1,-1,W,-W].forEach(o=>{const v=d[k+o];if(v>=0&&v<m)m=v});d[k]=m<1e9?m+1:-1});return d};
+  const dG=bfsP(goal),rf=runes.map(u=>bfsP([u.x,u.y])),sIdx=start[1]*W+start[0];
+  const tourMin=(kd,kk,kg)=>{let best=1e9;const walk=(left,d,last)=>{if(!left.length){if(d+kg[last]<best)best=d+kg[last];return}left.forEach(k=>walk(left.filter(x=>x!==k),d+(last<0?kd[k][sIdx]:kk[last][k]),k))};walk([...Array(NK).keys()],0,-1);return best};
+  let bestK=null;
+  const okR=runes.map((u,i)=>i).filter(i=>rf[i][sIdx]>=0&&dG[runes[i].y*W+runes[i].x]>=0);
+  if(okR.length<NK)return null;
+  const combo=(from,cur)=>{
+    if(cur.length===NK){
+      const ks=cur.slice(),kd=ks.map(i=>rf[i]),kk=ks.map(i=>ks.map(j=>rf[i][runes[j].y*W+runes[j].x])),kg=ks.map(i=>dG[runes[i].y*W+runes[i].x]);
+      const tour=tourMin(kd,kk,kg),sc=Math.abs(tour-460);if(!bestK||sc<bestK.sc)bestK={sc,tour,ks,kd,kk,kg};return}
+    for(let i=from;i<okR.length;i++){cur.push(okR[i]);combo(i+1,cur);cur.pop()}
+  };
+  combo(0,[]);
+  bestK.ks.forEach(i=>{runes[i].key=true});
+  return {W,H,g,start,goal,runes,orbs,pits,distG:dG,seed,keyIdx:bestK.ks,kd:bestK.kd,kk:bestK.kk,kg:bestK.kg,tour:bestK.tour};
+}
+/* Restweg bis zum geöffneten Tresor (kürzeste Reihenfolge der noch fehlenden Schlüssel) */
+function restWeg(L,tile,got){
+  const rem=[...Array(NK).keys()].filter(k=>!got.has(k));
+  if(!rem.length)return Math.max(0,L.distG[tile]);
+  let best=1e9;
+  const walk=(order,left,d,last)=>{
+    if(!left.length){const t=d+L.kg[last];if(t<best)best=t;return}
+    left.forEach(k=>walk(order,left.filter(x=>x!==k),d+(last<0?L.kd[k][tile]:L.kk[last][k]),k));
+  };
+  walk([],rem,0,-1);
+  return Math.max(0,best);
+}
+/* Die Karte soll weder zu kurz noch zu lang sein: passende Variante der Kartennummer suchen (immer dieselbe) */
+function buildLevel(seed){
+  let best=null;
+  for(let salt=0;salt<40;salt++){
+    const L=buildLevelRaw(seed,salt);if(!L)continue;const len=L.tour;
+    if(!best||Math.abs(len-460)<Math.abs(best.tour-460))best=L;
+    if(len>=380&&len<=560)return L;
+  }
+  return best;
+}
+
+/* ================= Zeichnen: Runen, Zauberkugeln ================= */
+const GEN={raute:"f",dreieck:"n",kreis:"m",quadrat:"n",kreuz:"n",mond:"f"};
+function runeName(u){const e={f:"e",n:"es",m:"er"}[GEN[u.shape]];return (u.cn==="rosa"?"rosa":u.cn+e)+" "+SHAPEN[u.shape]}
+function drawShape(c,shape,x,y,r){
+  c.beginPath();
+  if(shape==="raute"){c.moveTo(x,y-r);c.lineTo(x+r*.8,y);c.lineTo(x,y+r);c.lineTo(x-r*.8,y);c.closePath()}
+  else if(shape==="dreieck"){c.moveTo(x,y-r);c.lineTo(x+r*.95,y+r*.75);c.lineTo(x-r*.95,y+r*.75);c.closePath()}
+  else if(shape==="kreis"){c.arc(x,y,r*.85,0,6.2832)}
+  else if(shape==="quadrat"){c.rect(x-r*.75,y-r*.75,r*1.5,r*1.5)}
+  else if(shape==="kreuz"){const a=r*.32;c.moveTo(x-a,y-r);c.lineTo(x+a,y-r);c.lineTo(x+a,y-a);c.lineTo(x+r,y-a);c.lineTo(x+r,y+a);c.lineTo(x+a,y+a);c.lineTo(x+a,y+r);c.lineTo(x-a,y+r);c.lineTo(x-a,y+a);c.lineTo(x-r,y+a);c.lineTo(x-r,y-a);c.lineTo(x-a,y-a);c.closePath()}
+  else{ /* Mondsichel */
+    const d=r*.5,rb=r*.82,xi=(d*d+r*r-rb*rb)/(2*d),yi=Math.sqrt(r*r-xi*xi),th=Math.atan2(yi,xi),ph=Math.atan2(yi,xi-d);
+    c.arc(x,y,r,th,Math.PI*2-th,false);c.arc(x+d,y,rb,Math.PI*2-ph,ph,true);c.closePath()}
+}
+function drawRune(c,u,x,y,r,glow){
+  if(glow){c.save();c.shadowColor=u.color;c.shadowBlur=glow}
+  c.fillStyle=u.color;drawShape(c,u.shape,x,y,r);c.fill();
+  c.lineWidth=Math.max(1,r*.14);c.strokeStyle="rgba(10,8,25,.75)";c.stroke();
+  if(glow)c.restore();
+}
+function drawOrb(c,x,y,r,t){
+  c.save();c.shadowColor="#9be7ff";c.shadowBlur=r*1.4;
+  const g=c.createRadialGradient(x-r*.25,y-r*.25,r*.1,x,y,r);g.addColorStop(0,"#fff");g.addColorStop(.5,"#8fe3ff");g.addColorStop(1,"#5a6cff");
+  c.fillStyle=g;c.beginPath();c.arc(x,y+Math.sin(t*3+x)*r*.12,r*.8,0,6.2832);c.fill();c.restore();
+}
+function drawStar(c,x,y,r){
+  c.beginPath();for(let i=0;i<10;i++){const a=-Math.PI/2+i*Math.PI/5,rr=i%2?r*.45:r;c.lineTo(x+Math.cos(a)*rr,y+Math.sin(a)*rr)}c.closePath();
+}
+
+/* ================= Navigator:in – Kartenansicht (Handy) ================= */
+function karteModus(){
+  const seed=Math.max(1,Math.min(99999,+q.get("seed")||1)),L=buildLevel(seed);
+  $("cv").hidden=true;$("kartePage").hidden=false;$("kartenNr").textContent=seed;
+  document.title="Karte "+seed+" – Blindflug";
+  let tile=Math.max(9,Math.min(22,Math.floor((Math.min(innerWidth,700)-30)/L.W)));
+  const kc=$("kcv"),kx=kc.getContext("2d");
+  function paint(){
+    const dpr=Math.min(2,devicePixelRatio||1),w=L.W*tile,h=L.H*tile;
+    kc.width=w*dpr;kc.height=h*dpr;kc.style.width=w+"px";kc.style.height=h+"px";kx.setTransform(dpr,0,0,dpr,0,0);
+    kx.fillStyle="#0e0c20";kx.fillRect(0,0,w,h);
+    for(let y=0;y<L.H;y++)for(let x=0;x<L.W;x++){
+      kx.fillStyle=L.g[y][x]?"#2e2a55":"#6a6290";kx.fillRect(x*tile,y*tile,tile,tile);
+      if(!L.g[y][x]){kx.fillStyle="#7b73a6";kx.fillRect(x*tile+1,y*tile+1,tile-2,tile-2)}
+    }
+    L.pits.forEach(k=>{const x=k%L.W,y=(k-x)/L.W,cx=(x+.5)*tile,cy=(y+.5)*tile,r=tile*.34;
+      kx.fillStyle="#2a0a14";kx.fillRect(x*tile+1,y*tile+1,tile-2,tile-2);
+      kx.strokeStyle="#ff5d6c";kx.lineWidth=Math.max(2,tile*.14);kx.beginPath();kx.moveTo(cx-r,cy-r);kx.lineTo(cx+r,cy+r);kx.moveTo(cx+r,cy-r);kx.lineTo(cx-r,cy+r);kx.stroke()});
+    L.orbs.forEach(o=>drawOrb(kx,(o.x+.5)*tile,(o.y+.5)*tile,tile*.42,0));
+    L.runes.forEach(u=>{
+      if(u.key){kx.strokeStyle="#fff7c2";kx.lineWidth=Math.max(2,tile*.14);kx.beginPath();kx.arc((u.x+.5)*tile,(u.y+.5)*tile,tile*.5,0,6.2832);kx.stroke()}
+      drawRune(kx,u,(u.x+.5)*tile,(u.y+.5)*tile,tile*.34,0)});
+    kx.fillStyle="#3ddc97";kx.fillRect(L.start[0]*tile+2,L.start[1]*tile+2,tile-4,tile-4);
+    kx.fillStyle="#0b0a17";kx.font="800 "+Math.round(tile*.62)+"px system-ui";kx.textAlign="center";kx.textBaseline="middle";kx.fillText("S",(L.start[0]+.5)*tile,(L.start[1]+.55)*tile);
+    kx.fillStyle="#f2c14e";drawStar(kx,(L.goal[0]+.5)*tile,(L.goal[1]+.5)*tile,tile*.62);kx.fill();
+  }
+  const lg=$("legend"),sw=(draw)=>{const c=document.createElement("canvas");c.width=c.height=40;c.style.width=c.style.height="20px";const x=c.getContext("2d");draw(x);return c};
+  const add=(cv,t)=>{const s=document.createElement("span");s.appendChild(cv);s.appendChild(document.createTextNode(t));lg.appendChild(s)};
+  add(sw(x=>{x.fillStyle="#3ddc97";x.fillRect(4,4,32,32)}),"Start (S)");
+  add(sw(x=>{x.fillStyle="#f2c14e";drawStar(x,20,20,19);x.fill()}),"Ziel: der Tresor");
+  add(sw(x=>{x.fillStyle="#2a0a14";x.fillRect(2,2,36,36);x.strokeStyle="#ff5d6c";x.lineWidth=5;x.beginPath();x.moveTo(10,10);x.lineTo(30,30);x.moveTo(30,10);x.lineTo(10,30);x.stroke()}),"Fallgrube (für Piloten unsichtbar!)");
+  add(sw(x=>drawOrb(x,20,20,17,0)),"Zauberkugel");
+  add(sw(x=>{x.strokeStyle="#fff7c2";x.lineWidth=4;x.beginPath();x.arc(20,20,17,0,6.2832);x.stroke();x.fillStyle="#f2c14e";drawShape(x,"raute",20,20,10);x.fill()}),"Schlüsselrune (goldener Ring): alle fünf einsammeln!");
+  const seen=[];L.runes.forEach(u=>{const k=u.shape+u.color;if(!seen.includes(k)){seen.push(k);add(sw(x=>drawRune(x,u,20,20,16,0)),runeName(u))}});
+  $("reveal").onclick=()=>{$("cover").hidden=true;$("kmap").hidden=false;paint()};
+  $("hide").onclick=()=>{$("kmap").hidden=true;$("cover").hidden=false};
+  $("zoomIn").onclick=()=>{tile=Math.min(40,tile+3);paint()};
+  $("zoomOut").onclick=()=>{tile=Math.max(8,tile-3);paint()};
+}
+/* ================= Spielmodus (zwei Monitore, gleiches Bild) ================= */
+function spielModus(){
+const cv=$("cv"),cx=cv.getContext("2d");
+const reduced=matchMedia("(prefers-reduced-motion: reduce)").matches;
+const NAMEN=["Die Nebelmolche","Funkelnde Greifen","Wurzelwichtel","Schattenfüchse","Drachenflüsterer","Mondkrabbler","Runenräuber","Glühwürmer","Zaubersocken","Die Irrlichter","Moosdrachen","Kristallkobolde"];
+const TEAMCOL=["#ff5d6c","#3ddc97"];
+const SP={
+  nebel:{n:"Nebelhauch",ic:"☁",d:"Gegner sieht kaum noch etwas",self:false},
+  spiegel:{n:"Spiegelbann",ic:"⇄",d:"Steuerung des Gegners vertauscht",self:false},
+  frost:{n:"Frostblick",ic:"❄",d:"Gegner erstarrt",self:false},
+  sprint:{n:"Sturmschuhe",ic:"»",d:"Du wirst schneller",self:true},
+  licht:{n:"Lichtblitz",ic:"☀",d:"Dein Lichtkreis wächst",self:true},
+  tausch:{n:"Schicksalstausch",ic:"⇆",d:"Beide Teams tauschen die Plätze",self:false}
+};
+const DIRS={up:[0,-1],down:[0,1],left:[-1,0],right:[1,0]},OPP={up:"down",down:"up",left:"right",right:"left"};
+const KEYS=[
+  {KeyW:"up",KeyA:"left",KeyS:"down",KeyD:"right"},
+  {ArrowUp:"up",ArrowLeft:"left",ArrowDown:"down",ArrowRight:"right"}
+];
+const SPELLKEY=[["KeyE"],["ShiftRight","Enter","NumpadEnter"]];
+const ZEITLIMIT=420;
+let L=null,teams=[],G={state:"start",t:0,count:0,chaos:null,nextChaos:20,banners:[],shake:0,wind:null,winner:-1,why:"",pausedFrom:null};
+let muted=false,seed=1000+Math.floor(Math.random()*9000),ac=null;
+
+/* ---- Ton (WebAudio, nichts wird geladen) ---- */
+function tone(f,d,type,gain,slide){
+  if(muted)return;
+  try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();const o=ac.createOscillator(),g=ac.createGain(),t0=ac.currentTime;
+    o.type=type||"sine";o.frequency.setValueAtTime(f,t0);if(slide)o.frequency.exponentialRampToValueAtTime(Math.max(30,slide),t0+d);
+    g.gain.setValueAtTime(gain||.08,t0);g.gain.exponentialRampToValueAtTime(.0001,t0+d);o.connect(g).connect(ac.destination);o.start(t0);o.stop(t0+d+.02)}catch(e){}
+}
+const SND={
+  orb:()=>{tone(660,.12,"sine",.09);setTimeout(()=>tone(990,.18,"sine",.08),90)},
+  rune:()=>tone(520,.15,"triangle",.07),
+  pit:()=>tone(220,.5,"sawtooth",.09,60),
+  cast:()=>{tone(300,.25,"square",.05,900)},
+  chaos:()=>{tone(110,.9,"sawtooth",.08,70);setTimeout(()=>tone(165,.7,"triangle",.07,90),200)},
+  win:()=>[523,659,784,1046].forEach((f,i)=>setTimeout(()=>tone(f,.4,"triangle",.1),i*150)),
+  go:()=>tone(880,.4,"square",.07),tick:()=>tone(440,.12,"square",.05)
+};
+
+/* ---- Spielstand ---- */
+function mkTeam(i,name){
+  return {i,name,col:TEAMCOL[i],x:L.start[0],y:L.start[1],fx0:L.start[0],fy0:L.start[1],tx:L.start[0],ty:L.start[1],p:0,moving:false,face:"right",held:[],
+    cp:{x:L.start[0],y:L.start[1],r:null},spell:null,fx:{nebel:0,spiegel:0,frost:0,sprint:0,licht:0},fall:0,orbT:L.orbs.map(()=>0),seenPits:new Set(),
+    falls:0,casts:0,done:false,keys:new Set(),flash:0,runesSeen:new Set(),padSpell:false};
+}
+function newGame(){
+  L=buildLevel(seed);distCache.clear();
+  const nA=$("nA").value.trim()||NAMEN[0],nB=$("nB").value.trim()||NAMEN[1];
+  teams=[mkTeam(0,nA),mkTeam(1,nB)];
+  G={state:"count",t:0,count:3.2,chaos:null,nextChaos:20+Math.random()*6,banners:[],shake:0,wind:null,winner:-1,why:"",pausedFrom:null,lastTick:4};
+  ["start","end","pause"].forEach(id=>$(id).hidden=true);
+}
+const tileOf=t=>t.moving&&t.p>=.5?[t.tx,t.ty]:[t.x,t.y];
+const distCache=new Map();
+const dist=t=>{const [x,y]=tileOf(t),k=(y*L.W+x)+":"+[...t.keys].sort().join("");let v=distCache.get(k);if(v===undefined){if(distCache.size>4000)distCache.clear();v=restWeg(L,y*L.W+x,t.keys);distCache.set(k,v)}return v};
+function gapOf(i){return dist(teams[i])-dist(teams[1-i])} /* >0: Team i liegt hinten */
+function effDir(t){let d=t.held.length?t.held[t.held.length-1]:null;if(d&&t.fx.spiegel>0)d=OPP[d];return d}
+function tryStart(t,carry){
+  const d=effDir(t);if(!d)return false;
+  const v=DIRS[d],nx=t.x+v[0],ny=t.y+v[1];
+  if(nx<0||ny<0||nx>=L.W||ny>=L.H||L.g[ny][nx])return false;
+  t.fx0=t.x;t.fy0=t.y;t.tx=nx;t.ty=ny;t.p=carry||0;t.moving=true;t.face=d;return true;
+}
+function speedOf(t){
+  let s=3.4;const gp=gapOf(t.i);
+  if(gp>0)s*=1+Math.min(gp,40)/40*.22;
+  if(t.fx.sprint>0)s*=1.6;
+  if(G.wind&&G.wind.team===t.i&&G.wind.t>0)s*=1.5;
+  return s;
+}
+function radiusOf(t){
+  let r=2.7;if(gapOf(t.i)>=12)r+=.6;
+  if(t.fx.nebel>0)r*=.5;if(t.fx.licht>0)r*=1.7;
+  if(G.chaos&&G.chaos.kind==="nebelsturm"&&G.chaos.t>0)r*=.65;
+  if(G.chaos&&G.chaos.kind==="mondschein"&&G.chaos.t>0)r*=1.5;
+  return Math.max(1.3,r);
+}
+function banner(txt,sub,col,panel,dur){G.banners.push({txt,sub,col,panel,t:dur||2.2,dur:dur||2.2});if(G.banners.length>6)G.banners.shift()}
+function giveSpell(t,fromChaos){
+  if(t.spell&&!fromChaos)return false;
+  const hint=gapOf(t.i)>=6,lead=gapOf(t.i)<=-6;
+  const w=hint?{nebel:2,spiegel:2,frost:2,sprint:3,licht:3,tausch:3}:lead?{nebel:3,spiegel:3,frost:3,sprint:2,licht:2,tausch:.2}:{nebel:3,spiegel:3,frost:3,sprint:2,licht:2,tausch:1};
+  let sum=0;for(const k in w)sum+=w[k];let r=Math.random()*sum,pick="nebel";
+  for(const k in w){r-=w[k];if(r<=0){pick=k;break}}
+  t.spell=pick;return true;
+}
+function castSpell(t){
+  if(G.state!=="play"||!t.spell||t.done)return;
+  const o=teams[1-t.i],k=t.spell;t.spell=null;t.casts++;SND.cast();
+  const info=SP[k];
+  if(k==="nebel"){o.fx.nebel=9}
+  else if(k==="spiegel"){o.fx.spiegel=7}
+  else if(k==="frost"){o.fx.frost=2.6}
+  else if(k==="sprint"){t.fx.sprint=5}
+  else if(k==="licht"){t.fx.licht=8}
+  else if(k==="tausch"){
+    const a=tileOf(t),b=tileOf(o);
+    [t,o].forEach(z=>{z.moving=false;z.p=0;z.fall=0});
+    t.x=b[0];t.y=b[1];o.x=a[0];o.y=a[1];
+    [t,o].forEach(z=>{z.fx0=z.x;z.fy0=z.y;z.tx=z.x;z.ty=z.y;z.flash=1;arrive(z,true)});
+    G.shake=.6;
+  }
+  banner(info.n+"!",info.self?t.name+": "+info.d:t.name+" → "+o.name+": "+info.d,t.col,-1,2.6);
+}
+function arrive(t,silent){
+  const idx=t.y*L.W+t.x;
+  if(t.x===L.goal[0]&&t.y===L.goal[1]){
+    if(t.keys.size>=NK){finish(t.i,"Tresor erreicht");return}
+    if(!silent&&t.sealT!==G.t){t.sealT=G.t;banner("Der Tresor ist versiegelt!","Es fehlen noch "+(NK-t.keys.size)+" Schlüsselrune"+(NK-t.keys.size===1?"":"n"),"#ffb86b",t.i,2)}
+  }
+  const ru=L.runes.find(u=>u.x===t.x&&u.y===t.y);
+  if(ru&&ru.key){const ki=L.keyIdx.indexOf(L.runes.indexOf(ru));if(ki>=0&&!t.keys.has(ki)){t.keys.add(ki);t.flash=1;SND.orb();banner("Schlüsselrune "+t.keys.size+" von "+NK+"!",t.keys.size>=NK?"Der Tresor ist offen – lauft los!":t.name,t.col,t.i,2.2)}}
+  if(ru&&!(t.cp.x===ru.x&&t.cp.y===ru.y)){t.cp={x:ru.x,y:ru.y,r:ru};t.flash=.8;if(!silent)SND.rune()}
+  const oi=L.orbs.findIndex((o,i)=>o.x===t.x&&o.y===t.y&&t.orbT[i]<=0);
+  if(oi>=0&&!t.spell){t.orbT[oi]=26;giveSpell(t);SND.orb();t.flash=.8;banner(SP[t.spell].n,"Taste drücken zum Zaubern",t.col,t.i,1.8)}
+  if(L.pits.has(idx)){
+    t.seenPits.add(idx);t.falls++;t.moving=false;
+    t.fall=gapOf(t.i)>=8?1.1:1.9;t.fallMax=t.fall;SND.pit();
+    banner("Fallgrube!",t.name+" stürzt zurück zur letzten Rune",t.col,t.i,1.8);
+  }
+}
+function respawn(t){t.x=t.cp.x;t.y=t.cp.y;t.fx0=t.x;t.fy0=t.y;t.tx=t.x;t.ty=t.y;t.moving=false;t.p=0;t.flash=.6}
+function stepTeam(t,dt){
+  for(const k in t.fx)if(t.fx[k]>0)t.fx[k]=Math.max(0,t.fx[k]-dt);
+  if(t.flash>0)t.flash=Math.max(0,t.flash-dt);
+  if(t.fall>0){t.fall-=dt;if(t.fall<=0){t.fall=0;respawn(t)}return}
+  for(let i=0;i<L.orbs.length;i++)if(t.orbT[i]>0)t.orbT[i]=Math.max(0,t.orbT[i]-dt);
+  if(t.fx.frost>0||t.done)return;
+  if(t.moving){
+    const d=effDir(t);
+    if(d&&d===OPP[t.face]){[t.fx0,t.tx]=[t.tx,t.fx0];[t.fy0,t.ty]=[t.ty,t.fy0];t.p=1-t.p;t.face=d;t.x=t.fx0;t.y=t.fy0}
+    t.p+=speedOf(t)*dt;
+    if(t.p>=1){
+      const carry=t.p-1;t.x=t.tx;t.y=t.ty;t.moving=false;arrive(t);
+      if(G.state==="play"&&!t.moving&&t.fall<=0)tryStart(t,Math.min(carry,.5));
+    }
+  }else tryStart(t,0);
+}
+/* ---- Chaos: Überraschungen für alle ---- */
+function chaosEvent(){
+  const gap=Math.abs(gapOf(0));const back=gapOf(0)>0?0:1;
+  const pool=["nebelsturm","mondschein","orbregen"];
+  if(gap>=5)pool.push("rueckenwind","rueckenwind");
+  if(gap>=10)pool.push("schicksal","schicksal");
+  if(gap<10)pool.push("lose");
+  const k=pool[Math.floor(Math.random()*pool.length)];
+  SND.chaos();if(!reduced)G.shake=.7;
+  if(k==="nebelsturm"){G.chaos={kind:k,t:9};banner("Nebelsturm!","Für alle wird es dunkel",  "#b9a8ff",-1,3.2)}
+  else if(k==="mondschein"){G.chaos={kind:k,t:9};banner("Mondschein!","Der Nebel lichtet sich – für alle",  "#bfe3ff",-1,3.2)}
+  else if(k==="rueckenwind"){G.wind={team:back,t:9};G.chaos={kind:k,t:0};banner("Rückenwind!",teams[back].name+" bekommt Schub von hinten","#7dd3fc",-1,3.2)}
+  else if(k==="orbregen"){teams.forEach(t=>{t.orbT=t.orbT.map(()=>0)});G.chaos={kind:k,t:0};banner("Zauberregen!","Alle Kugeln sind wieder da","#9be7ff",-1,3.2)}
+  else if(k==="lose"){teams.forEach(t=>giveSpell(t,true));G.chaos={kind:k,t:0};banner("Die Lose werden neu gemischt!","Beide Teams bekommen einen neuen Zauber","#f2c14e",-1,3.2)}
+  else if(k==="schicksal"){
+    const a=teams[0],b=teams[1],pa=tileOf(a),pb=tileOf(b);
+    [a,b].forEach(z=>{z.moving=false;z.p=0;z.fall=0});
+    a.x=pb[0];a.y=pb[1];b.x=pa[0];b.y=pa[1];
+    [a,b].forEach(z=>{z.fx0=z.x;z.fy0=z.y;z.tx=z.x;z.ty=z.y;z.flash=1});
+    G.chaos={kind:k,t:0};banner("Schicksalswende!","Die Teams tauschen die Plätze","#ff9bd2",-1,3.6);
+    [a,b].forEach(z=>arrive(z,true));
+  }
+}
+function finish(i,why){
+  if(G.state==="end")return;
+  G.state="end";G.winner=i;G.why=why;teams[i].done=true;SND.win();
+  const w=teams[i];
+  $("endW").textContent=w.name;$("endW").style.color=w.col;
+  $("endT").textContent=why==="Zeit abgelaufen"?"Zeitgong!":"Tresor geknackt!";
+  $("endS").textContent=why==="Zeit abgelaufen"?"Das Team, das dem Tresor am nächsten war, gewinnt.":"Gemeinsam durch den Nebel – das war Teamarbeit.";
+  const mm=Math.floor(G.t/60),ss=String(Math.floor(G.t%60)).padStart(2,"0");
+  $("endStats").innerHTML=[["Zeit",mm+":"+ss],["Stürze "+teams[0].name,teams[0].falls],["Stürze "+teams[1].name,teams[1].falls],["Zauber gewirkt",teams[0].casts+" / "+teams[1].casts]].map(([a,b])=>`<div><b>${b}</b><span>${a.replace(/[<>&]/g,"")}</span></div>`).join("");
+  setTimeout(()=>{if(G.state==="end")$("end").hidden=false},1700);
+}
+function update(dt){
+  G.shake=Math.max(0,G.shake-dt);
+  G.banners.forEach(b=>b.t-=dt);G.banners=G.banners.filter(b=>b.t>0);
+  if(G.state==="count"){
+    G.count-=dt;const n=Math.ceil(G.count);
+    if(n<G.lastTick&&n>=1){G.lastTick=n;SND.tick()}
+    if(G.count<=0){G.state="play";SND.go();banner("LOS!","Navigator:innen: Karte aufdecken","#f2c14e",-1,1.8)}
+    return;
+  }
+  if(G.state==="end"){teams.forEach(t=>{if(t.flash>0)t.flash-=dt});return}
+  if(G.state!=="play")return;
+  G.t+=dt;
+  teams.forEach(t=>stepTeam(t,dt));
+  if(G.state!=="play")return;
+  if(G.chaos&&G.chaos.t>0){G.chaos.t-=dt}
+  if(G.wind){G.wind.t-=dt;if(G.wind.t<=0)G.wind=null}
+  G.nextChaos-=dt;if(G.nextChaos<=0){chaosEvent();G.nextChaos=24+Math.random()*12}
+  if(G.t>=ZEITLIMIT){const d0=dist(teams[0]),d1=dist(teams[1]);finish(d0===d1?(Math.random()<.5?0:1):(d0<d1?0:1),"Zeit abgelaufen")}
+}
+
+/* ---- Eingabe ---- */
+const down=new Set();
+function press(i,dir,on){const h=teams[i].held,k=h.indexOf(dir);if(on){if(k<0)h.push(dir)}else if(k>=0)h.splice(k,1)}
+addEventListener("keydown",e=>{
+  if(e.target.matches("input")&&e.code!=="Escape")return;
+  if(e.code==="Escape"||e.code==="KeyP"){if(G.state==="play"||G.state==="count")pauseGame();else if(G.state==="pause")resumeGame();e.preventDefault();return}
+  if(e.code==="KeyM"&&!e.target.matches("input")){muted=!muted;$("muteBtn").textContent=muted?"Ton aus":"Ton an";return}
+  if(e.code==="KeyF"&&!e.target.matches("input")){toggleFs();return}
+  if(e.target.matches("input"))return;
+  if(G.state!=="play"&&G.state!=="count")return;
+  for(let i=0;i<2;i++){
+    if(KEYS[i][e.code]){e.preventDefault();if(!e.repeat)press(i,KEYS[i][e.code],true)}
+    if(SPELLKEY[i].includes(e.code)){e.preventDefault();if(!e.repeat)castSpell(teams[i])}
+  }
+});
+addEventListener("keyup",e=>{if(!teams.length)return;for(let i=0;i<2;i++)if(KEYS[i][e.code])press(i,KEYS[i][e.code],false)});
+function pollPads(){
+  const pads=navigator.getGamepads?navigator.getGamepads():[];
+  for(let i=0;i<2;i++){
+    const p=pads[i];if(!p||!teams[i])continue;
+    const ax=p.axes[0]||0,ay=p.axes[1]||0,b=n=>p.buttons[n]&&p.buttons[n].pressed;
+    const want={left:ax<-.5||b(14),right:ax>.5||b(15),up:ay<-.5||b(12),down:ay>.5||b(13)};
+    for(const d in want)press(i,d,want[d]);
+    const sp=b(0)||b(1)||b(2)||b(3);if(sp&&!teams[i].padSpell)castSpell(teams[i]);teams[i].padSpell=sp;
+  }
+}
+function pauseGame(){if(G.state!=="play"&&G.state!=="count")return;G.pausedFrom=G.state;G.state="pause";$("pause").hidden=false;teams.forEach(t=>t.held.length=0)}
+function resumeGame(){if(G.state!=="pause")return;G.state=G.pausedFrom||"play";$("pause").hidden=true}
+addEventListener("blur",()=>{if(G.state==="play"||G.state==="count")pauseGame()});
+document.addEventListener("visibilitychange",()=>{if(document.hidden)pauseGame()});
+function toggleFs(){try{if(document.fullscreenElement)document.exitFullscreen();else(document.documentElement.requestFullscreen||(()=>{})).call(document.documentElement)}catch(e){}}
+
+/* ================= Zeichnen ================= */
+let W=0,H=0,dpr=1;
+const off=[document.createElement("canvas"),document.createElement("canvas")];
+function resize(){dpr=Math.min(1.5,devicePixelRatio||1);W=innerWidth;H=innerHeight;cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr)}
+addEventListener("resize",resize);resize();
+const hash=(x,y)=>{let h=(x*374761393+y*668265263)^(x*y*1274126177);h=(h^h>>>13)*1274126177;return((h^h>>>16)>>>0)/4294967296};
+function rr(c,x,y,w,h,r){c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);c.arcTo(x+w,y+h,x,y+h,r);c.arcTo(x,y+h,x,y,r);c.arcTo(x,y,x+w,y,r);c.closePath()}
+function txt(c,s,x,y,size,col,align,weight,font){c.font=(weight||"700")+" "+size+"px "+(font||"system-ui,-apple-system,'Segoe UI',sans-serif");c.textAlign=align||"left";c.textBaseline="middle";c.fillStyle=col;c.fillText(s,x,y)}
+function figPos(t){
+  if(t.moving)return [t.fx0+(t.tx-t.fx0)*t.p,t.fy0+(t.ty-t.fy0)*t.p];
+  return [t.x,t.y];
+}
+function drawPanel(c,t,px,py,pw,ph,time){
+  const ts=Math.floor(Math.min(ph/9.5,pw/13)),[fx,fy]=figPos(t),ccx=pw/2,ccy=ph/2;
+  const ox=ccx-(fx+.5)*ts,oy=ccy-(fy+.5)*ts;
+  c.save();c.translate(px,py);c.beginPath();c.rect(0,0,pw,ph);c.clip();
+  c.fillStyle="#07060f";c.fillRect(0,0,pw,ph);
+  const x0=Math.max(0,Math.floor(-ox/ts)),x1=Math.min(L.W-1,Math.ceil((pw-ox)/ts)),y0=Math.max(0,Math.floor(-oy/ts)),y1=Math.min(L.H-1,Math.ceil((ph-oy)/ts));
+  for(let y=y0;y<=y1;y++)for(let x=x0;x<=x1;x++){
+    const sx=ox+x*ts,sy=oy+y*ts,h=hash(x,y);
+    if(L.g[y][x]){
+      c.fillStyle=h<.5?"#2b2748":"#2f2a50";c.fillRect(sx,sy,ts+1,ts+1);
+      c.fillStyle="rgba(255,255,255,.07)";c.fillRect(sx,sy,ts,Math.max(2,ts*.07));
+      c.fillStyle="rgba(0,0,0,.28)";c.fillRect(sx,sy+ts*.5-1,ts,2);c.fillRect(sx+(h<.5?ts*.3:ts*.65),sy,2,ts*.5);c.fillRect(sx+(h<.5?ts*.7:ts*.35),sy+ts*.5,2,ts*.5);
+      if(h>.9){c.fillStyle="#3c7a52";c.fillRect(sx+ts*.15,sy+ts*.1,ts*.25,ts*.12)}
+    }else{
+      c.fillStyle=(x+y)%2?"#1d2b36":"#202f3b";c.fillRect(sx,sy,ts+1,ts+1);
+      if(h<.18){c.fillStyle="rgba(255,255,255,.05)";c.fillRect(sx+h*ts*4,sy+ts*.55,ts*.18,ts*.1)}
+      if(h>.94){c.fillStyle="#3c7a52";c.beginPath();c.arc(sx+ts*.3,sy+ts*.7,ts*.08,0,6.3);c.fill()}
+    }
+  }
+  /* sichtbar gewordene Fallgruben (nach dem Sturz) */
+  t.seenPits.forEach(k=>{const x=k%L.W,y=(k-x)/L.W,sx=ox+x*ts,sy=oy+y*ts;
+    c.fillStyle="#0a0510";c.beginPath();c.arc(sx+ts/2,sy+ts/2,ts*.4,0,6.3);c.fill();
+    txt(c,"✖",sx+ts/2,sy+ts/2+1,ts*.5,"#ff5d6c","center")});
+  /* Zauberkugeln im Lichtkreis */
+  L.orbs.forEach((o,i)=>{if(t.orbT[i]>0)return;drawOrb(c,ox+(o.x+.5)*ts,oy+(o.y+.5)*ts,ts*.34,time)});
+  /* Figur */
+  const R=radiusOf(t),px0=ox+(fx+.5)*ts,py0=oy+(fy+.5)*ts;
+  let sc=1,alpha=1;if(t.fall>0){const k=t.fall/(t.fallMax||1.9);sc=Math.max(0,k);alpha=k}
+  c.save();c.globalAlpha=alpha;c.translate(px0,py0);c.scale(sc,sc);
+  const bob=t.moving?Math.sin(time*18)*ts*.03:0;
+  c.fillStyle="rgba(0,0,0,.35)";c.beginPath();c.ellipse(0,ts*.3,ts*.28,ts*.1,0,0,6.3);c.fill();
+  c.fillStyle=t.col;c.beginPath();c.moveTo(-ts*.26,ts*.3+bob);c.quadraticCurveTo(-ts*.3,-ts*.05,0,-ts*.08+bob);c.quadraticCurveTo(ts*.3,-ts*.05,ts*.26,ts*.3+bob);c.closePath();c.fill();
+  c.fillStyle="#f6dcc0";c.beginPath();c.arc(0,-ts*.12+bob,ts*.17,0,6.3);c.fill();
+  c.fillStyle=t.col;c.beginPath();c.moveTo(-ts*.26,-ts*.14+bob);c.lineTo(ts*.02,-ts*.62+bob);c.lineTo(ts*.26,-ts*.14+bob);c.closePath();c.fill();
+  c.fillStyle="#fff";c.fillRect(-ts*.28,-ts*.17+bob,ts*.56,ts*.05);
+  const fd=DIRS[t.face]||[0,1];c.fillStyle="#241a00";c.beginPath();c.arc(fd[0]*ts*.06-ts*.05,-ts*.1+bob+fd[1]*ts*.03,ts*.025,0,6.3);c.arc(fd[0]*ts*.06+ts*.05,-ts*.1+bob+fd[1]*ts*.03,ts*.025,0,6.3);c.fill();
+  c.restore();
+  /* Nebel: alles außerhalb des Lichtkreises ist dunkel */
+  const o=off[t.i];if(o.width!==Math.round(pw)||o.height!==Math.round(ph)){o.width=Math.round(pw);o.height=Math.round(ph)}
+  const oc=o.getContext("2d");oc.globalCompositeOperation="source-over";oc.clearRect(0,0,pw,ph);oc.fillStyle="rgba(5,5,14,.985)";oc.fillRect(0,0,pw,ph);
+  oc.globalCompositeOperation="destination-out";
+  const flick=1+Math.sin(time*7+t.i)*.015,rad=R*ts*flick,g=oc.createRadialGradient(px0,py0,rad*.25,px0,py0,rad);
+  g.addColorStop(0,"rgba(0,0,0,1)");g.addColorStop(.62,"rgba(0,0,0,.92)");g.addColorStop(1,"rgba(0,0,0,0)");
+  oc.fillStyle=g;oc.beginPath();oc.arc(px0,py0,rad,0,6.3);oc.fill();
+  c.drawImage(o,0,0);
+  /* Runen glimmen weit durch den Nebel, das Tresor-Licht noch weiter */
+  const gl=(x,y,maxR)=>{const d=Math.hypot(x-fx,y-fy);return d<maxR?Math.min(1,(maxR-d)/2.2):0};
+  L.runes.forEach(u=>{const a=gl(u.x,u.y,u.key?8.5:6.5);if(a<=0)return;c.globalAlpha=a*(.75+.25*Math.sin(time*3+u.x));drawRune(c,u,ox+(u.x+.5)*ts,oy+(u.y+.5)*ts,ts*.3,ts*.5);c.globalAlpha=1});
+  L.keyIdx.forEach((ri,ki)=>{const u=L.runes[ri];if(t.keys.has(ki))return;const a=gl(u.x,u.y,8.5);if(a<=0)return;c.save();c.globalAlpha=a;c.strokeStyle="#fff7c2";c.lineWidth=ts*.07;c.beginPath();c.arc(ox+(u.x+.5)*ts,oy+(u.y+.5)*ts,ts*.46+Math.sin(time*5)*ts*.03,0,6.3);c.stroke();c.restore()});
+  const ga=gl(L.goal[0],L.goal[1],9);
+  if(ga>0){c.save();c.globalAlpha=ga;const open=t.keys.size>=NK;c.shadowColor=open?"#f2c14e":"#6c6a8a";c.shadowBlur=ts*.9;c.fillStyle=open?"#f2c14e":"#7d7aa0";drawStar(c,ox+(L.goal[0]+.5)*ts,oy+(L.goal[1]+.5)*ts,ts*.46+Math.sin(time*4)*ts*.03);c.fill();c.restore()}
+  /* Effekte */
+  if(t.fx.frost>0){c.fillStyle="rgba(150,210,255,.28)";c.fillRect(0,0,pw,ph);c.strokeStyle="rgba(210,240,255,.8)";c.lineWidth=ts*.14;c.strokeRect(ts*.07,ts*.07,pw-ts*.14,ph-ts*.14)}
+  if(t.fx.spiegel>0){c.fillStyle="rgba(190,110,255,"+(.12+.06*Math.sin(time*8))+")";c.fillRect(0,0,pw,ph)}
+  if(t.flash>0){c.fillStyle="rgba(255,255,255,"+Math.min(.5,t.flash*.5)+")";c.fillRect(0,0,pw,ph)}
+  /* Kopf */
+  c.fillStyle="rgba(8,7,20,.78)";c.fillRect(0,0,pw,ts*.95);
+  txt(c,t.name,ts*.3,ts*.34,ts*.46,t.col,"left","800","Georgia,serif");
+  const tot=L.tour,prog=Math.max(0,Math.min(1,1-dist(t)/tot));
+  rr(c,ts*.3,ts*.62,pw-ts*.6,ts*.16,ts*.08);c.fillStyle="rgba(255,255,255,.12)";c.fill();
+  if(prog>0){rr(c,ts*.3,ts*.62,Math.max(ts*.16,(pw-ts*.6)*prog),ts*.16,ts*.08);c.fillStyle=t.col;c.fill()}
+  /* Schlüsselrunen: drei Fächer rechts im Kopf */
+  L.keyIdx.forEach((ri,ki)=>{const u=L.runes[ri],kx2=pw-ts*(.7+(NK-1-ki)*.8),got=t.keys.has(ki);
+    c.save();c.globalAlpha=got?1:.45;c.strokeStyle=got?"#fff7c2":"rgba(255,255,255,.5)";c.lineWidth=2;c.beginPath();c.arc(kx2,ts*.34,ts*.3,0,6.3);c.stroke();drawRune(c,u,kx2,ts*.34,ts*.2,got?ts*.3:0);c.restore();
+    if(got)txt(c,"✓",kx2+ts*.22,ts*.62,ts*.28,"#7dffb0","center","800")});
+  /* Zauberfach unten */
+  const bh=ts*.95,by=ph-bh-ts*.15;
+  c.fillStyle="rgba(8,7,20,.78)";rr(c,ts*.2,by,Math.min(pw*.62,ts*7.4),bh,ts*.2);c.fill();
+  c.strokeStyle=t.spell?t.col:"rgba(255,255,255,.18)";c.lineWidth=2;c.stroke();
+  if(t.spell){const s=SP[t.spell];txt(c,s.ic,ts*.55,by+bh/2+2,ts*.55,t.col,"center","800");txt(c,s.n,ts*1.0,by+bh*.34,ts*.36,"#fff","left","800");txt(c,(s.self?"für dich":"gegen den Gegner")+" · Taste: "+(t.i?"Shift rechts":"E"),ts*1.0,by+bh*.72,ts*.24,"#c7bfff","left","600")}
+  else txt(c,"Sammle eine Zauberkugel ✦",ts*.5,by+bh/2,ts*.3,"#a79fcb","left","600");
+  /* Wirkungen */
+  const chips=[];
+  if(t.fx.nebel>0)chips.push(["Nebel",t.fx.nebel,"#b9c6d6"]);if(t.fx.spiegel>0)chips.push(["Spiegel",t.fx.spiegel,"#c58bff"]);if(t.fx.frost>0)chips.push(["Frost",t.fx.frost,"#9fd8ff"]);
+  if(t.fx.sprint>0)chips.push(["Sturm",t.fx.sprint,"#ffd166"]);if(t.fx.licht>0)chips.push(["Licht",t.fx.licht,"#fff3b0"]);
+  if(G.wind&&G.wind.team===t.i)chips.push(["Rückenwind",G.wind.t,"#7dd3fc"]);else if(gapOf(t.i)>=12)chips.push(["Aufholwind",99,"#7dd3fc"]);
+  chips.forEach((ch,k)=>{const w=ts*2.3,x=pw-w-ts*.2,y=ph-ts*.15-(k+1)*ts*.5;c.fillStyle="rgba(8,7,20,.78)";rr(c,x,y,w,ts*.42,ts*.12);c.fill();c.fillStyle=ch[2];c.fillRect(x+ts*.1,y+ts*.1,ts*.06,ts*.22);txt(c,ch[0]+(ch[1]<90?" "+Math.ceil(ch[1])+"s":""),x+ts*.28,y+ts*.22,ts*.25,"#fff","left","700")});
+  c.restore();
+  return ts;
+}
+function render(time){
+  cx.setTransform(dpr,0,0,dpr,0,0);
+  cx.fillStyle="#07060f";cx.fillRect(0,0,W,H);
+  if(!L){return}
+  const tb=Math.round(Math.max(44,H*.07)),gap=Math.round(Math.max(10,W*.008)),pw=Math.floor((W-gap*3)/2),ph=H-tb-gap;
+  let sx=0,sy=0;if(G.shake>0&&!reduced){sx=(Math.random()-.5)*G.shake*14;sy=(Math.random()-.5)*G.shake*14}
+  cx.save();cx.translate(sx,sy);
+  const ts0=drawPanel(cx,teams[0],gap,tb,pw,ph,time),ts1=drawPanel(cx,teams[1],gap*2+pw,tb,pw,ph,time);
+  cx.strokeStyle=TEAMCOL[0];cx.lineWidth=3;cx.strokeRect(gap,tb,pw,ph);cx.strokeStyle=TEAMCOL[1];cx.strokeRect(gap*2+pw,tb,pw,ph);
+  /* Kopfleiste: Zeit, Karte */
+  const rest=Math.max(0,ZEITLIMIT-G.t),mm=Math.floor(rest/60),ss=String(Math.floor(rest%60)).padStart(2,"0");
+  txt(cx,"Blindflug · Karte "+L.seed,gap,tb/2,tb*.4,"#a79fcb","left","700","Georgia,serif");
+  txt(cx,mm+":"+ss,W/2,tb/2,tb*.62,rest<30?"#ff7a86":"#f1ecff","center","800");
+  txt(cx,"Esc = Pause",W-gap,tb/2,tb*.3,"#7d75a8","right","600");
+  cx.restore();
+  /* Banner */
+  const lastBig=G.banners.map(b=>b.panel<0).lastIndexOf(true);
+  G.banners.forEach((b,i)=>{
+    if(b.panel<0&&i!==lastBig)return;
+    const k=Math.min(1,b.t/.35,(b.dur-b.t)/.2+.2),big=b.panel<0;
+    const bw=big?Math.min(W*.7,1100):pw*.8,bx=big?W/2-bw/2:(b.panel===0?gap+pw/2-bw/2:gap*2+pw+pw/2-bw/2),by=big?tb+ph*.14+i*0*1:tb+ph*.3;
+    const hh=big?ph*.2:ph*.12;
+    cx.save();cx.globalAlpha=Math.max(0,k);cx.fillStyle="rgba(8,7,20,.88)";rr(cx,bx,by,bw,hh,20);cx.fill();cx.strokeStyle=b.col;cx.lineWidth=3;cx.stroke();
+    txt(cx,b.txt,bx+bw/2,by+hh*.4,hh*(big?.42:.4),b.col,"center","800","Georgia,serif");txt(cx,b.sub,bx+bw/2,by+hh*.78,hh*.2,"#e6e0ff","center","600");cx.restore();
+  });
+  if(G.state==="count"){
+    const n=Math.max(1,Math.ceil(G.count)),m=Math.min(W,H);cx.fillStyle="rgba(5,4,15,.72)";cx.fillRect(0,0,W,H);
+    txt(cx,G.count>3?"Bereit?":String(n),W/2,H/2-m*.17,m*.24,"#f2c14e","center","800","Georgia,serif");
+    txt(cx,"Sucht diese "+NKW[NK]+" Schlüsselrunen – dann öffnet sich der Tresor:",W/2,H/2+m*.09,m*.04,"#e6e0ff","center","700");
+    L.keyIdx.forEach((ri,ki)=>{const u=L.runes[ri];drawRune(cx,u,W/2+(ki-(NK-1)/2)*m*.17,H/2+m*.21,m*.06,m*.05)});
+    txt(cx,"Navigator:innen: Karte bereithalten, aber erst bei „LOS!“ aufdecken.",W/2,H/2+m*.34,m*.03,"#a79fcb","center","600");
+  }
+}
+let last=0;
+function loop(ts){
+  const dt=Math.min(.05,(ts-last)/1000||0);last=ts;
+  if(L){pollPads();update(dt)}
+  render(ts/1000);
+  requestAnimationFrame(loop);
+}
+requestAnimationFrame(loop);
+
+/* ================= Startseite & Bedienung ================= */
+function pickName(i){let n;do{n=NAMEN[Math.floor(Math.random()*NAMEN.length)]}while(n===$(i?"nA":"nB").value);$(i?"nB":"nA").value=n}
+async function showStart(){
+  G.state="start";["end","pause"].forEach(id=>$(id).hidden=true);$("start").hidden=false;
+  const u=new URL(location.href);u.search="";u.hash="";u.searchParams.set("rolle","karte");u.searchParams.set("seed",seed);
+  $("kn").textContent=seed;$("qr").innerHTML=await qrSvg(u.href,180);
+}
+$("nA").value=NAMEN[Math.floor(Math.random()*6)];pickName(1);
+$("rA").onclick=()=>pickName(0);$("rB").onclick=()=>pickName(1);
+$("newMap").onclick=()=>{seed=1000+Math.floor(Math.random()*9000);showStart()};
+$("goBtn").onclick=()=>{try{ac=ac||new (window.AudioContext||window.webkitAudioContext)()}catch(e){}newGame()};
+$("fsBtn").onclick=toggleFs;
+$("muteBtn").onclick=()=>{muted=!muted;$("muteBtn").textContent=muted?"Ton aus":"Ton an"};
+$("resumeBtn").onclick=resumeGame;
+$("quitBtn").onclick=()=>{L=null;teams=[];showStart()};
+$("againBtn").onclick=newGame;
+$("newBtn").onclick=()=>{seed=1000+Math.floor(Math.random()*9000);newGame()};
+$("toStartBtn").onclick=()=>{seed=1000+Math.floor(Math.random()*9000);L=null;teams=[];showStart()};
+showStart();
+}
+if(q.get("rolle")==="karte")karteModus();else spielModus();
+
+</script>
+</body></html>

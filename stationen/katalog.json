@@ -811,5 +811,19 @@
   "pfad": [
    "Resilienz"
   ]
+ },
+ {
+  "id": "aula-blindflug",
+  "titel": "Blindflug – Das Nebelgewölbe",
+  "fach": "Aula",
+  "beschreibung": "Zwei Teams, zwei Monitore: Pilot:in steuert im Nebel, Navigator:in liest die Karte am Handy. Fünf Schlüsselrunen finden, dann den Tresor öffnen. Etwa 5–7 Minuten, ohne Lernstoff.",
+  "datei": "blindflug.html",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Blindflug",
+  "pfad": [
+   "Aula",
+   "Blindflug"
+  ]
  }
 ]

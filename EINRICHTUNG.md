@@ -33,3 +33,10 @@ Der QR-Code eines Ordners steht im aufgeklappten Ordner (Link: `index.html?ordne
 ## Musik: Trompete in B (Noten und Griffe)
 
 `stationen/trompete.html` ist eine eigenständige Station ohne Datensatz (die 60 Töne der Grifftabelle stehen direkt in der Datei, geprüft gegen die Standard-Grifftabelle für Trompete in B). Katalogeintrag: Fach „Musik“, Pfad `["Musik","Trompete"]`, `ergebnis:false` (Selbstkontrolle, kein Ergebniscode). Auswahl von Umfang, Lage und Übungsart erfolgt in der Station selbst. Tasten: Leertaste = Aufdecken, → = gewusst, ← = nochmal, 1/2/3 = Ventile drücken.
+
+## Aula: Blindflug – Das Nebelgewölbe
+`stationen/blindflug.html` (Katalogeintrag im Ordner **Aula**, ohne Ergebniscode). Spiel für zwei Teams an zwei Monitoren mit gleichem Bild, ohne Lernstoff, etwa 5–7 Minuten.
+- **Aufbau:** Die Seite am Aula-Rechner im Vollbild öffnen (am besten direkt `…/stationen/blindflug.html`, ohne Leiste). Team links steuert mit W A S D (Zauber: E), Team rechts mit den Pfeiltasten (Zauber: Shift rechts). Zwei Gamepads (Anschluss 1 und 2) gehen auch. Pause: Esc, Ton: M, Vollbild: F.
+- **Rollen:** Pilot:in steuert und sieht nur einen Lichtkreis. Navigator:in scannt den QR-Code der Startseite und sieht auf dem Handy die ganze Karte mit allen Fallgruben (aber nicht den Standort des Teams). Die Karte wird nur aus der Kartennummer berechnet, es gibt keine Verbindung zwischen Handy und Monitor und es werden keine Daten gespeichert oder gesendet.
+- **Spiel:** Erst fünf Schlüsselrunen einsammeln (Reihenfolge frei), dann den Tresor erreichen. Zauberkugeln, Chaos-Ereignisse und der Aufholbonus für das hintere Team sorgen für Überraschungen. Nach 7 Minuten gewinnt das Team, das dem Tresor näher ist.
+- **Anpassen:** Zeitlimit `ZEITLIMIT`, Anzahl der Schlüssel `NK`, Tempo in `speedOf` (oben in der Datei).
