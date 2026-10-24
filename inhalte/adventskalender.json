@@ -1,0 +1,286 @@
+{
+ "titel": "Adventskalender",
+ "start": "2026-12-01",
+ "ende": "2026-12-23",
+ "lichter": [],
+ "tuerchen": [
+  {
+   "nr": 1,
+   "datum": "2026-12-01",
+   "wochentag": "Di",
+   "kalender": "2026-12-01",
+   "art": "Aktion",
+   "titel": "Der erste Funke",
+   "text": "Sag heute einer Person aus deiner Klasse, was du an ihr magst. Kurz und ehrlich, ein Satz reicht.",
+   "dauer": 2,
+   "spruch": "Pah. Ein Kompliment. Davon geht doch kein Licht an."
+  },
+  {
+   "nr": 2,
+   "datum": "2026-12-02",
+   "wochentag": "Mi",
+   "kalender": "2026-12-02",
+   "art": "Nur gemeinsam",
+   "titel": "Vier Hinweise, eine Lösung",
+   "text": "Jede Person hat nur einen Teil des Rätsels. Findet andere mit anderen Hinweisen, tauscht euch aus und tippt das Lösungswort ein.",
+   "dauer": 5,
+   "hinweise": [
+    "Das Lösungswort hat 7 Buchstaben. Die ersten beiden sind LA.",
+    "Die Buchstaben 3 und 4 sind TE.",
+    "Die letzten drei Buchstaben sind RNE.",
+    "Das Lösungswort leuchtet im Dunkeln und hängt oft an einem Haken."
+   ],
+   "loesung": "LATERNE",
+   "spruch": "Vier Leute für ein Wort? Das kann ich auch allein. Glaube ich."
+  },
+  {
+   "nr": 3,
+   "datum": "2026-12-03",
+   "wochentag": "Do",
+   "kalender": "2026-12-03",
+   "art": "Quiz",
+   "titel": "Woher kommt das Wort?",
+   "text": "Woher stammt das Wort „Solidarität“?",
+   "dauer": 1,
+   "antworten": [
+    "Vom lateinischen „solidus“: fest, zusammenhaltend",
+    "Vom griechischen „soli“: allein",
+    "Vom altdeutschen „Sol“: Sonne",
+    "Vom englischen „solid“ für stabile Möbel"
+   ],
+   "erklaerung": "Solidarität kommt über das Französische vom lateinischen „solidus“ (fest, ganz). Gemeint ist: Wir halten fest zusammen.",
+   "spruch": "Fest zusammen. Sieht mir stark nach Kleber aus."
+  },
+  {
+   "nr": 4,
+   "datum": "2026-12-04",
+   "wochentag": "Fr",
+   "kalender": "2026-12-04",
+   "art": "Mitmachen",
+   "titel": "Die Dankeswand",
+   "text": "Schreib einen Satz an jemanden, der dir diese Woche geholfen hat, auf einen Zettel und häng ihn an die Dankeswand in der Aula.",
+   "dauer": 3,
+   "spruch": "Zettel. An eine Wand. Aus Freiwilligkeit? Seltsame Leute."
+  },
+  {
+   "nr": 5,
+   "datum": "2026-12-07",
+   "wochentag": "Mo",
+   "kalender": "2026-12-05",
+   "art": "",
+   "titel": "",
+   "text": "",
+   "dauer": null,
+   "spruch": ""
+  },
+  {
+   "nr": 6,
+   "datum": "2026-12-07",
+   "wochentag": "Mo",
+   "kalender": "2026-12-06",
+   "art": "",
+   "titel": "",
+   "text": "",
+   "dauer": null,
+   "spruch": ""
+  },
+  {
+   "nr": 7,
+   "datum": "2026-12-07",
+   "wochentag": "Mo",
+   "kalender": "2026-12-07",
+   "art": "",
+   "titel": "",
+   "text": "",
+   "dauer": null,
+   "spruch": ""
+  },
+  {
+   "nr": 8,
+   "datum": "2026-12-08",
+   "wochentag": "Di",
+   "kalender": "2026-12-08",
+   "art": "",
+   "titel": "",
+   "text": "",
+   "dauer": null,
+   "spruch": ""
+  },
+  {
+   "nr": 9,
+   "datum": "2026-12-09",
+   "wochentag": "Mi",
+   "kalender": "2026-12-09",
+   "art": "",
+   "titel": "",
+   "text": "",
+   "dauer": null,
+   "spruch": ""
+  },
+  {
+   "nr": 10,
+   "datum": "2026-12-10",
+   "wochentag": "Do",
+   "kalender": "2026-12-10",
+   "art": "",
+   "titel": "",
+   "text": "",
+   "dauer": null,
+   "spruch": ""
+  },
+  {
+   "nr": 11,
+   "datum": "2026-12-11",
+   "wochentag": "Fr",
+   "kalender": "2026-12-11",
+   "art": "",
+   "titel": "",
+   "text": "",
+   "dauer": null,
+   "spruch": ""
+  },
+  {
+   "nr": 12,
+   "datum": "2026-12-14",
+   "wochentag": "Mo",
+   "kalender": "2026-12-12",
+   "art": "",
+   "titel": "",
+   "text": "",
+   "dauer": null,
+   "spruch": ""
+  },
+  {
+   "nr": 13,
+   "datum": "2026-12-14",
+   "wochentag": "Mo",
+   "kalender": "2026-12-13",
+   "art": "",
+   "titel": "",
+   "text": "",
+   "dauer": null,
+   "spruch": ""
+  },
+  {
+   "nr": 14,
+   "datum": "2026-12-14",
+   "wochentag": "Mo",
+   "kalender": "2026-12-14",
+   "art": "",
+   "titel": "",
+   "text": "",
+   "dauer": null,
+   "spruch": ""
+  },
+  {
+   "nr": 15,
+   "datum": "2026-12-15",
+   "wochentag": "Di",
+   "kalender": "2026-12-15",
+   "art": "",
+   "titel": "",
+   "text": "",
+   "dauer": null,
+   "spruch": ""
+  },
+  {
+   "nr": 16,
+   "datum": "2026-12-16",
+   "wochentag": "Mi",
+   "kalender": "2026-12-16",
+   "art": "",
+   "titel": "",
+   "text": "",
+   "dauer": null,
+   "spruch": ""
+  },
+  {
+   "nr": 17,
+   "datum": "2026-12-17",
+   "wochentag": "Do",
+   "kalender": "2026-12-17",
+   "art": "",
+   "titel": "",
+   "text": "",
+   "dauer": null,
+   "spruch": ""
+  },
+  {
+   "nr": 18,
+   "datum": "2026-12-18",
+   "wochentag": "Fr",
+   "kalender": "2026-12-18",
+   "art": "",
+   "titel": "",
+   "text": "",
+   "dauer": null,
+   "spruch": ""
+  },
+  {
+   "nr": 19,
+   "datum": "2026-12-21",
+   "wochentag": "Mo",
+   "kalender": "2026-12-19",
+   "art": "",
+   "titel": "",
+   "text": "",
+   "dauer": null,
+   "spruch": ""
+  },
+  {
+   "nr": 20,
+   "datum": "2026-12-21",
+   "wochentag": "Mo",
+   "kalender": "2026-12-20",
+   "art": "",
+   "titel": "",
+   "text": "",
+   "dauer": null,
+   "spruch": ""
+  },
+  {
+   "nr": 21,
+   "datum": "2026-12-21",
+   "wochentag": "Mo",
+   "kalender": "2026-12-21",
+   "art": "",
+   "titel": "",
+   "text": "",
+   "dauer": null,
+   "spruch": ""
+  },
+  {
+   "nr": 22,
+   "datum": "2026-12-22",
+   "wochentag": "Di",
+   "kalender": "2026-12-22",
+   "art": "",
+   "titel": "",
+   "text": "",
+   "dauer": null,
+   "spruch": ""
+  },
+  {
+   "nr": 23,
+   "datum": "2026-12-23",
+   "wochentag": "Mi",
+   "kalender": "2026-12-23",
+   "art": "",
+   "titel": "",
+   "text": "",
+   "dauer": null,
+   "spruch": ""
+  },
+  {
+   "nr": 24,
+   "datum": "2026-12-23",
+   "wochentag": "Mi",
+   "kalender": "2026-12-24",
+   "art": "Mitmachen",
+   "titel": "Das letzte Licht",
+   "text": "Kommt heute in der großen Pause in die Aula und schaut, was die Schule gemeinsam geschafft hat. Wünsch einer Person, die du kaum kennst, schöne Ferien.",
+   "dauer": 5,
+   "spruch": "Ich habe nichts vorbereitet. Aber ich komme. Wirklich."
+  }
+ ]
+}

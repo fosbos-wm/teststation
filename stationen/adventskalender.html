@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Adventskalender</title>
+<style>
+:root{--bg:#0a1026;--panel:#141b3a;--panel2:#1b2450;--fg:#f3f0ff;--muted:#a9b0d6;--line:#34407a;--warm:#ffd36b;--warm2:#ffb347;--ok:#6ee7a8}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%}
+body{background:radial-gradient(ellipse at 50% 0%,#1d2a63,#0a1026 70%);color:var(--fg);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;margin:0;line-height:1.15}
+button{font:inherit;color:inherit;cursor:pointer}
+.b{font-weight:800;border-radius:14px;border:2px solid var(--warm);background:var(--warm);color:#2a1d00;padding:12px 22px}
+.b.alt{background:transparent;color:var(--fg);border-color:var(--line)}
+.b:disabled{opacity:.5;cursor:default}
+[hidden]{display:none!important}
+:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.chip{display:inline-block;border-radius:999px;border:1px solid var(--line);padding:2px 12px;font-size:.85em;color:var(--muted);background:rgba(255,255,255,.05)}
+/* ---------- Aula ---------- */
+#aula{height:100vh;height:100dvh;display:flex;flex-direction:column;padding:1.4vmin 2vmin;gap:1.2vmin;overflow:hidden}
+#aula header{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex:none}
+#aula header h1{font-size:clamp(22px,4vmin,44px);color:var(--warm);text-shadow:0 0 18px rgba(255,211,107,.35)}
+#aula header .r{color:var(--muted);font-size:clamp(14px,2.2vmin,24px);text-align:right}
+#aula main{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) clamp(260px,24vw,460px);gap:2vmin}
+#dorf{width:100%;height:100%;min-height:0;display:block;border-radius:18px;border:2px solid var(--line);background:#0b1233}
+.card{background:linear-gradient(160deg,var(--panel2),var(--panel));border:2px solid var(--line);border-radius:18px;padding:clamp(12px,2vmin,24px);display:flex;flex-direction:column;gap:1.2vmin;min-height:0}
+#heute h2{font-size:clamp(20px,3.4vmin,40px)}
+#heute .nr{font:800 clamp(16px,2.4vmin,26px) Georgia,serif;color:var(--warm)}
+#heute .txt{font-size:clamp(14px,2vmin,22px);color:#e5e2ff}
+#heute .qr{background:#fff;border-radius:14px;padding:6px;line-height:0;align-self:center}
+#heute .qr svg{width:clamp(130px,17vmin,260px);height:clamp(130px,17vmin,260px)}
+#heute .scan{text-align:center;color:var(--muted);font-size:clamp(12px,1.8vmin,20px)}
+.fenster{cursor:default}
+.fenster .scheibe{stroke:#0b1233;stroke-width:3}
+.fenster.zu .scheibe{fill:#5a6aa3}
+.fenster.zu text{fill:#e6ebff}
+.fenster.offen .scheibe{fill:#1a1f40}
+.fenster.offen text{fill:#7d86bd}
+.fenster.licht .scheibe{fill:var(--warm);filter:drop-shadow(0 0 10px rgba(255,200,80,.95))}
+.fenster.licht text{fill:#3b2600}
+.fenster.heute .rahmen{stroke:#fff;stroke-width:4;fill:none;animation:puls 1.6s ease-in-out infinite}
+@keyframes puls{50%{stroke-opacity:.25}}
+.flocke{animation:fall linear infinite}
+@keyframes fall{from{transform:translateY(-20px)}to{transform:translateY(880px)}}
+@media (prefers-reduced-motion:reduce){.flocke,.fenster.heute .rahmen{animation:none}}
+@media (max-width:900px){#aula{height:auto;overflow:auto}#aula main{grid-template-columns:1fr}#dorf{height:auto}}
+/* ---------- Handy ---------- */
+#tag{max-width:560px;margin:0 auto;padding:16px max(16px,env(safe-area-inset-left,0px)) 48px;display:flex;flex-direction:column;gap:14px}
+#tag .kopf{display:flex;align-items:center;gap:12px}
+#tag .kopf svg{width:78px;height:78px;flex:none}
+#tag .kopf h1{font-size:1.5rem;color:var(--warm)}
+#tag .sub{color:var(--muted);font-size:.92rem}
+#tag .titel{font-size:1.6rem}
+#tag .text{font-size:1.1rem}
+#tag .hinweis{border:2px dashed var(--warm);border-radius:14px;padding:14px;background:rgba(255,211,107,.08);font-size:1.15rem}
+#tag input[type=text]{font:inherit;padding:12px 14px;border-radius:12px;border:2px solid var(--line);background:#0c1230;color:var(--fg);width:100%}
+#tag .opt{display:block;width:100%;text-align:left;padding:12px 14px;border-radius:12px;border:2px solid var(--line);background:rgba(255,255,255,.04)}
+#tag .opt.richtig{border-color:var(--ok);background:rgba(110,231,168,.15)}
+#tag .opt.falsch{border-color:#ff8a8a;background:rgba(255,138,138,.12)}
+#tag .msg{border-radius:12px;padding:10px 14px;background:rgba(110,231,168,.14);border:1px solid var(--ok)}
+#tag .msg.err{background:rgba(255,138,138,.12);border-color:#ff8a8a}
+#tag .sprech{display:flex;gap:10px;align-items:flex-start;color:#d5d9ff;font-style:italic}
+#liste{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
+#liste a,#liste span{display:block;text-align:center;padding:8px 0;border-radius:10px;border:1px solid var(--line);text-decoration:none;color:var(--fg);font-weight:700}
+#liste span{opacity:.35}#liste a.erledigt{border-color:var(--ok);background:rgba(110,231,168,.15)}#liste a.jetzt{border-color:var(--warm);background:rgba(255,211,107,.2)}
+.fuss{color:var(--muted);font-size:.8rem;text-align:center}
+</style></head>
+<body>
+<div id="aula" hidden>
+ <header><h1 id="aTitel">Adventskalender</h1><div class="r" id="aInfo"></div></header>
+ <main>
+  <svg id="dorf" viewBox="0 0 1230 860" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Winterdorf mit 24 Fenstern, jedes Fenster ist ein Türchen"></svg>
+  <aside class="card" id="heute"></aside>
+ </main>
+</div>
+<div id="tag" hidden></div>
+
+<script type="module">
+import {qrSvg,esc} from "../js/ts-core.js";
+const $=id=>document.getElementById(id),q=new URLSearchParams(location.search);
+const ls={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const iso=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+const demo=/^\d{4}-\d{2}-\d{2}$/.test(q.get("heute")||"")?q.get("heute"):"";
+const HEUTE=demo||iso(new Date());
+const fmt=(s,o)=>new Intl.DateTimeFormat("de-DE",o||{weekday:"short",day:"numeric",month:"numeric"}).format(new Date(s+"T12:00:00"));
+let D;
+try{D=await (await fetch("../inhalte/adventskalender.json",{cache:"no-cache"})).json()}catch(e){document.body.innerHTML="<p style='padding:24px'>Der Kalender konnte nicht geladen werden.</p>";throw e}
+const T=D.tuerchen;let LICHT=new Set(D.lichter||[]);
+/* Vorschau: ?heute=2026-12-01&lichter=1,2 zeigt, wie der Kalender an diesem Tag mit diesen brennenden Lichtern aussieht */
+if(demo&&q.get("lichter")!==null)LICHT=new Set(q.get("lichter").split(",").map(Number).filter(n=>n>=1&&n<=24));
+const lichtZahl=()=>[...LICHT].filter(n=>T[n-1]&&T[n-1].datum<=HEUTE).length;
+const heuteTuer=()=>{let t=null;T.forEach(x=>{if(x.datum<=HEUTE)t=x});return t};
+const gefuellt=t=>!!(t&&t.titel);
+const SPR0=["Ich bleibe hier. Und es ist dunkel. Passt.","Mein Dorf, meine Dunkelheit, meine Ruhe.","Licht? Das braucht kein Mensch."];
+
+/* ---------- Muffelwicht (eigene Figur): Stimmung 0 (muffelig) bis 4 (strahlend) ---------- */
+function wicht(m){
+  const mund=["M-14 18 Q0 8 14 18","M-12 16 L12 16","M-13 14 Q0 22 13 14","M-15 12 Q0 28 15 12","M-18 10 Q0 36 18 10"][m];
+  const brau=[[-1,1],[-.5,.5],[0,0],[.4,-.4],[.6,-.6]][m];
+  const arm=m>=4?`<path d="M-44 6 Q-62 -22 -52 -42" stroke="#7c92aa" stroke-width="13" stroke-linecap="round" fill="none"/><path d="M44 6 Q62 -22 52 -42" stroke="#7c92aa" stroke-width="13" stroke-linecap="round" fill="none"/>`
+   :m===0?`<path d="M-40 14 Q0 40 40 14" stroke="#7c92aa" stroke-width="14" stroke-linecap="round" fill="none"/>`
+   :`<path d="M-44 8 Q-58 26 -50 42" stroke="#7c92aa" stroke-width="13" stroke-linecap="round" fill="none"/><path d="M44 8 Q58 26 50 42" stroke="#7c92aa" stroke-width="13" stroke-linecap="round" fill="none"/>`;
+  return `<g class="wicht"><ellipse cx="0" cy="62" rx="36" ry="9" fill="rgba(0,0,0,.25)"/>
+ <ellipse cx="-20" cy="56" rx="15" ry="9" fill="#6f859d"/><ellipse cx="20" cy="56" rx="15" ry="9" fill="#6f859d"/>
+ <ellipse cx="0" cy="8" rx="52" ry="50" fill="#8fa5bb"/><ellipse cx="0" cy="22" rx="34" ry="30" fill="#b3c4d4"/>${arm}
+ <path d="M-46 -14 Q0 -78 46 -14 Z" fill="#5b4b8a"/><rect x="-48" y="-18" width="96" height="14" rx="7" fill="#7a68b4"/><circle cx="0" cy="-58" r="9" fill="#efe6ff"/>
+ <ellipse cx="-17" cy="-4" rx="10" ry="${m===4?9:7}" fill="#fff"/><ellipse cx="17" cy="-4" rx="10" ry="${m===4?9:7}" fill="#fff"/>
+ <circle cx="-17" cy="-3" r="4.2" fill="#1d2440"/><circle cx="17" cy="-3" r="4.2" fill="#1d2440"/>
+ <path d="M-30 ${-16+brau[0]*5} L-8 ${-16-brau[0]*5}" stroke="#46556b" stroke-width="5" stroke-linecap="round"/>
+ <path d="M30 ${-16+brau[0]*5} L8 ${-16-brau[0]*5}" stroke="#46556b" stroke-width="5" stroke-linecap="round"/>
+ ${m>=3?'<circle cx="-30" cy="10" r="7" fill="#f0a3b4" opacity=".7"/><circle cx="30" cy="10" r="7" fill="#f0a3b4" opacity=".7"/>':''}
+ <path d="${mund}" transform="translate(0 10)" stroke="#2c3550" stroke-width="5" stroke-linecap="round" fill="${m===4?'#2c3550':'none'}"/></g>`;
+}
+const stimmung=n=>n>=21?4:n>=15?3:n>=9?2:n>=4?1:0;
+
+/* =================== AULA-ANSICHT =================== */
+function aula(){
+  $("aula").hidden=false;document.title="Adventskalender – Aula";
+  const t=heuteTuer(),offen=T.filter(x=>x.datum<=HEUTE).length,n=lichtZahl(),m=stimmung(n);
+  $("aTitel").textContent=D.titel+" · Gemeinsam gegen die Dunkelheit";
+  $("aInfo").innerHTML=esc(fmt(HEUTE,{weekday:"long",day:"numeric",month:"long"}))+(demo?" (Vorschau)":"")+" · <b>"+n+" von 24 Lichtern</b> brennen";
+  // Dorf
+  const hauswand=["#3b3f78","#5a3a6b","#2f5a73","#6b4a3a","#3b6b5a","#59496d"],dach=["#7b3b3b","#2f3c6b","#6b3b5a","#3b5a6b","#6b5a3b","#4b3b6b"];
+  let s=`<defs><linearGradient id="him" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b1233"/><stop offset="1" stop-color="#2a3a7a"/></linearGradient></defs>
+  <rect width="1230" height="860" fill="url(#him)"/>`;
+  let r=7;const rnd=()=>{r=(r*16807)%2147483647;return r/2147483647};
+  for(let i=0;i<70;i++)s+=`<circle cx="${rnd()*1230}" cy="${rnd()*380}" r="${.8+rnd()*1.6}" fill="#fff" opacity="${.35+rnd()*.5}"/>`;
+  s+=`<circle cx="1080" cy="110" r="46" fill="#f4f1d8"/><circle cx="1097" cy="99" r="42" fill="#0e1640" opacity=".18"/>`;
+  s+=`<g transform="translate(0 150)"><path d="M0 330 Q200 250 420 320 T820 300 T1230 320 V520 H0Z" fill="#1d2b66"/>`;
+  for(let i=0;i<14;i++){const x=20+i*88+rnd()*30,h=70+rnd()*50;s+=`<path d="M${x} 330 l22 ${-h} l22 ${h}z" fill="#1a3a4a"/><path d="M${x+6} 330 l16 ${-h*.75} l16 ${h*.75}z" fill="#23566a"/>`}
+  s+=`<rect y="500" width="1230" height="260" fill="#dfe8ff"/><path d="M0 500 Q300 480 620 500 T1230 495 V520 H0Z" fill="#f4f7ff"/>`;
+  for(let h=0;h<6;h++){
+    const x0=15+h*200,hh=[200,215,195,210,200,205][h],top=500-hh;
+    s+=`<rect x="${x0}" y="${top}" width="170" height="${hh}" fill="${hauswand[h]}"/>
+    <path d="M${x0-12} ${top} L${x0+85} ${top-62} L${x0+182} ${top}Z" fill="${dach[h]}"/><path d="M${x0-12} ${top} L${x0+85} ${top-62} L${x0+182} ${top} L${x0+170} ${top+6} L${x0+85} ${top-50} L${x0} ${top+6}Z" fill="#fff" opacity=".9"/>
+    <rect x="${x0+64}" y="${500-52}" width="42" height="52" rx="5" fill="#1c1a33"/><circle cx="${x0+98}" cy="${500-26}" r="3" fill="#ffd36b"/>`;
+    for(let k=0;k<4;k++){
+      const nr=h*4+k+1,col=k%2,row=k>>1,wx=x0+20+col*80,wy=top+22+row*66,tt=T[nr-1];
+      let kl="zu";if(tt.datum<=HEUTE)kl=LICHT.has(nr)?"licht":"offen";
+      const cur=t&&t.nr===nr?" heute":"";
+      s+=`<g class="fenster ${kl}${cur}" data-nr="${nr}"><rect class="scheibe" x="${wx}" y="${wy}" width="52" height="54" rx="4"/>
+      <path d="M${wx} ${wy+40}H${wx+52}" stroke="#0b1233" stroke-width="3"/>
+      <text x="${wx+26}" y="${wy+30}" text-anchor="middle" font-size="22" font-weight="800" font-family="Georgia,serif" style="paint-order:stroke;stroke:rgba(0,0,0,.25);stroke-width:2px">${nr}</text>
+      ${cur?`<rect class="rahmen" x="${wx-5}" y="${wy-5}" width="62" height="64" rx="7"/>`:""}</g>`;
+    }
+  }
+  s+=`</g>`;
+  for(let i=0;i<45;i++)s+=`<circle class="flocke" cx="${rnd()*1230}" cy="${-20}" r="${1.5+rnd()*2.6}" fill="#fff" opacity=".85" style="animation-duration:${7+rnd()*9}s;animation-delay:${-rnd()*14}s"/>`;
+  // Muffelwicht + Sprechblase
+  const spruch=(t&&t.spruch)||SPR0[0];
+  const wrap=(txt,max)=>{const w=txt.split(" ");const L=[];let c="";w.forEach(x=>{if((c+" "+x).trim().length>max){L.push(c);c=x}else c=(c+" "+x).trim()});if(c)L.push(c);return L.slice(0,3)};
+  const L=wrap(spruch,38);
+  s+=`<g transform="translate(150 752) scale(1.5)">${wicht(m)}</g>`;
+  s+=`<g><rect x="252" y="${704-(L.length-1)*17}" width="620" height="${34+L.length*34}" rx="20" fill="#fff"/><path d="M254 745 l-34 22 l6 -40z" fill="#fff"/>
+  ${L.map((l,i)=>`<text x="278" y="${738-(L.length-1)*17+i*34}" font-size="28" fill="#26305a" font-family="Georgia,serif" font-style="italic">${esc(l)}</text>`).join("")}</g>`;
+  $("dorf").innerHTML=s;
+  // Heute-Karte
+  const url=new URL(location.href);url.search="";url.hash="";url.searchParams.set("rolle","tag");if(t)url.searchParams.set("tag",t.nr);if(demo)url.searchParams.set("heute",demo);
+  const box=$("heute");
+  if(!t){
+    const tage=Math.max(0,Math.round((new Date(D.start+"T12:00:00")-new Date(HEUTE+"T12:00:00"))/864e5));
+    box.innerHTML=`<span class="chip">Bald geht es los</span><h2>Das Dorf ist dunkel.</h2><p class="txt">Ab ${esc(fmt(D.start,{weekday:"long",day:"numeric",month:"long"}))} öffnet sich jeden Schultag ein Türchen, die vom Wochenende am Montag. Gemeinsam bringen wir die Lichter zurück.</p><p class="nr">Noch ${tage} Tag${tage===1?"":"e"}</p>`;return;
+  }
+  const lastDay=HEUTE>D.ende;
+  const mit=T.filter(x=>x.datum===t.datum&&x.nr!==t.nr);
+  box.innerHTML=`<span class="nr">Türchen ${t.nr} · ${esc(fmt(t.datum))}</span>${t.art?`<span class="chip" style="align-self:flex-start">${esc(t.art)}${t.dauer?" · "+t.dauer+" Min.":""}</span>`:""}
+  <h2>${esc(gefuellt(t)?t.titel:"Dieses Türchen gestaltet die SMV")}</h2>
+  <div class="txt">${esc(gefuellt(t)?t.text:"Hier erscheint die Aufgabe des Tages.")}</div>
+  ${mit.length?`<div class="scan" style="color:#ffd36b">Heute auch offen: Türchen ${mit.map(x=>x.nr).join(" und ")}${t.nr===24?"":" (vom Wochenende)"}</div>`:""}
+  <div class="qr" id="qrb"></div><div class="scan">Scannen und mitmachen – ohne Anmeldung</div>
+  <div class="scan">${offen} von 24 Türchen offen${lastDay?" · Das Fest ist vorbei":""}</div>`;
+  qrSvg(url.href,260).then(v=>{$("qrb").innerHTML=v});
+}
+
+/* =================== HANDY-ANSICHT =================== */
+const norm=s=>String(s||"").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/ß/g,"ss").replace(/[^a-z0-9]/g,"");
+function handy(){
+  $("tag").hidden=false;
+  let t=T.find(x=>x.nr===+q.get("tag"))||heuteTuer();
+  const box=$("tag");
+  if(!t){box.innerHTML=`<div class="kopf"><svg viewBox="-70 -90 140 170">${wicht(0)}</svg><div><h1>Adventskalender</h1><div class="sub">Es geht am ${esc(fmt(D.start))} los.</div></div></div><p class="text">Das Dorf ist noch dunkel. Komm zum Start wieder.</p>`;return}
+  const gesperrt=t.datum>HEUTE,key="lk-"+t.nr,erledigt=ls.get(key+"-ok")==="1";
+  const m=stimmung(lichtZahl());
+  const nav=T.map(x=>x.datum<=HEUTE?`<a href="${esc(location.pathname+"?rolle=tag&tag="+x.nr+(demo?"&heute="+demo:""))}" class="${x.nr===t.nr?"jetzt":ls.get("lk-"+x.nr+"-ok")==="1"?"erledigt":""}">${x.nr}</a>`:`<span>${x.nr}</span>`).join("");
+  let body="";
+  if(gesperrt)body=`<p class="text">Dieses Türchen öffnet sich am ${esc(fmt(t.datum,{weekday:"long",day:"numeric",month:"long"}))}.</p>`;
+  else if(!gefuellt(t))body=`<p class="text">Dieses Türchen gestaltet die SMV. Schau später noch einmal vorbei.</p>`;
+  else{
+    body=`<div class="text">${esc(t.text)}</div>`;
+    if(t.art==="Nur gemeinsam"){
+      let v=ls.get(key+"-v");if(v===null||!(+v<t.hinweise.length)){v=String(Math.floor(Math.random()*t.hinweise.length));ls.set(key+"-v",v)}
+      body+=`<div class="hinweis"><b>Dein Hinweis (${+v+1} von ${t.hinweise.length}):</b><br>${esc(t.hinweise[+v])}</div><p class="sub">Such andere Leute mit einem anderen Hinweis. Ihr habt zusammen alle Teile. Weitergeben ist erlaubt – nur gemeinsam geht es.</p>
+      <input type="text" id="loe" placeholder="Lösung eingeben" autocomplete="off" autocapitalize="characters"><button class="b" id="pruef" type="button">Prüfen</button><div id="fb"></div>`;
+    }else if(t.art==="Quiz"){
+      const idx=t.antworten.map((_,i)=>i);for(let i=idx.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[idx[i],idx[j]]=[idx[j],idx[i]]}
+      body+=idx.map(i=>`<button class="opt" type="button" data-i="${i}">${esc(t.antworten[i])}</button>`).join("")+`<div id="fb"></div>`;
+    }else{
+      body+=`<button class="b" id="fertig" type="button" ${erledigt?"disabled":""}>${erledigt?"Erledigt ✓":"Habe ich gemacht"}</button><div id="fb">${erledigt?`<div class="msg">Schön, dass du dabei bist. Das zählt.</div>`:""}</div>`;
+    }
+  }
+  box.innerHTML=`<div class="kopf"><svg viewBox="-70 -90 140 170">${wicht(m)}</svg><div><h1>Adventskalender</h1><div class="sub">Türchen ${t.nr} · ${esc(fmt(t.datum))}${t.art?" · "+esc(t.art):""}</div></div></div>
+  <h2 class="titel">${esc(gefuellt(t)?t.titel:"Türchen "+t.nr)}</h2>${body}
+  ${t.spruch&&!gesperrt?`<div class="sprech">„${esc(t.spruch)}“<br>– der Muffelwicht</div>`:""}
+  <div><div class="sub" style="margin-bottom:6px">Alle Türchen</div><div id="liste">${nav}</div></div>
+  <div class="fuss">Es werden keine Daten gesendet oder gespeichert (nur dein Haken auf diesem Handy).</div>`;
+  const done=()=>{ls.set(key+"-ok","1")};
+  const fb=$("fb");
+  if($("pruef"))$("pruef").onclick=()=>{
+    const ok=[].concat(t.loesung).map(norm).includes(norm($("loe").value));
+    fb.innerHTML=ok?`<div class="msg">Das ist es! Ihr habt es gemeinsam gelöst. 🎉</div>`:`<div class="msg err">Noch nicht. Fragt andere nach ihrem Hinweis.</div>`;if(ok)done();
+  };
+  box.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{
+    const ok=+b.dataset.i===0;box.querySelectorAll(".opt").forEach(x=>{x.disabled=true;if(+x.dataset.i===0)x.classList.add("richtig")});if(!ok)b.classList.add("falsch");
+    fb.innerHTML=`<div class="msg${ok?"":" err"}">${ok?"Richtig!":"Fast."} ${esc(t.erklaerung||"")}</div>`;done();
+  });
+  if($("fertig"))$("fertig").onclick=()=>{done();$("fertig").disabled=true;$("fertig").textContent="Erledigt ✓";fb.innerHTML=`<div class="msg">Schön, dass du dabei bist. Das zählt.</div>`};
+}
+if(q.get("rolle")==="tag")handy();else aula();
+</script>
+</body></html>
