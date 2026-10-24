@@ -39,7 +39,12 @@ button{font:inherit;color:inherit;cursor:pointer}
 @keyframes puls{50%{stroke-opacity:.25}}
 .flocke{animation:fall linear infinite}
 @keyframes fall{from{transform:translateY(-20px)}to{transform:translateY(880px)}}
-@media (prefers-reduced-motion:reduce){.flocke,.fenster.heute .rahmen{animation:none}}
+@keyframes tw{50%{opacity:.12}}.tw{animation:tw 3.2s ease-in-out infinite}
+@keyframes rauch{0%{transform:translate(0,0) scale(.5);opacity:0}12%{opacity:.55}100%{transform:translate(16px,-70px) scale(2);opacity:0}}
+.rauch circle{fill:#dfe6ff;opacity:0;animation:rauch 6s ease-out infinite}
+@keyframes glut{50%{filter:drop-shadow(0 0 17px rgba(255,205,90,1))}}
+.fenster.licht .scheibe{animation:glut 2.8s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.flocke,.fenster.heute .rahmen,.tw,.rauch circle,.fenster.licht .scheibe{animation:none}}
 @media (max-width:900px){#aula{height:auto;overflow:auto}#aula main{grid-template-columns:1fr}#dorf{height:auto}}
 /* ---------- Handy ---------- */
 #tag{max-width:560px;margin:0 auto;padding:16px max(16px,env(safe-area-inset-left,0px)) 48px;display:flex;flex-direction:column;gap:14px}
@@ -110,6 +115,101 @@ function wicht(m){
 }
 const stimmung=n=>n>=21?4:n>=15?3:n>=9?2:n>=4?1:0;
 
+/* ---------- Weihnachtsmann mit Rentieren (eigene Zeichnung), fliegt Schleifen und steckt Geschenke in Kamine ---------- */
+function deerSvg(x,ph){
+  const leg=(lx,b)=>`<line x1="${lx}" y1="8" x2="${lx}" y2="32" stroke="#6f4528" stroke-width="5" stroke-linecap="round"><animateTransform attributeName="transform" type="rotate" values="-26 ${lx} 8;26 ${lx} 8;-26 ${lx} 8" dur=".5s" begin="${b}s" repeatCount="indefinite"/></line>`;
+  return `<g transform="translate(${x} 0)">${leg(-17,-.25)}${leg(-9,0)}${leg(11,-.25)}${leg(19,0)}
+  <ellipse cx="0" cy="0" rx="25" ry="12" fill="#8a5a3a"/><ellipse cx="2" cy="5" rx="17" ry="6" fill="#b88a62"/>
+  <path d="M15 -7 L29 -27 L38 -22 L27 2 Z" fill="#8a5a3a"/>
+  <ellipse cx="41" cy="-26" rx="11" ry="7" transform="rotate(18 41 -26)" fill="#9b6a45"/><circle cx="50" cy="-23" r="2.8" fill="#3b2418"/><circle cx="43" cy="-28" r="1.6" fill="#1d1208"/>
+  <path d="M34 -31 L30 -37" stroke="#8a5a3a" stroke-width="5" stroke-linecap="round"/>
+  <path d="M37 -32 L33 -49 M33 -49 L27 -53 M33 -49 L37 -58 M41 -33 L46 -48 M46 -48 L52 -52 M46 -48 L48 -57" stroke="#e6d4a8" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+  <ellipse cx="-26" cy="-5" rx="6" ry="4" fill="#fff"/>
+  <path d="M-4 -12 Q10 -4 22 -12" stroke="#c0272d" stroke-width="3" fill="none"/><circle cx="12" cy="-6" r="3" fill="#f3c94b"/></g>`;
+}
+const SANTA_SVG=`<g id="santa" style="display:none"><g id="santaS">
+  <path d="M60 -6 Q90 -4 118 -2 M146 -2 Q172 -4 196 -2" stroke="#e8d28a" stroke-width="1.8" fill="none"/>
+  ${deerSvg(205)}${deerSvg(128)}
+  <path d="M-52 -2 C-54 24 -30 28 -10 28 L38 28 C58 28 66 8 64 -18 C52 -8 44 -6 34 -6 L-40 -6 Z" fill="#c0272d" stroke="#f3c94b" stroke-width="2"/>
+  <path d="M-58 41 Q-20 47 50 41 Q69 39 67 24" stroke="#e6c14a" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+  <path d="M-30 28 L-34 41 M30 28 L28 41" stroke="#e6c14a" stroke-width="3.5" stroke-linecap="round"/>
+  <ellipse cx="-34" cy="-18" rx="21" ry="19" fill="#8b5a2b"/>
+  <rect x="-48" y="-44" width="15" height="15" rx="2" fill="#3fb68b"/><path d="M-40.5 -44 V-29 M-48 -36.5 H-33" stroke="#fff" stroke-width="2.5"/>
+  <rect x="-30" y="-48" width="13" height="13" rx="2" fill="#5aa9ff" transform="rotate(8 -24 -41)"/><path d="M-23 -48 V-35" stroke="#fff" stroke-width="2.5" transform="rotate(8 -24 -41)"/>
+  <path d="M-6 -6 Q-8 -34 8 -37 Q24 -34 21 -6 Z" fill="#d62839"/><rect x="-6" y="-15" width="27" height="6" fill="#2a1a14"/><rect x="5" y="-16" width="8" height="8" rx="1.5" fill="#f3c94b"/>
+  <circle cx="9" cy="-46" r="9.5" fill="#f2c9a5"/><circle cx="12" cy="-47" r="1.4" fill="#2a1a14"/><circle cx="14" cy="-43" r="2.6" fill="#f0a3a3" opacity=".7"/>
+  <path d="M0 -44 Q9 -20 20 -44 Q10 -36 0 -44 Z" fill="#fff"/>
+  <path d="M-1 -51 Q3 -76 25 -64 L21 -51 Z" fill="#d62839"/><rect x="-3" y="-54" width="26" height="7" rx="3.5" fill="#fff"/><circle cx="26" cy="-64" r="5.5" fill="#fff"/>
+  <path d="M17 -28 L46 -23" stroke="#d62839" stroke-width="8" stroke-linecap="round"/><circle cx="48" cy="-22" r="4.5" fill="#fff"/>
+</g></g>
+<g id="gift" style="display:none"><rect x="-9" y="-9" width="18" height="18" rx="2" id="giftB" fill="#3fb68b"/><path d="M0 -9 V9 M-9 0 H9" stroke="#fff" stroke-width="3"/><path d="M0 -9 Q-7 -17 -3 -14 M0 -9 Q7 -17 3 -14" stroke="#fff" stroke-width="2.4" fill="none"/></g>
+<text id="ho" x="0" y="0" text-anchor="middle" font-family="Georgia,serif" font-weight="800" font-size="30" fill="#ffe9a8" style="display:none;paint-order:stroke;stroke:#0b1233;stroke-width:6px;stroke-linejoin:round">Ho ho ho!</text>
+<g id="funken"></g>`;
+
+function santaStart(CH){
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  const NS="http://www.w3.org/2000/svg",$$=id=>document.getElementById(id);
+  const el=$$("santa"),body=$$("santaS"),gift=$$("gift"),giftB=$$("giftB"),ho=$$("ho"),fk=$$("funken");
+  el.style.display="";
+  const S=.88,W=1230,COL=["#3fb68b","#5aa9ff","#f3c94b","#ee6fd4","#ff8a5c"];
+  const cr=(a,b,c,d,t)=>{const t2=t*t,t3=t2*t;return [0,1].map(i=>.5*((2*b[i])+(-a[i]+c[i])*t+(2*a[i]-5*b[i]+4*c[i]-d[i])*t2+(-a[i]+3*b[i]-3*c[i]+d[i])*t3))};
+  let prevK=-1,cyc=0,route=null,sx=1,tilt=0,ang=0,gs=null,hoT=0,spawn=0;
+  const sparks=[];
+  function mkSpark(x,y,vx,vy,life,r,col){const c=document.createElementNS(NS,"circle");c.setAttribute("r",r);c.setAttribute("fill",col||"#fff3b0");fk.appendChild(c);sparks.push({c,x,y,vx,vy,life,max:life,r});if(sparks.length>90){const o=sparks.shift();o.c.remove()}}
+  function plan(){
+    let k;do{k=Math.floor(Math.random()*CH.length)}while(k===prevK&&CH.length>1);prevK=k;
+    const [cx,cy]=CH[k],d=cx<560?-1:1,X=x=>d===1?x:W-x,cp=d===1?cx:W-cx;
+    const two=cp>=760,R=92+Math.random()*20,Ly=185+Math.random()*40,Lx=Math.max(120,two?cp-640:cp-440);
+    const P=[[-240,250],[Lx-210,215]];
+    const loop=(Cx)=>{for(let i=0;i<8;i++){const th=(90-45*i)*Math.PI/180;P.push([Cx+R*Math.cos(th),Ly+R*Math.sin(th)])}P.push([Cx+R*2.3,Ly+R*.92])};
+    loop(Lx);if(two)loop(Lx+300);
+    P.push([cp-190,cy-190],[cp-85,cy-118]);const dropIdx=P.length;P.push([cp,cy-86]);
+    P.push([cp+95,cy-124],[cp+270,cy-200],[W+260,150]);
+    const pts=P.map(p=>[X(p[0]),p[1]]);
+    const ext=[pts[0],...pts,pts[pts.length-1]],samp=[];let len=0;
+    for(let i=1;i<ext.length-2;i++)for(let j=0;j<28;j++){const q=cr(ext[i-1],ext[i],ext[i+1],ext[i+2],j/28);if(samp.length){const p=samp[samp.length-1];len+=Math.hypot(q[0]-p[0],q[1]-p[1])}samp.push([q[0],q[1],len,i-1])}
+    let sD=0;for(const q of samp){if(q[3]>=dropIdx-1){sD=q[2];break}}
+    route={samp,len,sD,s:0,idx:0,dropped:false,cx:X(cp),cy,k,d};
+  }
+  plan();
+  function at(s){const a=route.samp;let i=route.idx;while(i<a.length-2&&a[i+1][2]<s)i++;route.idx=i;const p=a[i],q=a[i+1],f=(s-p[2])/Math.max(.001,q[2]-p[2]);return [p[0]+(q[0]-p[0])*f,p[1]+(q[1]-p[1])*f,q[0]-p[0],q[1]-p[1]]}
+  let last=0;
+  function frame(ts){
+    const dt=Math.min(.05,(ts-last)/1000||0);last=ts;
+    if(!document.hidden){
+      const r=route,dD=r.s-r.sD,v=235*(1-.62*Math.exp(-(dD*dD)/(2*90*90)));
+      r.s+=v*dt;
+      if(r.s>=r.len){plan()}
+      const [x,y,dx,dy]=at(Math.min(route.s,route.len-1));
+      const want=Math.abs(dx)<.4?sx:(dx>0?1:-1);sx+=(want-sx)*Math.min(1,dt*4.5);
+      const ta=Math.atan2(dy,Math.abs(dx)+.01),cl=Math.max(-.62,Math.min(.62,ta));tilt+=(cl-tilt)*Math.min(1,dt*6);
+      el.setAttribute("transform",`translate(${x.toFixed(1)} ${y.toFixed(1)}) scale(${(sx*S).toFixed(3)} ${S}) rotate(${(tilt*180/Math.PI).toFixed(1)})`);
+      /* Geschenk fällt in den Kamin */
+      if(!route.dropped&&route.s>=route.sD){
+        route.dropped=true;const col=COL[Math.floor(Math.random()*COL.length)];giftB.setAttribute("fill",col);
+        gs={t:0,x0:x,y0:y+28,tx:route.cx,ty:route.cy-6,rot:(Math.random()<.5?-1:1)*(220+Math.random()*160)};gift.style.display="";hoT=2.2;
+      }
+      if(gs){
+        gs.t+=dt/1.05;const t=Math.min(1,gs.t),e=t*t;
+        const gx=gs.x0+(gs.tx-gs.x0)*(.35*t+.65*t*t),gy=gs.y0+(gs.ty-gs.y0)*e;
+        const sc=t>.82?Math.max(.15,1-(t-.82)/.18*.85):1;
+        gift.setAttribute("transform",`translate(${gx.toFixed(1)} ${gy.toFixed(1)}) rotate(${(gs.rot*t).toFixed(0)}) scale(${sc.toFixed(2)})`);
+        gift.style.opacity=t>.95?(1-(t-.95)/.05):1;
+        if(t>=1){gift.style.display="none";const gx0=gs.tx,gy0=gs.ty;
+          for(let i=0;i<14;i++){const a=-Math.PI*(.1+.8*Math.random()),sp=60+Math.random()*90;mkSpark(gx0,gy0,Math.cos(a)*sp,Math.sin(a)*sp,.9+Math.random()*.5,1.8+Math.random()*2,["#fff3b0","#ffd36b","#ffffff","#ff9bd2"][i%4])}
+          gs=null}
+      }
+      if(hoT>0){hoT-=dt;ho.style.display="";ho.setAttribute("x",x.toFixed(0));ho.setAttribute("y",(y-78).toFixed(0));ho.style.opacity=Math.min(1,hoT*2.2)}else ho.style.display="none";
+      /* Funkenspur */
+      spawn+=dt;while(spawn>.045){spawn-=.045;mkSpark(x-sx*52*S+(Math.random()-.5)*8,y+8*S+(Math.random()-.5)*10,(Math.random()-.5)*14,8+Math.random()*14,1.1+Math.random()*.6,1.2+Math.random()*1.6)}
+      for(let i=sparks.length-1;i>=0;i--){const p=sparks[i];p.life-=dt;if(p.life<=0){p.c.remove();sparks.splice(i,1);continue}
+        p.vy+=(p.max>1.3?160:0)*dt;p.x+=p.vx*dt;p.y+=p.vy*dt;p.c.setAttribute("cx",p.x.toFixed(1));p.c.setAttribute("cy",p.y.toFixed(1));p.c.setAttribute("opacity",Math.min(1,p.life/p.max*1.4).toFixed(2))}
+    }
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+}
+
 /* =================== AULA-ANSICHT =================== */
 function aula(){
   $("aula").hidden=false;document.title="Adventskalender – Aula";
@@ -120,16 +220,18 @@ function aula(){
   const hauswand=["#3b3f78","#5a3a6b","#2f5a73","#6b4a3a","#3b6b5a","#59496d"],dach=["#7b3b3b","#2f3c6b","#6b3b5a","#3b5a6b","#6b5a3b","#4b3b6b"];
   let s=`<defs><linearGradient id="him" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b1233"/><stop offset="1" stop-color="#2a3a7a"/></linearGradient></defs>
   <rect width="1230" height="860" fill="url(#him)"/>`;
-  let r=7;const rnd=()=>{r=(r*16807)%2147483647;return r/2147483647};
-  for(let i=0;i<70;i++)s+=`<circle cx="${rnd()*1230}" cy="${rnd()*380}" r="${.8+rnd()*1.6}" fill="#fff" opacity="${.35+rnd()*.5}"/>`;
+  const CH=[];let r=7;const rnd=()=>{r=(r*16807)%2147483647;return r/2147483647};
+  for(let i=0;i<70;i++){const tw=i%3===0;s+=`<circle${tw?` class="tw" style="animation-delay:${(-rnd()*4).toFixed(1)}s"`:""} cx="${rnd()*1230}" cy="${rnd()*380}" r="${.8+rnd()*1.6}" fill="#fff" opacity="${.35+rnd()*.5}"/>`}
   s+=`<circle cx="1080" cy="110" r="46" fill="#f4f1d8"/><circle cx="1097" cy="99" r="42" fill="#0e1640" opacity=".18"/>`;
   s+=`<g transform="translate(0 150)"><path d="M0 330 Q200 250 420 320 T820 300 T1230 320 V520 H0Z" fill="#1d2b66"/>`;
   for(let i=0;i<14;i++){const x=20+i*88+rnd()*30,h=70+rnd()*50;s+=`<path d="M${x} 330 l22 ${-h} l22 ${h}z" fill="#1a3a4a"/><path d="M${x+6} 330 l16 ${-h*.75} l16 ${h*.75}z" fill="#23566a"/>`}
   s+=`<rect y="500" width="1230" height="260" fill="#dfe8ff"/><path d="M0 500 Q300 480 620 500 T1230 495 V520 H0Z" fill="#f4f7ff"/>`;
   for(let h=0;h<6;h++){
-    const x0=15+h*200,hh=[200,215,195,210,200,205][h],top=500-hh;
+    const x0=15+h*200,hh=[200,215,195,210,200,205][h],top=500-hh;CH.push([x0+141,150+top-62]);
     s+=`<rect x="${x0}" y="${top}" width="170" height="${hh}" fill="${hauswand[h]}"/>
     <path d="M${x0-12} ${top} L${x0+85} ${top-62} L${x0+182} ${top}Z" fill="${dach[h]}"/><path d="M${x0-12} ${top} L${x0+85} ${top-62} L${x0+182} ${top} L${x0+170} ${top+6} L${x0+85} ${top-50} L${x0} ${top+6}Z" fill="#fff" opacity=".9"/>
+    <rect x="${x0+128}" y="${top-58}" width="26" height="42" fill="#5a3a30"/><path d="M${x0+128} ${top-44}h26M${x0+128} ${top-30}h26" stroke="#44281f" stroke-width="2"/><rect x="${x0+124}" y="${top-64}" width="34" height="9" rx="2" fill="#7b5546"/><rect x="${x0+123}" y="${top-70}" width="36" height="7" rx="3.5" fill="#fff" opacity=".95"/>
+    <g class="rauch"><circle cx="${x0+141}" cy="${top-74}" r="6" style="animation-delay:${-h*.9}s"/><circle cx="${x0+141}" cy="${top-74}" r="6" style="animation-delay:${-h*.9-2}s"/><circle cx="${x0+141}" cy="${top-74}" r="6" style="animation-delay:${-h*.9-4}s"/></g>
     <rect x="${x0+64}" y="${500-52}" width="42" height="52" rx="5" fill="#1c1a33"/><circle cx="${x0+98}" cy="${500-26}" r="3" fill="#ffd36b"/>`;
     for(let k=0;k<4;k++){
       const nr=h*4+k+1,col=k%2,row=k>>1,wx=x0+20+col*80,wy=top+22+row*66,tt=T[nr-1];
@@ -142,6 +244,7 @@ function aula(){
     }
   }
   s+=`</g>`;
+  s+=SANTA_SVG;
   for(let i=0;i<45;i++)s+=`<circle class="flocke" cx="${rnd()*1230}" cy="${-20}" r="${1.5+rnd()*2.6}" fill="#fff" opacity=".85" style="animation-duration:${7+rnd()*9}s;animation-delay:${-rnd()*14}s"/>`;
   // Muffelwicht + Sprechblase
   const spruch=(t&&t.spruch)||SPR0[0];
@@ -150,7 +253,7 @@ function aula(){
   s+=`<g transform="translate(150 752) scale(1.5)">${wicht(m)}</g>`;
   s+=`<g><rect x="252" y="${704-(L.length-1)*17}" width="620" height="${34+L.length*34}" rx="20" fill="#fff"/><path d="M254 745 l-34 22 l6 -40z" fill="#fff"/>
   ${L.map((l,i)=>`<text x="278" y="${738-(L.length-1)*17+i*34}" font-size="28" fill="#26305a" font-family="Georgia,serif" font-style="italic">${esc(l)}</text>`).join("")}</g>`;
-  $("dorf").innerHTML=s;
+  $("dorf").innerHTML=s;santaStart(CH);
   // Heute-Karte
   const url=new URL(location.href);url.search="";url.hash="";url.searchParams.set("rolle","tag");if(t)url.searchParams.set("tag",t.nr);if(demo)url.searchParams.set("heute",demo);
   const box=$("heute");
