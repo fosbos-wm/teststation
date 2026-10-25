@@ -174,7 +174,7 @@ function santaStart(CH){
   el.style.display="";
   const S=.88,W=1230,COL=["#3fb68b","#5aa9ff","#f3c94b","#ee6fd4","#ff8a5c"];
   const cr=(a,b,c,d,t)=>{const t2=t*t,t3=t2*t;return [0,1].map(i=>.5*((2*b[i])+(-a[i]+c[i])*t+(2*a[i]-5*b[i]+4*c[i]-d[i])*t2+(-a[i]+3*b[i]-3*c[i]+d[i])*t3))};
-  let prevK=-1,prevK2=-1,cyc=0,route=null,sx=1,tilt=0,gs=null,hoT=0,spawn=0,land=null,pause=2.5,fm=1,hoTxt="Ho ho ho!";
+  let prevK=-1,prevK2=-1,cyc=0,route=null,sx=1,tilt=0,gs=null,hoT=0,spawn=0,land=null,pause=0,fm=1,hoTxt="Ho ho ho!";
   const sparks=[],puffs=[];
   const circ=(col,r)=>{const c=document.createElementNS(NS,"circle");c.setAttribute("r",r);c.setAttribute("fill",col);fk.appendChild(c);return c};
   function mkSpark(x,y,vx,vy,life,r,col){const c=circ(col||"#fff3b0",r);sparks.push({c,x,y,vx,vy,life,max:life});if(sparks.length>110){sparks.shift().c.remove()}}
@@ -198,6 +198,9 @@ function santaStart(CH){
     sootSit.style.opacity=0;sit.style.display="";
   }
   plan();
+  const oft=q.get("santa")==="oft"; /* ?santa=oft: häufige Flüge zum Testen */
+  const nextPause=()=>{if(oft)return 2+Math.random()*4;const r=Math.random();return r<.3?25+Math.random()*45:r<.7?70+Math.random()*140:240+Math.random()*480};
+  pause=oft?2.5:6+Math.random()*70;
   function at(s){const a=route.samp;let i=route.idx;while(i<a.length-2&&a[i+1][2]<s)i++;route.idx=i;const p=a[i],q2=a[i+1],f=(s-p[2])/Math.max(.001,q2[2]-p[2]);return [p[0]+(q2[0]-p[0])*f,p[1]+(q2[1]-p[1])*f,q2[0]-p[0],q2[1]-p[1]]}
   const ease=t=>t*t*(3-2*t);
   const seatOf=(x,y)=>[x+sx*S*9,y-S*36];
@@ -252,7 +255,7 @@ function santaStart(CH){
         const r=route,dD=r.s-r.sD,slow=r.mode==="land"?.88:.62,v=235*(1-slow*Math.exp(-(dD*dD)/(2*90*90)));
         r.s+=v*dt;
         if(r.mode==="land"&&!r.done&&r.s>=r.sD-2){r.done=true;const p=at(r.sD);startLanding(p[0],p[1]);r.s=r.sD}
-        if(r.s>=r.len){plan();pause=Math.random()<.5?1+Math.random()*3:5+Math.random()*9}
+        if(r.s>=r.len){plan();pause=nextPause()}
         const a=at(Math.min(route.s,route.len-1));x=a[0];y=a[1];
         const dx=a[2],dy=a[3],want=Math.abs(dx)<.4?sx:(dx>0?1:-1);sx+=(want-sx)*Math.min(1,dt*4.5);
         const ta=Math.atan2(dy,Math.abs(dx)+.01),cl=Math.max(-.62,Math.min(.62,ta));tilt+=(cl-tilt)*Math.min(1,dt*6);
@@ -296,6 +299,23 @@ function aula(){
   const CH=[];let r=7;const rnd=()=>{r=(r*16807)%2147483647;return r/2147483647};
   for(let i=0;i<70;i++){const tw=i%3===0;s+=`<circle${tw?` class="tw" style="animation-delay:${(-rnd()*4).toFixed(1)}s"`:""} cx="${rnd()*1230}" cy="${rnd()*380}" r="${.8+rnd()*1.6}" fill="#fff" opacity="${.35+rnd()*.5}"/>`}
   s+=`<circle cx="1080" cy="110" r="46" fill="#f4f1d8"/><circle cx="1097" cy="99" r="42" fill="#0e1640" opacity=".18"/>`;
+  /* Berge im Hintergrund: zwei Reihen mit Schneekuppen */
+  const berge=(base,hMin,hMax,step,fill,cap,capOp)=>{
+    let x=-80,d=`M-80 ${base}`,kappen="";
+    while(x<1320){
+      const w=step*(.75+rnd()*.6),h=hMin+rnd()*(hMax-hMin),px=x+w*(.4+rnd()*.2),py=base-h,vy=base-h*(.18+rnd()*.14);
+      d+=` L${x.toFixed(0)} ${vy.toFixed(0)} L${(px-w*.18).toFixed(0)} ${(py+h*.12).toFixed(0)} L${px.toFixed(0)} ${py.toFixed(0)} L${(px+w*.16).toFixed(0)} ${(py+h*.14).toFixed(0)}`;
+      const k=h*.34,sl=(px-x)*.34,sr=w*.34;
+      kappen+=`<path d="M${px.toFixed(0)} ${py.toFixed(0)} L${(px-sl*.55).toFixed(0)} ${(py+k*.78).toFixed(0)} L${(px-sl*.28).toFixed(0)} ${(py+k*.6).toFixed(0)} L${(px-sl*.05).toFixed(0)} ${(py+k).toFixed(0)} L${(px+sr*.22).toFixed(0)} ${(py+k*.62).toFixed(0)} L${(px+sr*.5).toFixed(0)} ${(py+k*.85).toFixed(0)} Z" fill="${cap}" opacity="${capOp}"/>`;
+      x+=w;
+    }
+    d+=` L1320 ${base} V${base+120} H-80 Z`;
+    return `<path d="${d}" fill="${fill}"/>${kappen}`;
+  };
+  s+=`<linearGradient id="dunst" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a4d99" stop-opacity="0"/><stop offset="1" stop-color="#3a4d99" stop-opacity=".55"/></linearGradient>`;
+  s+=berge(455,170,255,300,"#2f4286","#c9d7ff",.7);
+  s+=`<rect y="330" width="1230" height="125" fill="url(#dunst)"/>`;
+  s+=berge(468,115,185,230,"#24367a","#e6eeff",.85);
   s+=`<g transform="translate(0 150)"><path d="M0 330 Q200 250 420 320 T820 300 T1230 320 V520 H0Z" fill="#1d2b66"/>`;
   for(let i=0;i<14;i++){const x=20+i*88+rnd()*30,h=70+rnd()*50;s+=`<path d="M${x} 330 l22 ${-h} l22 ${h}z" fill="#1a3a4a"/><path d="M${x+6} 330 l16 ${-h*.75} l16 ${h*.75}z" fill="#23566a"/>`}
   s+=`<rect y="500" width="1230" height="260" fill="#dfe8ff"/><path d="M0 500 Q300 480 620 500 T1230 495 V520 H0Z" fill="#f4f7ff"/>`;
