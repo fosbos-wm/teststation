@@ -64,25 +64,27 @@
   },
   {
    "nr": 5,
-   "datum": "2026-12-07",
-   "wochentag": "Mo",
+   "datum": "2026-12-05",
+   "wochentag": "Sa",
    "kalender": "2026-12-05",
-   "art": "",
-   "titel": "",
-   "text": "",
+   "art": "Wochenende",
+   "titel": "Das Licht geht von allein an",
+   "text": "Am Wochenende ist keine Schule. Dieses Licht geht ganz ohne Aufgabe an. Schönes Wochenende!",
    "dauer": null,
-   "spruch": ""
+   "spruch": "Von allein? Na gut. Ich schau nicht hin.",
+   "wochenende": true
   },
   {
    "nr": 6,
-   "datum": "2026-12-07",
-   "wochentag": "Mo",
+   "datum": "2026-12-06",
+   "wochentag": "So",
    "kalender": "2026-12-06",
-   "art": "",
-   "titel": "",
-   "text": "",
+   "art": "Wochenende",
+   "titel": "Das Licht geht von allein an",
+   "text": "Am Wochenende ist keine Schule. Dieses Licht geht ganz ohne Aufgabe an. Schönes Wochenende!",
    "dauer": null,
-   "spruch": ""
+   "spruch": "Von allein? Na gut. Ich schau nicht hin.",
+   "wochenende": true
   },
   {
    "nr": 7,
@@ -141,25 +143,27 @@
   },
   {
    "nr": 12,
-   "datum": "2026-12-14",
-   "wochentag": "Mo",
+   "datum": "2026-12-12",
+   "wochentag": "Sa",
    "kalender": "2026-12-12",
-   "art": "",
-   "titel": "",
-   "text": "",
+   "art": "Wochenende",
+   "titel": "Das Licht geht von allein an",
+   "text": "Am Wochenende ist keine Schule. Dieses Licht geht ganz ohne Aufgabe an. Schönes Wochenende!",
    "dauer": null,
-   "spruch": ""
+   "spruch": "Von allein? Na gut. Ich schau nicht hin.",
+   "wochenende": true
   },
   {
    "nr": 13,
-   "datum": "2026-12-14",
-   "wochentag": "Mo",
+   "datum": "2026-12-13",
+   "wochentag": "So",
    "kalender": "2026-12-13",
-   "art": "",
-   "titel": "",
-   "text": "",
+   "art": "Wochenende",
+   "titel": "Das Licht geht von allein an",
+   "text": "Am Wochenende ist keine Schule. Dieses Licht geht ganz ohne Aufgabe an. Schönes Wochenende!",
    "dauer": null,
-   "spruch": ""
+   "spruch": "Von allein? Na gut. Ich schau nicht hin.",
+   "wochenende": true
   },
   {
    "nr": 14,
@@ -218,25 +222,27 @@
   },
   {
    "nr": 19,
-   "datum": "2026-12-21",
-   "wochentag": "Mo",
+   "datum": "2026-12-19",
+   "wochentag": "Sa",
    "kalender": "2026-12-19",
-   "art": "",
-   "titel": "",
-   "text": "",
+   "art": "Wochenende",
+   "titel": "Das Licht geht von allein an",
+   "text": "Am Wochenende ist keine Schule. Dieses Licht geht ganz ohne Aufgabe an. Schönes Wochenende!",
    "dauer": null,
-   "spruch": ""
+   "spruch": "Von allein? Na gut. Ich schau nicht hin.",
+   "wochenende": true
   },
   {
    "nr": 20,
-   "datum": "2026-12-21",
-   "wochentag": "Mo",
+   "datum": "2026-12-20",
+   "wochentag": "So",
    "kalender": "2026-12-20",
-   "art": "",
-   "titel": "",
-   "text": "",
+   "art": "Wochenende",
+   "titel": "Das Licht geht von allein an",
+   "text": "Am Wochenende ist keine Schule. Dieses Licht geht ganz ohne Aufgabe an. Schönes Wochenende!",
    "dauer": null,
-   "spruch": ""
+   "spruch": "Von allein? Na gut. Ich schau nicht hin.",
+   "wochenende": true
   },
   {
    "nr": 21,
