@@ -1,80 +1,230 @@
 <!doctype html>
-<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Teststation</title><link rel="stylesheet" href="css/ts.css"></head>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Furor – Beziehungsgeflecht</title>
+<style>
+  :root{--bg:#fafaf7;--fg:#1f2430;--mut:#5b6270;--line:#d9dbe1;--ok:#1b7f4b;--okbg:#e6f4ec;--no:#b3261e;--nobg:#fbe9e7;--acc:#2b4a8b;--card:#fff}
+  @media (prefers-color-scheme:dark){:root{--bg:#171a21;--fg:#e8eaf0;--mut:#9aa1b0;--line:#323847;--ok:#5fd394;--okbg:#17301f;--no:#ff8a80;--nobg:#3a1c1a;--acc:#8fb0ff;--card:#1e222b}}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,Segoe UI,Roboto,sans-serif}
+  main{max-width:900px;margin:0 auto;padding:16px}
+  header{display:flex;gap:16px;align-items:center;border-bottom:2px solid var(--line);padding-bottom:12px;margin-bottom:16px}
+  header img{height:56px;width:auto}
+  header h1{margin:0;font-size:1.5rem}
+  header p{margin:0;color:var(--mut);font-size:.9rem}
+  section{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;margin:16px 0}
+  h2{margin:0 0 6px;font-size:1.15rem;color:var(--acc)}
+  .task{color:var(--mut);margin:0 0 12px}
+  .row{display:grid;grid-template-columns:1fr 220px;gap:10px;align-items:center;padding:8px 0;border-top:1px solid var(--line)}
+  .row:first-of-type{border-top:0}
+  select,textarea,input[type=text]{width:100%;font:inherit;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px}
+  textarea{min-height:64px}
+  .rel{padding:10px 0;border-top:1px solid var(--line)}
+  .rel:first-of-type{border-top:0}
+  .rel h3{margin:0 0 6px;font-size:1rem}
+  .rel label{display:block;padding:4px 6px;border-radius:6px;cursor:pointer}
+  .rel label:hover{background:var(--bg)}
+  button{font:inherit;background:var(--acc);color:#fff;border:0;border-radius:6px;padding:8px 14px;cursor:pointer;margin:8px 8px 0 0}
+  button.sec{background:transparent;color:var(--acc);border:1px solid var(--acc)}
+  .fb{margin-top:6px;padding:6px 10px;border-radius:6px;font-size:.92rem}
+  .ok{background:var(--okbg);color:var(--ok)} .no{background:var(--nobg);color:var(--no)}
+  svg{width:100%;height:auto;max-height:420px}
+  .node{fill:var(--card);stroke:var(--acc);stroke-width:2}
+  .nt{fill:var(--fg);font-size:14px;text-anchor:middle;font-weight:600}
+  .ns{fill:var(--mut);font-size:11px;text-anchor:middle}
+  .edge{stroke:var(--line);stroke-width:2;stroke-dasharray:5 5}
+  .edge.on{stroke:var(--ok);stroke-width:3;stroke-dasharray:none}
+  .el{fill:var(--fg);font-size:11px;text-anchor:middle;opacity:0}
+  .el.on{opacity:1}
+  table{width:100%;border-collapse:collapse}
+  td,th{border:1px solid var(--line);padding:6px;vertical-align:top;text-align:left;font-size:.92rem}
+  .afb{display:inline-block;font-size:.75rem;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:0 6px;margin-right:6px;color:var(--mut)}
+  .lk{display:none;border-left:4px solid var(--acc);padding:8px 12px;margin-top:8px;background:var(--bg)}
+  body.lk-on .lk{display:block}
+  .score{font-weight:600}
+  @media (max-width:640px){.row{grid-template-columns:1fr}}
+  @media print{button,.noprint{display:none}section{break-inside:avoid}}
+</style>
+</head>
 <body>
-<div class="wrap">
- <div class="top"><div class="brand"><span class="led on"></span><div>Teststation<small>Übungen für den Unterricht</small></div></div><a class="btn alt" href="lehrer.html">Lehrkraft</a></div>
- <div class="row" style="margin-bottom:14px"><label>Team (für die Rangliste)<select id="team"></select></label><span class="muted small">Tippe auf eine Übung, sie startet sofort.</span></div>
- <div class="grid" id="grid" aria-live="polite"></div>
- <p class="muted small" style="margin-top:20px">Keine Anmeldung, keine Namen, keine Daten an einen Server. <a href="datenschutz.html">Datenschutz</a></p>
-</div>
-<script type="module">
-import {esc,ls,loadKatalog,cleanId,qrSvg} from "./js/ts-core.js";
-/* Gliederung als Ordnerbaum: Fach > Lernbereich > Thema > Übungen (Feld "pfad" im Katalog) */
-function baum(kat){
-  const root={name:"",key:"",children:[],items:[],n:0};
-  kat.forEach(s=>{
-    const p=s.pfad||[s.fach||"Weitere",s.thema||"Allgemein"];let n=root;
-    p.forEach(name=>{let c=n.children.find(x=>x.name===name);if(!c){c={name,key:(n.key?n.key+"/":"")+name,children:[],items:[],n:0};n.children.push(c)}c.n++;n=c});
-    n.items.push(s);
-  });
-  return root;
-}
-function finde(n,key,pf=[]){if(n.key===key)return {n,pf};for(const c of n.children){const r=finde(c,key,pf.concat(c.name));if(r)return r}return null}
-const uebungen=n=>n+" "+(n===1?"Übung":"Übungen");
+<main>
+<header>
+  <!-- Schullogo FOSBOS Weilheim: Datei logo.png in diesen Ordner legen -->
+  <img src="logo.png" alt="Logo FOSBOS Weilheim" onerror="this.style.visibility='hidden'">
+  <div>
+    <h1>Furor – das Beziehungsgeflecht</h1>
+    <p>Deutsch · Jahrgangsstufe 13 · Drama der Gegenwart · Lutz Hübner / Sarah Nemitz (UA 2018)</p>
+  </div>
+</header>
 
-const $=id=>document.getElementById(id),q=new URLSearchParams(location.search);
-$("team").innerHTML=Array.from({length:30},(_,i)=>`<option value="${i+1}">Team ${i+1}</option>`).join("");
-let t=+ls.get("ts-team")||+q.get("t")||1;$("team").value=Math.min(30,Math.max(1,t));
-$("team").addEventListener("change",()=>{ls.set("ts-team",$("team").value);draw()});
-let kat=[];
-const sel=(q.get("auswahl")||"").split(",").map(cleanId).filter(Boolean);
-function link(s){
-  const u=new URLSearchParams({s:s.id,t:$("team").value,von:"1"});
-  const o=(q.get("ordner")||"").slice(0,200);if(o)u.set("ordner",o);
-  (s.parameter||[]).forEach(p=>{const v=q.get(p.name);if(v&&/^[A-Za-z0-9]{1,6}$/.test(v))u.set(p.name,v)});
-  if(sel.length)u.set("auswahl",sel.join(","));
-  return "station.html?"+u;
-}
-const offen=(q.get("fach")||"").toLowerCase();
-/* QR-Code im Ordner: beim Aufklappen wird Link + QR-Code für genau diesen Ordner gezeigt */
-function ordnerQR(root){
-  root.querySelectorAll("details.ordner").forEach(d=>{
-    const fill=async()=>{
-      if(!d.open||d.querySelector(":scope>.oqrbox"))return;
-      const u=new URL("index.html",location.href);u.search="";u.hash="";u.searchParams.set("ordner",d.dataset.k);
-      const box=document.createElement("div");box.className="oqrbox";
-      box.innerHTML=`<div class="oqrimg"></div><div class="oqrtxt"><b>QR-Code für diesen Ordner</b><span class="muted small">Wer scannt, sieht nur die Übungen dieses Ordners.</span><input readonly value="${esc(u.href)}" aria-label="Link zum Ordner"><button type="button" class="btn alt">Link kopieren</button></div>`;
-      d.querySelector(":scope>summary").after(box);
-      box.querySelector(".oqrimg").innerHTML=await qrSvg(u.href,130);
-      const inp=box.querySelector("input");inp.addEventListener("focus",()=>inp.select());
-      box.querySelector("button").addEventListener("click",async e=>{try{await navigator.clipboard.writeText(u.href);e.target.textContent="Kopiert"}catch(x){inp.select()}});
-    };
-    d.addEventListener("toggle",fill);fill();
+<p class="task">Arbeite mit deinem Reclam-Text (Theater der Gegenwart). Die Übung läuft nur in deinem Browser; es wird nichts gespeichert oder übertragen. Mit dem Button „Drucken / als PDF sichern“ kannst du dein Ergebnis festhalten.</p>
+
+<section id="A">
+  <h2>Teil A · Figuren zuordnen <span class="afb">AFB I</span></h2>
+  <p class="task">Ordne jeder Kurzbeschreibung die passende Figur bzw. Instanz zu.</p>
+  <div id="aList"></div>
+  <button onclick="checkA()">Prüfen</button><span id="aScore" class="score"></span>
+</section>
+
+<section id="B">
+  <h2>Teil B · Beziehungen bestimmen <span class="afb">AFB I–II</span></h2>
+  <p class="task">Wähle pro Beziehung die zutreffende Aussage. Jede richtig bestimmte Beziehung wird im Beziehungsgeflecht sichtbar.</p>
+  <svg viewBox="0 0 600 380" role="img" aria-label="Beziehungsgeflecht der Figuren" id="graph"></svg>
+  <div id="bList"></div>
+  <button onclick="checkB()">Prüfen</button><span id="bScore" class="score"></span>
+</section>
+
+<section id="C">
+  <h2>Teil C · Belege im Text finden <span class="afb">AFB II</span></h2>
+  <p class="task">Suche in deinem Text zu jeder Beziehung eine Stelle, die sie belegt. Notiere Seite/Zeile und fasse die Stelle in eigenen Worten zusammen (kein langes Zitieren).</p>
+  <table>
+    <thead><tr><th style="width:26%">Beziehung</th><th style="width:16%">Seite / Zeile</th><th>Beleg in eigenen Worten und was er über die Beziehung zeigt</th></tr></thead>
+    <tbody id="cBody"></tbody>
+  </table>
+</section>
+
+<section id="D">
+  <h2>Teil D · Das Geflecht in Bewegung <span class="afb">AFB II–III</span></h2>
+  <p class="task">Bearbeite die Aufgaben schriftlich (Stichpunkte oder zusammenhängender Text).</p>
+  <ol>
+    <li><span class="afb">I</span><b>Beschreibe</b> die Figurenkonstellation zu Beginn des Stücks, bevor Jerome auftritt: Wer steht in welchem Verhältnis zu wem?
+      <textarea></textarea>
+      <div class="lk">Erwartung: Dreiecksbeziehung Braubach – Nele – (abwesender) Enno; Braubach kommt als Unfallbeteiligter und OB-Kandidat zu Besuch, bietet Hilfe an; Nele ist finanziell unter Druck und reagiert zunächst reserviert, eine Einigung zeichnet sich ab. Belege aus dem Text ergänzen.</div></li>
+    <li><span class="afb">II</span><b>Erkläre</b>, wie sich das Beziehungsgeflecht durch Jeromes Auftritt verändert und welche Rolle seine Haltung zu „dem System“ dabei spielt.
+      <textarea></textarea>
+      <div class="lk">Erwartung: Aus dem Gespräch zu zweit wird ein Konflikt zu dritt; Jerome deutet Braubachs Hilfsangebot als Wahltaktik, der Dialog wird zum Schlagabtausch mit Eskalation; Nele rückt zwischen die Fronten (familiäre Bindung vs. Wunsch nach Hilfe). Belege aus dem Text ergänzen.</div></li>
+    <li><span class="afb">II</span><b>Analysiere</b> das Machtgefälle zwischen Braubach und Jerome bzw. Nele (soziale Stellung, Sprache, Handlungsspielraum). Beziehe zwei Textstellen ein.
+      <textarea></textarea>
+      <div class="lk">Erwartung: Braubach – Beamter und Kandidat, rhetorisch routiniert, handelt aus einer Position der Freiheit; Nele und Jerome – Erfahrung von Ohnmacht (Geldsorgen, Überstunden, Gefühl, dass niemand Verantwortung übernimmt). Zugleich Verschiebungen im Gespräch, wenn Braubach „in die Enge gedrängt“ wird. Sprachliche Belege selbst ergänzen.</div></li>
+    <li><span class="afb">III</span><b>Beurteile</b>, ob man Braubachs Hilfsangebot als aufrichtig oder als wahltaktisch lesen kann. Begründe mit Bezug auf das Beziehungsgeflecht.
+      <textarea></textarea>
+      <div class="lk">Erwartung: Beide Lesarten textgestützt abwägen (ehrliche Erschütterung vs. Wahlkampfinteresse); Sichtweisen der Figuren unterscheiden; eigenes begründetes Urteil. Keine einseitige Lösung als „richtig“ vorgeben.</div></li>
+    <li><span class="afb">III</span><b>Erörtere</b>, welche Rolle Medien (Lokalzeitung „FZ“, Internet) für die Beziehungen der Figuren spielen und was das Stück damit über gesellschaftliche Spaltung sagt.
+      <textarea></textarea>
+      <div class="lk">Erwartung: Misstrauen gegenüber der Lokalzeitung (Bericht wirkt parteiisch), Hass und Fake-News im Netz verstärken Jeromes Feindbild; Bezug zu Wir-und-die-Logik, Aktualität des Stücks; Gegenposition (Medien als Korrektiv) mitdenken.</div></li>
+  </ol>
+</section>
+
+<div class="noprint">
+  <button onclick="window.print()">Drucken / als PDF sichern</button>
+  <button class="sec" onclick="resetAll()">Neu starten</button>
+</div>
+<p class="task noprint" style="margin-top:16px">Hinweis für Lehrkräfte: Wenn du <code>?lk</code> an die Adresse hängst, erscheinen die Erwartungshorizonte bei Teil D.</p>
+</main>
+
+<script>
+const FIG = ["Heiko Braubach","Nele Siebold","Jerome Siebold","Enno","Medien (FZ / Internet)"];
+const A = [
+  ["Ministerialdirigent und OB-Kandidat; ein Unfall könnte ihm im Wahlkampf schaden",0],
+  ["Altenpflegerin, die „jeden Cent dreimal umdrehen“ muss; Mutter des Unfallopfers",1],
+  ["Fahrer bei einem Paketdienst, zornig und voller Misstrauen gegenüber dem „System“",2],
+  ["Sohn von Nele, bei einem Verkehrsunfall schwer verletzt",3],
+  ["Berichten über den Unfall und verbreiten Darstellungen zur Schuldfrage, denen Nele und Jerome misstrauen",4]
+];
+const B = [
+  {id:"BN",t:"Braubach – Nele",l:"Besuch / Hilfsangebot",a:[
+    "Braubach sucht das Gespräch und bietet Hilfe an; Nele reagiert zunächst reserviert.",
+    "Braubach und Nele kennen sich schon lange aus der Kommunalpolitik.",
+    "Nele fordert von Braubach Geld und droht mit der Presse."],c:0},
+  {id:"BJ",t:"Braubach – Jerome",l:"Konfrontation",a:[
+    "Jerome unterstützt Braubachs Wahlkampf und vermittelt zwischen den beiden.",
+    "Gegenseitiges Misstrauen: Schlagabtausch, der sich zunehmend zuspitzt.",
+    "Beide verbünden sich, um Enno zu helfen."],c:1},
+  {id:"NJ",t:"Nele – Jerome",l:"Tante – Neffe",a:[
+    "Jerome ist Neles Sohn und der Unfallfahrer.",
+    "Jerome ist Neles Vorgesetzter im Paketdienst.",
+    "Verwandte (Tante und Neffe), die Braubachs Angebot unterschiedlich bewerten."],c:2},
+  {id:"NE",t:"Nele – Enno",l:"Mutter – Sohn",a:[
+    "Mutter und Sohn: Sorge und Verantwortung nach dem Unfall.",
+    "Nele macht ihren Sohn für den Unfall verantwortlich.",
+    "Enno ist Neles Neffe und Jeromes Bruder."],c:0},
+  {id:"BE",t:"Braubach – Enno",l:"Unfall",a:[
+    "Enno ist Braubachs Mitarbeiter und kündigt gerade.",
+    "Braubach fuhr Enno an; ob und wie viel Schuld ihn trifft, wird unterschiedlich beurteilt.",
+    "Braubach und Enno sind Konkurrenten im Wahlkampf."],c:1},
+  {id:"JM",t:"Jerome – Medien",l:"Misstrauen / Hass",a:[
+    "Jerome vertraut der Lokalzeitung und hält sie für neutral.",
+    "Jerome arbeitet selbst als Journalist.",
+    "Jerome fühlt sich von der Lokalzeitung getäuscht und nimmt Hass im Internet auf."],c:2}
+];
+const POS={0:[90,100],1:[170,310],2:[510,100],3:[430,310],4:[300,35]};
+const EDGES={BN:[0,1],BJ:[0,2],NJ:[1,2],NE:[1,3],BE:[0,3],JM:[2,4]};
+const NSUB=["OB-Kandidat","Altenpflegerin","Paketfahrer","Sohn, Unfallopfer","FZ · Internet"];
+const NS="http://www.w3.org/2000/svg";
+function drawGraph(){
+  const g=document.getElementById("graph");g.innerHTML="";
+  B.forEach(r=>{
+    const [a,b]=EDGES[r.id];
+    const ln=document.createElementNS(NS,"line");
+    ln.setAttribute("id","e"+r.id);ln.setAttribute("class","edge");
+    ln.setAttribute("x1",POS[a][0]);ln.setAttribute("y1",POS[a][1]);
+    ln.setAttribute("x2",POS[b][0]);ln.setAttribute("y2",POS[b][1]);g.appendChild(ln);
+    const tx=document.createElementNS(NS,"text");
+    tx.setAttribute("id","l"+r.id);tx.setAttribute("class","el");
+    tx.setAttribute("x",(POS[a][0]+POS[b][0])/2);tx.setAttribute("y",(POS[a][1]+POS[b][1])/2-6);
+    tx.textContent=r.l;g.appendChild(tx);
+  });
+  FIG.forEach((n,i)=>{
+    const [x,y]=POS[i];
+    const r=document.createElementNS(NS,"rect");
+    r.setAttribute("class","node");r.setAttribute("x",x-62);r.setAttribute("y",y-24);
+    r.setAttribute("width",124);r.setAttribute("height",48);r.setAttribute("rx",10);g.appendChild(r);
+    const t=document.createElementNS(NS,"text");t.setAttribute("class","nt");
+    t.setAttribute("x",x);t.setAttribute("y",y-3);t.textContent=n.replace(" (FZ / Internet)","");g.appendChild(t);
+    const s=document.createElementNS(NS,"text");s.setAttribute("class","ns");
+    s.setAttribute("x",x);s.setAttribute("y",y+14);s.textContent=NSUB[i];g.appendChild(s);
   });
 }
-const ordner=(q.get("ordner")||"").slice(0,200);
-function karte(s,i){return `<a class="station" href="${link(s)}" style="text-decoration:none;color:inherit"><span class="no">ÜBUNG ${String(i+1).padStart(2,"0")}</span><b>${esc(s.titel)}</b><span class="muted small">${esc(s.beschreibung||"")}</span></a>`}
-function ordnerHtml(n,tiefe,aufF,offen,forceOpen,all){
-  const open=forceOpen||all||aufF.has(n.key)||offen===n.key.toLowerCase();
-  return `<details class="ordner${tiefe?" unter":""}" data-k="${esc(n.key)}" ${open?"open":""}><summary><span class="ico" aria-hidden="true">${tiefe?"📂":"📁"}</span><b>${esc(n.name)}</b><span class="muted small">${uebungen(n.n)}</span></summary>${n.children.map(c=>ordnerHtml(c,tiefe+1,aufF,offen,n.children.length===1,all)).join("")}${n.items.length?`<div class="grid">${n.items.map(karte).join("")}</div>`:""}</details>`;
+function buildA(){
+  const el=document.getElementById("aList");el.innerHTML="";
+  A.forEach((it,i)=>{
+    const d=document.createElement("div");d.className="row";
+    d.innerHTML='<div>'+it[0]+'<div id="afb'+i+'"></div></div><select id="a'+i+'"><option value="">– wählen –</option>'+FIG.map((f,k)=>'<option value="'+k+'">'+f+'</option>').join("")+'</select>';
+    el.appendChild(d);
+  });
 }
-function draw(){
-  const list=sel.length?sel.map(id=>kat.find(s=>s.id===id)).filter(Boolean):kat;
-  if(sel.length){$("grid").className="grid";$("grid").innerHTML=list.map(karte).join("")||`<div class="msg err">Keine Übungen gefunden.</div>`;return}
-  const root=baum(list);$("grid").className="";
-  const aufF=new Set(JSON.parse(ls.get("ts-open")||"[]"));
-  if(ordner){
-    const fr=finde(root,ordner,[]);const n=fr&&fr.n;
-    if(!n){$("grid").innerHTML=`<div class="msg err">Diesen Ordner gibt es nicht.</div>`;return}
-    $("grid").innerHTML=`<h2 style="margin:0 0 10px">${esc(fr.pf.join(" › "))}</h2>`+n.children.map(c=>ordnerHtml(c,1,aufF,"",true,true)).join("")+(n.items.length?`<div class="grid">${n.items.map(karte).join("")}</div>`:"");
-  }else{
-    $("grid").innerHTML=root.children.map(c=>ordnerHtml(c,0,aufF,offen,root.children.length===1,false)).join("")||`<div class="msg err">Keine Übungen gefunden.</div>`;
-  }
-  ordnerQR($("grid"));
-  $("grid").querySelectorAll("details").forEach(d=>d.addEventListener("toggle",()=>{
-    const o=[...$("grid").querySelectorAll("details[open]")].map(x=>x.dataset.k);ls.set("ts-open",JSON.stringify(o));
-  }));
+function checkA(){
+  let n=0;
+  A.forEach((it,i)=>{
+    const v=document.getElementById("a"+i).value,f=document.getElementById("afb"+i);
+    if(v===""){f.innerHTML="";return;}
+    const ok=+v===it[1];if(ok)n++;
+    f.innerHTML='<div class="fb '+(ok?'ok':'no')+'">'+(ok?'Richtig.':'Noch nicht – prüfe die Beschreibung noch einmal.')+'</div>';
+  });
+  document.getElementById("aScore").textContent=n+" von "+A.length+" richtig";
 }
-loadKatalog().then(k=>{kat=k;draw()}).catch(()=>{$("grid").innerHTML=`<div class="msg err">Die Übungen konnten nicht geladen werden. Prüfe die Verbindung.</div>`});
-</script></body></html>
+function buildB(){
+  const el=document.getElementById("bList");el.innerHTML="";
+  B.forEach(r=>{
+    const d=document.createElement("div");d.className="rel";
+    d.innerHTML='<h3>'+r.t+'</h3>'+r.a.map((x,k)=>'<label><input type="radio" name="'+r.id+'" value="'+k+'"> '+x+'</label>').join("")+'<div id="bf'+r.id+'"></div>';
+    el.appendChild(d);
+  });
+}
+function checkB(){
+  let n=0;
+  B.forEach(r=>{
+    const s=document.querySelector('input[name="'+r.id+'"]:checked'),f=document.getElementById("bf"+r.id);
+    const e=document.getElementById("e"+r.id),l=document.getElementById("l"+r.id);
+    if(!s){f.innerHTML="";return;}
+    const ok=+s.value===r.c;
+    if(ok){n++;e.classList.add("on");l.classList.add("on");}else{e.classList.remove("on");l.classList.remove("on");}
+    f.innerHTML='<div class="fb '+(ok?'ok':'no')+'">'+(ok?'Richtig – die Beziehung erscheint im Geflecht.':'Noch nicht. Lies die Stelle im Text noch einmal und vergleiche.')+'</div>';
+  });
+  document.getElementById("bScore").textContent=n+" von "+B.length+" Beziehungen bestimmt";
+}
+function buildC(){
+  document.getElementById("cBody").innerHTML=B.map(r=>'<tr><td>'+r.t+'</td><td><input type="text" aria-label="Seite und Zeile"></td><td><textarea></textarea></td></tr>').join("");
+}
+function resetAll(){
+  buildA();buildB();buildC();drawGraph();
+  document.querySelectorAll("#D textarea").forEach(t=>t.value="");
+  document.getElementById("aScore").textContent="";document.getElementById("bScore").textContent="";
+}
+if(new URLSearchParams(location.search).has("lk"))document.body.classList.add("lk-on");
+buildA();buildB();buildC();drawGraph();
+</script>
+</body>
+</html>
