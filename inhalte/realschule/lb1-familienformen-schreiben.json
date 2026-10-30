@@ -1,0 +1,61 @@
+{
+ "titel": "Familienformen: Aufgaben wie in der Stegreifaufgabe",
+ "abzeichen": "📝",
+ "anleitung": "Schreibe zuerst selbst, dann vergleiche mit der Musterlösung und vergib dir mit der Checkliste Punkte.",
+ "aufgaben": [
+  {
+   "nr": "1.1",
+   "op": "Nenne",
+   "be": 1,
+   "zeilen": 2,
+   "fall": "Frau Sommer hat zwei Kinder, Lara (6) und Ben (10). Vor drei Jahren hat sie sich vom Vater der Kinder getrennt. Seit einem Jahr lebt sie mit ihrem neuen Partner zusammen, der seine Tochter Nele (14) mitgebracht hat. Alle wohnen gemeinsam in einer Wohnung in Augsburg.",
+   "aufgabe": "Nenne die Familienform, die in dem Fallbeispiel beschrieben wird.",
+   "muster": "Patchwork-Familie",
+   "checkliste": [
+    "Ich habe „Patchwork-Familie“ genannt."
+   ]
+  },
+  {
+   "nr": "1.2",
+   "op": "Beschreibe",
+   "be": 4,
+   "zeilen": 6,
+   "aufgabe": "Beschreibe, welche Vor- und Nachteile durch diese Familienform entstehen können. Nenne jeweils zwei Aspekte.",
+   "muster": "Vorteile: Die Kinder gewinnen zusätzliche Bezugspersonen und können Stiefgeschwister als Spielgefährten und Vertraute haben. Ein zweiter Erwachsener kann im Alltag und bei der Erziehung mithelfen.\nNachteile: Alle müssen sich erst als neue Familie finden, und es kann Streit um Regeln und Aufmerksamkeit geben. Die Kinder müssen mit der Trennung der Eltern und mit neuen Rollen (z. B. Stiefvater, Stiefgeschwister) zurechtkommen.",
+   "checkliste": [
+    "Ich habe einen ersten Vorteil genannt.",
+    "Ich habe einen zweiten Vorteil genannt.",
+    "Ich habe einen ersten Nachteil genannt.",
+    "Ich habe einen zweiten Nachteil genannt."
+   ],
+   "tipp": "Schreibe zu jedem Aspekt einen ganzen Satz mit einer kurzen Erklärung."
+  },
+  {
+   "nr": "2",
+   "op": "Beschreibe",
+   "be": 4,
+   "zeilen": 7,
+   "aufgabe": "Beschreibe jeweils in einem kurzen Fallbeispiel eine Regenbogenfamilie (a) und eine Großfamilie (b).",
+   "muster": "(a) Beispiel: Sabine und Anna sind verheiratet und haben eine Tochter, Emma (5). Die beiden Mütter teilen sich Erziehung und Haushalt. Emma wächst mit zwei Müttern auf.\n(b) Beispiel: Im Haus der Familie Bauer leben die Großeltern, die Eltern Karin und Tom und ihre Kinder Jonas (12) und Lisa (8). Die Großmutter kocht mittags für alle, der Großvater hilft bei den Hausaufgaben.",
+   "checkliste": [
+    "(a) Mein Beispiel hat zwei gleichgeschlechtliche Eltern (zwei Mütter oder zwei Väter).",
+    "(a) Mein Beispiel enthält ein Kind (oder mehrere) und Namen oder Alter.",
+    "(b) Mein Beispiel hat mindestens drei Generationen in einem Haushalt.",
+    "(b) Mein Beispiel enthält einen Alltagsbezug (z. B. wer was übernimmt)."
+   ],
+   "tipp": "Ein Fallbeispiel hat Namen, Alter und eine kleine Alltagssituation."
+  },
+  {
+   "nr": "3",
+   "op": "Nenne",
+   "be": 2,
+   "zeilen": 3,
+   "aufgabe": "Nenne zwei Formen der Ersatzfamilie.",
+   "muster": "Pflegefamilie, Adoptivfamilie (auch möglich: Kinderdorffamilie)",
+   "checkliste": [
+    "Ich habe eine Form der Ersatzfamilie richtig genannt.",
+    "Ich habe eine zweite Form der Ersatzfamilie richtig genannt."
+   ]
+  }
+ ]
+}

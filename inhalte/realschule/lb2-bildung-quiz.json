@@ -1,0 +1,84 @@
+{
+ "titel": "Bildung weltweit: Fragen und Folgen",
+ "abzeichen": "🌍",
+ "anleitung": "Bildung ist nicht überall gleich. Wähle jeweils die passende Antwort.",
+ "fragen": [
+  {
+   "f": "Warum ist Bildung für die Entwicklung eines Landes wichtig?",
+   "o": [
+    "Gebildete Menschen haben bessere Berufschancen, und das Land profitiert.",
+    "Bildung hat keine Auswirkungen.",
+    "Sie macht Menschen zufrieden ohne Folgen.",
+    "Sie schadet der Wirtschaft."
+   ],
+   "r": 0,
+   "e": "Bildung eröffnet Chancen für Einzelne und Gesellschaft."
+  },
+  {
+   "f": "Welcher Grund kann dazu führen, dass Kinder in manchen Ländern nicht zur Schule gehen?",
+   "o": [
+    "Armut, Krieg oder zu wenige Schulen",
+    "Zu viele Ferien",
+    "Zu viele Lehrkräfte",
+    "Zu weiche Stühle"
+   ],
+   "r": 0,
+   "e": "Armut, Konflikte und fehlende Schulen sind häufige Ursachen."
+  },
+  {
+   "f": "Was kann Kindern helfen, die schlechte Bildungschancen haben?",
+   "o": [
+    "Zugang zu Schulen, Material und Förderung",
+    "Weniger Unterricht",
+    "Keine Ausbildung",
+    "Mehr Arbeit statt Schule"
+   ],
+   "r": 0,
+   "e": "Bildung kann durch Schulen, Hilfsorganisationen und Förderprogramme verbessert werden."
+  },
+  {
+   "f": "Welches Menschenrecht betrifft die Bildung?",
+   "o": [
+    "Das Recht auf Bildung",
+    "Das Recht auf Urlaub",
+    "Das Recht auf Schuluniform",
+    "Das Recht auf Handy"
+   ],
+   "r": 0,
+   "e": "Das Recht auf Bildung steht in der UN-Kinderrechtskonvention."
+  },
+  {
+   "f": "Was kann ein Unterschied zwischen Schulen in verschiedenen Ländern sein?",
+   "o": [
+    "Dauer der Schulpflicht, Schulgeld oder Schuluniform",
+    "Die Farbe des Himmels",
+    "Die Zahl der Wochen im Jahr",
+    "Der Name der Lehrkräfte"
+   ],
+   "r": 0,
+   "e": "Schulsysteme unterscheiden sich in vielen Punkten."
+  },
+  {
+   "f": "Warum kann Bildung helfen, Armut zu verringern?",
+   "o": [
+    "Wer eine Ausbildung hat, findet leichter Arbeit und verdient besser.",
+    "Weil Bildung Geld druckt.",
+    "Weil Schulen Geld verschenken.",
+    "Weil Armut von Bildung kommt."
+   ],
+   "r": 0,
+   "e": "Bildung verbessert die Chancen auf dem Arbeitsmarkt."
+  },
+  {
+   "f": "Was gehört zur Chancengleichheit in der Bildung?",
+   "o": [
+    "Alle Kinder sollen unabhängig von Herkunft oder Geschlecht Zugang zu Bildung haben.",
+    "Nur Jungen dürfen lernen.",
+    "Nur reiche Kinder gehen zur Schule.",
+    "Bildung ist nur für Erwachsene."
+   ],
+   "r": 0,
+   "e": "Chancengleichheit bedeutet gleiche Möglichkeiten für alle."
+  }
+ ]
+}

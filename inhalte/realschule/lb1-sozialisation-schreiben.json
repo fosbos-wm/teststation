@@ -1,0 +1,47 @@
+{
+ "titel": "Primäre Sozialisation: Aufgaben wie in der Stegreifaufgabe",
+ "abzeichen": "✍️",
+ "anleitung": "Schreibe zuerst selbst, dann vergleiche mit der Musterlösung und vergib dir mit der Checkliste Punkte.",
+ "aufgaben": [
+  {
+   "nr": "1",
+   "op": "Nenne",
+   "be": 4,
+   "zeilen": 5,
+   "aufgabe": "Nenne zwei Werte, die in deiner Familie wichtig sind, und je eine Regel (Norm), in der sich der Wert zeigt.",
+   "muster": "Beispiel: Wert 1: Ehrlichkeit. Norm dazu: Wir sagen uns die Wahrheit, auch wenn es unangenehm ist.\nWert 2: Hilfsbereitschaft. Norm dazu: Wer mit seiner Aufgabe fertig ist, hilft den anderen im Haushalt.\n(Deine Beispiele dürfen anders sein.)",
+   "checkliste": [
+    "Ich habe einen ersten Wert genannt.",
+    "Ich habe eine passende Norm zum ersten Wert genannt.",
+    "Ich habe einen zweiten Wert genannt.",
+    "Ich habe eine passende Norm zum zweiten Wert genannt."
+   ]
+  },
+  {
+   "nr": "2",
+   "op": "Erkläre",
+   "be": 3,
+   "zeilen": 5,
+   "aufgabe": "Erkläre, warum die Familie als erste Sozialisationsinstanz bezeichnet wird. Nenne ein Beispiel.",
+   "muster": "In der Familie wachsen Kinder zuerst auf. Hier lernen sie als Erstes, sich in einer Gemeinschaft zu verhalten: Sie lernen sprechen, mit Gefühlen umgehen und die ersten Werte und Normen kennen. Beispiel: Ein Kind sieht, dass die Eltern „Bitte“ und „Danke“ sagen, und macht es nach. So lernt es, was in der Gesellschaft als höflich gilt.",
+   "checkliste": [
+    "Ich habe erklärt, dass Kinder in der Familie zuerst und am längsten lernen.",
+    "Ich habe genannt, was gelernt wird (z. B. Werte und Normen, Sprache, soziales Verhalten).",
+    "Ich habe ein passendes Beispiel genannt."
+   ]
+  },
+  {
+   "nr": "3",
+   "op": "Beschreibe",
+   "be": 3,
+   "zeilen": 5,
+   "aufgabe": "Beschreibe, was ein Baby in der Beziehung zu seinen Eltern braucht, damit es Urvertrauen entwickeln kann.",
+   "muster": "Ein Baby braucht Eltern, die verlässlich auf seine Bedürfnisse reagieren: Sie füttern es, wenn es Hunger hat, trösten es, wenn es weint, und geben ihm Nähe und Schutz. Wenn das Kind oft erlebt, dass jemand für es da ist, entwickelt es Urvertrauen. Es lernt: Ich kann mich auf andere verlassen.",
+   "checkliste": [
+    "Ich habe verlässliche Zuwendung oder Nähe genannt.",
+    "Ich habe ein Beispiel genannt (z. B. trösten, füttern).",
+    "Ich habe die Folge beschrieben: Das Kind lernt, anderen zu vertrauen."
+   ]
+  }
+ ]
+}

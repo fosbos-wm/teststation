@@ -1,0 +1,27 @@
+{
+ "titel": "Reihenfolge: Eine Klasse wird zur Gemeinschaft",
+ "abzeichen": "🔢",
+ "anleitung": "Tippe die Karten in der richtigen Reihenfolge an. Tippe eine eingeordnete Karte an, um sie zurückzulegen.",
+ "runden": [
+  {
+   "aufgabe": "Die vier Phasen nach Tuckman",
+   "schritte": [
+    "Forming: Die Mitglieder lernen sich kennen und beobachten einander.",
+    "Storming: Es gibt Streit um Aufgaben, Regeln und Führung.",
+    "Norming: Die Gruppe einigt sich auf Regeln und wächst zusammen.",
+    "Performing: Die Gruppe arbeitet effektiv zusammen und erreicht ihre Ziele."
+   ],
+   "e": "Merkhilfe: Forming – Storming – Norming – Performing."
+  },
+  {
+   "aufgabe": "Eine neue Klasse im September",
+   "schritte": [
+    "Am ersten Schultag sitzen alle still da und beobachten einander.",
+    "Nach einigen Wochen streiten Schüler um Sitzplätze und um die Führung in der Klasse.",
+    "Die Klasse stellt gemeinsam Klassenregeln auf.",
+    "Beim Projekttag arbeitet die Klasse reibungslos zusammen."
+   ],
+   "e": "Die vier Beispiele passen der Reihe nach zu Forming, Storming, Norming und Performing."
+  }
+ ]
+}

@@ -1,0 +1,29 @@
+{
+ "titel": "Reihenfolge: Wie lernt ein Kind in der Familie?",
+ "abzeichen": "🔢",
+ "anleitung": "Tippe die Karten in der Reihenfolge an, in der etwas passiert. Tippe eine eingeordnete Karte an, um sie zurückzulegen.",
+ "runden": [
+  {
+   "aufgabe": "So kann Urvertrauen entstehen",
+   "schritte": [
+    "Das Baby hat Hunger oder Angst und weint.",
+    "Die Eltern hören das Weinen und gehen sofort hin.",
+    "Sie füttern oder trösten das Baby liebevoll.",
+    "Das Baby beruhigt sich und fühlt sich sicher.",
+    "Nach vielen solchen Erfahrungen vertraut das Kind darauf, dass es sich auf andere verlassen kann."
+   ],
+   "e": "Verlässliche Zuwendung, die sich oft wiederholt, baut das Urvertrauen auf."
+  },
+  {
+   "aufgabe": "So lernt ein Kind eine Norm: „Vor dem Essen Hände waschen“",
+   "schritte": [
+    "Das Kind sieht, dass die Eltern sich vor dem Essen die Hände waschen.",
+    "Die Eltern erklären, warum man sich die Hände wäscht.",
+    "Das Kind macht es nach und wird gelobt.",
+    "Durch Wiederholung wird es zur Gewohnheit.",
+    "Später wäscht das Kind sich von selbst die Hände."
+   ],
+   "e": "Beobachten, Erklären, Nachmachen, Loben und Wiederholen: So wird eine Norm zur Gewohnheit."
+  }
+ ]
+}

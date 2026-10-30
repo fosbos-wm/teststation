@@ -1,0 +1,57 @@
+{
+ "titel": "Welche Lerntheorie steckt dahinter?",
+ "abzeichen": "🧠",
+ "anleitung": "Ordne jedes Beispiel der Lerntheorie zu: Klassische Konditionierung (Pawlow), Operante Konditionierung (Skinner) oder Lernen am Modell (Bandura).",
+ "kategorien": [
+  "Klassische Konditionierung (Pawlow)",
+  "Operante Konditionierung (Skinner)",
+  "Lernen am Modell (Bandura)"
+ ],
+ "karten": [
+  {
+   "t": "Beim Klang der Pausenglocke bekommt man Hunger.",
+   "k": 0,
+   "e": "Ein Reiz (Glocke) wird mit etwas Angenehmem verknüpft."
+  },
+  {
+   "t": "Beim Geruch von Pizza läuft einem das Wasser im Mund zusammen, schon beim Anblick des Lieferwagens.",
+   "k": 0,
+   "e": "Ein neutraler Reiz löst durch Verknüpfung eine Reaktion aus."
+  },
+  {
+   "t": "Eine Schülerin hat Herzklopfen, sobald sie die Tür des Prüfungsraums sieht.",
+   "k": 0,
+   "e": "Ein Reiz wurde mit Angst verknüpft."
+  },
+  {
+   "t": "Ein Schüler meldet sich öfter, weil er dafür gelobt wurde.",
+   "k": 1,
+   "e": "Verhalten wird durch angenehme Folgen verstärkt."
+  },
+  {
+   "t": "Eine Schülerin lernt regelmäßig Vokabeln, weil sie dafür gute Noten bekommt.",
+   "k": 1,
+   "e": "Belohnung verstärkt das Verhalten."
+  },
+  {
+   "t": "Ein Kind hört auf zu stören, weil es sonst nachsitzen muss.",
+   "k": 1,
+   "e": "Unangenehme Folgen schwächen das Verhalten ab."
+  },
+  {
+   "t": "Ein Junge probiert dieselbe Trickfigur beim Skaten, die er bei einem älteren Vorbild gesehen hat.",
+   "k": 2,
+   "e": "Lernen durch Beobachten und Nachahmen."
+  },
+  {
+   "t": "Ein Mädchen hilft beim Aufräumen, weil sie sieht, dass ihre Lehrerin dafür gelobt wird.",
+   "k": 2,
+   "e": "Lernen durch Beobachtung der Folgen bei anderen."
+  },
+  {
+   "t": "Jüngere Schüler übernehmen Ausdrücke und Verhalten von bewunderten älteren Schülern.",
+   "k": 2,
+   "e": "Vorbilder prägen das Verhalten."
+  }
+ ]
+}

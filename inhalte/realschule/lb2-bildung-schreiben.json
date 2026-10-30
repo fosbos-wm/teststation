@@ -1,0 +1,43 @@
+{
+ "titel": "Bildung und Schule: Vergleich und Folgen",
+ "abzeichen": "✍️",
+ "anleitung": "Beantworte die Aufgaben mit eigenen Worten. Danach vergleichst du mit der Musterlösung.",
+ "aufgaben": [
+  {
+   "nr": "1",
+   "op": "Nenne",
+   "be": 2,
+   "zeilen": 3,
+   "aufgabe": "Nenne zwei Gründe, warum Kinder in manchen Ländern keine Schule besuchen können.",
+   "muster": "Zum Beispiel: Die Familie ist arm und das Kind muss arbeiten; es gibt keine Schule in der Nähe; ein Krieg verhindert den Unterricht.",
+   "checkliste": [
+    "Ich habe einen passenden Grund genannt.",
+    "Ich habe einen zweiten passenden Grund genannt."
+   ]
+  },
+  {
+   "nr": "2",
+   "op": "Erkläre",
+   "be": 2,
+   "zeilen": 4,
+   "aufgabe": "Erkläre, warum Bildung für einen Menschen wichtig ist.",
+   "muster": "Bildung gibt bessere Chancen auf einen Beruf und ein sicheres Einkommen. Außerdem kann man sich besser informieren und mitreden.",
+   "checkliste": [
+    "Ich habe berufliche Chancen oder Einkommen genannt.",
+    "Ich habe einen weiteren Nutzen genannt (z. B. Mitbestimmung, Wissen, Selbstständigkeit)."
+   ]
+  },
+  {
+   "nr": "3",
+   "op": "Vergleiche",
+   "be": 2,
+   "zeilen": 4,
+   "aufgabe": "Nenne zwei Merkmale, in denen sich Schulen verschiedener Länder unterscheiden können.",
+   "muster": "Mögliche Unterschiede: Dauer der Schulpflicht, Schuluniform, Schulgeld, Unterrichtszeiten, Klassengröße.",
+   "checkliste": [
+    "Ich habe ein Merkmal genannt.",
+    "Ich habe ein zweites Merkmal genannt."
+   ]
+  }
+ ]
+}

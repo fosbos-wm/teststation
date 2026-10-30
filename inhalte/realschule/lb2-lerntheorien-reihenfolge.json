@@ -1,0 +1,27 @@
+{
+ "titel": "Reihenfolge: Pawlow-Experiment und Lernen durch Folgen",
+ "abzeichen": "🔢",
+ "anleitung": "Bringe die Schritte in die richtige Reihenfolge.",
+ "runden": [
+  {
+   "aufgabe": "Eine klassische Konditionierung (Beispiel Hund)",
+   "schritte": [
+    "Futter (unbedingter Reiz) löst Speichelfluss aus.",
+    "Vor dem Futter ertönt immer eine Glocke (neutraler Reiz).",
+    "Glocke und Futter werden oft gemeinsam dargeboten, der Hund verknüpft beides.",
+    "Schon die Glocke allein löst den Speichelfluss aus (bedingte Reaktion)."
+   ],
+   "e": "So entsteht eine Verknüpfung."
+  },
+  {
+   "aufgabe": "Operante Konditionierung im Unterricht",
+   "schritte": [
+    "Der Schüler zeigt ein Verhalten (er meldet sich).",
+    "Auf das Verhalten folgt eine angenehme Folge (Lob).",
+    "Das Verhalten wird als lohnend erlebt.",
+    "Der Schüler meldet sich in Zukunft häufiger."
+   ],
+   "e": "Verhalten → Folge → mehr Verhalten."
+  }
+ ]
+}

@@ -854,5 +854,965 @@
    "13. Klasse",
    "Furor"
   ]
+ },
+ {
+  "id": "lb1-rollen-quiz",
+  "titel": "Rollen in der Familie – Fälle verstehen",
+  "fach": "Realschule",
+  "beschreibung": "Rolle, Rollenwandel und Primärgruppe an Fallbeispielen anwenden.",
+  "datei": "rs-quiz.html?set=lb1-rollen-quiz",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Familie, Rollen und Rollenwandel",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 1: Primärsozialisation in Familie und Kindertagesstätte",
+   "Familie, Rollen und Rollenwandel"
+  ],
+  "abzeichen": "🎭"
+ },
+ {
+  "id": "lb1-rollenwandel-sortieren",
+  "titel": "Früher und heute: Rollen im Wandel",
+  "fach": "Realschule",
+  "beschreibung": "Rollenwandel erkennen: Familienleben früher und heute vergleichen.",
+  "datei": "rs-sortieren.html?set=lb1-rollenwandel-sortieren",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Familie, Rollen und Rollenwandel",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 1: Primärsozialisation in Familie und Kindertagesstätte",
+   "Familie, Rollen und Rollenwandel"
+  ],
+  "abzeichen": "⏳"
+ },
+ {
+  "id": "lb1-rollenwandel-schreiben",
+  "titel": "Rollen und Rollenwandel: Aufgaben wie in der Stegreifaufgabe",
+  "fach": "Realschule",
+  "beschreibung": "Rolle beschreiben, Rollenwandel mit Beispiel erklären, Chancen und Probleme nennen.",
+  "datei": "rs-schreiben.html?set=lb1-rollenwandel-schreiben",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Familie, Rollen und Rollenwandel",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 1: Primärsozialisation in Familie und Kindertagesstätte",
+   "Familie, Rollen und Rollenwandel"
+  ],
+  "abzeichen": "✍️"
+ },
+ {
+  "id": "lb1-familienformen-sortieren",
+  "titel": "Welche Familienform ist das?",
+  "fach": "Realschule",
+  "beschreibung": "14 Fallbeispiele den sechs Familienformen aus dem Lehrplan zuordnen.",
+  "datei": "rs-sortieren.html?set=lb1-familienformen-sortieren",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Familienformen",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 1: Primärsozialisation in Familie und Kindertagesstätte",
+   "Familienformen"
+  ],
+  "abzeichen": "🏠"
+ },
+ {
+  "id": "lb1-familienformen-vorteile-quiz",
+  "titel": "Chancen und Probleme der Familienformen",
+  "fach": "Realschule",
+  "beschreibung": "Probleme, Chancen und Folgen verschiedener Familienformen vergleichen.",
+  "datei": "rs-quiz.html?set=lb1-familienformen-vorteile-quiz",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Familienformen",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 1: Primärsozialisation in Familie und Kindertagesstätte",
+   "Familienformen"
+  ],
+  "abzeichen": "⚖️"
+ },
+ {
+  "id": "lb1-familienformen-memory",
+  "titel": "Memory: Familienform und Fallbeispiel",
+  "fach": "Realschule",
+  "beschreibung": "Familienformen mit passenden Kurzbeispielen zusammenbringen.",
+  "datei": "rs-memory.html?set=lb1-familienformen-memory",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Familienformen",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 1: Primärsozialisation in Familie und Kindertagesstätte",
+   "Familienformen"
+  ],
+  "abzeichen": "🃏"
+ },
+ {
+  "id": "lb1-familienformen-balken",
+  "titel": "Diagramm auswerten: Familien nach Familienform",
+  "fach": "Realschule",
+  "beschreibung": "Ein Balkendiagramm auswerten wie in der Stegreifaufgabe (mit Übungszahlen).",
+  "datei": "rs-aussagen.html?set=lb1-familienformen-balken",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Familienformen",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 1: Primärsozialisation in Familie und Kindertagesstätte",
+   "Familienformen"
+  ],
+  "abzeichen": "📊"
+ },
+ {
+  "id": "lb1-alleinerziehende-kreis",
+  "titel": "Kreisdiagramm auswerten: Alleinerziehende",
+  "fach": "Realschule",
+  "beschreibung": "Ein Kreisdiagramm zu Alleinerziehenden auswerten (mit Übungszahlen).",
+  "datei": "rs-aussagen.html?set=lb1-alleinerziehende-kreis",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Familienformen",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 1: Primärsozialisation in Familie und Kindertagesstätte",
+   "Familienformen"
+  ],
+  "abzeichen": "🥧"
+ },
+ {
+  "id": "lb1-familienformen-schreiben",
+  "titel": "Familienformen: Aufgaben wie in der Stegreifaufgabe",
+  "fach": "Realschule",
+  "beschreibung": "Familienform nennen, Vor- und Nachteile, Fallbeispiele schreiben, Ersatzfamilien nennen.",
+  "datei": "rs-schreiben.html?set=lb1-familienformen-schreiben",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Familienformen",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 1: Primärsozialisation in Familie und Kindertagesstätte",
+   "Familienformen"
+  ],
+  "abzeichen": "📝"
+ },
+ {
+  "id": "lb1-familienformen-luecken",
+  "titel": "Lückentext: Annas Familie im Wandel",
+  "fach": "Realschule",
+  "beschreibung": "Familienformen in einer Geschichte über Annas Familie ergänzen.",
+  "datei": "rs-luecken.html?set=lb1-familienformen-luecken",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Familienformen",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 1: Primärsozialisation in Familie und Kindertagesstätte",
+   "Familienformen"
+  ],
+  "abzeichen": "🧩"
+ },
+ {
+  "id": "lb1-sozialisation-quiz",
+  "titel": "Was lernt ein Kind in der Familie?",
+  "fach": "Realschule",
+  "beschreibung": "Familie als erste Sozialisationsinstanz an Fallbeispielen erkennen.",
+  "datei": "rs-quiz.html?set=lb1-sozialisation-quiz",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Bedeutung der Familie für die primäre Sozialisation",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 1: Primärsozialisation in Familie und Kindertagesstätte",
+   "Bedeutung der Familie für die primäre Sozialisation"
+  ],
+  "abzeichen": "🌱"
+ },
+ {
+  "id": "lb1-werte-normen-sortieren",
+  "titel": "Wert oder Norm?",
+  "fach": "Realschule",
+  "beschreibung": "Werte und Normen im Familienalltag unterscheiden.",
+  "datei": "rs-sortieren.html?set=lb1-werte-normen-sortieren",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Bedeutung der Familie für die primäre Sozialisation",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 1: Primärsozialisation in Familie und Kindertagesstätte",
+   "Bedeutung der Familie für die primäre Sozialisation"
+  ],
+  "abzeichen": "🧭"
+ },
+ {
+  "id": "lb1-urvertrauen-reihenfolge",
+  "titel": "Reihenfolge: Wie lernt ein Kind in der Familie?",
+  "fach": "Realschule",
+  "beschreibung": "Zwei Abläufe der primären Sozialisation in die richtige Reihenfolge bringen.",
+  "datei": "rs-reihenfolge.html?set=lb1-urvertrauen-reihenfolge",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Bedeutung der Familie für die primäre Sozialisation",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 1: Primärsozialisation in Familie und Kindertagesstätte",
+   "Bedeutung der Familie für die primäre Sozialisation"
+  ],
+  "abzeichen": "🔢"
+ },
+ {
+  "id": "lb1-sozialisation-schreiben",
+  "titel": "Primäre Sozialisation: Aufgaben wie in der Stegreifaufgabe",
+  "fach": "Realschule",
+  "beschreibung": "Werte und Normen nennen, Sozialisationsinstanz erklären, Urvertrauen beschreiben.",
+  "datei": "rs-schreiben.html?set=lb1-sozialisation-schreiben",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Bedeutung der Familie für die primäre Sozialisation",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 1: Primärsozialisation in Familie und Kindertagesstätte",
+   "Bedeutung der Familie für die primäre Sozialisation"
+  ],
+  "abzeichen": "✍️"
+ },
+ {
+  "id": "lb1-kita-quiz",
+  "titel": "Krippe und Kindergarten",
+  "fach": "Realschule",
+  "beschreibung": "Kinderkrippe und Kindergarten: Bedeutung für das Kind, Gruppenfähigkeit, Rollen in der Spielgruppe.",
+  "datei": "rs-quiz.html?set=lb1-kita-quiz",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Kindertagesstätten (Krippe und Kindergarten)",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 1: Primärsozialisation in Familie und Kindertagesstätte",
+   "Kindertagesstätten (Krippe und Kindergarten)"
+  ],
+  "abzeichen": "🧸"
+ },
+ {
+  "id": "lb1-kita-sortieren",
+  "titel": "Familie oder Kita – wo lernt das Kind was?",
+  "fach": "Realschule",
+  "beschreibung": "Die Rolle von Familie und Kita für die Entwicklung des Kindes unterscheiden.",
+  "datei": "rs-sortieren.html?set=lb1-kita-sortieren",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Kindertagesstätten (Krippe und Kindergarten)",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 1: Primärsozialisation in Familie und Kindertagesstätte",
+   "Kindertagesstätten (Krippe und Kindergarten)"
+  ],
+  "abzeichen": "🏫"
+ },
+ {
+  "id": "lb1-erziehungsstile-sortieren",
+  "titel": "Welcher Erziehungsstil?",
+  "fach": "Realschule",
+  "beschreibung": "Fallsätze und Situationen den vier Erziehungsstilen zuordnen.",
+  "datei": "rs-sortieren.html?set=lb1-erziehungsstile-sortieren",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Erziehungsstile",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 1: Primärsozialisation in Familie und Kindertagesstätte",
+   "Erziehungsstile"
+  ],
+  "abzeichen": "👨‍👩‍👧"
+ },
+ {
+  "id": "lb1-erziehungsstile-memory",
+  "titel": "Memory: Erziehungsstile und ihre Wirkung",
+  "fach": "Realschule",
+  "beschreibung": "Erziehungsstile mit Merkmalen und möglichen Folgen für das Kind verbinden.",
+  "datei": "rs-memory.html?set=lb1-erziehungsstile-memory",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Erziehungsstile",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 1: Primärsozialisation in Familie und Kindertagesstätte",
+   "Erziehungsstile"
+  ],
+  "abzeichen": "🃏"
+ },
+ {
+  "id": "lb1-erziehungsstile-quiz",
+  "titel": "Erziehungsstile beurteilen: Vor- und Nachteile",
+  "fach": "Realschule",
+  "beschreibung": "Vor- und Nachteile der vier Erziehungsstile beurteilen und Stile in Fällen erkennen.",
+  "datei": "rs-quiz.html?set=lb1-erziehungsstile-quiz",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Erziehungsstile",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 1: Primärsozialisation in Familie und Kindertagesstätte",
+   "Erziehungsstile"
+  ],
+  "abzeichen": "⚖️"
+ },
+ {
+  "id": "lb1-erziehungsstile-schreiben",
+  "titel": "Erziehungsstile: Fallbeispiel auswerten",
+  "fach": "Realschule",
+  "beschreibung": "Erziehungsstile in einem Fallbeispiel erkennen, begründen und beurteilen.",
+  "datei": "rs-schreiben.html?set=lb1-erziehungsstile-schreiben",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Erziehungsstile",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 1: Primärsozialisation in Familie und Kindertagesstätte",
+   "Erziehungsstile"
+  ],
+  "abzeichen": "📝"
+ },
+ {
+  "id": "lb1-staat-aussagen",
+  "titel": "Texte aus der Bayerischen Verfassung auswerten",
+  "fach": "Realschule",
+  "beschreibung": "Textstellen aus der Bayerischen Verfassung zur Familie auswerten.",
+  "datei": "rs-aussagen.html?set=lb1-staat-aussagen",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Familie unter dem Schutz des Staates",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 1: Primärsozialisation in Familie und Kindertagesstätte",
+   "Familie unter dem Schutz des Staates"
+  ],
+  "abzeichen": "⚖️"
+ },
+ {
+  "id": "lb1-staat-hilfen-quiz",
+  "titel": "Welche Hilfe passt zu welcher Notlage?",
+  "fach": "Realschule",
+  "beschreibung": "Staatliche Hilfen (finanzielle Hilfe, Erziehungsbeistand, Beratung, Gesundheit) auf Fälle anwenden.",
+  "datei": "rs-quiz.html?set=lb1-staat-hilfen-quiz",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Familie unter dem Schutz des Staates",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 1: Primärsozialisation in Familie und Kindertagesstätte",
+   "Familie unter dem Schutz des Staates"
+  ],
+  "abzeichen": "🛟"
+ },
+ {
+  "id": "lb1-staat-sortieren",
+  "titel": "Welche Art von Hilfe ist das?",
+  "fach": "Realschule",
+  "beschreibung": "Beispiele staatlicher Hilfen den Hilfearten zuordnen.",
+  "datei": "rs-sortieren.html?set=lb1-staat-sortieren",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Familie unter dem Schutz des Staates",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 1: Primärsozialisation in Familie und Kindertagesstätte",
+   "Familie unter dem Schutz des Staates"
+  ],
+  "abzeichen": "🗂️"
+ },
+ {
+  "id": "lb1-kulturen-sortieren",
+  "titel": "Familien vergleichen: Welches Merkmal?",
+  "fach": "Realschule",
+  "beschreibung": "Vergleichsmerkmale für Familien in verschiedenen Kulturen unterscheiden.",
+  "datei": "rs-sortieren.html?set=lb1-kulturen-sortieren",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Familien in anderen Kulturkreisen",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 1: Primärsozialisation in Familie und Kindertagesstätte",
+   "Familien in anderen Kulturkreisen"
+  ],
+  "abzeichen": "🌍"
+ },
+ {
+  "id": "lb1-kulturen-quiz",
+  "titel": "Familien in anderen Ländern: fair und tolerant vergleichen",
+  "fach": "Realschule",
+  "beschreibung": "Familien in Deutschland und anderen Kulturkreisen mit sinnvollen Merkmalen vergleichen und Toleranz entwickeln.",
+  "datei": "rs-quiz.html?set=lb1-kulturen-quiz",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Familien in anderen Kulturkreisen",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 1: Primärsozialisation in Familie und Kindertagesstätte",
+   "Familien in anderen Kulturkreisen"
+  ],
+  "abzeichen": "🤝"
+ },
+ {
+  "id": "lb1-kulturen-schreiben",
+  "titel": "Familien vergleichen und Toleranz begründen",
+  "fach": "Realschule",
+  "beschreibung": "Zwei Familien anhand von Merkmalen vergleichen und die Bedeutung von Toleranz erklären.",
+  "datei": "rs-schreiben.html?set=lb1-kulturen-schreiben",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Familien in anderen Kulturkreisen",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 1: Primärsozialisation in Familie und Kindertagesstätte",
+   "Familien in anderen Kulturkreisen"
+  ],
+  "abzeichen": "🌍"
+ },
+ {
+  "id": "lb1-berufe-sortieren",
+  "titel": "Wer hilft der Familie? Haus- und Familienpfleger/-in oder Hebamme",
+  "fach": "Realschule",
+  "beschreibung": "Aufgaben und Einsatzbereiche familienunterstützender Berufe unterscheiden.",
+  "datei": "rs-sortieren.html?set=lb1-berufe-sortieren",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Familienunterstützende Berufe",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 1: Primärsozialisation in Familie und Kindertagesstätte",
+   "Familienunterstützende Berufe"
+  ],
+  "abzeichen": "🩺"
+ },
+ {
+  "id": "lb1-berufe-quiz",
+  "titel": "Wer kann helfen? Fälle zu familienunterstützenden Berufen",
+  "fach": "Realschule",
+  "beschreibung": "Familienunterstützende Berufe auf Fallbeispiele anwenden und ihre Bedeutung bewerten.",
+  "datei": "rs-quiz.html?set=lb1-berufe-quiz",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Familienunterstützende Berufe",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 1: Primärsozialisation in Familie und Kindertagesstätte",
+   "Familienunterstützende Berufe"
+  ],
+  "abzeichen": "🩺"
+ },
+ {
+  "id": "lb1-mix-quiz",
+  "titel": "Mix-Quiz Lernbereich 1",
+  "fach": "Realschule",
+  "beschreibung": "Gemischte Fragen aus allen Themen von Lernbereich 1.",
+  "datei": "rs-quiz.html?set=lb1-mix-quiz",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Prüfungstraining Lernbereich 1",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 1: Primärsozialisation in Familie und Kindertagesstätte",
+   "Prüfungstraining Lernbereich 1"
+  ],
+  "abzeichen": "🎯"
+ },
+ {
+  "id": "lb1-probe-stegreifaufgabe",
+  "titel": "Probe-Stegreifaufgabe Lernbereich 1",
+  "fach": "Realschule",
+  "beschreibung": "Eine Probe-Stegreifaufgabe zu Familie, Rollen, Familienformen und Erziehungsstilen.",
+  "datei": "rs-schreiben.html?set=lb1-probe-stegreifaufgabe",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Prüfungstraining Lernbereich 1",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 1: Primärsozialisation in Familie und Kindertagesstätte",
+   "Prüfungstraining Lernbereich 1"
+  ],
+  "abzeichen": "🏆"
+ },
+ {
+  "id": "lb2-gruppen-quiz",
+  "titel": "Gruppen in der Schule: Arten erkennen",
+  "fach": "Realschule",
+  "beschreibung": "Gruppenarten in Fallbeispielen aus dem Schulalltag erkennen.",
+  "datei": "rs-quiz.html?set=lb2-gruppen-quiz",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Gruppen in der Schule",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 2: Sekundärsozialisation in der Schule",
+   "Gruppen in der Schule"
+  ],
+  "abzeichen": "👥"
+ },
+ {
+  "id": "lb2-gruppen-sortieren",
+  "titel": "Formelle oder informelle Gruppe?",
+  "fach": "Realschule",
+  "beschreibung": "Gruppen im Schulleben als formell oder informell einordnen.",
+  "datei": "rs-sortieren.html?set=lb2-gruppen-sortieren",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Gruppen in der Schule",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 2: Sekundärsozialisation in der Schule",
+   "Gruppen in der Schule"
+  ],
+  "abzeichen": "👥"
+ },
+ {
+  "id": "lb2-rollen-sortieren",
+  "titel": "Formelle oder informelle Rolle?",
+  "fach": "Realschule",
+  "beschreibung": "Rollen in der Schulgemeinschaft unterscheiden.",
+  "datei": "rs-sortieren.html?set=lb2-rollen-sortieren",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Gruppen in der Schule",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 2: Sekundärsozialisation in der Schule",
+   "Gruppen in der Schule"
+  ],
+  "abzeichen": "🎭"
+ },
+ {
+  "id": "lb2-tuckman-sortieren",
+  "titel": "Phasen einer Gruppe nach Tuckman",
+  "fach": "Realschule",
+  "beschreibung": "Beispiele den Phasen der Gruppenentwicklung zuordnen.",
+  "datei": "rs-sortieren.html?set=lb2-tuckman-sortieren",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Gruppen in der Schule",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 2: Sekundärsozialisation in der Schule",
+   "Gruppen in der Schule"
+  ],
+  "abzeichen": "📈"
+ },
+ {
+  "id": "lb2-tuckman-reihenfolge",
+  "titel": "Reihenfolge: Eine Klasse wird zur Gemeinschaft",
+  "fach": "Realschule",
+  "beschreibung": "Die Phasen der Gruppenentwicklung in der richtigen Reihenfolge ordnen.",
+  "datei": "rs-reihenfolge.html?set=lb2-tuckman-reihenfolge",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Gruppen in der Schule",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 2: Sekundärsozialisation in der Schule",
+   "Gruppen in der Schule"
+  ],
+  "abzeichen": "🔢"
+ },
+ {
+  "id": "lb2-mitbestimmung-quiz",
+  "titel": "Mitbestimmung in der Schule",
+  "fach": "Realschule",
+  "beschreibung": "Möglichkeiten der Mitbestimmung für Schülerinnen und Schüler kennen und anwenden.",
+  "datei": "rs-quiz.html?set=lb2-mitbestimmung-quiz",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Gruppen in der Schule",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 2: Sekundärsozialisation in der Schule",
+   "Gruppen in der Schule"
+  ],
+  "abzeichen": "🗳️"
+ },
+ {
+  "id": "lb2-normen-sortieren",
+  "titel": "Muss-, Soll- oder Kann-Norm?",
+  "fach": "Realschule",
+  "beschreibung": "Schulische Normen nach ihrer Verbindlichkeit unterscheiden.",
+  "datei": "rs-sortieren.html?set=lb2-normen-sortieren",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Normen, Werte, Sanktionen und Klassenklima",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 2: Sekundärsozialisation in der Schule",
+   "Normen, Werte, Sanktionen und Klassenklima"
+  ],
+  "abzeichen": "📜"
+ },
+ {
+  "id": "lb2-sanktionen-sortieren",
+  "titel": "Positive oder negative Sanktion?",
+  "fach": "Realschule",
+  "beschreibung": "Sanktionen in der Schule als positiv oder negativ erkennen.",
+  "datei": "rs-sortieren.html?set=lb2-sanktionen-sortieren",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Normen, Werte, Sanktionen und Klassenklima",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 2: Sekundärsozialisation in der Schule",
+   "Normen, Werte, Sanktionen und Klassenklima"
+  ],
+  "abzeichen": "🎯"
+ },
+ {
+  "id": "lb2-wns-quiz",
+  "titel": "Werte, Normen und Sanktionen im Zusammenhang",
+  "fach": "Realschule",
+  "beschreibung": "Wechselwirkung von Werten, Normen und Sanktionen an Beispielen erkennen.",
+  "datei": "rs-quiz.html?set=lb2-wns-quiz",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Normen, Werte, Sanktionen und Klassenklima",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 2: Sekundärsozialisation in der Schule",
+   "Normen, Werte, Sanktionen und Klassenklima"
+  ],
+  "abzeichen": "🔗"
+ },
+ {
+  "id": "lb2-normen-memory",
+  "titel": "Memory: Norm und der Wert dahinter",
+  "fach": "Realschule",
+  "beschreibung": "Schulregeln (Normen) mit den dahinterliegenden Werten verbinden.",
+  "datei": "rs-memory.html?set=lb2-normen-memory",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Normen, Werte, Sanktionen und Klassenklima",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 2: Sekundärsozialisation in der Schule",
+   "Normen, Werte, Sanktionen und Klassenklima"
+  ],
+  "abzeichen": "🃏"
+ },
+ {
+  "id": "lb2-klassenklima-quiz",
+  "titel": "Klassenklima verstehen und verbessern",
+  "fach": "Realschule",
+  "beschreibung": "Klassenklima beschreiben, Einflüsse erkennen und Verbesserungen finden.",
+  "datei": "rs-quiz.html?set=lb2-klassenklima-quiz",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Normen, Werte, Sanktionen und Klassenklima",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 2: Sekundärsozialisation in der Schule",
+   "Normen, Werte, Sanktionen und Klassenklima"
+  ],
+  "abzeichen": "☀️"
+ },
+ {
+  "id": "lb2-klassenklima-schreiben",
+  "titel": "Klassenklima: Fallbeispiel bearbeiten",
+  "fach": "Realschule",
+  "beschreibung": "Klassenklima beschreiben, Normen und Sanktionen nennen, Verbesserungen vorschlagen.",
+  "datei": "rs-schreiben.html?set=lb2-klassenklima-schreiben",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Normen, Werte, Sanktionen und Klassenklima",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 2: Sekundärsozialisation in der Schule",
+   "Normen, Werte, Sanktionen und Klassenklima"
+  ],
+  "abzeichen": "☀️"
+ },
+ {
+  "id": "lb2-hausordnung-aussagen",
+  "titel": "Eine Hausordnung auswerten",
+  "fach": "Realschule",
+  "beschreibung": "Eine (erfundene) Hausordnung auswerten und auf Fälle anwenden.",
+  "datei": "rs-aussagen.html?set=lb2-hausordnung-aussagen",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Normen, Werte, Sanktionen und Klassenklima",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 2: Sekundärsozialisation in der Schule",
+   "Normen, Werte, Sanktionen und Klassenklima"
+  ],
+  "abzeichen": "🏫"
+ },
+ {
+  "id": "lb2-theorien-sortieren",
+  "titel": "Welche Lerntheorie steckt dahinter?",
+  "fach": "Realschule",
+  "beschreibung": "Beispiele aus dem Alltag den Lerntheorien zuordnen.",
+  "datei": "rs-sortieren.html?set=lb2-theorien-sortieren",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Lernpsychologische Grundlagen",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 2: Sekundärsozialisation in der Schule",
+   "Lernpsychologische Grundlagen"
+  ],
+  "abzeichen": "🧠"
+ },
+ {
+  "id": "lb2-pawlow-quiz",
+  "titel": "Pawlow: Klassische Konditionierung im Fall",
+  "fach": "Realschule",
+  "beschreibung": "Bestandteile der klassischen Konditionierung in einem Fallbeispiel erkennen.",
+  "datei": "rs-quiz.html?set=lb2-pawlow-quiz",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Lernpsychologische Grundlagen",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 2: Sekundärsozialisation in der Schule",
+   "Lernpsychologische Grundlagen"
+  ],
+  "abzeichen": "🔔"
+ },
+ {
+  "id": "lb2-skinner-quiz",
+  "titel": "Skinner: Verstärkung und Bestrafung",
+  "fach": "Realschule",
+  "beschreibung": "Operante Konditionierung an Schulbeispielen erkennen.",
+  "datei": "rs-quiz.html?set=lb2-skinner-quiz",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Lernpsychologische Grundlagen",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 2: Sekundärsozialisation in der Schule",
+   "Lernpsychologische Grundlagen"
+  ],
+  "abzeichen": "🐭"
+ },
+ {
+  "id": "lb2-bandura-quiz",
+  "titel": "Bandura: Lernen am Modell",
+  "fach": "Realschule",
+  "beschreibung": "Lernen am Modell in Beispielen erkennen und anwenden.",
+  "datei": "rs-quiz.html?set=lb2-bandura-quiz",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Lernpsychologische Grundlagen",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 2: Sekundärsozialisation in der Schule",
+   "Lernpsychologische Grundlagen"
+  ],
+  "abzeichen": "👀"
+ },
+ {
+  "id": "lb2-lerntheorien-reihenfolge",
+  "titel": "Reihenfolge: Pawlow-Experiment und Lernen durch Folgen",
+  "fach": "Realschule",
+  "beschreibung": "Den Ablauf einer klassischen Konditionierung nachvollziehen.",
+  "datei": "rs-reihenfolge.html?set=lb2-lerntheorien-reihenfolge",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Lernpsychologische Grundlagen",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 2: Sekundärsozialisation in der Schule",
+   "Lernpsychologische Grundlagen"
+  ],
+  "abzeichen": "🔢"
+ },
+ {
+  "id": "lb2-piaget-sortieren",
+  "titel": "Piaget: Entwicklungsstufen des Denkens",
+  "fach": "Realschule",
+  "beschreibung": "Beispiele den Stufen der kognitiven Entwicklung zuordnen.",
+  "datei": "rs-sortieren.html?set=lb2-piaget-sortieren",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Lernpsychologische Grundlagen",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 2: Sekundärsozialisation in der Schule",
+   "Lernpsychologische Grundlagen"
+  ],
+  "abzeichen": "🧩"
+ },
+ {
+  "id": "lb2-lerntypen-quiz",
+  "titel": "Lerntypen und Lernkanäle",
+  "fach": "Realschule",
+  "beschreibung": "Lerntypen an Beispielen erkennen und passende Lerntipps finden.",
+  "datei": "rs-quiz.html?set=lb2-lerntypen-quiz",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Lernpsychologische Grundlagen",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 2: Sekundärsozialisation in der Schule",
+   "Lernpsychologische Grundlagen"
+  ],
+  "abzeichen": "🎧"
+ },
+ {
+  "id": "lb2-motivation-sortieren",
+  "titel": "Motivation: Von innen oder von außen?",
+  "fach": "Realschule",
+  "beschreibung": "Intrinsische und extrinsische Motivation unterscheiden.",
+  "datei": "rs-sortieren.html?set=lb2-motivation-sortieren",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Lernpsychologische Grundlagen",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 2: Sekundärsozialisation in der Schule",
+   "Lernpsychologische Grundlagen"
+  ],
+  "abzeichen": "🔥"
+ },
+ {
+  "id": "lb2-lernverhalten-schreiben",
+  "titel": "Lernverhalten: Fallbeispiel bearbeiten",
+  "fach": "Realschule",
+  "beschreibung": "Lerntheorien und Lerntipps auf einen Fall anwenden.",
+  "datei": "rs-schreiben.html?set=lb2-lernverhalten-schreiben",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Lernpsychologische Grundlagen",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 2: Sekundärsozialisation in der Schule",
+   "Lernpsychologische Grundlagen"
+  ],
+  "abzeichen": "✍️"
+ },
+ {
+  "id": "lb2-lernen-luecken",
+  "titel": "Lückentext: Wie wir lernen",
+  "fach": "Realschule",
+  "beschreibung": "Lerntheorien im Zusammenhang eines Textes anwenden.",
+  "datei": "rs-luecken.html?set=lb2-lernen-luecken",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Lernpsychologische Grundlagen",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 2: Sekundärsozialisation in der Schule",
+   "Lernpsychologische Grundlagen"
+  ],
+  "abzeichen": "🧩"
+ },
+ {
+  "id": "lb2-laender-aussagen",
+  "titel": "Schulsysteme vergleichen",
+  "fach": "Realschule",
+  "beschreibung": "Eine Tabelle zu Schulsystemen auswerten.",
+  "datei": "rs-aussagen.html?set=lb2-laender-aussagen",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Schule und Bildung in anderen Ländern",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 2: Sekundärsozialisation in der Schule",
+   "Schule und Bildung in anderen Ländern"
+  ],
+  "abzeichen": "🌍"
+ },
+ {
+  "id": "lb2-bildung-quiz",
+  "titel": "Bildung weltweit: Fragen und Folgen",
+  "fach": "Realschule",
+  "beschreibung": "Bedeutung von Bildung und Unterschiede zwischen Ländern erkennen.",
+  "datei": "rs-quiz.html?set=lb2-bildung-quiz",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Schule und Bildung in anderen Ländern",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 2: Sekundärsozialisation in der Schule",
+   "Schule und Bildung in anderen Ländern"
+  ],
+  "abzeichen": "🌍"
+ },
+ {
+  "id": "lb2-bildung-schreiben",
+  "titel": "Bildung und Schule: Vergleich und Folgen",
+  "fach": "Realschule",
+  "beschreibung": "Unterschiede nennen und Bedeutung von Bildung begründen.",
+  "datei": "rs-schreiben.html?set=lb2-bildung-schreiben",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Schule und Bildung in anderen Ländern",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 2: Sekundärsozialisation in der Schule",
+   "Schule und Bildung in anderen Ländern"
+  ],
+  "abzeichen": "✍️"
+ },
+ {
+  "id": "lb2-schulpsychologe-quiz",
+  "titel": "Der Schulpsychologe: Wann und wie hilft er?",
+  "fach": "Realschule",
+  "beschreibung": "Aufgaben des Schulpsychologen und Beratungsangebote kennen.",
+  "datei": "rs-quiz.html?set=lb2-schulpsychologe-quiz",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Schulpsychologe und Beratung",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 2: Sekundärsozialisation in der Schule",
+   "Schulpsychologe und Beratung"
+  ],
+  "abzeichen": "🧑‍⚕️"
+ },
+ {
+  "id": "lb2-beratung-sortieren",
+  "titel": "Wer hilft bei welchem Anliegen?",
+  "fach": "Realschule",
+  "beschreibung": "Anliegen passenden Beratungsstellen zuordnen.",
+  "datei": "rs-sortieren.html?set=lb2-beratung-sortieren",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Schulpsychologe und Beratung",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 2: Sekundärsozialisation in der Schule",
+   "Schulpsychologe und Beratung"
+  ],
+  "abzeichen": "🧭"
+ },
+ {
+  "id": "lb2-mix-quiz",
+  "titel": "Mix-Quiz Lernbereich 2",
+  "fach": "Realschule",
+  "beschreibung": "Fragen aus allen Themen des Lernbereichs 2.",
+  "datei": "rs-quiz.html?set=lb2-mix-quiz",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Prüfungstraining Lernbereich 2",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 2: Sekundärsozialisation in der Schule",
+   "Prüfungstraining Lernbereich 2"
+  ],
+  "abzeichen": "🏆"
+ },
+ {
+  "id": "lb2-probe-stegreifaufgabe",
+  "titel": "Probe-Stegreifaufgabe Lernbereich 2",
+  "fach": "Realschule",
+  "beschreibung": "Aufgaben verschiedener Anforderungsbereiche wie in der Stegreifaufgabe.",
+  "datei": "rs-schreiben.html?set=lb2-probe-stegreifaufgabe",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Prüfungstraining Lernbereich 2",
+  "pfad": [
+   "Realschule",
+   "Lernbereich 2: Sekundärsozialisation in der Schule",
+   "Prüfungstraining Lernbereich 2"
+  ],
+  "abzeichen": "📝"
  }
 ]

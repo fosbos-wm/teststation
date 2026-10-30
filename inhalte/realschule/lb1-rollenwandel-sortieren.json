@@ -1,0 +1,71 @@
+{
+ "titel": "Früher und heute: Rollen im Wandel",
+ "abzeichen": "⏳",
+ "anleitung": "Ordne jede Karte zu: War das früher typisch, oder ist es heute häufiger? Denk an den Wandel der Rollen in Familien.",
+ "kategorien": [
+  "Früher typisch (z. B. 1950er-Jahre)",
+  "Heute häufiger"
+ ],
+ "karten": [
+  {
+   "t": "Der Vater verdient allein das Geld, die Mutter bleibt bei den Kindern zu Hause.",
+   "k": 0,
+   "e": "Diese Aufgabenverteilung war früher in vielen Familien üblich."
+  },
+  {
+   "t": "Drei Generationen leben zusammen auf einem Bauernhof und arbeiten gemeinsam.",
+   "k": 0,
+   "e": "Früher lebten und arbeiteten Familien oft gemeinsam, besonders auf dem Land."
+  },
+  {
+   "t": "Die Eltern entscheiden allein, die Kinder sollen gehorchen und haben kaum Mitspracherecht.",
+   "k": 0,
+   "e": "Früher hatten Kinder meist wenig Mitsprache."
+  },
+  {
+   "t": "Kinder müssen schon früh im Haushalt oder im Betrieb der Familie mithelfen.",
+   "k": 0,
+   "e": "Mithilfe gehörte früher fest zum Alltag der Kinder."
+  },
+  {
+   "t": "Die Hausfrau erledigt Einkauf, Wäsche und Kochen, der Mann hilft nur selten mit.",
+   "k": 0,
+   "e": "Hausarbeit galt früher oft als „Frauensache“."
+  },
+  {
+   "t": "Erst nach der Hochzeit zieht man zusammen und gründet eine Familie.",
+   "k": 0,
+   "e": "Das war früher die übliche Reihenfolge."
+  },
+  {
+   "t": "Beide Eltern sind berufstätig und teilen sich die Hausarbeit.",
+   "k": 1,
+   "e": "Heute sind in vielen Familien beide Eltern berufstätig."
+  },
+  {
+   "t": "Der Vater nimmt Elternzeit und bleibt beim Baby zu Hause.",
+   "k": 1,
+   "e": "Elternzeit für Väter ist heute möglich und wird häufiger genutzt."
+  },
+  {
+   "t": "Kinder dürfen bei Familienentscheidungen mitreden, zum Beispiel beim Urlaubsziel.",
+   "k": 1,
+   "e": "Heute werden Kinder öfter in Entscheidungen einbezogen."
+  },
+  {
+   "t": "Eltern leben getrennt, und das Kind wohnt abwechselnd bei Mutter und Vater.",
+   "k": 1,
+   "e": "Getrennt lebende Eltern mit geteilter Betreuung gibt es heute häufiger."
+  },
+  {
+   "t": "Großeltern betreuen die Enkel am Nachmittag, wohnen aber in einem eigenen Haushalt.",
+   "k": 1,
+   "e": "Heute leben die Generationen meist getrennt, helfen sich aber."
+  },
+  {
+   "t": "Mutter und Vater sind gleichermaßen für Erziehung und Haushalt verantwortlich.",
+   "k": 1,
+   "e": "Gleichberechtigte Verantwortung ist heute das Ziel vieler Familien."
+  }
+ ]
+}

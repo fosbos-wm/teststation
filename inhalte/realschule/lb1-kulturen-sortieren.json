@@ -1,0 +1,57 @@
+{
+ "titel": "Familien vergleichen: Welches Merkmal?",
+ "abzeichen": "🌍",
+ "anleitung": "Familien unterscheiden sich in vielen Dingen. Ordne jede Aussage dem passenden Vergleichsmerkmal zu. Wichtig: Solche Aussagen gelten für manche Familien, nicht für alle in einem Land.",
+ "kategorien": [
+  "Familiengröße",
+  "Rollenverteilung",
+  "Werte und Normen"
+ ],
+ "karten": [
+  {
+   "t": "Viele Kinder wachsen gemeinsam auf, oft leben mehrere Generationen zusammen.",
+   "k": 0,
+   "e": "Es geht darum, wie viele Menschen zur Familie gehören."
+  },
+  {
+   "t": "Die Großeltern gehören selbstverständlich zum Haushalt.",
+   "k": 0,
+   "e": "Wer im Haushalt lebt, gehört zur Familiengröße."
+  },
+  {
+   "t": "In der Familie gibt es meist nur ein oder zwei Kinder.",
+   "k": 0,
+   "e": "Anzahl der Kinder: Familiengröße."
+  },
+  {
+   "t": "Der Vater ist hauptsächlich für das Einkommen zuständig, die Mutter für den Haushalt.",
+   "k": 1,
+   "e": "Wer welche Aufgaben übernimmt: Rollenverteilung."
+  },
+  {
+   "t": "Beide Eltern teilen sich Beruf und Hausarbeit.",
+   "k": 1,
+   "e": "Wer welche Aufgaben übernimmt: Rollenverteilung."
+  },
+  {
+   "t": "Ältere Geschwister betreuen die jüngeren.",
+   "k": 1,
+   "e": "Aufgaben der Kinder: Rollenverteilung."
+  },
+  {
+   "t": "Respekt vor Älteren ist besonders wichtig.",
+   "k": 2,
+   "e": "Was als wichtig gilt: Werte und Normen."
+  },
+  {
+   "t": "Gemeinsame Mahlzeiten und Feste haben einen hohen Stellenwert.",
+   "k": 2,
+   "e": "Was die Familie pflegt und wichtig findet: Werte und Normen."
+  },
+  {
+   "t": "Kinder sollen früh selbstständig werden.",
+   "k": 2,
+   "e": "Erziehungsziele gehören zu den Werten und Normen."
+  }
+ ]
+}

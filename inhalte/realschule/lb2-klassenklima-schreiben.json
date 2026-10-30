@@ -1,0 +1,56 @@
+{
+ "titel": "Klassenklima: Fallbeispiel bearbeiten",
+ "abzeichen": "☀️",
+ "anleitung": "Lies das Fallbeispiel und schreibe deine Antworten. Danach vergleichst du mit der Musterlösung.",
+ "aufgaben": [
+  {
+   "nr": "1",
+   "op": "Beschreibe",
+   "be": 2,
+   "zeilen": 4,
+   "fall": "In der 7c lachen manche Schüler, wenn jemand etwas Falsches sagt. Mehrere melden sich deshalb kaum noch. Die Klassenleiterin macht sich Sorgen.",
+   "aufgabe": "Beschreibe das Klassenklima in der 7c.",
+   "muster": "Das Klassenklima ist ungünstig. Es fehlt an Respekt, weil Schüler ausgelacht werden. Dadurch trauen sich einige nicht mehr, im Unterricht mitzumachen.",
+   "checkliste": [
+    "Ich habe das Klima als ungünstig oder schlecht beschrieben.",
+    "Ich habe einen Grund aus dem Text genannt (Auslachen, fehlender Respekt, wenig Mitarbeit)."
+   ]
+  },
+  {
+   "nr": "2",
+   "op": "Nenne",
+   "be": 2,
+   "zeilen": 4,
+   "aufgabe": "Nenne zwei Regeln (Normen), die das Klima verbessern könnten.",
+   "muster": "1. Wir lachen niemanden aus, wenn er etwas Falsches sagt.\n2. Wir hören zu und lassen andere ausreden.\n(Auch möglich: Fehler sind erlaubt, wir helfen einander.)",
+   "checkliste": [
+    "Ich habe eine passende Regel genannt.",
+    "Ich habe eine zweite passende Regel genannt."
+   ]
+  },
+  {
+   "nr": "3",
+   "op": "Nenne",
+   "be": 2,
+   "zeilen": 3,
+   "aufgabe": "Nenne zu diesen Regeln je eine positive und eine negative Sanktion.",
+   "muster": "Positive Sanktion: Die Lehrerin lobt die Klasse, wenn alle respektvoll miteinander umgehen (oder: Die Klasse bekommt einen Punkt für das Klassenziel).\nNegative Sanktion: Wer jemanden auslacht, wird ermahnt (oder: Es gibt ein Gespräch mit der Klassenleiterin).",
+   "checkliste": [
+    "Ich habe eine passende positive Sanktion genannt.",
+    "Ich habe eine passende negative Sanktion genannt."
+   ]
+  },
+  {
+   "nr": "4",
+   "op": "Erkläre",
+   "be": 2,
+   "zeilen": 4,
+   "aufgabe": "Erkläre, warum ein gutes Klassenklima das Lernen erleichtert.",
+   "muster": "In einem guten Klima fühlen sich alle wohl und sicher. Wer keine Angst vor Spott haben muss, traut sich zu fragen und mitzuarbeiten. Dadurch lernen alle mehr.",
+   "checkliste": [
+    "Ich habe erklärt, dass man sich in einem guten Klima wohler fühlt.",
+    "Ich habe erklärt, dass man dadurch besser mitarbeitet oder fragt."
+   ]
+  }
+ ]
+}

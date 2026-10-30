@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Aussagen bewerten – Sozialwesen 7</title><link rel="stylesheet" href="../css/rs.css">
+<style>
+.mat{border:2px solid var(--line);border-radius:14px;background:var(--panel);padding:14px 16px;margin-bottom:14px}
+.mat h2{margin-bottom:6px}.mat .quelle{margin:8px 0 0;font-size:.82rem;color:var(--muted)}
+.mat .hinweis{margin:0 0 8px;font-size:.85rem;font-weight:700;color:var(--warn);background:var(--warn-soft);border-radius:8px;padding:4px 10px;display:inline-block}
+.mat p{margin:.3em 0}
+table.tab{width:100%;border-collapse:collapse;font-size:.95rem}
+.tab th,.tab td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}.tab th{background:var(--pri-soft)}
+.balken{display:flex;flex-direction:column;gap:8px}
+.balken .z{display:grid;grid-template-columns:minmax(90px,34%) 1fr;gap:10px;align-items:center}
+.balken .l{font-size:.93rem}.balken .b{background:var(--line);border-radius:6px;height:26px;position:relative;overflow:hidden}
+.balken .b i{display:block;height:100%;background:var(--pri);border-radius:6px}.balken .b span{position:absolute;right:8px;top:2px;font-weight:800;font-size:.88rem}
+.kreis{display:flex;gap:18px;align-items:center;flex-wrap:wrap}.kreis svg{width:190px;height:190px;flex:none}
+.kreis ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;flex:1;min-width:180px}
+.kreis li{display:flex;gap:8px;align-items:center}.kreis li i{width:14px;height:14px;border-radius:4px;flex:none}
+.aus{border:2px solid var(--line);border-radius:14px;background:var(--panel);padding:12px 14px;margin-bottom:12px}
+.aus.ok{border-color:var(--ok)}.aus.bad{border-color:var(--bad)}
+.atxt{margin:0 0 10px;font-weight:600}
+.drei{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+@media (max-width:520px){.drei{grid-template-columns:1fr}}
+.dr{border:2px solid var(--line);background:var(--panel);border-radius:12px;padding:10px 8px;font-weight:700;cursor:pointer;min-height:46px}
+.dr[aria-pressed="true"]{border-color:var(--pri);background:var(--pri-soft);box-shadow:0 0 0 3px color-mix(in srgb,var(--pri) 25%,transparent)}
+.dr.ok{border-color:var(--ok);background:var(--ok-soft)}.dr.bad{border-color:var(--bad);background:var(--bad-soft)}.dr.richtig{box-shadow:0 0 0 4px color-mix(in srgb,var(--ok) 45%,transparent)}
+.dr:disabled{cursor:default}
+.verb{margin-top:10px}.verb label{display:block;font-size:.9rem;font-weight:700;margin-bottom:4px}
+.muster{margin-top:10px;padding:10px 12px;border-radius:12px;background:var(--pri-soft)}
+.muster label{display:flex;gap:8px;align-items:center;margin-top:8px;font-weight:700;cursor:pointer}
+.muster input{width:20px;height:20px}
+</style></head>
+<body><div class="rs"><header id="kopf"><p class="muted">Lade Übung …</p></header><main id="main"></main><div id="ende"></div><div id="loesung"></div></div>
+<script src="../js/rs-lob.js"></script>
+<script>
+/* Aussagen zu Text, Tabelle oder Diagramm bewerten: trifft zu / trifft nicht zu / keine Aussage möglich. Falsche Aussagen werden verbessert (wie in der Stegreifaufgabe). */
+RS.load(function (d) {
+  const $ = RS.$, esc = RS.esc;
+  const W = ["trifft zu", "trifft nicht zu", "keine Aussage möglich"];
+  const A = d.aussagen;
+  const wahl = A.map(() => null), vtxt = A.map(() => ""), vok = A.map(() => false);
+  let geprueft = false;
+  const COL = ["#2a62b0", "#c2255c", "#1b7f4b", "#a56a00", "#6a3fb5", "#0e7f86", "#b3541e", "#4d5d6b"];
+
+  function material() {
+    const m = d.material; if (!m) return "";
+    let h = '<div class="mat">' + (m.titel ? "<h2>" + esc(m.titel) + "</h2>" : "") + (m.hinweis ? '<p class="hinweis">' + esc(m.hinweis) + "</p>" : "");
+    if (m.typ === "text") h += RS.para(m.text);
+    else if (m.typ === "tabelle") h += '<div style="overflow-x:auto"><table class="tab"><thead><tr>' + m.kopf.map(c => "<th>" + esc(c) + "</th>").join("") + "</tr></thead><tbody>" + m.zeilen.map(z => "<tr>" + z.map((c, i) => (i ? "<td>" : "<th>") + esc(c) + (i ? "</td>" : "</th>")).join("") + "</tr>").join("") + "</tbody></table></div>";
+    else if (m.typ === "balken") {
+      const mx = Math.max.apply(null, m.daten.map(x => x[1]));
+      h += '<div class="balken">' + m.daten.map(x => '<div class="z"><div class="l">' + esc(x[0]) + '</div><div class="b"><i style="width:' + Math.max(4, Math.round(100 * x[1] / mx)) + '%"></i><span>' + x[1] + esc(m.einheit || "") + "</span></div></div>").join("") + "</div>";
+    } else if (m.typ === "kreis") {
+      const sum = m.daten.reduce((s, x) => s + x[1], 0); let a0 = -Math.PI / 2, paths = "";
+      m.daten.forEach((x, i) => {
+        const a1 = a0 + 2 * Math.PI * x[1] / sum, R = 90, r = 50, c = 100, lg = a1 - a0 > Math.PI ? 1 : 0;
+        const P = (a, rad) => (c + rad * Math.cos(a)).toFixed(2) + " " + (c + rad * Math.sin(a)).toFixed(2);
+        paths += '<path d="M' + P(a0, R) + " A" + R + " " + R + " 0 " + lg + " 1 " + P(a1, R) + " L" + P(a1, r) + " A" + r + " " + r + " 0 " + lg + " 0 " + P(a0, r) + ' Z" fill="' + COL[i % COL.length] + '" stroke="var(--panel)" stroke-width="2"/>';
+        a0 = a1;
+      });
+      h += '<div class="kreis"><svg viewBox="0 0 200 200" role="img" aria-label="Kreisdiagramm: ' + esc(m.daten.map(x => x[0] + " " + x[1] + (m.einheit || "")).join(", ")) + '">' + paths + '<text x="100" y="104" text-anchor="middle" font-size="13" font-weight="700" fill="currentColor">' + esc(m.mitte || "") + "</text></svg><ul>" +
+        m.daten.map((x, i) => '<li><i style="background:' + COL[i % COL.length] + '"></i><span>' + esc(x[0]) + ": <b>" + x[1] + esc(m.einheit || "") + "</b></span></li>").join("") + "</ul></div>";
+    }
+    if (m.quelle) h += '<p class="quelle">' + esc(m.quelle) + "</p>";
+    return h + "</div>";
+  }
+
+  function bau() {
+    $("main").innerHTML = material() +
+      '<div class="qnr">Bewerte jede Aussage. Falsche Aussagen verbesserst du.</div>' +
+      A.map((a, i) => '<div class="aus" id="a' + i + '"><p class="atxt">' + (i + 1) + ". " + esc(a.t) + '</p><div class="drei" role="group" aria-label="Bewertung zu Aussage ' + (i + 1) + '">' +
+        W.map((w, j) => '<button type="button" class="dr" data-i="' + i + '" data-j="' + j + '" aria-pressed="false">' + w + "</button>").join("") +
+        '</div><div class="verb" id="v' + i + '" hidden><label for="vt' + i + '">Verbessere die Aussage:</label><textarea id="vt' + i + '" rows="2" placeholder="So muss es richtig heißen …"></textarea></div><div id="r' + i + '"></div></div>').join("") +
+      '<div class="aktion"><button type="button" class="btn" id="pruef" disabled>Prüfen</button><span class="muted small" id="rest"></span></div>';
+    document.querySelectorAll(".dr").forEach(b => b.addEventListener("click", () => setze(+b.dataset.i, +b.dataset.j)));
+    document.querySelectorAll("textarea").forEach(t => t.addEventListener("input", () => { vtxt[+t.id.slice(2)] = t.value; }));
+    $("pruef").addEventListener("click", pruefen);
+    stand();
+  }
+
+  function setze(i, j) {
+    if (geprueft) return;
+    wahl[i] = j;
+    document.querySelectorAll('.dr[data-i="' + i + '"]').forEach(b => b.setAttribute("aria-pressed", String(+b.dataset.j === j)));
+    $("v" + i).hidden = j !== 1;
+    stand();
+  }
+  function stand() {
+    const n = wahl.filter(x => x !== null).length;
+    $("pruef").disabled = n < A.length;
+    $("rest").textContent = n < A.length ? (A.length - n) + " Aussage" + (A.length - n === 1 ? "" : "n") + " noch offen" : "";
+    RS.meter(n, A.length, 0);
+  }
+
+  function pruefen() {
+    geprueft = true; let richtig = 0;
+    A.forEach((a, i) => {
+      const ok = wahl[i] === a.r; if (ok) richtig++;
+      const box = $("a" + i); box.classList.add(ok ? "ok" : "bad");
+      document.querySelectorAll('.dr[data-i="' + i + '"]').forEach(b => { const j = +b.dataset.j; b.disabled = true; if (j === wahl[i]) b.classList.add(ok ? "ok" : "bad"); else if (j === a.r) b.classList.add("richtig"); });
+      let h = '<div class="fb ' + (ok ? "ok" : "bad") + '"><b class="kopfzeile">' + (ok ? "✓ Richtig" : "✗ Richtig wäre: " + W[a.r]) + "</b>" + (a.e ? "<div>" + esc(a.e) + "</div>" : "") + "</div>";
+      if (a.r === 1 && a.v) {
+        h += '<div class="muster"><b>Musterverbesserung:</b> ' + esc(a.v) +
+          (ok ? '<label><input type="checkbox" id="vc' + i + '"> Meine Verbesserung sagt ungefähr dasselbe</label>' : "") + "</div>";
+      }
+      $("r" + i).innerHTML = h;
+    });
+    document.querySelectorAll("textarea").forEach(t => { t.readOnly = true; });
+    $("pruef").hidden = true; $("rest").textContent = "";
+    $("main").insertAdjacentHTML("beforeend", '<div class="aktion"><button type="button" class="btn" id="fertig">Auswertung ansehen</button></div>');
+    $("fertig").addEventListener("click", auswerten);
+    if (richtig === A.length) RS.sag("Alle Aussagen richtig eingeordnet – stark! 🏆", true);
+    else if (richtig >= Math.ceil(A.length * 0.6)) RS.sag(richtig + " von " + A.length + " richtig – gute Arbeit! Lies die Erklärungen.", false);
+    else RS.sag(RS.trost() || "Lies die Erklärungen – danach klappt es besser.", false);
+    RS.meter(A.length, A.length, 0);
+  }
+
+  function auswerten() {
+    let punkte = 0, max = A.length, fehler = 0;
+    A.forEach((a, i) => {
+      if (wahl[i] === a.r) punkte++; else fehler++;
+      if (a.r === 1 && a.v) { max++; const c = $("vc" + i); if (c && c.checked) punkte++; }
+    });
+    $("fertig").parentNode.remove();
+    RS.endkarte($("ende"), {
+      punkte, max, fehler: 0,
+      extra: "Für jede richtig eingeordnete Aussage gibt es 1 Punkt, für jede passende Verbesserung einen weiteren.",
+      loesung: loesung
+    });
+  }
+
+  function loesung() {
+    $("loesung").innerHTML = '<div class="card loesung"><h2>Alle Lösungen</h2>' + A.map((a, i) =>
+      '<div class="lz"><span class="m ' + (wahl[i] === a.r ? "ok" : "bad") + '">' + (wahl[i] === a.r ? "✓" : "✗") + '</span> <span class="t">' + (i + 1) + ". " + esc(a.t) + '</span><div class="r">' + W[a.r] + "</div>" +
+      (a.r === 1 && a.v ? '<div class="e">Verbesserung: ' + esc(a.v) + "</div>" : "") + (a.e ? '<div class="e">' + esc(a.e) + "</div>" : "") + "</div>").join("") + "</div>";
+    $("loesung").scrollIntoView({ behavior: RS.reduced ? "auto" : "smooth" });
+  }
+
+  bau();
+});
+</script></body></html>

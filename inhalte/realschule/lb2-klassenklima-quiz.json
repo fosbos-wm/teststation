@@ -1,0 +1,86 @@
+{
+ "titel": "Klassenklima verstehen und verbessern",
+ "abzeichen": "☀️",
+ "anleitung": "Das Klassenklima entscheidet mit darüber, wie gern man lernt. Wähle jeweils die passende Antwort.",
+ "fragen": [
+  {
+   "f": "Was gehört zu einem positiven Klassenklima?",
+   "o": [
+    "Man geht respektvoll miteinander um, hilft sich und fühlt sich wohl.",
+    "Es gibt keine Regeln.",
+    "Alle sind still und trauen sich nichts zu sagen.",
+    "Nur die Besten dürfen mitreden."
+   ],
+   "r": 0,
+   "e": "Ein gutes Klima zeigt sich in Respekt, Hilfsbereitschaft und dem Gefühl, dazuzugehören."
+  },
+  {
+   "f": "Wie wirkt sich das auf das Klassenklima aus?",
+   "o": [
+    "Es verschlechtert das Klima: Schüler trauen sich nicht mehr mitzuarbeiten.",
+    "Es verbessert das Klima.",
+    "Es hat keine Wirkung.",
+    "Es macht die Klasse leiser und damit besser."
+   ],
+   "r": 0,
+   "e": "Auslachen schadet: Wer Angst vor Spott hat, beteiligt sich nicht mehr.",
+   "fall": "In der 7c lachen manche immer, wenn jemand etwas Falsches sagt. Einige melden sich kaum noch."
+  },
+  {
+   "f": "Welche Maßnahme kann das Klassenklima verbessern?",
+   "o": [
+    "Gemeinsam Klassenregeln aufstellen und darauf achten, dass alle sie einhalten.",
+    "Alle Regeln abschaffen.",
+    "Nur noch Einzelarbeit machen.",
+    "Fehler von Mitschülern laut kommentieren."
+   ],
+   "r": 0,
+   "e": "Gemeinsam aufgestellte Regeln werden eher akzeptiert."
+  },
+  {
+   "f": "Warum erleichtert ein gutes Klassenklima das Lernen?",
+   "o": [
+    "Wer sich wohlfühlt, traut sich mehr zu fragen und mitzuarbeiten.",
+    "Weil es dann weniger Unterricht gibt.",
+    "Weil man dann nicht mehr lernen muss.",
+    "Weil die Lehrkräfte strenger sind."
+   ],
+   "r": 0,
+   "e": "Angstfreies Lernen funktioniert besser."
+  },
+  {
+   "f": "Was trägt hier zum Klassenklima bei?",
+   "o": [
+    "Offenheit und Rücksichtnahme gegenüber neuen Mitschülern",
+    "Ausgrenzung",
+    "Spott",
+    "Desinteresse"
+   ],
+   "r": 0,
+   "e": "Neue Mitschüler einzubeziehen stärkt das Gemeinschaftsgefühl.",
+   "fall": "Mara ist neu in der Klasse. Die anderen laden sie ein, mit ihnen Mittag zu essen."
+  },
+  {
+   "f": "Wer trägt zum Klassenklima bei?",
+   "o": [
+    "Alle: Schülerinnen und Schüler und Lehrkräfte",
+    "Nur die Lehrkraft",
+    "Nur der Klassensprecher",
+    "Nur die Eltern"
+   ],
+   "r": 0,
+   "e": "Jeder trägt durch sein Verhalten zum Klima bei."
+  },
+  {
+   "f": "Was kann eine Klasse tun, wenn sich das Klima verschlechtert?",
+   "o": [
+    "Das Problem ansprechen, zum Beispiel mit der Klassenleitung oder im Klassenrat",
+    "Abwarten und nichts tun",
+    "Mitschüler mobben",
+    "Die Lehrerin ignorieren"
+   ],
+   "r": 0,
+   "e": "Offen darüber zu sprechen ist der erste Schritt zur Verbesserung."
+  }
+ ]
+}

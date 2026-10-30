@@ -1,0 +1,56 @@
+{
+ "titel": "Formelle oder informelle Gruppe?",
+ "abzeichen": "👥",
+ "anleitung": "Ordne jede Gruppe zu: Wurde sie offiziell eingerichtet (formell) oder hat sie sich von selbst gebildet (informell)?",
+ "kategorien": [
+  "Formelle Gruppe",
+  "Informelle Gruppe"
+ ],
+ "karten": [
+  {
+   "t": "Klasse 7b mit Klassenleitung und Stundenplan",
+   "k": 0,
+   "e": "Die Schule hat die Klasse eingeteilt."
+  },
+  {
+   "t": "Schulchor",
+   "k": 0,
+   "e": "Es gibt feste Probentermine und eine Leitung."
+  },
+  {
+   "t": "Schülermitverantwortung (SMV)",
+   "k": 0,
+   "e": "Sie ist offiziell eingerichtet und hat Aufgaben."
+  },
+  {
+   "t": "Fußball-AG der Schule",
+   "k": 0,
+   "e": "Die AG wird von der Schule angeboten."
+  },
+  {
+   "t": "Schulsanitätsdienst",
+   "k": 0,
+   "e": "Feste Aufgabe, organisiert von der Schule."
+  },
+  {
+   "t": "Eine Clique, die sich in der Pause immer am Kiosk trifft",
+   "k": 1,
+   "e": "Niemand hat sie eingerichtet: Sie hat sich von selbst gebildet."
+  },
+  {
+   "t": "Freundinnen, die gemeinsam mit dem Bus zur Schule fahren",
+   "k": 1,
+   "e": "Eine Freundesgruppe ist informell."
+  },
+  {
+   "t": "Mitschüler, die sich spontan zum Lernen vor der Schulaufgabe verabreden",
+   "k": 1,
+   "e": "Sie bilden sich selbst, ohne offiziellen Auftrag."
+  },
+  {
+   "t": "Eine Gruppe, die sich nach der Schule zum Zocken verabredet",
+   "k": 1,
+   "e": "Aus Interesse entstanden, nicht von der Schule organisiert."
+  }
+ ]
+}

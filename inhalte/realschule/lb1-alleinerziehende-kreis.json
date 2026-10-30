@@ -1,0 +1,64 @@
+{
+ "titel": "Kreisdiagramm auswerten: Alleinerziehende",
+ "abzeichen": "🥧",
+ "anleitung": "Wie in der Stegreifaufgabe: Bewerte jede Aussage zum Kreisdiagramm und verbessere die falschen Aussagen.",
+ "material": {
+  "typ": "kreis",
+  "titel": "Alleinerziehende nach Geschlecht und Familienstand",
+  "einheit": " %",
+  "mitte": "alle Alleinerziehenden",
+  "daten": [
+   [
+    "Mütter geschieden",
+    36
+   ],
+   [
+    "Mütter ledig",
+    28
+   ],
+   [
+    "Mütter verwitwet",
+    10
+   ],
+   [
+    "Mütter getrennt lebend",
+    8
+   ],
+   [
+    "Väter (alle)",
+    18
+   ]
+  ],
+  "hinweis": "Erfundene Zahlen – nur für diese Übung!",
+  "quelle": "Übungsdiagramm, keine echte Statistik."
+ },
+ "aussagen": [
+  {
+   "t": "Es sind genauso viele alleinerziehende Väter wie alleinerziehende Mütter.",
+   "r": 1,
+   "e": "36 + 28 + 10 + 8 = 82 % Mütter, dagegen 18 % Väter.",
+   "v": "Die Mütter machen zusammen 82 % aus, die Väter nur 18 %."
+  },
+  {
+   "t": "Bei den alleinerziehenden Müttern bilden die geschiedenen Mütter die größte Gruppe.",
+   "r": 0,
+   "e": "Geschieden (36 %) ist größer als ledig (28 %), verwitwet (10 %) und getrennt lebend (8 %)."
+  },
+  {
+   "t": "Mehr als ein Drittel aller Alleinerziehenden sind geschiedene Mütter.",
+   "r": 0,
+   "e": "Ein Drittel wären etwa 33 %. Mit 36 % liegen die geschiedenen Mütter darüber."
+  },
+  {
+   "t": "Verwitwete Mütter sind häufiger als ledige Mütter.",
+   "r": 1,
+   "e": "28 % ist mehr als 10 %.",
+   "v": "Ledige Mütter (28 %) sind häufiger als verwitwete Mütter (10 %)."
+  },
+  {
+   "t": "Im letzten Jahr ließen sich mehr Frauen als Männer scheiden.",
+   "r": 2,
+   "e": "Das Diagramm zeigt den Familienstand der Alleinerziehenden, nicht wie viele Menschen sich in einem Jahr haben scheiden lassen."
+  }
+ ]
+}

@@ -1,0 +1,58 @@
+{
+ "titel": "Probe-Stegreifaufgabe Lernbereich 2",
+ "abzeichen": "📝",
+ "anleitung": "Bearbeite die Aufgaben wie in einer Stegreifaufgabe. Danach vergleichst du mit der Musterlösung und vergibst dir selbst Punkte.",
+ "aufgaben": [
+  {
+   "nr": "1",
+   "op": "Nenne",
+   "be": 2,
+   "zeilen": 3,
+   "aufgabe": "Nenne zwei formelle Gruppen in der Schule.",
+   "muster": "Zum Beispiel: die Klasse, die SMV, der Schulchor, eine AG.",
+   "checkliste": [
+    "Ich habe eine formelle Gruppe genannt.",
+    "Ich habe eine zweite formelle Gruppe genannt."
+   ]
+  },
+  {
+   "nr": "2",
+   "op": "Erkläre",
+   "be": 3,
+   "zeilen": 4,
+   "fall": "In der 7a streiten zwei Schüler darüber, wer den Ordnungsdienst übernimmt. Die Klasse hat die Regel: Wer seinen Dienst vergisst, macht ihn am nächsten Tag doppelt.",
+   "aufgabe": "Erkläre, welche Norm und welche Sanktion in dem Fall vorkommen.",
+   "muster": "Die Norm ist die Regel, dass jeder seinen Ordnungsdienst erledigt. Die Sanktion ist die negative Folge: Wer den Dienst vergisst, muss ihn doppelt machen.",
+   "checkliste": [
+    "Ich habe die Norm genannt (Ordnungsdienst erledigen).",
+    "Ich habe die Sanktion genannt (doppelter Dienst).",
+    "Ich habe die Sanktion als negativ eingeordnet."
+   ]
+  },
+  {
+   "nr": "3",
+   "op": "Ordne zu",
+   "be": 2,
+   "zeilen": 3,
+   "aufgabe": "Eine Schülerin trägt wie ihr Vorbild aus dem Fernsehen ein Stirnband. Ordne diese Lerntheorie zu und begründe.",
+   "muster": "Es handelt sich um Lernen am Modell (Bandura). Die Schülerin beobachtet ein Vorbild und ahmt es nach.",
+   "checkliste": [
+    "Ich habe Lernen am Modell (Bandura) genannt.",
+    "Ich habe mit Beobachten und Nachahmen begründet."
+   ]
+  },
+  {
+   "nr": "4",
+   "op": "Beurteile",
+   "be": 3,
+   "zeilen": 5,
+   "aufgabe": "Beurteile, ob Lob im Unterricht sinnvoll ist. Begründe deine Meinung.",
+   "muster": "Lob ist sinnvoll, weil es erwünschtes Verhalten verstärkt (Skinner) und motiviert. Wenn es ehrlich und genau ist, fördert es das Selbstvertrauen und das Klassenklima. Zu viel oder unehrliches Lob kann aber seine Wirkung verlieren.",
+   "checkliste": [
+    "Ich habe eine eigene Meinung formuliert.",
+    "Ich habe eine Begründung genannt (Verstärkung, Motivation, Klima).",
+    "Ich habe einen Einwand oder eine Grenze erwähnt."
+   ]
+  }
+ ]
+}

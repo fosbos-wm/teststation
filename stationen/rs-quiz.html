@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Quiz – Sozialwesen 7</title><link rel="stylesheet" href="../css/rs.css"></head>
+<body><div class="rs"><header id="kopf"><p class="muted">Lade Übung …</p></header><main id="main"></main><div id="ende"></div><div id="loesung"></div></div>
+<script src="../js/rs-lob.js"></script>
+<script>
+/* Quiz mit Sofort-Rückmeldung: jede Frage hat eine richtige Antwort und eine Erklärung. Die Antwortreihenfolge wird bei jedem Start neu gemischt. */
+RS.load(function (d) {
+  const $ = RS.$, esc = RS.esc;
+  const alle = d.fragen.map((q, i) => Object.assign({}, q, { i }));
+  const erst = {}; /* Frage-Nr. -> beim ersten Versuch richtig? */
+  let queue, pos, serie = 0, zaehlt = true, gesperrt = false, opts = [], q = null;
+
+  function start(liste, zahlen) {
+    queue = d.mischen === false && zahlen ? liste.slice() : RS.shuffle(liste);
+    pos = 0; zaehlt = zahlen; $("ende").innerHTML = ""; $("loesung").innerHTML = "";
+    frage();
+  }
+
+  function frage() {
+    q = queue[pos]; gesperrt = false;
+    opts = RS.shuffle(q.o.map((t, j) => ({ t, ok: j === (q.r || 0) })));
+    RS.meter(pos, queue.length, serie);
+    $("main").innerHTML =
+      '<div class="card"><div class="qnr">' + (zaehlt ? "Frage " : "Wiederholung ") + (pos + 1) + " von " + queue.length + "</div>" +
+      (q.fall ? '<div class="fall"><b>Fallbeispiel</b>' + RS.para(q.fall) + "</div>" : "") +
+      '<h2 class="frage">' + esc(q.f) + "</h2>" +
+      '<div class="opts" role="group" aria-label="Antworten">' +
+      opts.map((o, j) => '<button type="button" class="opt" data-j="' + j + '"><span class="bu">' + "ABCDEF"[j] + "</span><span>" + esc(o.t) + "</span></button>").join("") +
+      '</div><div id="fb" role="status"></div><div class="aktion"><button type="button" class="btn" id="weiter" hidden>' + (pos + 1 < queue.length ? "Weiter" : "Fertig") + "</button></div></div>";
+    document.querySelectorAll(".opt").forEach(b => b.addEventListener("click", () => antwort(+b.dataset.j)));
+    $("weiter").addEventListener("click", weiter);
+  }
+
+  function antwort(j) {
+    if (gesperrt) return; gesperrt = true;
+    const ok = opts[j].ok;
+    document.querySelectorAll(".opt").forEach((b, k) => {
+      b.disabled = true;
+      if (opts[k].ok) b.classList.add("ok"); else if (k === j) b.classList.add("bad"); else b.classList.add("dim");
+    });
+    if (zaehlt && erst[q.i] === undefined) erst[q.i] = ok;
+    serie = ok ? serie + 1 : 0;
+    $("fb").innerHTML = '<div class="fb ' + (ok ? "ok" : "bad") + '"><b class="kopfzeile">' + (ok ? "✓ Richtig" : "✗ Das war nicht richtig") + "</b>" +
+      (ok ? "" : "<div>Richtig ist: <b>" + esc(q.o[q.r || 0]) + "</b></div>") + (q.e ? "<div>" + esc(q.e) + "</div>" : "") + "</div>";
+    RS.meter(pos + 1, queue.length, serie);
+    const lob = ok ? RS.lobRichtig(serie) : null, tr = ok ? null : RS.trost();
+    if (lob) RS.sag(lob.t, lob.gross); else if (tr) RS.sag(tr, false);
+    else if (zaehlt && pos + 1 === Math.floor(queue.length / 2) && queue.length >= 6) RS.sag(RS.halbzeit(), false);
+    $("weiter").hidden = false; $("weiter").focus({ preventScroll: true });
+  }
+
+  function weiter() { pos++; if (pos < queue.length) { frage(); window.scrollTo({ top: 0 }); } else ende(); }
+
+  function ende() {
+    $("main").innerHTML = "";
+    if (!zaehlt) {
+      RS.meter(queue.length, queue.length, 0);
+      $("ende").innerHTML = '<div class="card ende"><p class="lob">Fehler nochmal geübt – genau so festigt man Wissen. 💪</p><div class="aktion"><button type="button" class="btn" id="l2">Lösungen ansehen</button><button type="button" class="btn alt" id="n2">Noch einmal von vorn</button></div></div>';
+      $("l2").addEventListener("click", loesung); $("n2").addEventListener("click", () => location.reload());
+      return;
+    }
+    RS.meter(queue.length, queue.length, serie);
+    const punkte = alle.filter(x => erst[x.i]).length, falsch = alle.filter(x => erst[x.i] === false);
+    RS.endkarte($("ende"), {
+      punkte, max: alle.length, fehler: falsch.length, loesung,
+      wiederholen: () => { serie = 0; start(falsch, false); window.scrollTo({ top: 0 }); }
+    });
+  }
+
+  function loesung() {
+    $("loesung").innerHTML = '<div class="card loesung"><h2>Alle Lösungen</h2>' +
+      alle.map((x, k) => '<div class="lz"><span class="m ' + (erst[x.i] ? "ok" : "bad") + '">' + (erst[x.i] ? "✓" : "✗") + '</span> <span class="t">' + (k + 1) + ". " + esc(x.f) + "</span>" +
+        (x.fall ? '<div class="e">Fall: ' + esc(x.fall) + "</div>" : "") +
+        '<div class="r">' + esc(x.o[x.r || 0]) + "</div>" + (x.e ? '<div class="e">' + esc(x.e) + "</div>" : "") + "</div>").join("") + "</div>";
+    $("loesung").scrollIntoView({ behavior: RS.reduced ? "auto" : "smooth" });
+  }
+
+  document.addEventListener("keydown", e => {
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    if (!gesperrt && /^[1-6]$/.test(e.key)) { const b = document.querySelectorAll(".opt")[+e.key - 1]; if (b) b.click(); }
+    else if (gesperrt && (e.key === "Enter") && $("weiter") && !$("weiter").hidden && document.activeElement !== $("weiter")) $("weiter").click();
+  });
+
+  start(alle, true);
+});
+</script></body></html>

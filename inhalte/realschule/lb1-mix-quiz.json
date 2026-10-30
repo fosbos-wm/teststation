@@ -1,0 +1,233 @@
+{
+ "titel": "Mix-Quiz Lernbereich 1",
+ "abzeichen": "🎯",
+ "anleitung": "Gemischte Fragen aus ganz Lernbereich 1. So kannst du testen, ob du alles im Kopf hast.",
+ "fragen": [
+  {
+   "f": "Welche Chance kann eine Patchwork-Familie bieten?",
+   "o": [
+    "Das Kind kann zusätzliche Bezugspersonen und Geschwister gewinnen.",
+    "Das Kind hat nur noch einen Erwachsenen als Ansprechpartner.",
+    "Es gibt keine Veränderungen mehr.",
+    "Die Familie wird kleiner."
+   ],
+   "r": 0,
+   "e": "Neue Erwachsene und Stiefgeschwister können das Leben bereichern, wenn man sich gut versteht."
+  },
+  {
+   "f": "Warum unterstützt der Staat Familien?",
+   "o": [
+    "Weil Familien wichtige Aufgaben für die Gesellschaft übernehmen und der Staat sie schützen und fördern soll (Art. 124 ff. BV).",
+    "Weil Familien nichts selbst schaffen.",
+    "Weil der Staat alle Kinder allein erziehen will.",
+    "Weil Familien keine Rechte haben."
+   ],
+   "r": 0,
+   "e": "Familie gilt als Grundlage der Gesellschaft. Deshalb steht sie unter dem besonderen Schutz des Staates."
+  },
+  {
+   "f": "Welcher Aspekt ist ein möglicher Nachteil einer Großfamilie?",
+   "o": [
+    "Wenig Rückzugsmöglichkeiten, und es kann mehr Konflikte zwischen den Generationen geben.",
+    "Niemand kann bei der Kinderbetreuung helfen.",
+    "Die Familie hat immer weniger Geld.",
+    "Die Kinder wachsen ohne Geschwister auf."
+   ],
+   "r": 0,
+   "e": "Viele Menschen auf engem Raum und verschiedene Vorstellungen der Generationen können zu Spannungen führen."
+  },
+  {
+   "f": "Welche Hilfe kommt hier vor allem in Frage?",
+   "o": [
+    "Finanzielle Hilfe des Staates (zum Beispiel Kindergeld oder andere Sozialleistungen)",
+    "Eine Gesundheitsmaßnahme",
+    "Ein Schulwechsel",
+    "Ein Streit mit den Nachbarn"
+   ],
+   "r": 0,
+   "e": "Wer zu wenig Geld hat, kann finanzielle Unterstützung beantragen.",
+   "fall": "Familie Aksoy hat durch Arbeitslosigkeit kaum Geld für Kleidung der Kinder."
+  },
+  {
+   "f": "Warum können Familien in verschiedenen Ländern unterschiedliche Werte und Normen haben?",
+   "o": [
+    "Weil Kultur, Geschichte, Religion und Lebensbedingungen die Vorstellungen prägen.",
+    "Weil Menschen in anderen Ländern keine Werte haben.",
+    "Weil es Zufall ist.",
+    "Weil man dort keine Familien hat."
+   ],
+   "r": 0,
+   "e": "Was als wichtig gilt, hängt von der Umgebung ab, in der Menschen leben."
+  },
+  {
+   "f": "Wer kann der Familie helfen?",
+   "o": [
+    "Eine Haus- und Familienpflegerin",
+    "Eine Hebamme",
+    "Ein Schulpsychologe",
+    "Ein Bäcker"
+   ],
+   "r": 0,
+   "e": "Wenn ein Elternteil ausfällt, übernehmen Haus- und Familienpfleger/-innen Haushalt und Kinderbetreuung.",
+   "fall": "Nach einer Operation darf Frau Roth zwei Wochen nichts heben. Ihr Mann arbeitet, und die beiden Kinder sind klein."
+  },
+  {
+   "f": "Wozu zählen Kinderkrippe und Kindergarten nach dem Lehrplan?",
+   "o": [
+    "Zu den primären Sozialisationsinstanzen",
+    "Zu den sekundären Sozialisationsinstanzen",
+    "Zu den Medien",
+    "Zu den familienunterstützenden Berufen"
+   ],
+   "r": 0,
+   "e": "Krippe und Kindergarten gehören zusammen mit der Familie zur primären Sozialisation."
+  },
+  {
+   "f": "Was entwickelt sich dadurch bei Leo vor allem?",
+   "o": [
+    "Urvertrauen: Er erfährt, dass er sich auf andere verlassen kann.",
+    "Einen autoritären Erziehungsstil.",
+    "Einen Rollenwandel.",
+    "Gruppenzwang."
+   ],
+   "r": 0,
+   "e": "Wenn Eltern verlässlich auf Bedürfnisse eines Babys reagieren, lernt das Kind: „Ich bin sicher, man kümmert sich um mich.“ Das ist die Grundlage für Urvertrauen.",
+   "fall": "Der kleine Leo weint nachts. Seine Eltern kommen jedes Mal, nehmen ihn auf den Arm und beruhigen ihn."
+  },
+  {
+   "f": "Was zeigt dieses Beispiel?",
+   "o": [
+    "Jedes Familienmitglied hat bestimmte Aufgaben und Erwartungen, also eine Rolle.",
+    "Nur die Eltern haben in der Familie eine Rolle.",
+    "In einer Familie gibt es keine festen Aufgaben.",
+    "Alle Familienmitglieder haben dieselbe Rolle."
+   ],
+   "r": 0,
+   "e": "In jeder Familie übernehmen die Mitglieder bestimmte Aufgaben, und es wird bestimmtes Verhalten von ihnen erwartet. Das sind ihre Rollen – auch Kinder haben eine.",
+   "fall": "Mia (13) räumt abends die Spülmaschine ein. Ihr Vater kocht meistens, ihre Mutter erledigt den Papierkram, der kleine Bruder deckt den Tisch."
+  },
+  {
+   "f": "Was ist in diesem Beispiel der Wert?",
+   "o": [
+    "Ehrlichkeit",
+    "Pünktlich zum Abendessen kommen",
+    "Schuhe an der Tür ausziehen",
+    "Das Taschengeld am Samstag"
+   ],
+   "r": 0,
+   "e": "Ein Wert ist etwas, das uns wichtig ist. Die Regeln „pünktlich sein“ und „Schuhe ausziehen“ sind dagegen Normen, also konkrete Verhaltensregeln.",
+   "fall": "Familie Özdemir legt großen Wert darauf, dass man ehrlich zueinander ist. Die Kinder sollen pünktlich zum Abendessen kommen und die Schuhe an der Tür ausziehen."
+  },
+  {
+   "f": "Für welche Kinder ist eine Kinderkrippe gedacht?",
+   "o": [
+    "Für Kinder unter drei Jahren",
+    "Für Kinder ab sechs Jahren",
+    "Für Jugendliche",
+    "Nur für Schulkinder"
+   ],
+   "r": 0,
+   "e": "Die Krippe betreut die Jüngsten, meist bis zum dritten Geburtstag. Danach folgt der Kindergarten."
+  },
+  {
+   "f": "Was kann in einer Patchwork-Familie eine besondere Herausforderung sein?",
+   "o": [
+    "Stiefgeschwister und neue Erwachsene müssen sich erst als Familie finden, und Rollen müssen neu geklärt werden.",
+    "Alle Kinder haben dieselben leiblichen Eltern.",
+    "Die Kinder kennen sich schon ihr ganzes Leben.",
+    "Es gibt keine Regeln."
+   ],
+   "r": 0,
+   "e": "Wenn zwei Familien zusammenwachsen, braucht es Zeit, Geduld und gemeinsame Absprachen."
+  },
+  {
+   "f": "Welcher Aspekt ist eine mögliche Schwierigkeit in einer Ein-Eltern-Familie?",
+   "o": [
+    "Ein Elternteil trägt Erziehung, Haushalt und Einkommen meist allein.",
+    "Es gibt in der Familie zu viele Erwachsene.",
+    "Die Kinder haben immer zu viele Geschwister.",
+    "Alle Entscheidungen müssen mit vier Erwachsenen abgesprochen werden."
+   ],
+   "r": 0,
+   "e": "Wer allein erzieht, hat oft eine hohe Belastung. Hilfe durch Verwandte, Freunde oder den Staat ist deshalb besonders wichtig."
+  },
+  {
+   "f": "Welche Werte und Normen können Kinder in der Kita kennenlernen?",
+   "o": [
+    "Gemeinsame Regeln wie Aufräumen, Teilen, Warten und im Stuhlkreis zuhören.",
+    "Nur die Regeln der eigenen Familie.",
+    "Gar keine, weil das nur in der Schule vorkommt.",
+    "Nur Regeln für Erwachsene."
+   ],
+   "r": 0,
+   "e": "In der Kita üben Kinder Regeln für das Miteinander in einer größeren Gruppe."
+  },
+  {
+   "f": "Wer kann hier helfen?",
+   "o": [
+    "Eine Haus- und Familienpflegerin",
+    "Eine Hebamme",
+    "Ein Zahnarzt",
+    "Ein Streitschlichter"
+   ],
+   "r": 0,
+   "e": "Wenn Eltern durch Krankheit oder Erschöpfung ausfallen, unterstützt die Haus- und Familienpflege den Alltag.",
+   "fall": "Familie Berger hat Drillinge. Die Mutter ist völlig erschöpft, der Vater muss arbeiten."
+  },
+  {
+   "f": "Welche Aussage ist ein Vorurteil?",
+   "o": [
+    "„In diesem Land sind alle Familien gleich.“",
+    "„Viele Familien in diesem Land leben mit mehreren Generationen zusammen.“",
+    "„Familien in Städten und auf dem Land können unterschiedlich leben.“",
+    "„Ich möchte mehr über Familien in anderen Ländern erfahren.“"
+   ],
+   "r": 0,
+   "e": "Ein Vorurteil verallgemeinert: In jedem Land gibt es viele verschiedene Familien."
+  },
+  {
+   "f": "Welche Aussage zur Eltern-Kind-Beziehung stimmt?",
+   "o": [
+    "Eine verlässliche, liebevolle Beziehung in den ersten Lebensjahren hilft beim Aufbau von Urvertrauen.",
+    "Urvertrauen entsteht erst in der Pubertät.",
+    "Für das Urvertrauen sind vor allem teure Geschenke wichtig.",
+    "Je weniger Zuwendung ein Baby bekommt, desto selbstständiger wird es."
+   ],
+   "r": 0,
+   "e": "Babys brauchen Nähe, Schutz und Verlässlichkeit. Das ist die Grundlage, auf der später Selbstvertrauen wächst."
+  },
+  {
+   "f": "Anhand welcher Kriterien kann man Erziehungsstile gut beurteilen?",
+   "o": [
+    "Wie viel Zuwendung, wie viel Regeln und wie viel Mitsprache das Kind erlebt.",
+    "Wie viel Geld die Familie hat.",
+    "Wie groß die Wohnung ist.",
+    "Wie viele Spielsachen das Kind besitzt."
+   ],
+   "r": 0,
+   "e": "Zuwendung (Wärme), Regeln (Lenkung) und Mitsprache sind die wichtigsten Kriterien, um Erziehungsstile zu vergleichen."
+  },
+  {
+   "f": "Was ist ein Beispiel für Werte- und Normenvermittlung in der Familie?",
+   "o": [
+    "Die Eltern erklären, warum man nicht lügt, und gehen selbst mit gutem Beispiel voran.",
+    "Das Kind sucht sich allein aus, welche Regeln es gut findet.",
+    "Die Eltern sagen nie, was ihnen wichtig ist.",
+    "Der Fernseher erklärt dem Kind, was richtig ist."
+   ],
+   "r": 0,
+   "e": "Kinder lernen Werte durch Erklärungen und durch das Vorbild der Eltern."
+  },
+  {
+   "f": "Welche Haltung passt zu einem fairen Vergleich?",
+   "o": [
+    "Unterschiede beschreiben, ohne sie sofort als besser oder schlechter zu bewerten.",
+    "Das Eigene für das Beste halten.",
+    "Andere Familien auslachen.",
+    "Alle Familien gleich behandeln, als gäbe es keine Unterschiede."
+   ],
+   "r": 0,
+   "e": "Ein Vergleich beschreibt zuerst. Toleranz heißt, andere Modelle zu respektieren, auch wenn man sie anders lebt."
+  }
+ ]
+}

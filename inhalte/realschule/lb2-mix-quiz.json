@@ -1,0 +1,232 @@
+{
+ "titel": "Mix-Quiz Lernbereich 2",
+ "abzeichen": "🏆",
+ "anleitung": "Fragen aus allen Themen des Lernbereichs, gut gemischt. Zeig, was du kannst!",
+ "fragen": [
+  {
+   "f": "Was bedeutet es, ein Mischtyp zu sein?",
+   "o": [
+    "Man lernt mit mehreren Sinnen gut.",
+    "Man lernt gar nicht.",
+    "Man lernt nur durch Hören.",
+    "Man lernt nur durch Lesen."
+   ],
+   "r": 0,
+   "e": "Die meisten Menschen sind Mischtypen. Mehrere Kanäle zu nutzen hilft beim Behalten."
+  },
+  {
+   "f": "Bei welchem Problem kann die Schulpsychologin helfen?",
+   "o": [
+    "Bei starker Prüfungsangst",
+    "Beim Kauf von Schulbüchern",
+    "Bei der Raumplanung",
+    "Bei der Busfahrt"
+   ],
+   "r": 0,
+   "e": "Schulpsychologen beraten bei Lernschwierigkeiten, Prüfungsangst oder Konflikten."
+  },
+  {
+   "f": "Warum braucht eine Klasse Regeln?",
+   "o": [
+    "Damit Zusammenleben und Lernen gut funktionieren, weil alle wissen, was erwartet wird.",
+    "Damit niemand mehr etwas sagen darf.",
+    "Damit die Lehrkraft besser aussieht.",
+    "Weil Regeln Spaß machen."
+   ],
+   "r": 0,
+   "e": "Regeln geben Orientierung und schützen alle Mitglieder der Gruppe."
+  },
+  {
+   "f": "Was ist hier die bedingte Reaktion?",
+   "o": [
+    "Der Speichelfluss beim Klang der Glocke",
+    "Der Speichelfluss beim Anblick des Futters",
+    "Das Läuten der Glocke",
+    "Das Fressen"
+   ],
+   "r": 0,
+   "e": "Die Reaktion auf den ursprünglich neutralen Reiz heißt bedingte Reaktion.",
+   "fall": "Ein Hund bekommt jedes Mal Futter, wenn zuvor eine Glocke läutet. Nach einiger Zeit läuft ihm schon beim Klang der Glocke der Speichel."
+  },
+  {
+   "f": "Welcher Grund kann dazu führen, dass Kinder in manchen Ländern nicht zur Schule gehen?",
+   "o": [
+    "Armut, Krieg oder zu wenige Schulen",
+    "Zu viele Ferien",
+    "Zu viele Lehrkräfte",
+    "Zu weiche Stühle"
+   ],
+   "r": 0,
+   "e": "Armut, Konflikte und fehlende Schulen sind häufige Ursachen."
+  },
+  {
+   "f": "Was ist „Respekt“ in diesem Beispiel?",
+   "o": [
+    "Ein Wert",
+    "Eine Sanktion",
+    "Eine Strafe",
+    "Eine Kann-Norm"
+   ],
+   "r": 0,
+   "e": "Respekt ist etwas, das der Klasse wichtig ist: ein Wert.",
+   "fall": "Die Klasse findet Respekt wichtig. Deshalb gibt es die Regel: Man lässt andere ausreden. Wer unterbricht, wird ermahnt."
+  },
+  {
+   "f": "Wer kann sich an den Schulpsychologen wenden?",
+   "o": [
+    "Schülerinnen und Schüler, Eltern und Lehrkräfte",
+    "Nur Lehrkräfte",
+    "Nur Schulleitung",
+    "Nur Eltern"
+   ],
+   "r": 0,
+   "e": "Die Beratung steht allen Beteiligten offen."
+  },
+  {
+   "f": "Was gehört zur Chancengleichheit in der Bildung?",
+   "o": [
+    "Alle Kinder sollen unabhängig von Herkunft oder Geschlecht Zugang zu Bildung haben.",
+    "Nur Jungen dürfen lernen.",
+    "Nur reiche Kinder gehen zur Schule.",
+    "Bildung ist nur für Erwachsene."
+   ],
+   "r": 0,
+   "e": "Chancengleichheit bedeutet gleiche Möglichkeiten für alle."
+  },
+  {
+   "f": "Welche Folge kann es haben, wenn Lehrkräfte selbst pünktlich und respektvoll sind?",
+   "o": [
+    "Schüler übernehmen eher dieses Verhalten.",
+    "Schüler werden unpünktlich.",
+    "Schüler lernen nichts.",
+    "Es hat nie Folgen."
+   ],
+   "r": 0,
+   "e": "Lehrkräfte sind Modelle. Ihr Verhalten wirkt oft stärker als Worte."
+  },
+  {
+   "f": "Was kann die Klassensprecherin tun?",
+   "o": [
+    "Die Wünsche der Klasse sammeln und mit der Klassenleitung besprechen.",
+    "Allein entscheiden und die Klasse nicht fragen.",
+    "Den Wandertag absagen.",
+    "Warten, bis die Schulleitung von allein fragt."
+   ],
+   "r": 0,
+   "e": "Klassensprecher sprechen für die ganze Klasse. Sie sammeln Meinungen und tragen sie vor.",
+   "fall": "Die Klasse 7a wünscht sich einen Wandertag zum Hochseilgarten."
+  },
+  {
+   "f": "Warum kann Bildung helfen, Armut zu verringern?",
+   "o": [
+    "Wer eine Ausbildung hat, findet leichter Arbeit und verdient besser.",
+    "Weil Bildung Geld druckt.",
+    "Weil Schulen Geld verschenken.",
+    "Weil Armut von Bildung kommt."
+   ],
+   "r": 0,
+   "e": "Bildung verbessert die Chancen auf dem Arbeitsmarkt."
+  },
+  {
+   "f": "Warum erleichtert ein gutes Klassenklima das Lernen?",
+   "o": [
+    "Wer sich wohlfühlt, traut sich mehr zu fragen und mitzuarbeiten.",
+    "Weil es dann weniger Unterricht gibt.",
+    "Weil man dann nicht mehr lernen muss.",
+    "Weil die Lehrkräfte strenger sind."
+   ],
+   "r": 0,
+   "e": "Angstfreies Lernen funktioniert besser."
+  },
+  {
+   "f": "Was gehört zur operanten Konditionierung?",
+   "o": [
+    "Das Verhalten wird durch Belohnung oder Bestrafung gelernt.",
+    "Ein Reiz löst automatisch eine Reaktion aus.",
+    "Man lernt nur durch Zuschauen.",
+    "Man lernt nur durch Nachdenken."
+   ],
+   "r": 0,
+   "e": "Kennzeichen: Verhalten → Folge → Veränderung der Auftretenswahrscheinlichkeit."
+  },
+  {
+   "f": "Was passiert mit dem Verhalten, wenn es belohnt wird?",
+   "o": [
+    "Es wird wahrscheinlicher, dass es wiederholt wird.",
+    "Es verschwindet.",
+    "Es hat keinen Einfluss.",
+    "Es wird unmöglich."
+   ],
+   "r": 0,
+   "e": "Angenehme Folgen verstärken Verhalten.",
+   "fall": "Lena bekommt für ihre Hausaufgaben ein Lob und macht sie künftig regelmäßig."
+  },
+  {
+   "f": "Was trägt hier zum Klassenklima bei?",
+   "o": [
+    "Offenheit und Rücksichtnahme gegenüber neuen Mitschülern",
+    "Ausgrenzung",
+    "Spott",
+    "Desinteresse"
+   ],
+   "r": 0,
+   "e": "Neue Mitschüler einzubeziehen stärkt das Gemeinschaftsgefühl.",
+   "fall": "Mara ist neu in der Klasse. Die anderen laden sie ein, mit ihnen Mittag zu essen."
+  },
+  {
+   "f": "Wie nennt man Pawlows Lerntheorie noch?",
+   "o": [
+    "Klassisches Konditionieren",
+    "Lernen durch Einsicht",
+    "Operantes Konditionieren",
+    "Lernen am Modell"
+   ],
+   "r": 0,
+   "e": "Pawlow = klassisches Konditionieren; Skinner = operantes Konditionieren; Bandura = Lernen am Modell."
+  },
+  {
+   "f": "Warum ist die Klasse eine formelle Gruppe?",
+   "o": [
+    "Weil sie von der Schule eingeteilt wird und feste Regeln und Aufgaben hat.",
+    "Weil sie sich zufällig getroffen hat.",
+    "Weil alle dieselbe Musik mögen.",
+    "Weil sie nur aus Freunden besteht."
+   ],
+   "r": 0,
+   "e": "Die Schule bestimmt, wer in welcher Klasse ist. Es gibt Stundenplan, Klassenleitung und Regeln."
+  },
+  {
+   "f": "Wann ahmen Kinder ein Modell besonders gern nach?",
+   "o": [
+    "Wenn sie das Modell bewundern oder sehen, dass es dafür belohnt wird",
+    "Wenn das Modell sie ignoriert",
+    "Wenn das Modell unbekannt ist",
+    "Nie"
+   ],
+   "r": 0,
+   "e": "Sympathie, Ansehen und beobachtete Belohnung fördern das Nachahmen."
+  },
+  {
+   "f": "Welcher Wert steht hinter der Regel „Nicht abschreiben“?",
+   "o": [
+    "Ehrlichkeit",
+    "Pünktlichkeit",
+    "Sparsamkeit",
+    "Neugier"
+   ],
+   "r": 0,
+   "e": "Wer abschreibt, täuscht. Die Regel schützt den Wert Ehrlichkeit und faire Chancen für alle."
+  },
+  {
+   "f": "Warum ist es sinnvoll, seinen eigenen Lerntyp zu kennen?",
+   "o": [
+    "Man kann Lernmethoden wählen, die zu einem passen.",
+    "Man muss dann nicht mehr lernen.",
+    "Man bekommt bessere Noten ohne Arbeit.",
+    "Man wird nie müde."
+   ],
+   "r": 0,
+   "e": "Wer weiß, wie er am besten lernt, lernt effizienter."
+  }
+ ]
+}

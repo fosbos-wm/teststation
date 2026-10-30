@@ -1,0 +1,71 @@
+{
+ "titel": "Wert oder Norm?",
+ "abzeichen": "🧭",
+ "anleitung": "Ordne jede Karte zu: Ist das ein Wert (etwas, das als wichtig gilt) oder eine Norm (eine konkrete Verhaltensregel)?",
+ "kategorien": [
+  "Wert",
+  "Norm"
+ ],
+ "karten": [
+  {
+   "t": "Ehrlichkeit",
+   "k": 0,
+   "e": "Ehrlichkeit ist etwas, das uns wichtig ist: ein Wert."
+  },
+  {
+   "t": "Hilfsbereitschaft",
+   "k": 0,
+   "e": "Anderen zu helfen gilt als wichtig: ein Wert."
+  },
+  {
+   "t": "Respekt vor anderen",
+   "k": 0,
+   "e": "Respekt ist ein Wert, der in vielen Regeln steckt."
+  },
+  {
+   "t": "Zuverlässigkeit",
+   "k": 0,
+   "e": "Dass man sich auf andere verlassen kann, ist ein Wert."
+  },
+  {
+   "t": "Gerechtigkeit",
+   "k": 0,
+   "e": "Fairness und Gerechtigkeit sind Werte."
+  },
+  {
+   "t": "Freundschaft",
+   "k": 0,
+   "e": "Freundschaft ist vielen Menschen wichtig: ein Wert."
+  },
+  {
+   "t": "Vor dem Essen werden die Hände gewaschen.",
+   "k": 1,
+   "e": "Das ist eine konkrete Regel für das Verhalten: eine Norm."
+  },
+  {
+   "t": "Man sagt „Bitte“ und „Danke“.",
+   "k": 1,
+   "e": "Eine Höflichkeitsregel: eine Norm."
+  },
+  {
+   "t": "Um 20:30 Uhr ist Bettzeit.",
+   "k": 1,
+   "e": "Eine feste Regel in der Familie: eine Norm."
+  },
+  {
+   "t": "Wenn jemand spricht, hört man zu und lässt ihn ausreden.",
+   "k": 1,
+   "e": "Eine Verhaltensregel, hinter der der Wert Respekt steht: eine Norm."
+  },
+  {
+   "t": "Am Esstisch wird das Handy weggelegt.",
+   "k": 1,
+   "e": "Eine Regel für das Verhalten: eine Norm."
+  },
+  {
+   "t": "Älteren Menschen im Bus bietet man einen Sitzplatz an.",
+   "k": 1,
+   "e": "Eine Verhaltensregel: eine Norm."
+  }
+ ]
+}

@@ -1,0 +1,97 @@
+{
+ "titel": "Werte, Normen und Sanktionen im Zusammenhang",
+ "abzeichen": "🔗",
+ "anleitung": "Werte, Normen und Sanktionen hängen eng zusammen. Wähle jeweils die passende Antwort.",
+ "fragen": [
+  {
+   "f": "Was ist die Ermahnung hier?",
+   "o": [
+    "Eine (negative) Sanktion",
+    "Ein Wert",
+    "Eine Norm",
+    "Eine Hausordnung"
+   ],
+   "r": 0,
+   "e": "Die Ermahnung ist die Reaktion auf einen Regelverstoß: eine negative Sanktion.",
+   "fall": "Die Klasse findet Respekt wichtig. Deshalb gibt es die Regel: Man lässt andere ausreden. Wer unterbricht, wird ermahnt."
+  },
+  {
+   "f": "Was ist „Respekt“ in diesem Beispiel?",
+   "o": [
+    "Ein Wert",
+    "Eine Sanktion",
+    "Eine Strafe",
+    "Eine Kann-Norm"
+   ],
+   "r": 0,
+   "e": "Respekt ist etwas, das der Klasse wichtig ist: ein Wert.",
+   "fall": "Die Klasse findet Respekt wichtig. Deshalb gibt es die Regel: Man lässt andere ausreden. Wer unterbricht, wird ermahnt."
+  },
+  {
+   "f": "Was ist die Regel „Man lässt andere ausreden“?",
+   "o": [
+    "Eine Norm",
+    "Ein Wert",
+    "Eine positive Sanktion",
+    "Ein Sozialisationsprozess"
+   ],
+   "r": 0,
+   "e": "Eine Norm ist eine konkrete Verhaltensregel. Sie macht den Wert Respekt im Alltag sichtbar."
+  },
+  {
+   "f": "Warum braucht eine Klasse Regeln?",
+   "o": [
+    "Damit Zusammenleben und Lernen gut funktionieren, weil alle wissen, was erwartet wird.",
+    "Damit niemand mehr etwas sagen darf.",
+    "Damit die Lehrkraft besser aussieht.",
+    "Weil Regeln Spaß machen."
+   ],
+   "r": 0,
+   "e": "Regeln geben Orientierung und schützen alle Mitglieder der Gruppe."
+  },
+  {
+   "f": "Welches Beispiel zeigt eine positive Sanktion?",
+   "o": [
+    "Die Lehrerin lobt die Klasse für den ruhigen Ablauf der Gruppenarbeit.",
+    "Eine Schülerin muss nachsitzen.",
+    "Ein Schüler bekommt einen Eintrag.",
+    "Eine Schülerin wird ermahnt."
+   ],
+   "r": 0,
+   "e": "Auf erwünschtes Verhalten folgt Anerkennung."
+  },
+  {
+   "f": "Was kann passieren, wenn Regeln nie durchgesetzt werden?",
+   "o": [
+    "Die Regeln werden nicht mehr ernst genommen, und das Klassenklima leidet.",
+    "Alle halten sich plötzlich noch besser daran.",
+    "Es gibt weniger Konflikte.",
+    "Die Regeln werden zu Gesetzen."
+   ],
+   "r": 0,
+   "e": "Sanktionen sorgen dafür, dass Normen eingehalten werden. Ohne sie verlieren Regeln an Wirkung."
+  },
+  {
+   "f": "Wo stehen die Regeln für das Zusammenleben an eurer Schule?",
+   "o": [
+    "In der Hausordnung (außerdem in der Schulordnung und in Gesetzen)",
+    "Nur in den Schulheften",
+    "Nur in einem Kochbuch",
+    "Nirgends"
+   ],
+   "r": 0,
+   "e": "Die Hausordnung hält die wichtigsten Regeln der Schule fest. Darüber hinaus gelten Gesetze."
+  },
+  {
+   "f": "Welcher Wert steht hinter der Regel „Nicht abschreiben“?",
+   "o": [
+    "Ehrlichkeit",
+    "Pünktlichkeit",
+    "Sparsamkeit",
+    "Neugier"
+   ],
+   "r": 0,
+   "e": "Wer abschreibt, täuscht. Die Regel schützt den Wert Ehrlichkeit und faire Chancen für alle."
+  }
+ ]
+}

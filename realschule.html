@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sozialwesen 7 – Üben für die Realschule</title><link rel="stylesheet" href="css/rs.css">
+<style>
+.hero{background:linear-gradient(135deg,var(--pri),var(--acc));color:#fff;border-radius:18px;padding:18px 20px;margin-bottom:16px}
+.hero h1{margin:0 0 4px;font-size:1.5rem}.hero p{margin:0;opacity:.95}
+.hero .gesamt{margin-top:12px;display:flex;gap:10px;align-items:center}
+.hero .bar{flex:1;height:14px;border-radius:99px;background:rgba(255,255,255,.3);overflow:hidden}.hero .bar i{display:block;height:100%;background:#fff;border-radius:99px;width:0;transition:width .5s}
+.hero .zahl{font-weight:800;white-space:nowrap}
+.tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.lb{background:var(--panel);border:2px solid var(--line);border-radius:16px;margin-bottom:14px}
+.lb>summary{display:flex;align-items:center;gap:10px;padding:14px 16px;cursor:pointer;list-style:none;font-size:1.05rem}
+.lb>summary::-webkit-details-marker{display:none}
+.lb>summary::after{content:"▸";margin-left:auto;color:var(--muted);transition:transform .15s}
+.lb[open]>summary::after{transform:rotate(90deg)}
+.lb .lbfort{display:flex;align-items:center;gap:8px;font-size:.85rem;color:var(--muted);margin-left:auto;padding-right:6px}
+.lb .lbfort .bar{width:80px;height:8px;border-radius:99px;background:var(--line);overflow:hidden}.lb .lbfort .bar i{display:block;height:100%;background:var(--pri);width:0}
+.lb>summary:has(.lbfort)::after{margin-left:0}
+.th{margin:0 14px 14px}.th h3{margin:12px 0 8px;color:var(--pri)}
+.ue{display:flex;flex-direction:column;gap:8px}
+.u{display:flex;gap:12px;align-items:center;text-decoration:none;color:inherit;border:2px solid var(--line);background:var(--bg);border-radius:14px;padding:10px 12px}
+.u:hover{border-color:var(--pri)}.u.fertig{border-color:var(--ok);background:var(--ok-soft)}
+.u .ik{font-size:1.6rem;flex:none;width:2.2rem;text-align:center}
+.u .tx{flex:1;min-width:0}.u .tx b{display:block;line-height:1.3}.u .tx span{font-size:.85rem;color:var(--muted)}
+.u .st{white-space:nowrap;font-size:.95rem;letter-spacing:.05em}.u .st .aus{opacity:.25;filter:grayscale(1)}
+.album{display:grid;grid-template-columns:repeat(auto-fill,minmax(52px,1fr));gap:8px;margin-top:6px}
+.album span{aspect-ratio:1;display:grid;place-items:center;font-size:1.7rem;border-radius:14px;background:var(--warn-soft);border:2px solid var(--star)}
+.album span.zu{filter:grayscale(1);opacity:.3;background:var(--bg);border-color:var(--line)}
+.info{font-size:.9rem;color:var(--muted)}
+</style></head>
+<body><div class="rs">
+ <div class="hero"><h1>Sozialwesen 7 – Üben für die Realschule</h1><p>Lernbereich 1 und 2: Aufgaben, Spiele und Lösungen zum Selbstkontrollieren. Sammle Sterne und Abzeichen!</p>
+  <div class="gesamt"><div class="bar" role="progressbar" aria-label="Gesamtfortschritt" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="gbar"><i id="gfill"></i></div><span class="zahl" id="gzahl"></span></div>
+  <p id="gtext" style="margin-top:8px;font-weight:700"></p></div>
+ <div class="tools"><button type="button" class="btn" id="zufall">🎲 Überrasch mich</button></div>
+ <div id="liste" aria-live="polite"><p class="muted">Lade Übungen …</p></div>
+ <section class="card" id="albumbox" hidden><h2>Dein Abzeichen-Album</h2><p class="info">Ein Abzeichen bekommst du ab 75 % in einer Übung.</p><div id="album"></div></section>
+ <p class="info">Alle Ergebnisse bleiben nur auf diesem Gerät in diesem Browser gespeichert (kein Konto, keine Übertragung).</p>
+</div>
+<script src="js/rs-lob.js"></script>
+<script>
+(function () {
+  const $ = RS.$, esc = RS.esc;
+  const ICON = { "rs-quiz.html": "❓", "rs-sortieren.html": "🗂️", "rs-aussagen.html": "✅", "rs-schreiben.html": "✍️", "rs-memory.html": "🃏", "rs-reihenfolge.html": "🔢", "rs-luecken.html": "🧩" };
+  const ART = { "rs-quiz.html": "Quiz", "rs-sortieren.html": "Sortieren", "rs-aussagen.html": "Aussagen bewerten", "rs-schreiben.html": "Schreiben", "rs-memory.html": "Memory", "rs-reihenfolge.html": "Reihenfolge", "rs-luecken.html": "Lückentext" };
+  const best = id => { try { const o = JSON.parse(RS.store.get("rs-best-" + id) || "null"); return o && typeof o.p === "number" ? o.p : null; } catch (e) { return null; } };
+  const dat = s => (s.datei || "").split("?")[0];
+  let kat = [];
+
+  fetch("stationen/katalog.json", { cache: "no-cache" }).then(r => r.json()).then(k => {
+    kat = k.filter(s => s.pfad && s.pfad[0] === "Realschule");
+    zeichne();
+  }).catch(() => { $("liste").innerHTML = '<p class="msg bad">Die Übungen konnten nicht geladen werden. Prüfe die Verbindung.</p>'; });
+
+  function zeichne() {
+    const lbs = []; kat.forEach(s => { let l = lbs.find(x => x.name === s.pfad[1]); if (!l) { l = { name: s.pfad[1], themen: [] }; lbs.push(l); } const tn = s.pfad[2] || "Weitere"; let t = l.themen.find(x => x.name === tn); if (!t) { t = { name: tn, items: [] }; l.themen.push(t); } t.items.push(s); });
+    const ges = kat.length, geschafft = kat.filter(s => (best(s.id) || 0) >= 75).length;
+    $("gzahl").textContent = geschafft + " von " + ges + " Abzeichen";
+    $("gfill").style.width = Math.round(100 * geschafft / Math.max(1, ges)) + "%"; $("gbar").setAttribute("aria-valuenow", String(Math.round(100 * geschafft / Math.max(1, ges))));
+    const q = geschafft / Math.max(1, ges);
+    $("gtext").textContent = geschafft === 0 ? "Starte mit einer Übung – der erste Stern wartet schon! ⭐" : q < 0.25 ? "Guter Start – du bist im Rollen! 🚀" : q < 0.5 ? "Schon fast die Hälfte der Abzeichen – stark! 💪" : q < 0.75 ? "Mehr als die Hälfte geschafft – weiter so! 🌟" : q < 1 ? "Fast alle Abzeichen! Der Endspurt lohnt sich. 🏁" : "Alle Abzeichen gesammelt – du bist bestens vorbereitet! 🏆";
+    $("liste").innerHTML = lbs.map((l, li) => {
+      const items = l.themen.reduce((a, t) => a.concat(t.items), []), g = items.filter(s => (best(s.id) || 0) >= 75).length;
+      return '<details class="lb" ' + (li === 0 || lbs.length === 1 ? "open" : "") + '><summary><span aria-hidden="true">📘</span><b>' + esc(l.name) + '</b><span class="lbfort"><span class="bar"><i style="width:' + Math.round(100 * g / items.length) + '%"></i></span>' + g + "/" + items.length + "</span></summary>" +
+        l.themen.map(t => '<div class="th"><h3>' + esc(t.name) + '</h3><div class="ue">' + t.items.map(s => {
+          const b = best(s.id), st = RS.sterne(b || 0); let sh = "";
+          for (let i = 0; i < 3; i++) sh += '<span class="' + (i < st ? "" : "aus") + '">⭐</span>';
+          return '<a class="u' + (b >= 75 ? " fertig" : "") + '" href="stationen/' + esc(s.datei) + '"><span class="ik" aria-hidden="true">' + (ICON[dat(s)] || "📄") + '</span><span class="tx"><b>' + esc(s.titel) + "</b><span>" + esc(ART[dat(s)] || "") + (s.beschreibung ? " · " + esc(s.beschreibung) : "") + '</span></span><span class="st" aria-label="' + st + ' von 3 Sternen">' + sh + "</span></a>";
+        }).join("") + "</div></div>").join("") + "</details>";
+    }).join("");
+    $("albumbox").hidden = false;
+    $("album").innerHTML = '<div class="album">' + kat.map(s => { const ok = (best(s.id) || 0) >= 75; return '<span class="' + (ok ? "" : "zu") + '" title="' + esc(s.titel) + '" role="img" aria-label="' + esc(s.titel) + (ok ? ": gesammelt" : ": noch offen") + '">' + esc(s.abzeichen || "🏅") + "</span>"; }).join("") + "</div>";
+  }
+
+  $("zufall").addEventListener("click", () => {
+    const offen = kat.filter(s => (best(s.id) || 0) < 75), pool = offen.length ? offen : kat;
+    if (!pool.length) return; location.href = "stationen/" + RS.pick(pool).datei;
+  });
+})();
+</script></body></html>

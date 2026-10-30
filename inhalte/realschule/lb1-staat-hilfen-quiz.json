@@ -1,0 +1,88 @@
+{
+ "titel": "Welche Hilfe passt zu welcher Notlage?",
+ "abzeichen": "🛟",
+ "anleitung": "Der Staat unterstützt Familien in schwierigen Situationen. Lies das Fallbeispiel und wähle die passende Hilfe.",
+ "fragen": [
+  {
+   "f": "Welche Hilfe kommt hier vor allem in Frage?",
+   "o": [
+    "Finanzielle Hilfe des Staates (zum Beispiel Kindergeld oder andere Sozialleistungen)",
+    "Eine Gesundheitsmaßnahme",
+    "Ein Schulwechsel",
+    "Ein Streit mit den Nachbarn"
+   ],
+   "r": 0,
+   "e": "Wer zu wenig Geld hat, kann finanzielle Unterstützung beantragen.",
+   "fall": "Familie Aksoy hat durch Arbeitslosigkeit kaum Geld für Kleidung der Kinder."
+  },
+  {
+   "f": "Welche Hilfe kommt hier vor allem in Frage?",
+   "o": [
+    "Erziehungsbeistand oder Erziehungsberatung, zum Beispiel über das Jugendamt",
+    "Finanzielle Hilfe",
+    "Eine Impfung",
+    "Wohngeld"
+   ],
+   "r": 0,
+   "e": "Wenn Eltern mit der Erziehung überfordert sind, können Beratungsstellen und das Jugendamt helfen.",
+   "fall": "Eine Mutter ist mit ihrem 13-jährigen Sohn überfordert. Er schwänzt die Schule, und es gibt täglich Streit."
+  },
+  {
+   "f": "Was für eine Maßnahme ist das?",
+   "o": [
+    "Eine Gesundheitsmaßnahme",
+    "Eine finanzielle Hilfe",
+    "Ein Erziehungsbeistand",
+    "Ein Berufsschulbesuch"
+   ],
+   "r": 0,
+   "e": "Vorsorgeuntersuchungen und Impfungen gehören zu den Gesundheitsmaßnahmen, die Familien schützen.",
+   "fall": "Kinder werden in den ersten Lebensjahren regelmäßig vom Kinderarzt untersucht (Vorsorgeuntersuchungen)."
+  },
+  {
+   "f": "Wie nennt man eine solche Hilfe?",
+   "o": [
+    "Familienunterstützende Einrichtung",
+    "Gruppenzwang",
+    "Erziehungsstil",
+    "Rollenwandel"
+   ],
+   "r": 0,
+   "e": "Beratungsstellen, Familienzentren und Jugendämter sind Einrichtungen, die Familien unterstützen.",
+   "fall": "Ein Ehepaar braucht Rat bei Erziehungsfragen und geht zur Erziehungsberatungsstelle."
+  },
+  {
+   "f": "Welche Stelle kann einschreiten, wenn ein Kind vernachlässigt wird?",
+   "o": [
+    "Das Jugendamt",
+    "Der Sportverein",
+    "Die Bäckerei",
+    "Das Fundbüro"
+   ],
+   "r": 0,
+   "e": "Das Jugendamt schützt Kinder und hilft Familien. Es arbeitet mit Beratungsstellen, Schulen und Ärzten zusammen."
+  },
+  {
+   "f": "Warum unterstützt der Staat Familien?",
+   "o": [
+    "Weil Familien wichtige Aufgaben für die Gesellschaft übernehmen und der Staat sie schützen und fördern soll (Art. 124 ff. BV).",
+    "Weil Familien nichts selbst schaffen.",
+    "Weil der Staat alle Kinder allein erziehen will.",
+    "Weil Familien keine Rechte haben."
+   ],
+   "r": 0,
+   "e": "Familie gilt als Grundlage der Gesellschaft. Deshalb steht sie unter dem besonderen Schutz des Staates."
+  },
+  {
+   "f": "Welche Aufgabe haben Eltern nach der Bayerischen Verfassung?",
+   "o": [
+    "Sie haben das Recht und die Pflicht, ihre Kinder zu erziehen.",
+    "Sie müssen alle Kinder der Nachbarschaft erziehen.",
+    "Sie müssen die Kinder an den Staat abgeben.",
+    "Sie haben keine Pflichten."
+   ],
+   "r": 0,
+   "e": "Die Eltern haben das natürliche Recht und die oberste Pflicht zur Erziehung. Der Staat unterstützt sie dabei."
+  }
+ ]
+}

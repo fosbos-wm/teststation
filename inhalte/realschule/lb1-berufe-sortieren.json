@@ -1,0 +1,57 @@
+{
+ "titel": "Wer hilft der Familie? Haus- und Familienpfleger/-in oder Hebamme",
+ "abzeichen": "🩺",
+ "anleitung": "Ordne jede Aufgabe dem passenden Beruf zu: Haus- und Familienpfleger/-in, Hebamme bzw. Entbindungspfleger oder beide.",
+ "kategorien": [
+  "Haus- und Familienpfleger/-in",
+  "Hebamme / Entbindungspfleger",
+  "Beide"
+ ],
+ "karten": [
+  {
+   "t": "Führt den Haushalt weiter, wenn die Mutter ins Krankenhaus muss.",
+   "k": 0,
+   "e": "Das gehört zu den Aufgaben der Haus- und Familienpflege."
+  },
+  {
+   "t": "Kocht, wäscht und betreut die Kinder, solange ein Elternteil ausfällt.",
+   "k": 0,
+   "e": "Haus- und Familienpfleger/-innen übernehmen den Familienalltag."
+  },
+  {
+   "t": "Hilft Familien nach Krankheit, Kur oder in einer Krise im eigenen Zuhause.",
+   "k": 0,
+   "e": "Sie unterstützen Familien in Notsituationen."
+  },
+  {
+   "t": "Begleitet Schwangere bei den Vorsorgeterminen und bei der Geburt.",
+   "k": 1,
+   "e": "Das ist das Kerngeschäft einer Hebamme."
+  },
+  {
+   "t": "Berät Eltern nach der Geburt beim Stillen und bei der Babypflege (Hausbesuch).",
+   "k": 1,
+   "e": "Eine mobile Hebamme betreut Mutter und Baby im Wochenbett."
+  },
+  {
+   "t": "Hilft bei der Geburt des Kindes.",
+   "k": 1,
+   "e": "Geburtshilfe ist die Aufgabe von Hebammen und Entbindungspflegern."
+  },
+  {
+   "t": "Kommt zur Familie nach Hause.",
+   "k": 2,
+   "e": "Beide arbeiten oft bei den Familien zu Hause."
+  },
+  {
+   "t": "Braucht Einfühlungsvermögen, Belastbarkeit und Verschwiegenheit.",
+   "k": 2,
+   "e": "Diese persönlichen Voraussetzungen sind in beiden Berufen wichtig."
+  },
+  {
+   "t": "Unterstützt Familien in einer besonderen Lebenssituation.",
+   "k": 2,
+   "e": "Beide Berufe entlasten Familien in einer wichtigen Phase."
+  }
+ ]
+}

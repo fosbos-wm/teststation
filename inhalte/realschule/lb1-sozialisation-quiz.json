@@ -1,0 +1,99 @@
+{
+ "titel": "Was lernt ein Kind in der Familie?",
+ "abzeichen": "🌱",
+ "anleitung": "Primäre Sozialisation, Urvertrauen, soziales Lernen, Werte und Normen: Wähle jeweils die passende Antwort.",
+ "fragen": [
+  {
+   "f": "Was entwickelt sich dadurch bei Leo vor allem?",
+   "o": [
+    "Urvertrauen: Er erfährt, dass er sich auf andere verlassen kann.",
+    "Einen autoritären Erziehungsstil.",
+    "Einen Rollenwandel.",
+    "Gruppenzwang."
+   ],
+   "r": 0,
+   "e": "Wenn Eltern verlässlich auf Bedürfnisse eines Babys reagieren, lernt das Kind: „Ich bin sicher, man kümmert sich um mich.“ Das ist die Grundlage für Urvertrauen.",
+   "fall": "Der kleine Leo weint nachts. Seine Eltern kommen jedes Mal, nehmen ihn auf den Arm und beruhigen ihn."
+  },
+  {
+   "f": "Was zeigt das Beispiel?",
+   "o": [
+    "Die Familie vermittelt Normen: Emma lernt Höflichkeitsregeln im Alltag durch Vorbild und Nachahmen.",
+    "Emma hat sich einen Erziehungsstil ausgesucht.",
+    "Emma hat ihre Rolle gewechselt.",
+    "Normen lernt man nur in der Schule."
+   ],
+   "r": 0,
+   "e": "Kinder schauen sich viel von den Eltern ab. So lernen sie Regeln des Zusammenlebens.",
+   "fall": "Emma (4) sieht, dass ihre Eltern jeden Tag „Bitte“ und „Danke“ sagen. Bald macht sie es auch."
+  },
+  {
+   "f": "Warum nennt man die Familie die erste Sozialisationsinstanz?",
+   "o": [
+    "Weil Kinder hier zuerst und am längsten lernen, sich in einer Gemeinschaft zu verhalten, und erste Werte und Normen kennenlernen.",
+    "Weil Kinder in der Familie nur lernen, was in der Schule gefragt wird.",
+    "Weil man in der Familie keine Regeln braucht.",
+    "Weil die Familie nur für Erwachsene wichtig ist."
+   ],
+   "r": 0,
+   "e": "In der Familie beginnt das Lernen für das Leben in der Gesellschaft: Sprache, Gefühle, Regeln und Werte."
+  },
+  {
+   "f": "Was ist in diesem Beispiel der Wert?",
+   "o": [
+    "Ehrlichkeit",
+    "Pünktlich zum Abendessen kommen",
+    "Schuhe an der Tür ausziehen",
+    "Das Taschengeld am Samstag"
+   ],
+   "r": 0,
+   "e": "Ein Wert ist etwas, das uns wichtig ist. Die Regeln „pünktlich sein“ und „Schuhe ausziehen“ sind dagegen Normen, also konkrete Verhaltensregeln.",
+   "fall": "Familie Özdemir legt großen Wert darauf, dass man ehrlich zueinander ist. Die Kinder sollen pünktlich zum Abendessen kommen und die Schuhe an der Tür ausziehen."
+  },
+  {
+   "f": "Was lernt Ali in dieser Situation?",
+   "o": [
+    "Sozialverhalten: wie man mit Wut umgeht, ohne anderen wehzutun.",
+    "Wie man den Erziehungsstil der Eltern ändert.",
+    "Wie man Urvertrauen verliert.",
+    "Nichts, weil er noch zu klein ist."
+   ],
+   "r": 0,
+   "e": "Kinder lernen schon früh, Gefühle zu zeigen und zu steuern. Das gehört zum sozialen Lernen.",
+   "fall": "Der vierjährige Ali schlägt vor Wut seinen Bruder. Die Mutter nimmt ihn zur Seite und erklärt ihm, dass man andere nicht schlägt und stattdessen sagen kann, was einen ärgert."
+  },
+  {
+   "f": "Welche Aussage zur Eltern-Kind-Beziehung stimmt?",
+   "o": [
+    "Eine verlässliche, liebevolle Beziehung in den ersten Lebensjahren hilft beim Aufbau von Urvertrauen.",
+    "Urvertrauen entsteht erst in der Pubertät.",
+    "Für das Urvertrauen sind vor allem teure Geschenke wichtig.",
+    "Je weniger Zuwendung ein Baby bekommt, desto selbstständiger wird es."
+   ],
+   "r": 0,
+   "e": "Babys brauchen Nähe, Schutz und Verlässlichkeit. Das ist die Grundlage, auf der später Selbstvertrauen wächst."
+  },
+  {
+   "f": "Was ist ein Beispiel für Werte- und Normenvermittlung in der Familie?",
+   "o": [
+    "Die Eltern erklären, warum man nicht lügt, und gehen selbst mit gutem Beispiel voran.",
+    "Das Kind sucht sich allein aus, welche Regeln es gut findet.",
+    "Die Eltern sagen nie, was ihnen wichtig ist.",
+    "Der Fernseher erklärt dem Kind, was richtig ist."
+   ],
+   "r": 0,
+   "e": "Kinder lernen Werte durch Erklärungen und durch das Vorbild der Eltern."
+  },
+  {
+   "f": "Welche Einrichtung gehört nicht zur primären Sozialisation?",
+   "o": [
+    "Die Realschule",
+    "Die Familie",
+    "Die Kinderkrippe",
+    "Der Kindergarten"
+   ],
+   "r": 0,
+   "e": "Familie, Kinderkrippe und Kindergarten sind primäre Sozialisationsinstanzen. Die Schule gehört zur sekundären Sozialisation (das ist das Thema von Lernbereich 2)."
+  }
+ ]
+}

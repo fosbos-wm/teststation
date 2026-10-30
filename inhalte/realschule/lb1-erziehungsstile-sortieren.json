@@ -1,0 +1,73 @@
+{
+ "titel": "Welcher Erziehungsstil?",
+ "abzeichen": "👨‍👩‍👧",
+ "anleitung": "Lies, wie sich die Eltern verhalten, und entscheide: Welcher Erziehungsstil passt? Vier Stile stehen zur Wahl.",
+ "kategorien": [
+  "autoritär",
+  "autoritativ",
+  "permissiv",
+  "vernachlässigend"
+ ],
+ "karten": [
+  {
+   "t": "„Du machst das, weil ich es sage. Diskussion beendet!“",
+   "k": 0,
+   "e": "Befehle ohne Begründung und ohne Mitsprache: autoritär."
+  },
+  {
+   "t": "Bei einem Regelverstoß gibt es sofort Strafe. Erklärungen gibt es nicht.",
+   "k": 0,
+   "e": "Strenge Kontrolle und Strafen ohne Erklärung: autoritär."
+  },
+  {
+   "t": "Die Eltern bestimmen Freunde, Kleidung und Hobbys der Tochter, ohne sie zu fragen.",
+   "k": 0,
+   "e": "Die Eltern entscheiden allein, das Kind hat keine Mitsprache: autoritär."
+  },
+  {
+   "t": "„Wir haben feste Regeln, aber ich erkläre dir, warum, und ich höre mir deine Meinung an.“",
+   "k": 1,
+   "e": "Klare Regeln, Begründungen und Mitsprache: autoritativ."
+  },
+  {
+   "t": "Die Eltern loben, trösten, setzen klare Grenzen und lassen ihr Kind altersgerecht mitentscheiden.",
+   "k": 1,
+   "e": "Zuwendung und Grenzen zugleich: autoritativ."
+  },
+  {
+   "t": "Nach einem Streit reden die Eltern mit dem Kind über die Gründe und suchen gemeinsam eine Lösung. Die Konsequenzen bleiben aber klar.",
+   "k": 1,
+   "e": "Gespräch, Mitsprache und klare Folgen: autoritativ."
+  },
+  {
+   "t": "„Mach, was du willst, Hauptsache du bist glücklich.“",
+   "k": 2,
+   "e": "Kaum Regeln und Grenzen: permissiv."
+  },
+  {
+   "t": "Das Kind darf bis spät in die Nacht aufbleiben und essen, was es will. Regeln gibt es kaum.",
+   "k": 2,
+   "e": "Viel Freiheit ohne feste Regeln: permissiv."
+  },
+  {
+   "t": "Die Eltern geben bei jeder Quengelei sofort nach.",
+   "k": 2,
+   "e": "Wer immer nachgibt, setzt keine Grenzen: permissiv."
+  },
+  {
+   "t": "Die Eltern interessieren sich kaum dafür, was das Kind tut. Es kommt und geht, wann es will.",
+   "k": 3,
+   "e": "Kaum Zuwendung und kaum Interesse: vernachlässigend."
+  },
+  {
+   "t": "Hausaufgaben, Freunde, Sorgen: Niemand fragt je nach.",
+   "k": 3,
+   "e": "Das Kind ist weitgehend sich selbst überlassen: vernachlässigend."
+  },
+  {
+   "t": "Das Kind bekommt weder klare Regeln noch Zuwendung und ist meist allein.",
+   "k": 3,
+   "e": "Weder Zuwendung noch Regeln: vernachlässigend."
+  }
+ ]
+}

@@ -1,0 +1,98 @@
+{
+ "titel": "Krippe und Kindergarten",
+ "abzeichen": "🧸",
+ "anleitung": "Wähle jeweils die passende Antwort. Denk an die Bedeutung der Kita für das Kind und an die Gruppe.",
+ "fragen": [
+  {
+   "f": "Für welche Kinder ist eine Kinderkrippe gedacht?",
+   "o": [
+    "Für Kinder unter drei Jahren",
+    "Für Kinder ab sechs Jahren",
+    "Für Jugendliche",
+    "Nur für Schulkinder"
+   ],
+   "r": 0,
+   "e": "Die Krippe betreut die Jüngsten, meist bis zum dritten Geburtstag. Danach folgt der Kindergarten."
+  },
+  {
+   "f": "Für welche Kinder ist ein Kindergarten gedacht?",
+   "o": [
+    "Für Kinder von etwa drei Jahren bis zum Schuleintritt",
+    "Für Babys unter einem Jahr",
+    "Für Jugendliche",
+    "Für Kinder von 10 bis 12 Jahren"
+   ],
+   "r": 0,
+   "e": "Der Kindergarten begleitet Kinder bis zum Schulbeginn."
+  },
+  {
+   "f": "Was entwickelt Lina hier?",
+   "o": [
+    "Gruppenfähigkeit",
+    "Urvertrauen",
+    "Einen autoritären Erziehungsstil",
+    "Einen Rollenwandel"
+   ],
+   "r": 0,
+   "e": "In der Gruppe lernt Lina, Rücksicht zu nehmen, zu warten und zu teilen. Das nennt man Gruppenfähigkeit.",
+   "fall": "Lina (4) lernt im Kindergarten, auf andere zu warten, Spielzeug zu teilen und gemeinsam aufzuräumen."
+  },
+  {
+   "f": "Was zeigt dieses Beispiel?",
+   "o": [
+    "In der Spielgruppe bilden sich verschiedene Rollen heraus, zum Beispiel Anführer, Mitläufer und Außenseiter.",
+    "Alle Kinder haben immer die gleiche Rolle.",
+    "In der Kita gibt es keine Gruppenregeln.",
+    "Nur die Erzieherin hat eine Rolle."
+   ],
+   "r": 0,
+   "e": "Schon kleine Kinder nehmen in Gruppen unterschiedliche Rollen ein. Diese Rollen können sich auch wieder verändern.",
+   "fall": "In der Bauecke bestimmt Paul meistens, was gespielt wird. Mia macht mit. Jonas spielt oft allein am Rand."
+  },
+  {
+   "f": "Wie ergänzt die Kita die Familie?",
+   "o": [
+    "Sie bietet zusätzliche Lernfelder: eine Gruppe Gleichaltriger, weitere Bezugspersonen und gemeinsame Regeln.",
+    "Sie ersetzt die Familie vollständig.",
+    "Sie verbietet den Eltern, ihre Kinder zu erziehen.",
+    "Sie hat mit Erziehung nichts zu tun."
+   ],
+   "r": 0,
+   "e": "Kinderkrippe und Kindergarten ergänzen die Erziehung in der Familie, sie ersetzen sie nicht."
+  },
+  {
+   "f": "Welche Werte und Normen können Kinder in der Kita kennenlernen?",
+   "o": [
+    "Gemeinsame Regeln wie Aufräumen, Teilen, Warten und im Stuhlkreis zuhören.",
+    "Nur die Regeln der eigenen Familie.",
+    "Gar keine, weil das nur in der Schule vorkommt.",
+    "Nur Regeln für Erwachsene."
+   ],
+   "r": 0,
+   "e": "In der Kita üben Kinder Regeln für das Miteinander in einer größeren Gruppe."
+  },
+  {
+   "f": "Wozu zählen Kinderkrippe und Kindergarten nach dem Lehrplan?",
+   "o": [
+    "Zu den primären Sozialisationsinstanzen",
+    "Zu den sekundären Sozialisationsinstanzen",
+    "Zu den Medien",
+    "Zu den familienunterstützenden Berufen"
+   ],
+   "r": 0,
+   "e": "Krippe und Kindergarten gehören zusammen mit der Familie zur primären Sozialisation."
+  },
+  {
+   "f": "Warum ist die Beziehung zu den Erzieherinnen und Erziehern wichtig?",
+   "o": [
+    "Sie gibt dem Kind zusätzliche Sicherheit und hilft ihm, sich auf die Gruppe einzulassen.",
+    "Sie ersetzt die Eltern für immer.",
+    "Sie ist unwichtig, weil das Kind nur mit anderen Kindern spielt.",
+    "Sie ist wichtig, damit das Kind keine Regeln lernt."
+   ],
+   "r": 0,
+   "e": "Verlässliche Bezugspersonen helfen Kindern, sich in der Gruppe wohlzufühlen.",
+   "fall": "Der dreijährige Noah weint morgens beim Abschied. Die Erzieherin bleibt ruhig, nimmt ihn auf den Arm und spricht mit ihm."
+  }
+ ]
+}

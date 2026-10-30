@@ -1,0 +1,57 @@
+{
+ "titel": "Muss-, Soll- oder Kann-Norm?",
+ "abzeichen": "📜",
+ "anleitung": "Normen sind Verhaltensregeln. Manche sind verpflichtend (Muss), manche werden erwartet (Soll), manche sind freiwillig (Kann). Ordne zu. Bei Unsicherheit hilft eure Besprechung im Unterricht.",
+ "kategorien": [
+  "Muss-Norm",
+  "Soll-Norm",
+  "Kann-Norm"
+ ],
+ "karten": [
+  {
+   "t": "Schulpflicht: Alle Kinder müssen zur Schule gehen.",
+   "k": 0,
+   "e": "Das ist gesetzlich vorgeschrieben (Art. 129 BV)."
+  },
+  {
+   "t": "Gewalt gegen Mitschüler ist verboten.",
+   "k": 0,
+   "e": "Hier gibt es klare Verbote und deutliche Folgen."
+  },
+  {
+   "t": "Fremdes Eigentum darf nicht beschädigt werden.",
+   "k": 0,
+   "e": "Auch das ist rechtlich geregelt."
+  },
+  {
+   "t": "Beim Betreten des Klassenzimmers grüßt man.",
+   "k": 1,
+   "e": "Eine Sitte: Man erwartet es, aber es ist kein Gesetz."
+  },
+  {
+   "t": "Man meldet sich, bevor man spricht.",
+   "k": 1,
+   "e": "Eine übliche Regel für gutes Miteinander."
+  },
+  {
+   "t": "Man kommt pünktlich zum Unterricht.",
+   "k": 1,
+   "e": "Wird erwartet; Verstöße haben Folgen, sind aber unterschiedlich schwer."
+  },
+  {
+   "t": "Man kommt am Faschingsdienstag verkleidet zur Schule.",
+   "k": 2,
+   "e": "Ein Brauch, der freiwillig ist."
+  },
+  {
+   "t": "Man unterstützt das Schulfest mit einer Kuchenspende.",
+   "k": 2,
+   "e": "Freiwillig: Es ist möglich, aber nicht verlangt."
+  },
+  {
+   "t": "Man tritt der Schul-AG bei.",
+   "k": 2,
+   "e": "Freiwilliges Angebot."
+  }
+ ]
+}

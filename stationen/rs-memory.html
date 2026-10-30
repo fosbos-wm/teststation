@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Memory – Sozialwesen 7</title><link rel="stylesheet" href="../css/rs.css">
+<style>
+.feld{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media (max-width:640px){.feld{grid-template-columns:repeat(2,1fr)}}
+.kt{position:relative;min-height:104px;border-radius:14px;border:2px solid var(--line);background:var(--pri);color:var(--pri-ink);cursor:pointer;display:grid;place-items:center;padding:8px;font-size:1.8rem;perspective:600px}
+.kt .v{display:none;font-size:.93rem;font-weight:600;line-height:1.3;text-align:center;color:var(--fg)}
+.kt.auf,.kt.fertig{background:var(--panel);border-color:var(--pri);font-size:1rem}
+.kt.auf .v,.kt.fertig .v{display:block}.kt.auf .r,.kt.fertig .r{display:none}
+.kt.fertig{background:var(--ok-soft);border-color:var(--ok)}
+.kt.falsch{background:var(--bad-soft);border-color:var(--bad)}
+.kt:disabled{cursor:default}
+.paar{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:8px 0;border-top:1px solid var(--line)}
+.paar:first-of-type{border-top:0}
+@media (max-width:520px){.paar{grid-template-columns:1fr}}
+</style></head>
+<body><div class="rs"><header id="kopf"><p class="muted">Lade Übung …</p></header><main id="main"></main><div id="ende"></div><div id="loesung"></div></div>
+<script src="../js/rs-lob.js"></script>
+<script>
+/* Memory: zusammengehörige Karten aufdecken. Je weniger Züge, desto besser. */
+RS.load(function (d) {
+  const $ = RS.$, esc = RS.esc, P = d.paare, n = P.length;
+  const karten = RS.shuffle(P.flatMap((p, i) => [{ id: i * 2, p: i, t: p[0] }, { id: i * 2 + 1, p: i, t: p[1] }]));
+  let erste = null, sperre = false, zuege = 0, gefunden = 0, serie = 0;
+
+  $("main").innerHTML = '<div class="aktion" style="margin:0 0 12px"><span class="muted" id="zz">Züge: 0</span></div><div class="feld" id="feld">' +
+    karten.map((k, i) => '<button type="button" class="kt" data-i="' + i + '" aria-label="Karte ' + (i + 1) + ', verdeckt"><span class="r" aria-hidden="true">❓</span><span class="v">' + esc(k.t) + "</span></button>").join("") + "</div>";
+  document.querySelectorAll(".kt").forEach(b => b.addEventListener("click", () => klick(+b.dataset.i)));
+  RS.meter(0, n, 0);
+
+  function klick(i) {
+    const b = document.querySelectorAll(".kt")[i];
+    if (sperre || b.classList.contains("auf") || b.classList.contains("fertig")) return;
+    b.classList.add("auf"); b.setAttribute("aria-label", "Karte " + (i + 1) + ": " + karten[i].t);
+    if (erste === null) { erste = i; return; }
+    zuege++; $("zz").textContent = "Züge: " + zuege;
+    const a = erste; erste = null;
+    const ba = document.querySelectorAll(".kt")[a];
+    if (karten[a].p === karten[i].p) {
+      ba.classList.remove("auf"); ba.classList.add("fertig"); b.classList.remove("auf"); b.classList.add("fertig"); ba.disabled = b.disabled = true;
+      gefunden++; serie++; RS.meter(gefunden, n, serie);
+      const lob = RS.lobRichtig(serie); if (lob && gefunden < n) RS.sag(lob.t, lob.gross);
+      if (gefunden === n) setTimeout(ende, 500);
+    } else {
+      sperre = true; serie = 0; RS.meter(gefunden, n, 0);
+      ba.classList.add("falsch"); b.classList.add("falsch");
+      setTimeout(() => { [ba, b].forEach(x => { x.classList.remove("auf", "falsch"); x.setAttribute("aria-label", "verdeckt"); }); sperre = false; }, 1300);
+    }
+  }
+
+  function ende() {
+    const p = Math.min(100, Math.round(150 * n / zuege));
+    RS.endkarte($("ende"), {
+      punkte: p, max: 100, fehler: 0,
+      extra: "Du hast " + n + " Paare in " + zuege + " Zügen gefunden. Mit höchstens " + Math.ceil(n * 1.5) + " Zügen gibt es 100 %.",
+      loesung: () => {
+        $("loesung").innerHTML = '<div class="card loesung"><h2>Alle Paare</h2>' + P.map(p => '<div class="paar"><b>' + esc(p[0]) + "</b><span>" + esc(p[1]) + "</span></div>").join("") + "</div>";
+        $("loesung").scrollIntoView({ behavior: RS.reduced ? "auto" : "smooth" });
+      }
+    });
+    $("ende").querySelector(".punkte").textContent = p + " % (" + zuege + " Züge)";
+  }
+});
+</script></body></html>

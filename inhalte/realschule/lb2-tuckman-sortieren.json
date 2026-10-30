@@ -1,0 +1,73 @@
+{
+ "titel": "Phasen einer Gruppe nach Tuckman",
+ "abzeichen": "📈",
+ "anleitung": "Jede Gruppe durchläuft Phasen, bis sie gut zusammenarbeitet. Ordne jedes Beispiel der passenden Phase zu. (Die Bezeichnungen können im Unterricht leicht abweichen.)",
+ "kategorien": [
+  "Forming (Kennenlernen)",
+  "Storming (Konflikt)",
+  "Norming (Regeln finden)",
+  "Performing (Arbeiten)"
+ ],
+ "karten": [
+  {
+   "t": "Alle sind noch zurückhaltend und beobachten, wer wie ist.",
+   "k": 0,
+   "e": "Am Anfang orientiert man sich und tastet sich vorsichtig heran."
+  },
+  {
+   "t": "Man stellt sich vor und sucht vorsichtig Kontakt zu den anderen.",
+   "k": 0,
+   "e": "Typisch für die erste Phase."
+  },
+  {
+   "t": "Die Lehrerin gibt zu Beginn viel Orientierung und erklärt alles genau.",
+   "k": 0,
+   "e": "In der Anfangsphase braucht die Gruppe Orientierung."
+  },
+  {
+   "t": "Es gibt Streit um Führung und Aufgaben, Meinungen prallen aufeinander.",
+   "k": 1,
+   "e": "Typisch für die Konfliktphase."
+  },
+  {
+   "t": "Kleine Grüppchen bilden sich, manche widersprechen offen.",
+   "k": 1,
+   "e": "Die Mitglieder zeigen jetzt ihre Unterschiede."
+  },
+  {
+   "t": "Jemand fragt: „Warum sollen wir tun, was sie sagt?“",
+   "k": 1,
+   "e": "Machtfragen tauchen auf: Storming."
+  },
+  {
+   "t": "Die Klasse einigt sich auf gemeinsame Klassenregeln.",
+   "k": 2,
+   "e": "Die Gruppe findet Regeln, nach denen sie zusammenarbeitet."
+  },
+  {
+   "t": "Das Gefühl „Wir sind eine Klasse“ entsteht.",
+   "k": 2,
+   "e": "Zusammengehörigkeit wächst."
+  },
+  {
+   "t": "Aufgaben werden fair verteilt, man hilft einander.",
+   "k": 2,
+   "e": "Die Gruppe organisiert sich."
+  },
+  {
+   "t": "Die Gruppe löst Aufgaben selbstständig und effektiv.",
+   "k": 3,
+   "e": "Die Gruppe arbeitet jetzt gut zusammen."
+  },
+  {
+   "t": "Konflikte werden gemeinsam geklärt, ohne dass die Arbeit stoppt.",
+   "k": 3,
+   "e": "Typisch für die Arbeitsphase."
+  },
+  {
+   "t": "Jeder bringt seine Stärken ein, das Projekt gelingt.",
+   "k": 3,
+   "e": "Die Gruppe erreicht ihr Ziel."
+  }
+ ]
+}

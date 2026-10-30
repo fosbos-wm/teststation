@@ -1,0 +1,86 @@
+{
+ "titel": "Probe-Stegreifaufgabe Lernbereich 1",
+ "abzeichen": "🏆",
+ "anleitung": "Bearbeite die Aufgaben wie in einer Stegreifaufgabe (ca. 20 Minuten). Danach vergleichst du mit der Musterlösung.",
+ "aufgaben": [
+  {
+   "nr": "1",
+   "op": "Nenne",
+   "be": 1,
+   "zeilen": 2,
+   "fall": "Frau Brandt hat zwei Kinder, Ella (5) und Tom (12). Vor vier Jahren hat sie sich vom Vater der Kinder getrennt. Seit zwei Jahren lebt sie mit ihrem neuen Partner zusammen, der seine Tochter Mia (15) mitgebracht hat. Alle wohnen gemeinsam in einer Wohnung in München.",
+   "aufgabe": "Nenne die Familienform, die in dem Fallbeispiel beschrieben wird.",
+   "muster": "Patchwork-Familie",
+   "checkliste": [
+    "Ich habe „Patchwork-Familie“ genannt."
+   ]
+  },
+  {
+   "nr": "2",
+   "op": "Beschreibe",
+   "be": 4,
+   "zeilen": 6,
+   "aufgabe": "Beschreibe, welche Vor- und Nachteile durch diese Familienform entstehen können. Nenne jeweils zwei Aspekte.",
+   "muster": "Vorteile: Die Kinder gewinnen zusätzliche Bezugspersonen und Stiefgeschwister. Ein weiterer Erwachsener kann im Alltag und bei der Erziehung mithelfen.\nNachteile: Alle müssen sich erst als neue Familie finden, und es kann Streit um Regeln und Aufmerksamkeit geben. Die Kinder müssen mit der Trennung der Eltern und neuen Rollen zurechtkommen.",
+   "checkliste": [
+    "Ich habe einen ersten Vorteil genannt.",
+    "Ich habe einen zweiten Vorteil genannt.",
+    "Ich habe einen ersten Nachteil genannt.",
+    "Ich habe einen zweiten Nachteil genannt."
+   ]
+  },
+  {
+   "nr": "3",
+   "op": "Beschreibe",
+   "be": 4,
+   "zeilen": 7,
+   "aufgabe": "Beschreibe jeweils in einem kurzen Fallbeispiel eine Regenbogenfamilie (a) und eine Großfamilie (b).",
+   "muster": "(a) Zwei Väter, Jonas und Kai, ziehen gemeinsam ihre Tochter Lea (6) auf. Sie teilen sich Erziehung und Haushalt.\n(b) Im Haus der Familie Aydin leben die Großeltern, die Eltern und die Kinder Selin (10) und Emre (7). Die Großmutter kocht mittags für alle.",
+   "checkliste": [
+    "(a) zwei gleichgeschlechtliche Eltern mit Kind",
+    "(a) Namen, Alter oder Alltagssituation genannt",
+    "(b) mindestens drei Generationen in einem Haushalt",
+    "(b) Namen, Alter oder Alltagssituation genannt"
+   ]
+  },
+  {
+   "nr": "4",
+   "op": "Erkläre",
+   "be": 3,
+   "zeilen": 5,
+   "aufgabe": "Erkläre den Rollenwandel innerhalb von Familien anhand eines aussagekräftigen Beispiels.",
+   "muster": "Rollenwandel heißt, dass sich die Aufgaben und Erwartungen an Familienmitglieder im Lauf der Zeit verändern. Früher war oft allein der Vater berufstätig, die Mutter kümmerte sich um Haushalt und Kinder. Heute arbeiten in vielen Familien beide Eltern, und auch Väter übernehmen Hausarbeit und Kinderbetreuung, zum Beispiel in der Elternzeit.",
+   "checkliste": [
+    "Ich habe erklärt, dass sich Rollen im Lauf der Zeit verändern.",
+    "Ich habe ein Beispiel mit „früher“ und „heute“ genannt.",
+    "Ich habe gezeigt, was sich in der Familie verändert."
+   ]
+  },
+  {
+   "nr": "5",
+   "op": "Nenne",
+   "be": 2,
+   "zeilen": 3,
+   "aufgabe": "Nenne zwei Formen der Ersatzfamilie.",
+   "muster": "Pflegefamilie, Adoptivfamilie (auch möglich: Kinderdorffamilie)",
+   "checkliste": [
+    "Ich habe eine Ersatzfamilie richtig genannt.",
+    "Ich habe eine zweite Ersatzfamilie richtig genannt."
+   ]
+  },
+  {
+   "nr": "6",
+   "op": "Erkläre",
+   "be": 3,
+   "zeilen": 5,
+   "fall": "Frau Kern sagt zu ihrer Tochter: „Das Handy ist ab 21 Uhr aus. Ich erkläre dir, warum, und ich höre mir deine Meinung gern an.“",
+   "aufgabe": "Nenne den Erziehungsstil und begründe deine Antwort mit einem Hinweis aus dem Fallbeispiel. Nenne außerdem einen Vorteil dieses Stils.",
+   "muster": "Es ist der autoritative Erziehungsstil. Frau Kern setzt eine klare Regel, erklärt sie und hört sich die Meinung ihrer Tochter an. Ein Vorteil: Die Tochter lernt Selbstständigkeit und Verantwortung innerhalb klarer Grenzen.",
+   "checkliste": [
+    "Ich habe den autoritativen Stil genannt.",
+    "Ich habe einen Hinweis aus dem Text genannt (klare Regel, Erklärung, Mitsprache).",
+    "Ich habe einen Vorteil des Stils genannt."
+   ]
+  }
+ ]
+}

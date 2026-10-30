@@ -1,0 +1,76 @@
+{
+ "titel": "Pawlow: Klassische Konditionierung im Fall",
+ "abzeichen": "🔔",
+ "anleitung": "Ein Fallbeispiel nach dem Muster von Pawlows Experiment. Bestimme die Bestandteile.",
+ "fragen": [
+  {
+   "f": "Was ist hier der unbedingte Reiz?",
+   "o": [
+    "Das Futter",
+    "Die Glocke",
+    "Das Speicheln auf die Glocke",
+    "Der Raum"
+   ],
+   "r": 0,
+   "e": "Das Futter löst die Reaktion (Speichelfluss) von allein aus: unbedingter Reiz.",
+   "fall": "Ein Hund bekommt jedes Mal Futter, wenn zuvor eine Glocke läutet. Nach einiger Zeit läuft ihm schon beim Klang der Glocke der Speichel."
+  },
+  {
+   "f": "Was ist hier der neutrale Reiz, der später zum bedingten Reiz wird?",
+   "o": [
+    "Die Glocke",
+    "Das Futter",
+    "Der Speichelfluss",
+    "Der Hund"
+   ],
+   "r": 0,
+   "e": "Die Glocke löst anfangs nichts aus (neutral). Durch die Verknüpfung wird sie zum bedingten Reiz.",
+   "fall": "Ein Hund bekommt jedes Mal Futter, wenn zuvor eine Glocke läutet. Nach einiger Zeit läuft ihm schon beim Klang der Glocke der Speichel."
+  },
+  {
+   "f": "Was ist hier die bedingte Reaktion?",
+   "o": [
+    "Der Speichelfluss beim Klang der Glocke",
+    "Der Speichelfluss beim Anblick des Futters",
+    "Das Läuten der Glocke",
+    "Das Fressen"
+   ],
+   "r": 0,
+   "e": "Die Reaktion auf den ursprünglich neutralen Reiz heißt bedingte Reaktion.",
+   "fall": "Ein Hund bekommt jedes Mal Futter, wenn zuvor eine Glocke läutet. Nach einiger Zeit läuft ihm schon beim Klang der Glocke der Speichel."
+  },
+  {
+   "f": "Was lernt der Hund dabei?",
+   "o": [
+    "Er verknüpft die Glocke mit dem Futter.",
+    "Er lernt, die Glocke zu läuten.",
+    "Er lernt das Fressen.",
+    "Er imitiert ein anderes Tier."
+   ],
+   "r": 0,
+   "e": "Klassische Konditionierung ist Lernen durch Verknüpfung (Assoziation) zweier Reize."
+  },
+  {
+   "f": "Welches Schulbeispiel gehört zur klassischen Konditionierung?",
+   "o": [
+    "Ein Schüler bekommt Bauchweh, sobald er das Klassenzimmer des gefürchteten Tests betritt.",
+    "Eine Schülerin bekommt für gute Mitarbeit ein Lob und meldet sich öfter.",
+    "Ein Schüler kopiert das Verhalten eines Vorbilds.",
+    "Eine Klasse bekommt eine Belohnung für Ruhe."
+   ],
+   "r": 0,
+   "e": "Bei der klassischen Konditionierung löst ein Reiz (Raum) durch Verknüpfung eine Reaktion (Angst) aus."
+  },
+  {
+   "f": "Wie nennt man Pawlows Lerntheorie noch?",
+   "o": [
+    "Klassisches Konditionieren",
+    "Lernen durch Einsicht",
+    "Operantes Konditionieren",
+    "Lernen am Modell"
+   ],
+   "r": 0,
+   "e": "Pawlow = klassisches Konditionieren; Skinner = operantes Konditionieren; Bandura = Lernen am Modell."
+  }
+ ]
+}

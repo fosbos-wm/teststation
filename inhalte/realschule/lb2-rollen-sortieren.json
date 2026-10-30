@@ -1,0 +1,61 @@
+{
+ "titel": "Formelle oder informelle Rolle?",
+ "abzeichen": "🎭",
+ "anleitung": "Welche Rolle ist offiziell (formelle Rolle) und welche hat sich in der Gruppe ergeben (informelle Rolle)?",
+ "kategorien": [
+  "Formelle Rolle",
+  "Informelle Rolle"
+ ],
+ "karten": [
+  {
+   "t": "Klassensprecherin",
+   "k": 0,
+   "e": "Sie wird offiziell gewählt und hat Aufgaben."
+  },
+  {
+   "t": "Schülersprecher",
+   "k": 0,
+   "e": "Ein offizielles Amt in der Schule."
+  },
+  {
+   "t": "Ordnungsdienst der Klasse",
+   "k": 0,
+   "e": "Die Klasse hat diese Aufgabe festgelegt."
+  },
+  {
+   "t": "Streitschlichter",
+   "k": 0,
+   "e": "Er hat eine Ausbildung und eine offizielle Aufgabe."
+  },
+  {
+   "t": "Klassenlehrerin",
+   "k": 0,
+   "e": "Die Rolle ist von der Schule festgelegt."
+  },
+  {
+   "t": "Klassenclown",
+   "k": 1,
+   "e": "Niemand hat diese Rolle vergeben, sie hat sich entwickelt."
+  },
+  {
+   "t": "Anführerin einer Clique",
+   "k": 1,
+   "e": "Sie hat die Rolle durch ihr Verhalten bekommen."
+  },
+  {
+   "t": "Außenseiter",
+   "k": 1,
+   "e": "Eine Rolle, die sich in der Gruppe ergibt (und die man verändern kann)."
+  },
+  {
+   "t": "Mitläufer",
+   "k": 1,
+   "e": "Eine informelle Rolle, die sich im Verhalten zeigt."
+  },
+  {
+   "t": "Die Mitschülerin, zu der alle gehen, wenn es Streit gibt (ohne offizielles Amt)",
+   "k": 1,
+   "e": "Sie hat sich eine Vermittlerrolle erworben."
+  }
+ ]
+}

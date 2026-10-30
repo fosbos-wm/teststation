@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Lückentext – Sozialwesen 7</title><link rel="stylesheet" href="../css/rs.css">
+<style>
+.txt{line-height:2.2;font-size:1.02rem}
+.gap{display:inline-block;min-width:7.5em;padding:2px 10px;margin:0 2px;border-radius:10px;border:2px dashed var(--pri);background:var(--pri-soft);cursor:pointer;line-height:1.5;text-align:center;font-weight:700;color:var(--fg)}
+.gap.ready{background:var(--warn-soft);border-color:var(--warn)}
+.gap.f{border-style:solid}
+.gap.ok{background:var(--ok-soft);border-color:var(--ok);color:var(--ok);cursor:default}
+.gap.bad{background:var(--bad-soft);border-color:var(--bad);color:var(--bad)}
+.bank{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;padding:12px;border-radius:14px;background:color-mix(in srgb,var(--line) 40%,transparent);min-height:54px}
+.chip{padding:8px 14px;border-radius:99px;border:2px solid var(--line);background:var(--panel);cursor:pointer;font-weight:700}
+.chip.sel{border-color:var(--pri);box-shadow:0 0 0 3px color-mix(in srgb,var(--pri) 30%,transparent)}
+</style></head>
+<body><div class="rs"><header id="kopf"><p class="muted">Lade Übung …</p></header><main id="main"></main><div id="ende"></div><div id="loesung"></div></div>
+<script src="../js/rs-lob.js"></script>
+<script>
+/* Lückentext mit Wortspeicher: Wort antippen, dann die Lücke antippen. Es gibt Wörter, die nicht passen. */
+RS.load(function (d) {
+  const $ = RS.$, esc = RS.esc;
+  const G = [], segs = [];
+  d.text.split(/\[\[(.+?)\]\]/).forEach((p, i) => { if (i % 2 === 0) segs.push({ t: p }); else { segs.push({ g: G.length }); G.push(p); } });
+  const chips = RS.shuffle(G.map((w, i) => ({ id: i, w })).concat((d.extra || []).map((w, i) => ({ id: 100 + i, w }))));
+  const fill = {}; let sel = null, res = null, versuche = 0, erst = null, fertig = false;
+
+  $("main").innerHTML = '<div class="card"><div class="txt" id="txt"></div><div class="bank" id="bank" aria-label="Wortspeicher"></div><div id="fb" role="status"></div>' +
+    '<div class="aktion"><button type="button" class="btn" id="pruef" disabled>Prüfen</button><button type="button" class="btn alt" id="los">Lösung zeigen</button><span class="muted small" id="st"></span></div></div>';
+  $("pruef").addEventListener("click", pruefen); $("los").addEventListener("click", loes);
+  zeichne();
+
+  function wort(id) { return chips.find(c => c.id === id).w; }
+  function zeichne() {
+    $("txt").innerHTML = segs.map(s => {
+      if (s.t !== undefined) return esc(s.t).replace(/\n\n/g, "<br><br>").replace(/\n/g, "<br>");
+      const f = fill[s.g], c = res && f !== undefined ? (res[s.g] ? " ok" : " bad") : "";
+      return '<button type="button" class="gap' + (f !== undefined ? " f" : "") + c + (sel !== null && f === undefined ? " ready" : "") + '" data-g="' + s.g + '" aria-label="Lücke ' + (s.g + 1) + '">' + (f !== undefined ? esc(wort(f)) : "&nbsp;") + "</button>";
+    }).join("");
+    const used = new Set(Object.values(fill));
+    $("bank").innerHTML = chips.filter(c => !used.has(c.id)).map(c => '<button type="button" class="chip' + (sel === c.id ? " sel" : "") + '" data-c="' + c.id + '">' + esc(c.w) + "</button>").join("") || '<span class="muted">Alle Wörter eingesetzt.</span>';
+    const n = Object.keys(fill).length;
+    $("pruef").disabled = fertig || n !== G.length; $("st").textContent = n + " von " + G.length + " Lücken gefüllt";
+    RS.meter(n, G.length, 0);
+    document.querySelectorAll("[data-c]").forEach(b => b.addEventListener("click", () => { if (fertig) return; sel = sel === +b.dataset.c ? null : +b.dataset.c; zeichne(); }));
+    document.querySelectorAll("[data-g]").forEach(b => b.addEventListener("click", () => luecke(+b.dataset.g)));
+  }
+  function luecke(g) {
+    if (fertig) return;
+    if (res && res[g] && fill[g] !== undefined) return;
+    if (fill[g] !== undefined) { delete fill[g]; if (res) delete res[g]; sel = null; $("fb").innerHTML = ""; zeichne(); return; }
+    if (sel === null) return;
+    fill[g] = sel; sel = null; zeichne();
+  }
+  function pruefen() {
+    versuche++; res = {}; let ok = 0;
+    G.forEach((w, g) => { res[g] = wort(fill[g]) === w; if (res[g]) ok++; });
+    if (erst === null) erst = ok;
+    zeichne();
+    if (ok === G.length) { fertig = true; $("pruef").disabled = true; $("los").hidden = true; $("fb").innerHTML = '<div class="fb ok"><b class="kopfzeile">✓ Alle Lücken stimmen</b></div>'; RS.sag(versuche === 1 ? "Alles richtig – gleich beim ersten Mal! 🏆" : "Geschafft! Die Fehler hast du selbst gefunden. 👍", versuche === 1); ende(); }
+    else { $("fb").innerHTML = '<div class="fb bad"><b class="kopfzeile">' + ok + " von " + G.length + " Lücken richtig</b><div>Rote Wörter antippen, dann ein neues Wort einsetzen und erneut prüfen.</div></div>"; const t = RS.trost(); if (t) RS.sag(t, false); }
+  }
+  function loes() {
+    G.forEach((w, g) => { const c = chips.find(x => x.id === g); fill[g] = c.id; });
+    res = {}; G.forEach((w, g) => { res[g] = true; }); fertig = true; if (erst === null) erst = 0;
+    $("los").hidden = true; $("fb").innerHTML = '<div class="fb"><b class="kopfzeile">So lautet der Text richtig</b><div>Lies ihn einmal laut durch und versuche es später noch einmal.</div></div>'; zeichne(); ende();
+  }
+  function ende() {
+    RS.endkarte($("ende"), { punkte: erst, max: G.length, fehler: 0, extra: "Gezählt werden die Lücken, die beim ersten Prüfen richtig waren." });
+  }
+});
+</script></body></html>

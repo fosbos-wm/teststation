@@ -1,0 +1,54 @@
+{
+ "titel": "Diagramm auswerten: Familien nach Familienform",
+ "abzeichen": "📊",
+ "anleitung": "Sieh dir das Balkendiagramm an. Entscheide bei jeder Aussage: trifft zu, trifft nicht zu oder keine Aussage möglich. Falsche Aussagen verbesserst du.",
+ "material": {
+  "typ": "balken",
+  "titel": "Familien mit Kindern nach Familienform",
+  "einheit": " %",
+  "daten": [
+   [
+    "Ehepaare mit Kindern",
+    68
+   ],
+   [
+    "Ein-Eltern-Familien",
+    20
+   ],
+   [
+    "Paare ohne Trauschein mit Kindern",
+    12
+   ]
+  ],
+  "hinweis": "Erfundene Zahlen – nur für diese Übung!",
+  "quelle": "Übungsdiagramm, keine echte Statistik."
+ },
+ "aussagen": [
+  {
+   "t": "Mehr als die Hälfte der Familien in dieser Auswertung sind Ehepaare mit Kindern.",
+   "r": 0,
+   "e": "68 % sind mehr als die Hälfte."
+  },
+  {
+   "t": "Ein-Eltern-Familien und Paare ohne Trauschein mit Kindern sind gleich häufig.",
+   "r": 1,
+   "e": "Die beiden Balken sind unterschiedlich lang: 20 % gegen 12 %.",
+   "v": "Ein-Eltern-Familien sind mit 20 % häufiger als Paare ohne Trauschein mit Kindern (12 %)."
+  },
+  {
+   "t": "Die Zahl der Patchwork-Familien ist in den letzten Jahren gestiegen.",
+   "r": 2,
+   "e": "Patchwork-Familien kommen im Diagramm nicht vor, und es gibt auch keine Angaben zur Entwicklung über die Jahre."
+  },
+  {
+   "t": "Zusammen machen Ein-Eltern-Familien und Paare ohne Trauschein mit Kindern 32 % aus.",
+   "r": 0,
+   "e": "20 % + 12 % = 32 %."
+  },
+  {
+   "t": "Die meisten Ein-Eltern-Familien werden von Müttern geführt.",
+   "r": 2,
+   "e": "Das Diagramm sagt nichts darüber, ob Mütter oder Väter alleinerziehend sind."
+  }
+ ]
+}

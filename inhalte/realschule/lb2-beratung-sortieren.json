@@ -1,0 +1,52 @@
+{
+ "titel": "Wer hilft bei welchem Anliegen?",
+ "abzeichen": "🧭",
+ "anleitung": "Ordne die Anliegen der passenden Anlaufstelle zu. Nicht jede Person ist für alles zuständig.",
+ "kategorien": [
+  "Schulpsychologe / Beratungslehrkraft",
+  "Klassensprecher / SMV",
+  "Fachlehrkraft"
+ ],
+ "karten": [
+  {
+   "t": "Starke Angst vor Prüfungen, Schlafprobleme vor Schulaufgaben",
+   "k": 0,
+   "e": "Hier kann die Schulpsychologin helfen."
+  },
+  {
+   "t": "Anhaltende Konzentrationsprobleme und Lernblockaden",
+   "k": 0,
+   "e": "Typisch für die Beratung."
+  },
+  {
+   "t": "Konflikte, die man in der Klasse allein nicht lösen kann",
+   "k": 0,
+   "e": "Beratung und Vermittlung."
+  },
+  {
+   "t": "Die Klasse wünscht sich einen Ausflug",
+   "k": 1,
+   "e": "Klassensprecher tragen Wünsche der Klasse vor."
+  },
+  {
+   "t": "Die Schüler möchten ein Schulfest mitorganisieren",
+   "k": 1,
+   "e": "Die SMV kann hier aktiv werden."
+  },
+  {
+   "t": "Eine Verständnisfrage zu einer Rechenaufgabe in Mathematik",
+   "k": 2,
+   "e": "Fachfragen klärt man mit der Fachlehrkraft."
+  },
+  {
+   "t": "Eine Rückfrage zur Note einer Schulaufgabe in Deutsch",
+   "k": 2,
+   "e": "Das ist Sache der Fachlehrkraft."
+  },
+  {
+   "t": "Eine Frage, wie man sich besser auf den Test vorbereitet",
+   "k": 2,
+   "e": "Die Fachlehrkraft gibt fachliche Tipps."
+  }
+ ]
+}

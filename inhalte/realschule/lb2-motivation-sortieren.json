@@ -1,0 +1,51 @@
+{
+ "titel": "Motivation: Von innen oder von außen?",
+ "abzeichen": "🔥",
+ "anleitung": "Intrinsische Motivation kommt aus einem selbst, extrinsische von außen (Belohnung, Strafe). Ordne zu.",
+ "kategorien": [
+  "Intrinsisch (von innen)",
+  "Extrinsisch (von außen)"
+ ],
+ "karten": [
+  {
+   "t": "Ich lerne, weil mich das Thema interessiert.",
+   "k": 0,
+   "e": "Interesse und Neugier kommen aus mir selbst."
+  },
+  {
+   "t": "Ich übe Gitarre, weil es mir Spaß macht.",
+   "k": 0,
+   "e": "Freude an der Sache selbst."
+  },
+  {
+   "t": "Ich möchte unbedingt verstehen, wie Pflanzen wachsen.",
+   "k": 0,
+   "e": "Neugier treibt mich an."
+  },
+  {
+   "t": "Ich löse die Knobelaufgabe, weil ich Rätsel liebe.",
+   "k": 0,
+   "e": "Die Tätigkeit selbst belohnt."
+  },
+  {
+   "t": "Ich lerne für die Schulaufgabe, weil ich eine gute Note will.",
+   "k": 1,
+   "e": "Die Note ist ein Anreiz von außen."
+  },
+  {
+   "t": "Ich räume auf, damit ich nicht bestraft werde.",
+   "k": 1,
+   "e": "Vermeiden von Strafe: von außen."
+  },
+  {
+   "t": "Ich helfe im Haushalt, weil ich dafür Taschengeld bekomme.",
+   "k": 1,
+   "e": "Belohnung von außen."
+  },
+  {
+   "t": "Ich lerne, weil meine Eltern es verlangen.",
+   "k": 1,
+   "e": "Der Druck kommt von außen."
+  }
+ ]
+}

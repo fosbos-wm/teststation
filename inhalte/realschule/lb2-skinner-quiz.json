@@ -1,0 +1,87 @@
+{
+ "titel": "Skinner: Verstärkung und Bestrafung",
+ "abzeichen": "🐭",
+ "anleitung": "Operante Konditionierung: Verhalten wird durch seine Folgen gelernt. Wähle jeweils die passende Antwort.",
+ "fragen": [
+  {
+   "f": "Was passiert mit dem Verhalten, wenn es belohnt wird?",
+   "o": [
+    "Es wird wahrscheinlicher, dass es wiederholt wird.",
+    "Es verschwindet.",
+    "Es hat keinen Einfluss.",
+    "Es wird unmöglich."
+   ],
+   "r": 0,
+   "e": "Angenehme Folgen verstärken Verhalten.",
+   "fall": "Lena bekommt für ihre Hausaufgaben ein Lob und macht sie künftig regelmäßig."
+  },
+  {
+   "f": "Wodurch lernt Lena hier?",
+   "o": [
+    "Durch eine positive Folge (Lob) auf ihr Verhalten",
+    "Durch Beobachtung eines Vorbilds",
+    "Durch Verknüpfung zweier Reize",
+    "Durch Einsicht ohne Folgen"
+   ],
+   "r": 0,
+   "e": "Verhalten wird durch seine Folgen gesteuert: operante Konditionierung.",
+   "fall": "Lena bekommt für ihre Hausaufgaben ein Lob und macht sie künftig regelmäßig."
+  },
+  {
+   "f": "Wer hat die operante Konditionierung geprägt?",
+   "o": [
+    "Skinner",
+    "Pawlow",
+    "Piaget",
+    "Bandura"
+   ],
+   "r": 0,
+   "e": "Burrhus Frederic Skinner untersuchte, wie Folgen das Verhalten verändern."
+  },
+  {
+   "f": "Welches Beispiel zeigt eine positive Verstärkung?",
+   "o": [
+    "Ein Schüler bekommt für saubere Hefte einen Sticker und führt sie weiter ordentlich.",
+    "Ein Schüler hat Angst vor dem Klassenraum.",
+    "Ein Schüler macht die Pose eines Sportlers nach.",
+    "Ein Schüler spürt Hunger bei der Pausenglocke."
+   ],
+   "r": 0,
+   "e": "Verstärkung bedeutet, dass auf ein Verhalten etwas Angenehmes folgt."
+  },
+  {
+   "f": "Warum kann Lob im Unterricht sinnvoll sein?",
+   "o": [
+    "Es verstärkt erwünschtes Verhalten und motiviert.",
+    "Es ersetzt den Unterricht.",
+    "Es macht Noten überflüssig.",
+    "Es schadet immer dem Lernen."
+   ],
+   "r": 0,
+   "e": "Lob als positive Folge macht erwünschtes Verhalten wahrscheinlicher."
+  },
+  {
+   "f": "Was passiert, wenn auf ein Verhalten eine unangenehme Folge folgt?",
+   "o": [
+    "Das Verhalten wird seltener gezeigt.",
+    "Das Verhalten wird sofort perfekt.",
+    "Es verändert sich nichts.",
+    "Es entsteht ein neuer Reflex."
+   ],
+   "r": 0,
+   "e": "Unangenehme Folgen schwächen Verhalten ab (Bestrafung).",
+   "fall": "Ein Schüler stört, muss dafür nachsitzen und stört danach seltener."
+  },
+  {
+   "f": "Was gehört zur operanten Konditionierung?",
+   "o": [
+    "Das Verhalten wird durch Belohnung oder Bestrafung gelernt.",
+    "Ein Reiz löst automatisch eine Reaktion aus.",
+    "Man lernt nur durch Zuschauen.",
+    "Man lernt nur durch Nachdenken."
+   ],
+   "r": 0,
+   "e": "Kennzeichen: Verhalten → Folge → Veränderung der Auftretenswahrscheinlichkeit."
+  }
+ ]
+}

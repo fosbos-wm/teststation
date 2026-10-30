@@ -1,0 +1,41 @@
+{
+ "titel": "Eine Hausordnung auswerten",
+ "abzeichen": "🏫",
+ "anleitung": "Lies die Beispiel-Hausordnung und bewerte die Aussagen. Verbessere die falschen Aussagen.",
+ "material": {
+  "typ": "text",
+  "titel": "Beispiel-Hausordnung der Musterschule",
+  "text": "§ 1 Der Unterricht beginnt um 8:00 Uhr. Wer zu spät kommt, meldet sich im Sekretariat.\n§ 2 In den Gängen wird nicht gerannt.\n§ 3 Handys bleiben im Unterricht ausgeschaltet in der Schultasche.\n§ 4 Wer eine Regel absichtlich verletzt, wird zunächst ermahnt. Bei Wiederholung wird die Klassenleitung informiert.\n§ 5 Für besondere Hilfsbereitschaft kann die Klasse eine Anerkennung erhalten.\n§ 6 Die Pausen verbringen Schülerinnen und Schüler der 5. bis 7. Klasse im Pausenhof.",
+  "hinweis": "Erfundene Hausordnung – nicht die deiner Schule!",
+  "quelle": "Nur zur Übung."
+ },
+ "aussagen": [
+  {
+   "t": "Wer zu spät kommt, meldet sich im Sekretariat.",
+   "r": 0,
+   "e": "Das steht in § 1."
+  },
+  {
+   "t": "Wer zum zweiten Mal gegen die Regeln verstößt, wird vom Unterricht ausgeschlossen.",
+   "r": 1,
+   "e": "In § 4 steht nichts von einem Ausschluss.",
+   "v": "Bei Wiederholung wird die Klassenleitung informiert."
+  },
+  {
+   "t": "Die Hausordnung legt fest, wie viele Hausaufgaben es gibt.",
+   "r": 2,
+   "e": "Zu Hausaufgaben steht in dieser Hausordnung nichts."
+  },
+  {
+   "t": "Besondere Hilfsbereitschaft kann positiv anerkannt werden.",
+   "r": 0,
+   "e": "§ 5 beschreibt eine positive Sanktion."
+  },
+  {
+   "t": "Alle Schülerinnen und Schüler dürfen die Pause im Schulgebäude verbringen.",
+   "r": 1,
+   "e": "Das widerspricht § 6.",
+   "v": "Schülerinnen und Schüler der 5. bis 7. Klasse verbringen die Pause im Pausenhof."
+  }
+ ]
+}

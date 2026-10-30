@@ -1,0 +1,85 @@
+{
+ "titel": "Mitbestimmung in der Schule",
+ "abzeichen": "🗳️",
+ "anleitung": "Wer darf in der Schule mitbestimmen, und wie? Wähle jeweils die passende Antwort.",
+ "fragen": [
+  {
+   "f": "Wer vertritt die Interessen der Klasse gegenüber den Lehrkräften?",
+   "o": [
+    "Die Klassensprecherin oder der Klassensprecher",
+    "Der Hausmeister",
+    "Der Schulbusfahrer",
+    "Der Elternbeirat allein"
+   ],
+   "r": 0,
+   "e": "Klassensprecherinnen und Klassensprecher werden von der Klasse gewählt und tragen deren Anliegen vor."
+  },
+  {
+   "f": "Wie nennt man die Gruppe gewählter Schülerinnen und Schüler, die das Schulleben mitgestaltet?",
+   "o": [
+    "Schülermitverantwortung (SMV)",
+    "Elternbeirat",
+    "Schulleitung",
+    "Lehrerkonferenz"
+   ],
+   "r": 0,
+   "e": "In der SMV arbeiten Schülerinnen und Schüler an Projekten und Veranstaltungen der Schule mit."
+  },
+  {
+   "f": "Wer vertritt die Eltern an der Schule?",
+   "o": [
+    "Der Elternbeirat",
+    "Die SMV",
+    "Der Hausmeister",
+    "Das Jugendamt"
+   ],
+   "r": 0,
+   "e": "Der Elternbeirat vertritt die Interessen der Eltern gegenüber der Schule."
+  },
+  {
+   "f": "Was kann die Klassensprecherin tun?",
+   "o": [
+    "Die Wünsche der Klasse sammeln und mit der Klassenleitung besprechen.",
+    "Allein entscheiden und die Klasse nicht fragen.",
+    "Den Wandertag absagen.",
+    "Warten, bis die Schulleitung von allein fragt."
+   ],
+   "r": 0,
+   "e": "Klassensprecher sprechen für die ganze Klasse. Sie sammeln Meinungen und tragen sie vor.",
+   "fall": "Die Klasse 7a wünscht sich einen Wandertag zum Hochseilgarten."
+  },
+  {
+   "f": "Warum ist Mitbestimmung in der Schule sinnvoll?",
+   "o": [
+    "Schülerinnen und Schüler fühlen sich ernst genommen und übernehmen Verantwortung.",
+    "Damit Lehrkräfte weniger arbeiten müssen.",
+    "Damit es keine Regeln mehr gibt.",
+    "Damit die Noten abgeschafft werden."
+   ],
+   "r": 0,
+   "e": "Wer mitreden darf, identifiziert sich mehr mit der Schule und trägt Entscheidungen eher mit."
+  },
+  {
+   "f": "Welche Möglichkeit zur Mitbestimmung haben Schülerinnen und Schüler?",
+   "o": [
+    "Sie wählen Klassensprecher und können in der SMV mitarbeiten.",
+    "Sie stellen die Lehrkräfte ein.",
+    "Sie legen den Lehrplan fest.",
+    "Sie geben ihren Mitschülern die Noten."
+   ],
+   "r": 0,
+   "e": "Mitbestimmung hat Grenzen: Über Noten und Lehrplan entscheiden andere."
+  },
+  {
+   "f": "In welcher Vorschrift stehen Möglichkeiten der Mitbestimmung für Schülerinnen und Schüler?",
+   "o": [
+    "In der Bayerischen Schulordnung (BaySchO)",
+    "Im Strafgesetzbuch",
+    "In der Straßenverkehrsordnung",
+    "In einem Mietvertrag"
+   ],
+   "r": 0,
+   "e": "Die Mitwirkung von Schülerinnen und Schülern (Klassensprecher, SMV) ist in der Schulordnung geregelt."
+  }
+ ]
+}

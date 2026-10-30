@@ -1,0 +1,39 @@
+{
+ "titel": "Memory: Erziehungsstile und ihre Wirkung",
+ "abzeichen": "🃏",
+ "anleitung": "Finde die Paare: Erziehungsstil und Merkmal, Elternverhalten und mögliche Wirkung auf das Kind.",
+ "paare": [
+  [
+   "autoritär",
+   "Gehorsam steht an erster Stelle."
+  ],
+  [
+   "autoritativ",
+   "Regeln mit Begründung, Wärme und Mitsprache."
+  ],
+  [
+   "permissiv",
+   "Das Kind darf fast alles."
+  ],
+  [
+   "vernachlässigend",
+   "Das Kind ist weitgehend sich selbst überlassen."
+  ],
+  [
+   "Eltern bestimmen alles und erklären nichts.",
+   "Das Kind gehorcht, kann aber ängstlich und unselbstständig werden."
+  ],
+  [
+   "Klare Regeln mit Begründung und Zuwendung.",
+   "Das Kind wird selbstständig und selbstbewusst und kennt Grenzen."
+  ],
+  [
+   "Kaum Regeln, jeder Wunsch wird erfüllt.",
+   "Das Kind tut sich schwer, Grenzen und Enttäuschungen auszuhalten."
+  ],
+  [
+   "Kaum Zuwendung und kaum Interesse am Kind.",
+   "Das Kind fühlt sich ungeliebt, und es können Vertrauensprobleme entstehen."
+  ]
+ ]
+}

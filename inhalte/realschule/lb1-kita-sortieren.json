@@ -1,0 +1,52 @@
+{
+ "titel": "Familie oder Kita – wo lernt das Kind was?",
+ "abzeichen": "🏫",
+ "anleitung": "Entscheide: Wird das vor allem in der Familie gelernt, vor allem in der Kita, oder an beiden Orten?",
+ "kategorien": [
+  "Vor allem in der Familie",
+  "Vor allem in der Kita",
+  "In beiden"
+ ],
+ "karten": [
+  {
+   "t": "Das Kind erlebt Geborgenheit und enge Gefühlsbindung zu seinen Eltern.",
+   "k": 0,
+   "e": "Die engste Bindung entsteht in der Familie."
+  },
+  {
+   "t": "Es lernt, was in der eigenen Familie als wichtig gilt, zum Beispiel Feste und Traditionen.",
+   "k": 0,
+   "e": "Familientraditionen werden in der Familie weitergegeben."
+  },
+  {
+   "t": "Es übt, sich in eine Gruppe Gleichaltriger einzufügen.",
+   "k": 1,
+   "e": "Die Kita bietet eine größere Gruppe von Gleichaltrigen."
+  },
+  {
+   "t": "Es erlebt, dass es neben sich noch viele andere Kinder mit Wünschen gibt.",
+   "k": 1,
+   "e": "In der Gruppe lernt das Kind, auf andere Rücksicht zu nehmen."
+  },
+  {
+   "t": "Es lernt Regeln wie Händewaschen und Aufräumen.",
+   "k": 2,
+   "e": "Regeln lernt das Kind sowohl zu Hause als auch in der Kita."
+  },
+  {
+   "t": "Es lernt, Gefühle zu zeigen und zu steuern.",
+   "k": 2,
+   "e": "Dabei helfen Eltern und Erzieherinnen gleichermaßen."
+  },
+  {
+   "t": "Es erlebt, dass Erwachsene verlässlich für es da sind.",
+   "k": 2,
+   "e": "Verlässliche Bezugspersonen gibt es in beiden Bereichen."
+  },
+  {
+   "t": "Es lernt, im Stuhlkreis zuzuhören und zu warten, bis es an der Reihe ist.",
+   "k": 1,
+   "e": "Das ist typisch für den Alltag in der Kita-Gruppe."
+  }
+ ]
+}

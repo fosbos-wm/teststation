@@ -1,0 +1,47 @@
+{
+ "titel": "Rollen und Rollenwandel: Aufgaben wie in der Stegreifaufgabe",
+ "abzeichen": "✍️",
+ "anleitung": "Schreibe zu jeder Aufgabe zuerst deine eigene Antwort. Danach vergleichst du mit der Musterlösung und hakst ab, was bei dir steht. So vergibst du dir selbst Punkte.",
+ "aufgaben": [
+  {
+   "nr": "1",
+   "op": "Beschreibe",
+   "be": 2,
+   "zeilen": 4,
+   "aufgabe": "Beschreibe, welche Rolle du selbst in deiner Familie hast. Nenne zwei Aufgaben oder Erwartungen, die damit verbunden sind.",
+   "muster": "Beispiel: In meiner Familie bin ich die Tochter und die ältere Schwester. Von mir wird erwartet, dass ich meinen Teil im Haushalt übernehme, zum Beispiel den Müll hinausbringe, und dass ich auf meinen kleinen Bruder achte, wenn meine Eltern nicht da sind.\n(Deine Antwort darf anders aussehen: Wichtig ist, dass du eine Rolle nennst und zwei passende Aufgaben oder Erwartungen beschreibst.)",
+   "checkliste": [
+    "Ich habe eine Rolle genannt (z. B. Tochter, Sohn, Schwester, Bruder, Enkel).",
+    "Ich habe zwei Aufgaben oder Erwartungen genannt."
+   ],
+   "tipp": "Denk an Aufgaben im Haushalt, an Verantwortung für Geschwister und an Erwartungen deiner Eltern."
+  },
+  {
+   "nr": "2",
+   "op": "Erkläre",
+   "be": 3,
+   "zeilen": 5,
+   "aufgabe": "Erkläre den Rollenwandel innerhalb von Familien, indem du ein aussagekräftiges Beispiel heranziehst.",
+   "muster": "Rollenwandel bedeutet, dass sich die Rollen und Aufgaben der Familienmitglieder im Lauf der Zeit verändern. Früher war zum Beispiel oft der Vater allein berufstätig, und die Mutter kümmerte sich um Haushalt und Kinder. Heute arbeiten in vielen Familien beide Eltern, und auch Väter übernehmen Hausarbeit und Kinderbetreuung, etwa in der Elternzeit. Dadurch hat sich die Aufgabenverteilung in der Familie verändert.",
+   "checkliste": [
+    "Ich habe erklärt, dass sich Rollen und Aufgaben im Lauf der Zeit verändern.",
+    "Ich habe ein konkretes Beispiel genannt (früher: ... / heute: ...).",
+    "Ich habe gezeigt, was sich dadurch in der Familie verändert (zum Beispiel die Aufgabenverteilung)."
+   ],
+   "tipp": "Zu einer guten Erklärung gehört immer ein Beispiel mit „früher“ und „heute“."
+  },
+  {
+   "nr": "3",
+   "op": "Nenne",
+   "be": 2,
+   "zeilen": 4,
+   "aufgabe": "Nenne je eine Chance und ein Problem, das entstehen kann, wenn beide Eltern berufstätig sind.",
+   "muster": "Chance: Die Familie hat mehr Geld zur Verfügung, und die Kinder erleben, dass beide Eltern Beruf und Familie vereinbaren. (Auch möglich: Kinder lernen früh Selbstständigkeit; beide Eltern sind finanziell unabhängig.)\nProblem: Für gemeinsame Zeit bleibt weniger Raum, und die Eltern können durch Beruf und Haushalt gestresst sein. (Auch möglich: Die Betreuung der Kinder muss organisiert werden.)",
+   "checkliste": [
+    "Ich habe eine passende Chance genannt.",
+    "Ich habe ein passendes Problem genannt."
+   ],
+   "tipp": "Eine Chance ist ein Vorteil, ein Problem ist eine Schwierigkeit im Alltag."
+  }
+ ]
+}

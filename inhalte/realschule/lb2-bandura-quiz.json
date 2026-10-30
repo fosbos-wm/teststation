@@ -1,0 +1,85 @@
+{
+ "titel": "Bandura: Lernen am Modell",
+ "abzeichen": "👀",
+ "anleitung": "Wir lernen auch, indem wir andere beobachten. Wähle jeweils die passende Antwort.",
+ "fragen": [
+  {
+   "f": "Was zeigt dieses Beispiel?",
+   "o": [
+    "Lernen am Modell (Bandura)",
+    "Klassische Konditionierung (Pawlow)",
+    "Operante Konditionierung (Skinner)",
+    "Lernen durch Einsicht"
+   ],
+   "r": 0,
+   "e": "Das Kind lernt, indem es ein Vorbild beobachtet und nachahmt.",
+   "fall": "Tim sieht, wie sein großer Bruder beim Streit ruhig bleibt und später mit Worten statt mit Fäusten löst. Tim verhält sich bald ebenso."
+  },
+  {
+   "f": "Was ist ein Modell im Sinne von Bandura?",
+   "o": [
+    "Eine Person, die beobachtet und nachgeahmt wird",
+    "Ein Spielzeug",
+    "Ein Lehrplan",
+    "Ein Stundenplan"
+   ],
+   "r": 0,
+   "e": "Modelle sind Vorbilder, zum Beispiel Eltern, Lehrer, Freunde oder Stars."
+  },
+  {
+   "f": "Wann ahmen Kinder ein Modell besonders gern nach?",
+   "o": [
+    "Wenn sie das Modell bewundern oder sehen, dass es dafür belohnt wird",
+    "Wenn das Modell sie ignoriert",
+    "Wenn das Modell unbekannt ist",
+    "Nie"
+   ],
+   "r": 0,
+   "e": "Sympathie, Ansehen und beobachtete Belohnung fördern das Nachahmen."
+  },
+  {
+   "f": "Welche Folge kann es haben, wenn Lehrkräfte selbst pünktlich und respektvoll sind?",
+   "o": [
+    "Schüler übernehmen eher dieses Verhalten.",
+    "Schüler werden unpünktlich.",
+    "Schüler lernen nichts.",
+    "Es hat nie Folgen."
+   ],
+   "r": 0,
+   "e": "Lehrkräfte sind Modelle. Ihr Verhalten wirkt oft stärker als Worte."
+  },
+  {
+   "f": "Welches Beispiel zeigt Lernen am Modell?",
+   "o": [
+    "Eine Schülerin trägt wie ihre Lieblingssportlerin ein Stirnband und übt dieselben Übungen.",
+    "Ein Hund speichelt bei Glockenklang.",
+    "Ein Schüler bekommt ein Lob und meldet sich öfter.",
+    "Ein Schüler lernt aus Angst vor Strafe."
+   ],
+   "r": 0,
+   "e": "Beobachten und Nachahmen sind typisch."
+  },
+  {
+   "f": "Warum ist Lernen am Modell für die Schule wichtig?",
+   "o": [
+    "Weil Kinder Verhalten, Werte und Normen oft durch Beobachten übernehmen.",
+    "Weil Kinder nur durch Strafen lernen.",
+    "Weil Lernen überflüssig ist.",
+    "Weil nur Lehrer lernen."
+   ],
+   "r": 0,
+   "e": "Verhalten wird auch durch Vorbilder in der Schule weitergegeben."
+  },
+  {
+   "f": "Wer ist ein Modell in der Schule?",
+   "o": [
+    "Lehrkräfte, Mitschüler, ältere Schüler und Vorbilder aus Medien",
+    "Nur die Schulleitung",
+    "Nur Eltern",
+    "Niemand"
+   ],
+   "r": 0,
+   "e": "Viele Personen können Modelle sein, positiv wie negativ."
+  }
+ ]
+}

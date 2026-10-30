@@ -1,0 +1,53 @@
+{
+ "titel": "Piaget: Entwicklungsstufen des Denkens",
+ "abzeichen": "🧩",
+ "anleitung": "Piaget beschreibt, wie sich das Denken von Kindern in Stufen entwickelt. Ordne die Beispiele zu. Prüfe die Altersangaben mit deinem Schulbuch.",
+ "kategorien": [
+  "Sensumotorische Stufe (etwa 0–2 Jahre)",
+  "Präoperationale Stufe (etwa 2–7 Jahre)",
+  "Konkret-operationale Stufe (etwa 7–11 Jahre)",
+  "Formal-operationale Stufe (ab etwa 11/12 Jahren)"
+ ],
+ "karten": [
+  {
+   "t": "Ein Baby erkundet Dinge mit Mund, Händen und Augen.",
+   "k": 0,
+   "e": "Denken geschieht über Wahrnehmen und Handeln."
+  },
+  {
+   "t": "Ein Baby greift nach der Rassel und schüttelt sie.",
+   "k": 0,
+   "e": "Lernen durch Sinne und Bewegung."
+  },
+  {
+   "t": "Ein Kind spielt „Als-ob“-Spiele: Der Besen wird zum Pferd.",
+   "k": 1,
+   "e": "Symbolisches Denken beginnt."
+  },
+  {
+   "t": "Ein Kind glaubt, dass die Sonne mitläuft, weil sie ihm folgt.",
+   "k": 1,
+   "e": "Das Denken ist noch stark von der eigenen Sicht bestimmt."
+  },
+  {
+   "t": "Ein Kind versteht, dass die gleiche Menge Wasser in einem schmalen oder breiten Glas gleich viel ist.",
+   "k": 2,
+   "e": "Logisches Denken an konkreten Dingen."
+  },
+  {
+   "t": "Ein Grundschulkind sortiert Murmeln nach Farbe und Größe.",
+   "k": 2,
+   "e": "Ordnen und Klassifizieren an konkreten Objekten."
+  },
+  {
+   "t": "Eine Jugendliche überlegt gedanklich verschiedene Lösungen und deren Folgen, ohne sie auszuprobieren.",
+   "k": 3,
+   "e": "Abstraktes und hypothetisches Denken."
+  },
+  {
+   "t": "Ein Jugendlicher entwickelt Hypothesen und prüft sie gedanklich.",
+   "k": 3,
+   "e": "Typisch für die formal-operationale Stufe."
+  }
+ ]
+}

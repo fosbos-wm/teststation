@@ -1,0 +1,57 @@
+{
+ "titel": "Welche Art von Hilfe ist das?",
+ "abzeichen": "🗂️",
+ "anleitung": "Der Staat hilft Familien auf verschiedene Weise. Ordne jedes Beispiel der passenden Hilfeart zu.",
+ "kategorien": [
+  "Finanzielle Hilfe",
+  "Beratung und Erziehungshilfe",
+  "Gesundheitsmaßnahme"
+ ],
+ "karten": [
+  {
+   "t": "Kindergeld",
+   "k": 0,
+   "e": "Kindergeld ist eine Geldleistung für Familien."
+  },
+  {
+   "t": "Elterngeld",
+   "k": 0,
+   "e": "Elterngeld unterstützt Eltern nach der Geburt finanziell."
+  },
+  {
+   "t": "Wohngeld",
+   "k": 0,
+   "e": "Wohngeld hilft bei den Wohnkosten."
+  },
+  {
+   "t": "Erziehungsberatungsstelle",
+   "k": 1,
+   "e": "Hier bekommen Eltern Rat in Erziehungsfragen."
+  },
+  {
+   "t": "Erziehungsbeistand über das Jugendamt",
+   "k": 1,
+   "e": "Eine Person unterstützt Familien im Alltag und bei der Erziehung."
+  },
+  {
+   "t": "Familienberatung bei Streit und Krisen",
+   "k": 1,
+   "e": "Beratungsstellen helfen bei familiären Problemen."
+  },
+  {
+   "t": "Vorsorgeuntersuchungen für Kinder",
+   "k": 2,
+   "e": "Sie erkennen Gesundheitsprobleme früh."
+  },
+  {
+   "t": "Impfungen nach Impfplan",
+   "k": 2,
+   "e": "Impfungen schützen vor Krankheiten."
+  },
+  {
+   "t": "Vorsorge in der Schwangerschaft",
+   "k": 2,
+   "e": "Sie dient der Gesundheit von Mutter und Kind."
+  }
+ ]
+}

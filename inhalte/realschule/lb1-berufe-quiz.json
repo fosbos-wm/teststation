@@ -1,0 +1,87 @@
+{
+ "titel": "Wer kann helfen? Fälle zu familienunterstützenden Berufen",
+ "abzeichen": "🩺",
+ "anleitung": "Lies das Fallbeispiel und wähle die passende Hilfe oder die richtige Aussage.",
+ "fragen": [
+  {
+   "f": "Wer kann der Familie helfen?",
+   "o": [
+    "Eine Haus- und Familienpflegerin",
+    "Eine Hebamme",
+    "Ein Schulpsychologe",
+    "Ein Bäcker"
+   ],
+   "r": 0,
+   "e": "Wenn ein Elternteil ausfällt, übernehmen Haus- und Familienpfleger/-innen Haushalt und Kinderbetreuung.",
+   "fall": "Nach einer Operation darf Frau Roth zwei Wochen nichts heben. Ihr Mann arbeitet, und die beiden Kinder sind klein."
+  },
+  {
+   "f": "An wen kann sich Frau Kaya wenden?",
+   "o": [
+    "An eine mobile Hebamme",
+    "An eine Haus- und Familienpflegerin",
+    "An den Klassensprecher",
+    "An den Hausmeister"
+   ],
+   "r": 0,
+   "e": "Mobile Hebammen betreuen Mutter und Baby nach der Geburt zu Hause und beraten zu Stillen und Babypflege.",
+   "fall": "Frau Kaya hat vor drei Tagen ein Baby bekommen und hat Fragen zum Stillen."
+  },
+  {
+   "f": "Welche persönliche Voraussetzung ist in beiden Berufen besonders wichtig?",
+   "o": [
+    "Einfühlungsvermögen und Verantwortungsbewusstsein",
+    "Möglichst wenig Kontakt zu Menschen",
+    "Körperliche Größe",
+    "Ein Führerschein für Lastwagen"
+   ],
+   "r": 0,
+   "e": "Wer Familien in schwierigen Situationen hilft, muss einfühlsam, belastbar und verantwortungsvoll sein."
+  },
+  {
+   "f": "Wie heißt die männliche Berufsbezeichnung zur Hebamme?",
+   "o": [
+    "Entbindungspfleger",
+    "Hauspfleger",
+    "Familienvater",
+    "Krippenerzieher"
+   ],
+   "r": 0,
+   "e": "Männer in diesem Beruf heißen Entbindungspfleger."
+  },
+  {
+   "f": "Wo arbeitet eine mobile Hebamme überwiegend?",
+   "o": [
+    "Bei den Familien zu Hause",
+    "In einer Bäckerei",
+    "In einer Schule",
+    "Im Büro einer Bank"
+   ],
+   "r": 0,
+   "e": "„Mobil“ bedeutet, dass die Hebamme zu den Familien nach Hause kommt."
+  },
+  {
+   "f": "Warum sind diese Berufe für Familien wichtig?",
+   "o": [
+    "Sie entlasten Familien in Ausnahmesituationen und geben Sicherheit.",
+    "Sie ersetzen die Eltern dauerhaft.",
+    "Sie machen Familien überflüssig.",
+    "Sie sorgen dafür, dass Kinder nicht erzogen werden müssen."
+   ],
+   "r": 0,
+   "e": "In schwierigen Lebensphasen helfen sie den Eltern, damit die Familie stabil bleibt."
+  },
+  {
+   "f": "Wer kann hier helfen?",
+   "o": [
+    "Eine Haus- und Familienpflegerin",
+    "Eine Hebamme",
+    "Ein Zahnarzt",
+    "Ein Streitschlichter"
+   ],
+   "r": 0,
+   "e": "Wenn Eltern durch Krankheit oder Erschöpfung ausfallen, unterstützt die Haus- und Familienpflege den Alltag.",
+   "fall": "Familie Berger hat Drillinge. Die Mutter ist völlig erschöpft, der Vater muss arbeiten."
+  }
+ ]
+}

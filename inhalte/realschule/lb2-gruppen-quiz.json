@@ -1,0 +1,99 @@
+{
+ "titel": "Gruppen in der Schule: Arten erkennen",
+ "abzeichen": "👥",
+ "anleitung": "Primärgruppe, Sekundärgruppe, formelle und informelle Gruppe, Groß- und Kleingruppe: Wähle jeweils die passende Antwort.",
+ "fragen": [
+  {
+   "f": "Welche dieser Gruppen ist eine Sekundärgruppe?",
+   "o": [
+    "Die Schulklasse",
+    "Die eigene Familie",
+    "Die Geschwister",
+    "Die Großeltern"
+   ],
+   "r": 0,
+   "e": "Die Familie gehört zu den Primärgruppen. Die Klasse ist eine Sekundärgruppe: Man kommt aus einem bestimmten Zweck zusammen (Lernen)."
+  },
+  {
+   "f": "Welche Aussage passt zu Sekundärgruppen wie der Klasse oder einem Verein?",
+   "o": [
+    "Die Beziehungen sind eher sachlich und durch ein gemeinsames Ziel bestimmt, zum Beispiel das Lernen.",
+    "Die Mitglieder sind eng miteinander verwandt.",
+    "Die Gruppe besteht nur aus Eltern und Kindern.",
+    "Es gibt keine gemeinsamen Ziele."
+   ],
+   "r": 0,
+   "e": "In Sekundärgruppen sind Beziehungen weniger eng und stärker auf Aufgaben und Ziele ausgerichtet."
+  },
+  {
+   "f": "Welche Gruppenart ist das?",
+   "o": [
+    "Großgruppe",
+    "Kleingruppe",
+    "Primärgruppe",
+    "Kernfamilie"
+   ],
+   "r": 0,
+   "e": "Sehr viele Menschen, die sich nicht alle persönlich kennen: eine Großgruppe.",
+   "fall": "Die Schulgemeinschaft einer Realschule umfasst über 700 Schülerinnen und Schüler, Lehrkräfte und Mitarbeiterinnen und Mitarbeiter."
+  },
+  {
+   "f": "Welche Gruppenart ist das?",
+   "o": [
+    "Kleingruppe",
+    "Großgruppe",
+    "Sekundärgruppe ohne Ziel",
+    "Familie"
+   ],
+   "r": 0,
+   "e": "Wenige Personen, die sich gut kennen und direkt zusammenarbeiten: eine Kleingruppe.",
+   "fall": "Vier Mitschüler arbeiten gemeinsam an einem Referat."
+  },
+  {
+   "f": "Welche Art von Gruppe ist die Theater-AG?",
+   "o": [
+    "Eine formelle Gruppe",
+    "Eine informelle Gruppe",
+    "Eine Primärgruppe",
+    "Eine Großgruppe"
+   ],
+   "r": 0,
+   "e": "Formelle Gruppen sind von der Schule organisiert: feste Termine, Leitung und ein klares Ziel.",
+   "fall": "Die Theater-AG wurde von der Schule eingerichtet. Sie hat feste Termine und eine Leitung (Frau Lang)."
+  },
+  {
+   "f": "Welche Art von Gruppe sind die fünf Mädchen?",
+   "o": [
+    "Eine informelle Gruppe",
+    "Eine formelle Gruppe",
+    "Eine Großgruppe",
+    "Eine Familie"
+   ],
+   "r": 0,
+   "e": "Informelle Gruppen entstehen von selbst, durch gemeinsame Interessen oder Sympathie. Niemand hat sie offiziell eingerichtet.",
+   "fall": "Fünf Mädchen treffen sich in der Pause jeden Tag am Fahrradständer und verbringen die Zeit miteinander."
+  },
+  {
+   "f": "Zu welcher Art der Sozialisation trägt die Schule bei?",
+   "o": [
+    "Zur sekundären Sozialisation",
+    "Zur primären Sozialisation",
+    "Nur zur Berufsausbildung",
+    "Zu keiner Sozialisation"
+   ],
+   "r": 0,
+   "e": "Nach der Familie (primär) kommen weitere Sozialisationsinstanzen wie die Schule dazu: sekundäre Sozialisation."
+  },
+  {
+   "f": "Warum ist die Klasse eine formelle Gruppe?",
+   "o": [
+    "Weil sie von der Schule eingeteilt wird und feste Regeln und Aufgaben hat.",
+    "Weil sie sich zufällig getroffen hat.",
+    "Weil alle dieselbe Musik mögen.",
+    "Weil sie nur aus Freunden besteht."
+   ],
+   "r": 0,
+   "e": "Die Schule bestimmt, wer in welcher Klasse ist. Es gibt Stundenplan, Klassenleitung und Regeln."
+  }
+ ]
+}

@@ -1,0 +1,97 @@
+{
+ "titel": "Erziehungsstile beurteilen: Vor- und Nachteile",
+ "abzeichen": "⚖️",
+ "anleitung": "Wähle die passende Antwort. Beim Beurteilen hilft die Frage: Wie viel Zuwendung, wie viel Regeln, wie viel Mitsprache erlebt das Kind?",
+ "fragen": [
+  {
+   "f": "Welcher Vorteil gehört zum autoritativen Erziehungsstil?",
+   "o": [
+    "Kinder lernen Selbstständigkeit und Verantwortung innerhalb klarer Grenzen.",
+    "Kinder müssen nie Regeln einhalten.",
+    "Kinder bekommen keine Zuwendung.",
+    "Kinder dürfen alles allein bestimmen."
+   ],
+   "r": 0,
+   "e": "Beim autoritativen Stil verbinden Eltern Wärme, klare Regeln und Mitsprache. Das gilt als besonders günstig für die Entwicklung."
+  },
+  {
+   "f": "Welcher Nachteil gehört zum autoritären Erziehungsstil?",
+   "o": [
+    "Kinder trauen sich wenig zu und lernen kaum, selbst Entscheidungen zu treffen.",
+    "Kinder haben zu viel Freiheit.",
+    "Kinder bekommen zu viele Erklärungen.",
+    "Kinder werden zu stark gelobt."
+   ],
+   "r": 0,
+   "e": "Wenn Eltern alles bestimmen und nichts erklären, bleibt wenig Raum, selbstständig zu werden."
+  },
+  {
+   "f": "Was kann beim autoritären Stil als Vorteil gesehen werden?",
+   "o": [
+    "Klare Ordnung und feste Regeln geben Orientierung.",
+    "Das Kind darf immer mitentscheiden.",
+    "Das Kind darf alle Regeln selbst festlegen.",
+    "Das Kind erlebt keine Grenzen."
+   ],
+   "r": 0,
+   "e": "Klare Regeln geben Sicherheit. Der Nachteil ist, dass sie ohne Erklärung und Wärme durchgesetzt werden."
+  },
+  {
+   "f": "Welcher Nachteil ist typisch für den permissiven Erziehungsstil?",
+   "o": [
+    "Kinder lernen schwer, Regeln und Grenzen zu akzeptieren.",
+    "Kinder werden sehr streng erzogen.",
+    "Kinder dürfen nie ihre Meinung sagen.",
+    "Kinder erfahren zu viele Verbote."
+   ],
+   "r": 0,
+   "e": "Ohne klare Grenzen fehlt Orientierung. Das fällt später in Schule und Beruf oft schwer."
+  },
+  {
+   "f": "Welche Aussage über den vernachlässigenden Erziehungsstil stimmt?",
+   "o": [
+    "Er gilt als besonders ungünstig, weil Kinder weder Zuwendung noch Orientierung bekommen.",
+    "Er ist besonders günstig, weil Kinder früh selbstständig werden.",
+    "Er ist derselbe wie der autoritative Stil.",
+    "Er bedeutet, dass Eltern zu viele Regeln aufstellen."
+   ],
+   "r": 0,
+   "e": "Kinder brauchen Zuwendung und Orientierung. Fehlt beides, kann das ihre Entwicklung stark belasten."
+  },
+  {
+   "f": "Welcher Erziehungsstil wird hier beschrieben?",
+   "o": [
+    "Autoritativ",
+    "Autoritär",
+    "Permissiv",
+    "Vernachlässigend"
+   ],
+   "r": 0,
+   "e": "Frau Kern setzt eine klare Regel, erklärt sie und hört die Meinung ihrer Tochter an. Das ist typisch für den autoritativen Stil.",
+   "fall": "Frau Kern fragt ihre Tochter vor einer Entscheidung nach der Meinung, bleibt aber bei der Regel: Das Handy ist ab 21 Uhr aus. Sie erklärt, warum."
+  },
+  {
+   "f": "Welcher Erziehungsstil wird hier beschrieben?",
+   "o": [
+    "Autoritär",
+    "Autoritativ",
+    "Permissiv",
+    "Vernachlässigend"
+   ],
+   "r": 0,
+   "e": "Herr Wolf entscheidet allein und duldet keine Widerrede. Das ist typisch für den autoritären Stil.",
+   "fall": "Herr Wolf ruft: „Solange du in meinem Haus wohnst, tust du, was ich sage!“"
+  },
+  {
+   "f": "Anhand welcher Kriterien kann man Erziehungsstile gut beurteilen?",
+   "o": [
+    "Wie viel Zuwendung, wie viel Regeln und wie viel Mitsprache das Kind erlebt.",
+    "Wie viel Geld die Familie hat.",
+    "Wie groß die Wohnung ist.",
+    "Wie viele Spielsachen das Kind besitzt."
+   ],
+   "r": 0,
+   "e": "Zuwendung (Wärme), Regeln (Lenkung) und Mitsprache sind die wichtigsten Kriterien, um Erziehungsstile zu vergleichen."
+  }
+ ]
+}

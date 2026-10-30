@@ -1,0 +1,46 @@
+{
+ "titel": "Texte aus der Bayerischen Verfassung auswerten",
+ "abzeichen": "⚖️",
+ "anleitung": "Lies die vereinfachten Auszüge aus der Bayerischen Verfassung (Art. 124 bis 126). Bewerte jede Aussage und verbessere die falschen.",
+ "material": {
+  "typ": "text",
+  "titel": "Familie in der Bayerischen Verfassung (sinngemäß, vereinfacht)",
+  "text": "Art. 124: Ehe und Familie stehen unter dem besonderen Schutz des Staates.\nArt. 125: Die Förderung der Familie ist Aufgabe von Staat und Gemeinden. Familien mit vielen Kindern haben Anspruch auf angemessene Unterstützung, besonders beim gesunden Wohnraum. Jede Mutter hat Anspruch auf Schutz und Fürsorge des Staates.\nArt. 126: Die Eltern haben das natürliche Recht und die oberste Pflicht, ihre Kinder zu erziehen. Der Staat und die Gemeinden unterstützen sie dabei. Kinder und Jugendliche sind vor Ausbeutung, Verwahrlosung und Misshandlung zu schützen.",
+  "hinweis": "Vereinfachte Zusammenfassung, nicht der amtliche Wortlaut.",
+  "quelle": "Vergleiche immer mit dem Text, den ihr im Unterricht verwendet."
+ },
+ "aussagen": [
+  {
+   "t": "Die Bayerische Verfassung stellt die Familie unter den besonderen Schutz des Staates.",
+   "r": 0,
+   "e": "Das steht in Art. 124."
+  },
+  {
+   "t": "Nach der Verfassung sind allein die Eltern für die Erziehung verantwortlich. Der Staat darf nie eingreifen.",
+   "r": 1,
+   "e": "In Art. 126 steht auch, dass der Staat Kinder schützen muss.",
+   "v": "Die Eltern haben das Recht und die oberste Pflicht zur Erziehung, der Staat unterstützt sie. Der Staat schützt Kinder außerdem vor Ausbeutung, Verwahrlosung und Misshandlung."
+  },
+  {
+   "t": "Der Staat unterstützt Familien mit vielen Kindern, zum Beispiel bei der Wohnung.",
+   "r": 0,
+   "e": "Das steht in Art. 125."
+  },
+  {
+   "t": "Familien in Bayern erhalten jeden Monat genau 250 Euro vom Staat.",
+   "r": 2,
+   "e": "Die Texte nennen keine Geldbeträge."
+  },
+  {
+   "t": "Der Staat und die Gemeinden müssen Kinder und Jugendliche vor Misshandlung und Verwahrlosung schützen.",
+   "r": 0,
+   "e": "Das steht in Art. 126."
+  },
+  {
+   "t": "Die Förderung der Familie ist allein Aufgabe der Eltern.",
+   "r": 1,
+   "e": "In Art. 125 steht ausdrücklich, dass Staat und Gemeinden die Familie fördern.",
+   "v": "Die Förderung der Familie ist Aufgabe von Staat und Gemeinden."
+  }
+ ]
+}

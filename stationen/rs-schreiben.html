@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Schreiben – Sozialwesen 7</title><link rel="stylesheet" href="../css/rs.css">
+<style>
+.kz{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.kz .nr{font-weight:800;color:var(--pri);font-size:1.05rem}
+.kz .op{font-weight:800;background:var(--acc-soft);color:var(--acc);border-radius:8px;padding:1px 10px}
+.kz .be{margin-left:auto;font-weight:700;color:var(--muted);font-size:.9rem}
+.auf{margin:0 0 10px;font-weight:600}
+.tipp{margin:8px 0 0;font-size:.92rem}.tipp summary{cursor:pointer;color:var(--pri);font-weight:700}
+.zeig{margin-top:10px}
+.mu{margin-top:12px;padding:12px 14px;border-radius:12px;background:var(--pri-soft)}
+.mu h4{margin:0 0 4px;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.mu .mt{white-space:pre-line;margin-bottom:10px}
+.cl{list-style:none;margin:0;padding:0}
+.cl li{margin:6px 0}.cl label{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
+.cl input{width:20px;height:20px;margin-top:2px;flex:none}
+.pt{margin:10px 0 0;font-weight:800}
+.stand{position:sticky;bottom:0;background:var(--bg);padding:10px 0}
+</style></head>
+<body><div class="rs"><header id="kopf"><p class="muted">Lade Übung …</p></header><main id="main"></main><div id="ende"></div><div id="loesung"></div></div>
+<script src="../js/rs-lob.js"></script>
+<script>
+/* Freie Antworten wie in der Stegreifaufgabe: erst selbst schreiben, dann Musterlösung vergleichen und mit der Checkliste selbst Punkte vergeben. */
+RS.load(function (d) {
+  const $ = RS.$, esc = RS.esc, T = d.aufgaben;
+  const KEY = "rs-entwurf-" + RS.SET;
+  let texte = T.map(() => ""), gezeigt = T.map(() => false), haken = T.map(t => t.checkliste.map(() => false));
+  try { const s = JSON.parse(RS.store.get(KEY) || "null"); if (s && Array.isArray(s)) texte = T.map((_, i) => String(s[i] || "")); } catch (e) { }
+  const fmt = n => String(n).replace(".", ",");
+  const rund = x => Math.round(x * 2) / 2;
+  const punkte = i => rund(T[i].be * haken[i].filter(Boolean).length / T[i].checkliste.length);
+
+  $("main").innerHTML = T.map((t, i) =>
+    '<section class="card" id="s' + i + '"><div class="kz"><span class="nr">' + esc(t.nr || (i + 1)) + '</span><span class="op">' + esc(t.op || "") + '</span><span class="be">' + fmt(t.be) + " BE</span></div>" +
+    (t.fall ? '<div class="fall"><b>Fallbeispiel</b>' + RS.para(t.fall) + "</div>" : "") +
+    '<p class="auf">' + esc(t.aufgabe) + "</p>" +
+    '<label class="small muted" for="t' + i + '">Deine Antwort</label><textarea id="t' + i + '" rows="' + (t.zeilen || 4) + '" placeholder="Schreibe hier in ganzen Sätzen …">' + esc(texte[i]) + "</textarea>" +
+    (t.tipp ? '<details class="tipp"><summary>Tipp</summary><p>' + esc(t.tipp) + "</p></details>" : "") +
+    '<div class="zeig"><button type="button" class="btn alt" id="z' + i + '" ' + (texte[i].trim() ? "" : "disabled") + '>Musterlösung zeigen</button> <span class="muted small" id="zh' + i + '">' + (texte[i].trim() ? "" : "Erst schreiben, dann vergleichen.") + '</span></div>' +
+    '<div class="mu" id="m' + i + '" hidden><h4>Musterlösung</h4><div class="mt">' + esc(t.muster) + '</div><h4>Selbstkontrolle: Was davon steht bei dir?</h4><ul class="cl">' +
+    t.checkliste.map((c, j) => '<li><label><input type="checkbox" data-i="' + i + '" data-j="' + j + '"><span>' + esc(c) + "</span></label></li>").join("") + '</ul><p class="pt" id="p' + i + '"></p></div></section>').join("") +
+    '<div class="stand"><div class="aktion"><button type="button" class="btn" id="gesamt" disabled>Gesamtergebnis</button><button type="button" class="btn alt" id="leer">Texte löschen</button><span class="muted small" id="gh"></span></div></div>';
+
+  T.forEach((t, i) => {
+    $("t" + i).addEventListener("input", e => {
+      texte[i] = e.target.value; RS.store.set(KEY, JSON.stringify(texte));
+      $("z" + i).disabled = !texte[i].trim(); $("zh" + i).textContent = texte[i].trim() ? "" : "Erst schreiben, dann vergleichen.";
+    });
+    $("z" + i).addEventListener("click", () => {
+      gezeigt[i] = true; $("m" + i).hidden = false; $("z" + i).hidden = true; $("zh" + i).textContent = "";
+      $("m" + i).scrollIntoView({ behavior: RS.reduced ? "auto" : "smooth", block: "nearest" });
+      stand();
+    });
+  });
+  document.querySelectorAll(".cl input").forEach(c => c.addEventListener("change", () => {
+    const i = +c.dataset.i, j = +c.dataset.j; haken[i][j] = c.checked; punktzeile(i);
+    if (c.checked && Math.random() < 0.35) RS.sag(RS.pick(["Gut gemacht – das stand bei dir! ✓", "Stark, das hattest du! 👍", "Prima – weiter so! ✨"]), false);
+    if (haken[i].every(Boolean)) RS.sag("Aufgabe " + (T[i].nr || i + 1) + ": volle Punktzahl! 🌟", true);
+  }));
+  $("leer").addEventListener("click", () => { if (confirm("Wirklich alle geschriebenen Texte löschen?")) { RS.store.del(KEY); location.reload(); } });
+  $("gesamt").addEventListener("click", gesamt);
+
+  function punktzeile(i) { $("p" + i).textContent = "Punkte: " + fmt(punkte(i)) + " von " + fmt(T[i].be) + " BE"; }
+  function stand() {
+    const n = gezeigt.filter(Boolean).length;
+    RS.meter(n, T.length, 0);
+    $("gesamt").disabled = n < T.length;
+    $("gh").textContent = n < T.length ? "Vergleiche zuerst alle Aufgaben mit der Musterlösung." : "";
+    T.forEach((_, i) => { if (gezeigt[i]) punktzeile(i); });
+  }
+  function gesamt() {
+    const max = T.reduce((s, t) => s + t.be, 0), pk = T.reduce((s, _, i) => s + punkte(i), 0);
+    RS.endkarte($("ende"), {
+      punkte: pk, max: max, fehler: 0,
+      extra: "Du hast dich selbst bewertet – sei dabei ehrlich zu dir, dann zeigt dir das Ergebnis genau, was noch fehlt.",
+      loesung: () => {
+        $("loesung").innerHTML = '<div class="card loesung"><h2>Alle Musterlösungen</h2>' + T.map((t, i) => '<div class="lz"><span class="t">' + esc(t.nr || (i + 1)) + " " + esc(t.aufgabe) + '</span><div class="e" style="white-space:pre-line">' + esc(t.muster) + "</div></div>").join("") + "</div>";
+        $("loesung").scrollIntoView({ behavior: RS.reduced ? "auto" : "smooth" });
+      }
+    });
+    RS.$("ende").querySelector(".punkte").textContent = fmt(pk) + " von " + fmt(max) + " BE (" + Math.round(100 * pk / max) + " %)";
+  }
+  stand();
+});
+</script></body></html>

@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Reihenfolge – Sozialwesen 7</title><link rel="stylesheet" href="../css/rs.css">
+<style>
+.slots{list-style:none;margin:0 0 14px;padding:0;display:flex;flex-direction:column;gap:8px;counter-reset:s}
+.slot{display:flex;gap:10px;align-items:flex-start;min-height:52px;border:2px dashed var(--line);border-radius:12px;padding:8px 10px;background:var(--panel)}
+.slot .n{flex:none;width:1.9em;height:1.9em;border-radius:50%;display:grid;place-items:center;background:var(--line);font-weight:800;font-size:.85rem}
+.slot.voll{border-style:solid;border-color:var(--pri);cursor:pointer}.slot.voll .n{background:var(--pri);color:var(--pri-ink)}
+.slot.ok{border-color:var(--ok);background:var(--ok-soft)}.slot.ok .n{background:var(--ok);color:var(--panel)}
+.slot.bad{border-color:var(--bad);background:var(--bad-soft)}.slot.bad .n{background:var(--bad);color:var(--panel)}
+.pool{display:flex;flex-direction:column;gap:8px}
+.chip{text-align:left;border:2px solid var(--line);background:var(--panel);border-radius:12px;padding:10px 12px;cursor:pointer;line-height:1.4}
+.chip:hover{border-color:var(--pri)}
+.leer{color:var(--muted);font-style:italic;padding:10px}
+</style></head>
+<body><div class="rs"><header id="kopf"><p class="muted">Lade Übung …</p></header><main id="main"></main><div id="ende"></div><div id="loesung"></div></div>
+<script src="../js/rs-lob.js"></script>
+<script>
+/* Schritte in die richtige Reihenfolge bringen: antippen = nach unten in die Reihe, in der Reihe antippen = wieder entfernen. */
+RS.load(function (d) {
+  const $ = RS.$, esc = RS.esc, R = d.runden;
+  let r = 0, serie = 0, gesamtP = 0, gesamtMax = 0, reihe = [], pool = [], geprueft = false, ersterVersuch = true, erg = [];
+
+  function runde() {
+    const S = R[r].schritte.map((t, i) => ({ t, i }));
+    pool = RS.shuffle(S); if (S.length > 2) { let g = 0; while (pool.every((x, k) => x.i === k) && g++ < 5) pool = RS.shuffle(S); }
+    reihe = S.map(() => null); geprueft = false; ersterVersuch = true; zeichne(); RS.meter(r, R.length, serie);
+  }
+
+  function zeichne(res) {
+    const S = R[r].schritte;
+    $("main").innerHTML = '<div class="card"><div class="qnr">Runde ' + (r + 1) + " von " + R.length + "</div><h2 class=\"frage\">" + esc(R[r].aufgabe) + "</h2>" +
+      '<h3 class="small muted" style="margin-bottom:6px">Deine Reihenfolge</h3><ol class="slots" id="slots">' +
+      S.map((_, k) => { const x = reihe[k]; const c = x ? (res ? (x.i === k ? " ok" : " bad") : " voll") : ""; return '<li class="slot' + c + '" data-k="' + k + '"><span class="n">' + (k + 1) + "</span><span>" + (x ? esc(x.t) : "") + "</span></li>"; }).join("") +
+      '</ol><h3 class="small muted" style="margin-bottom:6px">Karten</h3><div class="pool" id="pool">' +
+      (pool.length ? pool.map(x => '<button type="button" class="chip" data-i="' + x.i + '">' + esc(x.t) + "</button>").join("") : '<div class="leer">Alle Karten sind eingeordnet.</div>') +
+      '</div><div id="fb" role="status"></div><div class="aktion"><button type="button" class="btn" id="pruef" ' + (pool.length || geprueft ? "disabled" : "") + '>Prüfen</button><button type="button" class="btn alt" id="los" ' + (geprueft ? "" : "hidden") + '>Lösung zeigen</button><button type="button" class="btn" id="weiter" hidden>' + (r + 1 < R.length ? "Nächste Runde" : "Fertig") + "</button></div></div>";
+    document.querySelectorAll(".chip").forEach(b => b.addEventListener("click", () => { const i = +b.dataset.i, x = pool.find(y => y.i === i), k = reihe.indexOf(null); if (k < 0) return; pool = pool.filter(y => y !== x); reihe[k] = x; geprueft = false; zeichne(); }));
+    document.querySelectorAll(".slot.voll,.slot.bad").forEach(s => s.addEventListener("click", () => { const k = +s.dataset.k; if (s.classList.contains("ok")) return; const x = reihe[k]; reihe[k] = null; pool.push(x); geprueft = false; zeichne(); }));
+    $("pruef").addEventListener("click", pruefen);
+    $("los").addEventListener("click", zeigeLoesung);
+    $("weiter").addEventListener("click", weiter);
+  }
+
+  function pruefen() {
+    const S = R[r].schritte, richtig = reihe.filter((x, k) => x && x.i === k).length;
+    geprueft = true; zeichne(true);
+    $("pruef").disabled = true; $("pruef").hidden = true; $("los").hidden = false;
+    if (ersterVersuch) { erg[r] = richtig / S.length; gesamtP += richtig; gesamtMax += S.length; ersterVersuch = false; }
+    if (richtig === S.length) {
+      serie++; RS.meter(r + 1, R.length, serie);
+      $("fb").innerHTML = '<div class="fb ok"><b class="kopfzeile">✓ Alles an der richtigen Stelle</b>' + (R[r].e ? "<div>" + esc(R[r].e) + "</div>" : "") + "</div>";
+      $("los").hidden = true; $("weiter").hidden = false;
+      RS.sag(erg[r] === 1 ? "Gleich im ersten Versuch richtig – stark! 🌟" : "Geschafft! Beim zweiten Mal sitzt es. 👍", erg[r] === 1);
+    } else {
+      serie = 0;
+      $("fb").innerHTML = '<div class="fb bad"><b class="kopfzeile">' + richtig + " von " + S.length + " Karten stehen richtig</b><div>Rot markierte Karten kannst du antippen, um sie zurückzulegen und neu einzuordnen. Oder lass dir die Lösung zeigen.</div></div>";
+      const t = RS.trost(); if (t) RS.sag(t, false);
+    }
+  }
+
+  function zeigeLoesung() {
+    const S = R[r].schritte; reihe = S.map((t, i) => ({ t, i })); pool = []; geprueft = true; zeichne(true);
+    $("pruef").hidden = true; $("los").hidden = true; $("weiter").hidden = false;
+    $("fb").innerHTML = '<div class="fb"><b class="kopfzeile">So ist die richtige Reihenfolge</b>' + (R[r].e ? "<div>" + esc(R[r].e) + "</div>" : "") + "</div>";
+    RS.meter(r + 1, R.length, serie);
+  }
+
+  function weiter() { r++; if (r < R.length) { runde(); window.scrollTo({ top: 0 }); } else ende(); }
+
+  function ende() {
+    $("main").innerHTML = ""; RS.meter(R.length, R.length, serie);
+    RS.endkarte($("ende"), {
+      punkte: gesamtP, max: gesamtMax, fehler: 0, extra: "Gezählt wird jede Karte, die im ersten Versuch an der richtigen Stelle stand.",
+      loesung: () => {
+        $("loesung").innerHTML = '<div class="card loesung"><h2>Alle richtigen Reihenfolgen</h2>' + R.map((x, i) => '<div class="lz"><span class="t">Runde ' + (i + 1) + ": " + esc(x.aufgabe) + "</span><ol>" + x.schritte.map(s => "<li>" + esc(s) + "</li>").join("") + "</ol>" + (x.e ? '<div class="e">' + esc(x.e) + "</div>" : "") + "</div>").join("") + "</div>";
+        $("loesung").scrollIntoView({ behavior: RS.reduced ? "auto" : "smooth" });
+      }
+    });
+  }
+  runde();
+});
+</script></body></html>

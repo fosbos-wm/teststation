@@ -1,0 +1,35 @@
+{
+ "titel": "Familien vergleichen und Toleranz begründen",
+ "abzeichen": "🌍",
+ "anleitung": "Lies das Fallbeispiel, schreibe deine Antworten und vergleiche danach mit der Musterlösung.",
+ "aufgaben": [
+  {
+   "nr": "1",
+   "op": "Vergleiche",
+   "be": 4,
+   "zeilen": 7,
+   "fall": "Familie A lebt in einer deutschen Großstadt: Die Eltern, beide berufstätig, und ein Kind.\nFamilie B lebt in einem Dorf in einem anderen Land (erfundenes Beispiel): Eltern, vier Kinder und die Großeltern wohnen in einem Haus. Die älteren Kinder helfen bei der Betreuung der jüngeren.",
+   "aufgabe": "Vergleiche beide Familien anhand von zwei selbst gewählten Merkmalen.",
+   "muster": "Merkmal Familiengröße: Familie A ist klein (drei Personen), Familie B ist groß (acht Personen aus drei Generationen).\nMerkmal Rollenverteilung: In Familie A teilen sich die berufstätigen Eltern die Aufgaben, in Familie B übernehmen auch die Großeltern und die älteren Kinder Aufgaben, vor allem die Betreuung der jüngeren Geschwister.",
+   "checkliste": [
+    "Ich habe ein erstes Merkmal genannt (z. B. Familiengröße).",
+    "Ich habe bei diesem Merkmal beide Familien beschrieben.",
+    "Ich habe ein zweites Merkmal genannt (z. B. Rollenverteilung).",
+    "Ich habe bei diesem Merkmal beide Familien beschrieben."
+   ],
+   "tipp": "Zu jedem Merkmal gehören zwei Teile: Familie A und Familie B."
+  },
+  {
+   "nr": "2",
+   "op": "Erkläre",
+   "be": 2,
+   "zeilen": 4,
+   "aufgabe": "Erkläre, warum Toleranz gegenüber anderen Familienmodellen wichtig ist.",
+   "muster": "Familien leben in verschiedenen Ländern und Kulturen sehr unterschiedlich. Wer tolerant ist, respektiert diese Unterschiede und bewertet sie nicht vorschnell. So kann man friedlich zusammenleben und voneinander lernen.",
+   "checkliste": [
+    "Ich habe erklärt, dass es viele verschiedene Familienmodelle gibt.",
+    "Ich habe erklärt, was Toleranz bewirkt (z. B. Respekt, friedliches Zusammenleben, voneinander lernen)."
+   ]
+  }
+ ]
+}

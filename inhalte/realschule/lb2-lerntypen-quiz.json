@@ -1,0 +1,88 @@
+{
+ "titel": "Lerntypen und Lernkanäle",
+ "abzeichen": "🎧",
+ "anleitung": "Jeder lernt etwas anders. Ordne die Beispiele den Lerntypen zu.",
+ "fragen": [
+  {
+   "f": "Welcher Lerntyp ist das?",
+   "o": [
+    "Visueller Typ (sehend)",
+    "Auditiver Typ (hörend)",
+    "Haptischer Typ (fühlend)",
+    "Kommunikativer Typ"
+   ],
+   "r": 0,
+   "e": "Visuelle Lerner merken sich Dinge besonders gut durch Sehen: Bilder, Farben, Mindmaps.",
+   "fall": "Nele zeichnet beim Lernen Mindmaps, markiert mit bunten Stiften und merkt sich Bilder gut."
+  },
+  {
+   "f": "Welcher Lerntyp ist das?",
+   "o": [
+    "Auditiver Typ (hörend)",
+    "Visueller Typ (sehend)",
+    "Haptischer Typ (fühlend)",
+    "Kommunikativer Typ"
+   ],
+   "r": 0,
+   "e": "Auditive Lerner lernen gut durch Hören und Sprechen.",
+   "fall": "Jonas liest sich den Stoff laut vor oder hört Erklärvideos. So prägt er sich Inhalte am besten ein."
+  },
+  {
+   "f": "Welcher Lerntyp ist das?",
+   "o": [
+    "Haptischer Typ (fühlend)",
+    "Auditiver Typ (hörend)",
+    "Visueller Typ (sehend)",
+    "Kommunikativer Typ"
+   ],
+   "r": 0,
+   "e": "Haptische Lerner lernen durch Ausprobieren, Bewegen und Anfassen.",
+   "fall": "Ayla baut zum Lernen Modelle, schreibt Karteikarten und läuft dabei herum."
+  },
+  {
+   "f": "Welcher Lerntyp ist das?",
+   "o": [
+    "Kommunikativer Typ",
+    "Visueller Typ",
+    "Auditiver Typ",
+    "Haptischer Typ"
+   ],
+   "r": 0,
+   "e": "Kommunikative Lerner lernen am besten im Gespräch und Austausch.",
+   "fall": "Ben lernt am besten, indem er mit Freunden über den Stoff spricht und sich gegenseitig abfragt."
+  },
+  {
+   "f": "Was bedeutet es, ein Mischtyp zu sein?",
+   "o": [
+    "Man lernt mit mehreren Sinnen gut.",
+    "Man lernt gar nicht.",
+    "Man lernt nur durch Hören.",
+    "Man lernt nur durch Lesen."
+   ],
+   "r": 0,
+   "e": "Die meisten Menschen sind Mischtypen. Mehrere Kanäle zu nutzen hilft beim Behalten."
+  },
+  {
+   "f": "Welcher Lerntipp passt zum visuellen Typ?",
+   "o": [
+    "Mindmap oder farbig markierte Zusammenfassung erstellen",
+    "Den Stoff nur anhören",
+    "Den Stoff nur durch Bewegung lernen",
+    "Nur mit anderen reden"
+   ],
+   "r": 0,
+   "e": "Bilder, Farben und Schaubilder sprechen den Sehsinn an."
+  },
+  {
+   "f": "Warum ist es sinnvoll, seinen eigenen Lerntyp zu kennen?",
+   "o": [
+    "Man kann Lernmethoden wählen, die zu einem passen.",
+    "Man muss dann nicht mehr lernen.",
+    "Man bekommt bessere Noten ohne Arbeit.",
+    "Man wird nie müde."
+   ],
+   "r": 0,
+   "e": "Wer weiß, wie er am besten lernt, lernt effizienter."
+  }
+ ]
+}

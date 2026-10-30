@@ -1,0 +1,39 @@
+{
+ "titel": "Memory: Familienform und Fallbeispiel",
+ "abzeichen": "🃏",
+ "anleitung": "Decke zwei Karten auf. Finde zu jeder Familienform das passende kurze Fallbeispiel.",
+ "paare": [
+  [
+   "Kernfamilie",
+   "Vater, Mutter und zwei Kinder wohnen allein in einer Wohnung."
+  ],
+  [
+   "Großfamilie",
+   "Großeltern, Eltern und Enkel leben unter einem Dach."
+  ],
+  [
+   "Ein-Eltern-Familie",
+   "Die Mutter zieht ihren Sohn nach der Trennung allein groß."
+  ],
+  [
+   "Patchwork-Familie",
+   "Zwei Erwachsene und ihre Kinder aus früheren Beziehungen leben zusammen."
+  ],
+  [
+   "Regenbogenfamilie",
+   "Zwei Mütter erziehen gemeinsam ihre Tochter."
+  ],
+  [
+   "Pflegefamilie",
+   "Eine Familie nimmt ein Kind auf, dessen Eltern sich nicht kümmern können."
+  ],
+  [
+   "Adoptivfamilie",
+   "Ein Ehepaar wird rechtlich zu den Eltern von Sara."
+  ],
+  [
+   "Kinderdorffamilie",
+   "Kinder wachsen mit einer Kinderdorfmutter in einem Haus auf."
+  ]
+ ]
+}

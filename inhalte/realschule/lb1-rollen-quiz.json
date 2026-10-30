@@ -1,0 +1,100 @@
+{
+ "titel": "Rollen in der Familie – Fälle verstehen",
+ "abzeichen": "🎭",
+ "anleitung": "Lies jedes Fallbeispiel genau und wähle die passende Antwort. Nach jeder Antwort siehst du eine Erklärung.",
+ "fragen": [
+  {
+   "f": "Was zeigt dieses Beispiel?",
+   "o": [
+    "Jedes Familienmitglied hat bestimmte Aufgaben und Erwartungen, also eine Rolle.",
+    "Nur die Eltern haben in der Familie eine Rolle.",
+    "In einer Familie gibt es keine festen Aufgaben.",
+    "Alle Familienmitglieder haben dieselbe Rolle."
+   ],
+   "r": 0,
+   "e": "In jeder Familie übernehmen die Mitglieder bestimmte Aufgaben, und es wird bestimmtes Verhalten von ihnen erwartet. Das sind ihre Rollen – auch Kinder haben eine.",
+   "fall": "Mia (13) räumt abends die Spülmaschine ein. Ihr Vater kocht meistens, ihre Mutter erledigt den Papierkram, der kleine Bruder deckt den Tisch."
+  },
+  {
+   "f": "Wie nennt man diese Veränderung?",
+   "o": [
+    "Rollenwandel",
+    "Primäre Sozialisation",
+    "Erziehungsstil",
+    "Familienform"
+   ],
+   "r": 0,
+   "e": "Verändern sich die Aufgaben und Erwartungen an Familienmitglieder im Lauf der Zeit, spricht man von Rollenwandel.",
+   "fall": "Früher war der Vater meist allein berufstätig, und die Mutter kümmerte sich um Haushalt und Kinder. Heute arbeiten in vielen Familien beide Eltern und teilen sich die Hausarbeit."
+  },
+  {
+   "f": "Was zeigt dieses Beispiel?",
+   "o": [
+    "Einen Rollenwandel: Aufgaben, die früher oft die Mutter übernahm, übernimmt jetzt der Vater.",
+    "Eine Patchwork-Familie, weil beide Eltern unterschiedliche Aufgaben haben.",
+    "Einen autoritären Erziehungsstil.",
+    "Dass der Vater keine Rolle in der Familie hat."
+   ],
+   "r": 0,
+   "e": "Der Vater übernimmt eine Aufgabe, die früher meist von Müttern erledigt wurde. Die Rollen in der Familie haben sich verändert.",
+   "fall": "Herr Weber bleibt ein Jahr in Elternzeit bei seinem Baby, Frau Weber arbeitet in Vollzeit."
+  },
+  {
+   "f": "Welches Merkmal passt zur Familie als Primärgruppe?",
+   "o": [
+    "Die Mitglieder haben enge, persönliche Beziehungen mit starker Gefühlsbindung.",
+    "Die Mitglieder kennen sich kaum und treffen sich nur zum Arbeiten.",
+    "Die Gruppe ist sehr groß und anonym.",
+    "Die Beziehungen bestehen nur aus Verträgen."
+   ],
+   "r": 0,
+   "e": "In der Familie kennt man sich sehr gut, die Beziehungen sind eng und gefühlsbetont. Deshalb ist sie für Kinder die wichtigste Gruppe am Anfang des Lebens."
+  },
+  {
+   "f": "Welche Aussage über Rollen in der Familie stimmt?",
+   "o": [
+    "Rollen können sich im Lauf des Lebens verändern, zum Beispiel wenn ein Geschwisterkind geboren wird.",
+    "Rollen sind für immer festgelegt.",
+    "Nur Erwachsene haben eine Rolle in der Familie.",
+    "Die Rollen bestimmen allein die Kinder."
+   ],
+   "r": 0,
+   "e": "Mit einem neuen Geschwisterkind, einem Umzug oder dem Erwachsenwerden verändern sich Aufgaben und Erwartungen – die Rollen ändern sich mit."
+  },
+  {
+   "f": "Was kann man aus dem Beispiel schließen?",
+   "o": [
+    "Großeltern können in der Familie wichtige Aufgaben übernehmen und ergänzen die Rolle der Eltern.",
+    "Großeltern gehören nie zur Familie.",
+    "Nur Eltern dürfen Kinder betreuen.",
+    "Mit Oma ist die Familie keine Gruppe mehr."
+   ],
+   "r": 0,
+   "e": "Oma Helga hilft, betreut und gibt Wissen weiter. Damit übernimmt sie eine eigene, wichtige Rolle in der Familie.",
+   "fall": "Oma Helga wohnt im selben Haus. Sie holt die Enkel mittags von der Schule ab, kocht für alle und erzählt gern Geschichten."
+  },
+  {
+   "f": "Welche Veränderung gehört zum Rollenwandel in Familien?",
+   "o": [
+    "Immer mehr Väter übernehmen Aufgaben im Haushalt und bei der Kinderbetreuung.",
+    "Immer mehr Kinder verdienen das Familieneinkommen.",
+    "Immer mehr Familien leben auf einem Bauernhof.",
+    "Mütter müssen zu Hause bleiben."
+   ],
+   "r": 0,
+   "e": "Beim Rollenwandel verändert sich die Aufgabenverteilung. Viele Väter sind heute stärker an Haushalt und Erziehung beteiligt."
+  },
+  {
+   "f": "Welche Rolle übernimmt Ben in dieser Situation?",
+   "o": [
+    "Er übernimmt Verantwortung für seine jüngeren Geschwister und bleibt trotzdem Kind der Familie.",
+    "Er ist das Familienoberhaupt und bestimmt alles.",
+    "Er hat in der Familie keine Aufgabe.",
+    "Er ersetzt die Eltern vollständig."
+   ],
+   "r": 0,
+   "e": "Ältere Geschwister bekommen oft zusätzliche Aufgaben, bleiben aber selbst Kinder. Die Eltern tragen weiter die Hauptverantwortung.",
+   "fall": "Ben (12) ist der Älteste von drei Geschwistern. Er passt manchmal auf seine Schwestern auf, wenn die Eltern am Abend arbeiten."
+  }
+ ]
+}

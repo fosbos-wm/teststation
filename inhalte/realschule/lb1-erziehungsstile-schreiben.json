@@ -1,0 +1,56 @@
+{
+ "titel": "Erziehungsstile: Fallbeispiel auswerten",
+ "abzeichen": "📝",
+ "anleitung": "Lies das Fallbeispiel und schreibe deine Antworten. Danach vergleichst du mit der Musterlösung und vergibst dir Punkte.",
+ "aufgaben": [
+  {
+   "nr": "1",
+   "op": "Nenne",
+   "be": 2,
+   "zeilen": 3,
+   "fall": "Nele (12) möchte am Samstag zur Geburtstagsfeier ihrer Freundin Mara. Neles Vater sagt: „Das kommt nicht in Frage. Du bleibst zu Hause, und erklären muss ich dir nichts.“\nMaras Eltern erlauben ihr fast alles und geben nach, sobald Mara protestiert. Regeln, wann sie zu Hause sein muss, gibt es kaum.",
+   "aufgabe": "Nenne den Erziehungsstil in Neles Familie und den in Maras Familie.",
+   "muster": "Neles Familie: autoritärer Erziehungsstil.\nMaras Familie: permissiver Erziehungsstil.",
+   "checkliste": [
+    "Ich habe Neles Familie richtig zugeordnet (autoritär).",
+    "Ich habe Maras Familie richtig zugeordnet (permissiv)."
+   ]
+  },
+  {
+   "nr": "2",
+   "op": "Begründe",
+   "be": 2,
+   "zeilen": 4,
+   "aufgabe": "Begründe deine Zuordnung mit Hinweisen aus dem Fallbeispiel.",
+   "muster": "Neles Vater entscheidet allein, ohne Erklärung und ohne auf Nele einzugehen. Das ist typisch für den autoritären Stil.\nMaras Eltern setzen kaum Regeln und geben sofort nach. Das ist typisch für den permissiven Stil.",
+   "checkliste": [
+    "Ich habe für Nele ein Merkmal aus dem Text genannt (z. B. keine Erklärung, Verbot).",
+    "Ich habe für Mara ein Merkmal aus dem Text genannt (z. B. kaum Regeln, gibt nach)."
+   ]
+  },
+  {
+   "nr": "3",
+   "op": "Nenne",
+   "be": 2,
+   "zeilen": 4,
+   "aufgabe": "Nenne je einen Nachteil des Erziehungsstils für Nele und für Mara.",
+   "muster": "Nele: Sie lernt kaum, ihre Meinung zu sagen, und traut sich vielleicht wenig zu. (Auch möglich: Sie fühlt sich nicht ernst genommen oder wird ängstlich.)\nMara: Sie lernt schwer, Regeln und Grenzen zu akzeptieren. (Auch möglich: Sie fühlt sich unsicher, weil Orientierung fehlt.)",
+   "checkliste": [
+    "Ich habe einen passenden Nachteil für Nele genannt.",
+    "Ich habe einen passenden Nachteil für Mara genannt."
+   ]
+  },
+  {
+   "nr": "4",
+   "op": "Beschreibe",
+   "be": 2,
+   "zeilen": 4,
+   "aufgabe": "Beschreibe, wie Neles Vater im autoritativen Stil reagieren könnte.",
+   "muster": "Er könnte sich anhören, warum die Feier für Nele wichtig ist, und seine Bedenken erklären (z. B. Abholzeit, Aufsicht). Gemeinsam könnten sie eine Lösung finden: Nele darf hin, muss aber zu einer vereinbarten Zeit zu Hause sein.",
+   "checkliste": [
+    "Ich habe beschrieben, dass der Vater zuhört oder seine Gründe erklärt.",
+    "Ich habe eine gemeinsame Lösung oder klare Absprache genannt."
+   ]
+  }
+ ]
+}

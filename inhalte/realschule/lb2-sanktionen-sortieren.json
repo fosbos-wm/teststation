@@ -1,0 +1,56 @@
+{
+ "titel": "Positive oder negative Sanktion?",
+ "abzeichen": "🎯",
+ "anleitung": "Sanktionen sind die Reaktionen auf Verhalten. Auf erwünschtes Verhalten folgt eine positive Sanktion, auf unerwünschtes eine negative. Ordne zu.",
+ "kategorien": [
+  "Positive Sanktion",
+  "Negative Sanktion"
+ ],
+ "karten": [
+  {
+   "t": "Die Lehrerin lobt die Klasse für ruhige Gruppenarbeit.",
+   "k": 0,
+   "e": "Lob ist eine positive Sanktion."
+  },
+  {
+   "t": "Eine gute Note für eine gelungene Präsentation",
+   "k": 0,
+   "e": "Anerkennung durch eine gute Note."
+  },
+  {
+   "t": "Ein Sticker oder Punkt für vorbildliches Verhalten",
+   "k": 0,
+   "e": "Belohnung für erwünschtes Verhalten."
+  },
+  {
+   "t": "Anerkennung vor der Klasse für besondere Hilfsbereitschaft",
+   "k": 0,
+   "e": "Öffentliche Anerkennung ist positiv."
+  },
+  {
+   "t": "Ein freundliches Lächeln und ein „Danke“ der Lehrerin",
+   "k": 0,
+   "e": "Auch kleine Zeichen der Anerkennung zählen."
+  },
+  {
+   "t": "Ein Eintrag ins Klassenbuch wegen Störens",
+   "k": 1,
+   "e": "Eine Reaktion auf unerwünschtes Verhalten: negativ."
+  },
+  {
+   "t": "Nacharbeiten in der Pause",
+   "k": 1,
+   "e": "Eine unangenehme Folge von Fehlverhalten: negativ."
+  },
+  {
+   "t": "Eine Ermahnung durch die Lehrkraft",
+   "k": 1,
+   "e": "Eine milde negative Sanktion."
+  },
+  {
+   "t": "Ein Gespräch bei der Schulleitung nach einem Regelverstoß",
+   "k": 1,
+   "e": "Eine ernste negative Sanktion."
+  }
+ ]
+}

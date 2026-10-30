@@ -1,0 +1,85 @@
+{
+ "titel": "Welche Familienform ist das?",
+ "abzeichen": "🏠",
+ "anleitung": "Lies das Fallbeispiel und entscheide, um welche Familienform es sich handelt. Die Erklärung zeigt dir, woran du es erkennst.",
+ "kategorien": [
+  "Kernfamilie",
+  "Großfamilie",
+  "Ein-Eltern-Familie",
+  "Patchwork-Familie",
+  "Regenbogenfamilie",
+  "Ersatzfamilie"
+ ],
+ "karten": [
+  {
+   "t": "Herr und Frau Maier leben mit ihren beiden Kindern Lena (9) und Jonas (6) in einer Wohnung.",
+   "k": 0,
+   "e": "Eltern und ihre gemeinsamen Kinder in einem Haushalt: Kernfamilie."
+  },
+  {
+   "t": "Ein verheiratetes Paar lebt mit dem gemeinsamen Sohn zusammen. Die Großeltern wohnen in einer anderen Stadt.",
+   "k": 0,
+   "e": "Nur Eltern und Kind leben im Haushalt: Kernfamilie."
+  },
+  {
+   "t": "Großeltern, Eltern und zwei Enkelkinder leben gemeinsam in einem Haus.",
+   "k": 1,
+   "e": "Mehrere Generationen unter einem Dach: Großfamilie."
+  },
+  {
+   "t": "In einem Haus wohnen Eltern, vier Kinder, die Großmutter und ein unverheirateter Onkel.",
+   "k": 1,
+   "e": "Viele Familienmitglieder aus mehreren Generationen in einem Haushalt: Großfamilie."
+  },
+  {
+   "t": "Frau Berger zieht ihren Sohn Paul (8) nach der Trennung allein groß.",
+   "k": 2,
+   "e": "Ein Elternteil lebt allein mit dem Kind: Ein-Eltern-Familie."
+  },
+  {
+   "t": "Nach dem Tod seiner Frau erzieht Herr Yilmaz seine zwei Töchter allein.",
+   "k": 2,
+   "e": "Auch nach dem Tod eines Elternteils entsteht eine Ein-Eltern-Familie."
+  },
+  {
+   "t": "Tom (11) lebt mit seiner Mutter, deren neuem Partner und dessen Tochter in einer Wohnung.",
+   "k": 3,
+   "e": "Kinder aus früheren Beziehungen leben mit neuem Partner zusammen: Patchwork-Familie."
+  },
+  {
+   "t": "Mia lebt bei ihrem Vater, seiner neuen Frau und deren Zwillingen aus einer früheren Beziehung.",
+   "k": 3,
+   "e": "Ein neues Paar bringt Kinder aus früheren Beziehungen mit: Patchwork-Familie."
+  },
+  {
+   "t": "Zwei Mütter, Sabine und Anna, ziehen gemeinsam ihre Tochter Emma (5) auf.",
+   "k": 4,
+   "e": "Ein gleichgeschlechtliches Elternpaar mit Kind: Regenbogenfamilie."
+  },
+  {
+   "t": "Zwei Väter, Jonas und Kai, ziehen gemeinsam ihre Tochter groß.",
+   "k": 4,
+   "e": "Auch zwei Väter mit Kind bilden eine Regenbogenfamilie."
+  },
+  {
+   "t": "Familie Schulz nimmt den siebenjährigen Leon auf Dauer bei sich auf, weil seine Eltern sich nicht um ihn kümmern können. Sie adoptieren ihn nicht.",
+   "k": 5,
+   "e": "Das ist eine Pflegefamilie, also eine Form der Ersatzfamilie."
+  },
+  {
+   "t": "Ein Ehepaar adoptiert die kleine Sara und wird damit rechtlich zu ihren Eltern.",
+   "k": 5,
+   "e": "Das ist eine Adoptivfamilie, also eine Form der Ersatzfamilie."
+  },
+  {
+   "t": "Kinder, die nicht bei ihren Eltern leben können, wachsen in einem Haus mit einer „Kinderdorfmutter“ auf.",
+   "k": 5,
+   "e": "Das ist eine Kinderdorffamilie, also eine Form der Ersatzfamilie."
+  },
+  {
+   "t": "Eine Frau hat zwei Kinder aus erster Ehe. Ihr neuer Mann hat einen Sohn mitgebracht. Alle leben zusammen.",
+   "k": 3,
+   "e": "Zwei Familien wachsen zu einer zusammen: Patchwork-Familie."
+  }
+ ]
+}

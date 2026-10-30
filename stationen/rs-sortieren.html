@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sortieren – Sozialwesen 7</title><link rel="stylesheet" href="../css/rs.css">
+<style>
+.karte{font-size:1.1rem;font-weight:600;padding:18px 18px;border-radius:14px;background:var(--pri-soft);border:2px solid var(--line);margin-bottom:14px;line-height:1.45}
+.karte.ok{background:var(--ok-soft);border-color:var(--ok)}.karte.bad{background:var(--bad-soft);border-color:var(--bad)}
+.kats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.kat{border:3px solid var(--kc);background:var(--panel);border-radius:14px;padding:14px 12px;font-weight:800;font-size:1rem;cursor:pointer;text-align:center;min-height:58px;color:var(--fg)}
+.kat:hover:not(:disabled){background:color-mix(in srgb,var(--kc) 14%,var(--panel))}
+.kat.ok{background:var(--ok);border-color:var(--ok);color:var(--panel)}
+.kat.bad{background:var(--bad);border-color:var(--bad);color:var(--panel)}
+.kat.richtig{box-shadow:0 0 0 4px color-mix(in srgb,var(--ok) 45%,transparent)}
+.kat:disabled{cursor:default}
+.lk{margin:8px 0 14px}.lk h3{display:flex;gap:8px;align-items:center;color:var(--kc)}.lk ul{margin:4px 0 0;padding-left:1.3em}.lk li{margin:3px 0}
+.lk li .m{font-weight:800;margin-right:4px}
+</style></head>
+<body><div class="rs"><header id="kopf"><p class="muted">Lade Übung …</p></header><main id="main"></main><div id="ende"></div><div id="loesung"></div></div>
+<script src="../js/rs-lob.js"></script>
+<script>
+/* Karten einer Kategorie zuordnen. Eine Karte nach der anderen, sofortige Rückmeldung mit Erklärung. */
+RS.load(function (d) {
+  const $ = RS.$, esc = RS.esc;
+  const alle = d.karten.map((k, i) => Object.assign({}, k, { i }));
+  const erst = {};
+  let queue, pos, serie = 0, zaehlt = true, gesperrt = false, k = null;
+
+  function start(liste, zahlen) { queue = RS.shuffle(liste); pos = 0; zaehlt = zahlen; $("ende").innerHTML = ""; $("loesung").innerHTML = ""; karte(); }
+
+  function karte() {
+    k = queue[pos]; gesperrt = false;
+    RS.meter(pos, queue.length, serie);
+    $("main").innerHTML =
+      '<div class="card"><div class="qnr">' + (zaehlt ? "Karte " : "Wiederholung ") + (pos + 1) + " von " + queue.length + "</div>" +
+      (d.frage ? '<h2 class="frage">' + esc(d.frage) + "</h2>" : "") +
+      '<div class="karte" id="kt">' + esc(k.t) + "</div>" +
+      '<div class="kats" role="group" aria-label="Kategorien">' +
+      d.kategorien.map((c, j) => '<button type="button" class="kat" style="--kc:var(--k' + (j % 6) + ')" data-j="' + j + '">' + esc(c) + "</button>").join("") +
+      '</div><div id="fb" role="status"></div><div class="aktion"><button type="button" class="btn" id="weiter" hidden>' + (pos + 1 < queue.length ? "Weiter" : "Fertig") + "</button></div></div>";
+    document.querySelectorAll(".kat").forEach(b => b.addEventListener("click", () => wahl(+b.dataset.j)));
+    $("weiter").addEventListener("click", weiter);
+  }
+
+  function wahl(j) {
+    if (gesperrt) return; gesperrt = true;
+    const ok = j === k.k;
+    document.querySelectorAll(".kat").forEach((b, c) => {
+      b.disabled = true;
+      if (c === j) b.classList.add(ok ? "ok" : "bad"); else if (c === k.k) b.classList.add("richtig");
+    });
+    $("kt").classList.add(ok ? "ok" : "bad");
+    if (zaehlt && erst[k.i] === undefined) erst[k.i] = ok;
+    serie = ok ? serie + 1 : 0;
+    $("fb").innerHTML = '<div class="fb ' + (ok ? "ok" : "bad") + '"><b class="kopfzeile">' + (ok ? "✓ Richtig" : "✗ Das gehört zu: " + esc(d.kategorien[k.k])) + "</b>" + (k.e ? "<div>" + esc(k.e) + "</div>" : "") + "</div>";
+    RS.meter(pos + 1, queue.length, serie);
+    const lob = ok ? RS.lobRichtig(serie) : null, tr = ok ? null : RS.trost();
+    if (lob) RS.sag(lob.t, lob.gross); else if (tr) RS.sag(tr, false);
+    else if (zaehlt && pos + 1 === Math.floor(queue.length / 2) && queue.length >= 6) RS.sag(RS.halbzeit(), false);
+    $("weiter").hidden = false; $("weiter").focus({ preventScroll: true });
+  }
+
+  function weiter() { pos++; if (pos < queue.length) { karte(); window.scrollTo({ top: 0 }); } else ende(); }
+
+  function ende() {
+    $("main").innerHTML = "";
+    if (!zaehlt) {
+      RS.meter(queue.length, queue.length, 0);
+      $("ende").innerHTML = '<div class="card ende"><p class="lob">Fehler nochmal geübt – genau so festigt man Wissen. 💪</p><div class="aktion"><button type="button" class="btn" id="l2">Lösungen ansehen</button><button type="button" class="btn alt" id="n2">Noch einmal von vorn</button></div></div>';
+      $("l2").addEventListener("click", loesung); $("n2").addEventListener("click", () => location.reload());
+      return;
+    }
+    RS.meter(queue.length, queue.length, serie);
+    const punkte = alle.filter(x => erst[x.i]).length, falsch = alle.filter(x => erst[x.i] === false);
+    RS.endkarte($("ende"), { punkte, max: alle.length, fehler: falsch.length, loesung, wiederholen: () => { serie = 0; start(falsch, false); window.scrollTo({ top: 0 }); } });
+  }
+
+  function loesung() {
+    $("loesung").innerHTML = '<div class="card loesung"><h2>Alle Lösungen</h2>' +
+      d.kategorien.map((c, j) => '<div class="lk" style="--kc:var(--k' + (j % 6) + ')"><h3>' + esc(c) + "</h3><ul>" +
+        alle.filter(x => x.k === j).map(x => '<li><span class="m ' + (erst[x.i] ? "ok" : "bad") + '" style="color:var(--' + (erst[x.i] ? "ok" : "bad") + ')">' + (erst[x.i] ? "✓" : "✗") + "</span>" + esc(x.t) + (x.e ? '<div class="muted small">' + esc(x.e) + "</div>" : "") + "</li>").join("") + "</ul></div>").join("") + "</div>";
+    $("loesung").scrollIntoView({ behavior: RS.reduced ? "auto" : "smooth" });
+  }
+
+  document.addEventListener("keydown", e => {
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    if (!gesperrt && /^[1-6]$/.test(e.key)) { const b = document.querySelectorAll(".kat")[+e.key - 1]; if (b) b.click(); }
+    else if (gesperrt && e.key === "Enter" && $("weiter") && !$("weiter").hidden && document.activeElement !== $("weiter")) $("weiter").click();
+  });
+
+  start(alle, true);
+});
+</script></body></html>

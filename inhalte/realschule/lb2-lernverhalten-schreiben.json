@@ -1,0 +1,56 @@
+{
+ "titel": "Lernverhalten: Fallbeispiel bearbeiten",
+ "abzeichen": "✍️",
+ "anleitung": "Lies das Fallbeispiel und beantworte die Aufgaben. Danach vergleichst du mit der Musterlösung.",
+ "aufgaben": [
+  {
+   "nr": "1",
+   "op": "Nenne",
+   "be": 2,
+   "zeilen": 3,
+   "fall": "Max macht seine Hausaufgaben nur, wenn seine Mutter ihm eine Belohnung verspricht. In der Schule meldet er sich öfter, seit der Lehrer ihn dafür lobt. Beim Lernen schaut er sich gern Erklärvideos an.",
+   "aufgabe": "Nenne die Lerntheorie, die erklärt, warum Max sich nach dem Lob öfter meldet.",
+   "muster": "Es ist die operante Konditionierung (Skinner): Das Lob ist eine angenehme Folge. Sie verstärkt das Verhalten, sich zu melden.",
+   "checkliste": [
+    "Ich habe die operante Konditionierung (Skinner) genannt.",
+    "Ich habe das Lob als Verstärkung erklärt."
+   ]
+  },
+  {
+   "nr": "2",
+   "op": "Erkläre",
+   "be": 2,
+   "zeilen": 4,
+   "aufgabe": "Erkläre, welche Art der Motivation bei den Hausaufgaben vorliegt.",
+   "muster": "Es ist extrinsische Motivation. Max macht die Aufgaben nicht aus eigenem Interesse, sondern wegen der Belohnung, also wegen eines Anreizes von außen.",
+   "checkliste": [
+    "Ich habe extrinsisch genannt.",
+    "Ich habe begründet (Belohnung kommt von außen)."
+   ]
+  },
+  {
+   "nr": "3",
+   "op": "Nenne",
+   "be": 2,
+   "zeilen": 3,
+   "aufgabe": "Nenne den Lerntyp, den Max wahrscheinlich hat, und gib einen passenden Lerntipp.",
+   "muster": "Max ist wahrscheinlich ein visueller und auditiver Typ (er nutzt Erklärvideos). Tipp: Er kann Videos nutzen und sich dazu Notizen oder eine Mindmap machen.",
+   "checkliste": [
+    "Ich habe einen passenden Lerntyp genannt (visuell/auditiv).",
+    "Ich habe einen passenden Tipp genannt."
+   ]
+  },
+  {
+   "nr": "4",
+   "op": "Schlage vor",
+   "be": 2,
+   "zeilen": 4,
+   "aufgabe": "Schlage vor, wie Max dazu kommen könnte, auch ohne Belohnung gern zu lernen.",
+   "muster": "Max könnte sich Ziele setzen, Themen auswählen, die ihn interessieren, und seine Erfolge bemerken. So kann Interesse entstehen (intrinsische Motivation). Auch Lernen mit Freunden kann helfen.",
+   "checkliste": [
+    "Ich habe einen sinnvollen Vorschlag gemacht (Ziele, Interesse, Erfolgserlebnisse).",
+    "Ich habe einen Bezug zur Motivation hergestellt."
+   ]
+  }
+ ]
+}

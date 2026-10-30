@@ -1,0 +1,95 @@
+{
+ "titel": "Chancen und Probleme der Familienformen",
+ "abzeichen": "⚖️",
+ "anleitung": "Familienformen haben Vor- und Nachteile, je nach Situation. Wähle jeweils die Antwort, die am besten passt.",
+ "fragen": [
+  {
+   "f": "Welcher Aspekt ist eine mögliche Schwierigkeit in einer Ein-Eltern-Familie?",
+   "o": [
+    "Ein Elternteil trägt Erziehung, Haushalt und Einkommen meist allein.",
+    "Es gibt in der Familie zu viele Erwachsene.",
+    "Die Kinder haben immer zu viele Geschwister.",
+    "Alle Entscheidungen müssen mit vier Erwachsenen abgesprochen werden."
+   ],
+   "r": 0,
+   "e": "Wer allein erzieht, hat oft eine hohe Belastung. Hilfe durch Verwandte, Freunde oder den Staat ist deshalb besonders wichtig."
+  },
+  {
+   "f": "Welcher Aspekt ist ein Vorteil einer Großfamilie?",
+   "o": [
+    "Mehrere Erwachsene können sich bei Betreuung und Haushalt unterstützen.",
+    "Jedes Familienmitglied hat sehr viel Platz.",
+    "Es gibt nie Streit.",
+    "Die Kinder bekommen weniger Aufmerksamkeit, das macht sie selbstständig."
+   ],
+   "r": 0,
+   "e": "In einer Großfamilie verteilen sich Aufgaben auf mehrere Schultern, und Kinder haben viele Bezugspersonen."
+  },
+  {
+   "f": "Welcher Aspekt ist ein möglicher Nachteil einer Großfamilie?",
+   "o": [
+    "Wenig Rückzugsmöglichkeiten, und es kann mehr Konflikte zwischen den Generationen geben.",
+    "Niemand kann bei der Kinderbetreuung helfen.",
+    "Die Familie hat immer weniger Geld.",
+    "Die Kinder wachsen ohne Geschwister auf."
+   ],
+   "r": 0,
+   "e": "Viele Menschen auf engem Raum und verschiedene Vorstellungen der Generationen können zu Spannungen führen."
+  },
+  {
+   "f": "Was kann in einer Patchwork-Familie eine besondere Herausforderung sein?",
+   "o": [
+    "Stiefgeschwister und neue Erwachsene müssen sich erst als Familie finden, und Rollen müssen neu geklärt werden.",
+    "Alle Kinder haben dieselben leiblichen Eltern.",
+    "Die Kinder kennen sich schon ihr ganzes Leben.",
+    "Es gibt keine Regeln."
+   ],
+   "r": 0,
+   "e": "Wenn zwei Familien zusammenwachsen, braucht es Zeit, Geduld und gemeinsame Absprachen."
+  },
+  {
+   "f": "Welche Chance kann eine Patchwork-Familie bieten?",
+   "o": [
+    "Das Kind kann zusätzliche Bezugspersonen und Geschwister gewinnen.",
+    "Das Kind hat nur noch einen Erwachsenen als Ansprechpartner.",
+    "Es gibt keine Veränderungen mehr.",
+    "Die Familie wird kleiner."
+   ],
+   "r": 0,
+   "e": "Neue Erwachsene und Stiefgeschwister können das Leben bereichern, wenn man sich gut versteht."
+  },
+  {
+   "f": "Welche Aussage über Regenbogenfamilien stimmt?",
+   "o": [
+    "Entscheidend für das Wohl der Kinder ist eine liebevolle, verlässliche Beziehung, nicht das Geschlecht der Eltern.",
+    "Kinder in Regenbogenfamilien haben keine Eltern.",
+    "Regenbogenfamilien gibt es nur in anderen Ländern.",
+    "Kinder aus Regenbogenfamilien sind immer unglücklich."
+   ],
+   "r": 0,
+   "e": "Kinder brauchen Zuwendung, Schutz und Verlässlichkeit. Schwierigkeiten entstehen eher durch Vorurteile von außen als durch die Familie selbst."
+  },
+  {
+   "f": "Was kann in einer Kernfamilie ein Nachteil sein?",
+   "o": [
+    "Bei Krankheit oder Arbeit fehlen oft weitere Erwachsene im Haushalt, die helfen können.",
+    "Es leben zu viele Generationen im Haus.",
+    "Die Kinder haben keine Eltern.",
+    "Die Familie ist immer größer als zehn Personen."
+   ],
+   "r": 0,
+   "e": "Nur zwei Erwachsene müssen alle Aufgaben abdecken. Wenn jemand ausfällt, wird es schnell eng."
+  },
+  {
+   "f": "Was kann für Kinder in einer Pflegefamilie eine Schwierigkeit sein?",
+   "o": [
+    "Sie haben die Trennung von ihren leiblichen Eltern erlebt und müssen neues Vertrauen aufbauen.",
+    "Sie haben keine Möglichkeit, jemals Vertrauen zu fassen.",
+    "Sie leben automatisch in einer Großfamilie.",
+    "Sie dürfen nie Freunde haben."
+   ],
+   "r": 0,
+   "e": "Der Verlust der ursprünglichen Familie ist belastend. Feinfühlige Pflegeeltern helfen den Kindern, wieder Sicherheit zu finden."
+  }
+ ]
+}

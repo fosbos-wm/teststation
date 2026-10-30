@@ -1,0 +1,74 @@
+{
+ "titel": "Familien in anderen Ländern: fair und tolerant vergleichen",
+ "abzeichen": "🤝",
+ "anleitung": "Wähle jeweils die passende Antwort. Denk daran: Unterschiede beschreiben ist etwas anderes als sie zu bewerten.",
+ "fragen": [
+  {
+   "f": "Welche Haltung passt zu einem fairen Vergleich?",
+   "o": [
+    "Unterschiede beschreiben, ohne sie sofort als besser oder schlechter zu bewerten.",
+    "Das Eigene für das Beste halten.",
+    "Andere Familien auslachen.",
+    "Alle Familien gleich behandeln, als gäbe es keine Unterschiede."
+   ],
+   "r": 0,
+   "e": "Ein Vergleich beschreibt zuerst. Toleranz heißt, andere Modelle zu respektieren, auch wenn man sie anders lebt."
+  },
+  {
+   "f": "Welches ist ein sinnvolles Vergleichsmerkmal für Familien?",
+   "o": [
+    "Die Rollenverteilung in der Familie",
+    "Die Haarfarbe der Kinder",
+    "Die Automarke der Familie",
+    "Das Handymodell der Eltern"
+   ],
+   "r": 0,
+   "e": "Sinnvolle Merkmale sind zum Beispiel Familiengröße, Rollenverteilung oder Werte und Normen."
+  },
+  {
+   "f": "Wie könnte Julia stattdessen reagieren?",
+   "o": [
+    "Nachfragen, wie das bei Amir funktioniert, und Gemeinsamkeiten und Unterschiede entdecken.",
+    "Amir sagen, dass seine Familie falsch lebt.",
+    "Nichts mehr mit Amir sprechen.",
+    "Amir bitten, zu Hause anders zu leben."
+   ],
+   "r": 0,
+   "e": "Wer neugierig fragt, versteht andere besser. So entsteht Toleranz.",
+   "fall": "Amir erzählt in der Klasse, dass bei ihm zu Hause die Großeltern mitleben und alle gemeinsam essen. Julia sagt: „Das ist ja komisch!“"
+  },
+  {
+   "f": "Warum können Familien in verschiedenen Ländern unterschiedliche Werte und Normen haben?",
+   "o": [
+    "Weil Kultur, Geschichte, Religion und Lebensbedingungen die Vorstellungen prägen.",
+    "Weil Menschen in anderen Ländern keine Werte haben.",
+    "Weil es Zufall ist.",
+    "Weil man dort keine Familien hat."
+   ],
+   "r": 0,
+   "e": "Was als wichtig gilt, hängt von der Umgebung ab, in der Menschen leben."
+  },
+  {
+   "f": "Welche Aussage ist ein Vorurteil?",
+   "o": [
+    "„In diesem Land sind alle Familien gleich.“",
+    "„Viele Familien in diesem Land leben mit mehreren Generationen zusammen.“",
+    "„Familien in Städten und auf dem Land können unterschiedlich leben.“",
+    "„Ich möchte mehr über Familien in anderen Ländern erfahren.“"
+   ],
+   "r": 0,
+   "e": "Ein Vorurteil verallgemeinert: In jedem Land gibt es viele verschiedene Familien."
+  },
+  {
+   "f": "Was kann ein Grund dafür sein, dass in manchen Ländern mehrere Generationen zusammenleben?",
+   "o": [
+    "Gegenseitige Unterstützung bei Kinderbetreuung und im Alter",
+    "Dass dort niemand arbeiten möchte",
+    "Dass Familien dort nie Streit haben",
+    "Dass Eltern ihre Kinder nicht mögen"
+   ],
+   "r": 0,
+   "e": "Gemeinsam leben kann den Alltag erleichtern und Menschen im Alter absichern."
+  }
+ ]
+}

@@ -1,0 +1,72 @@
+{
+ "titel": "Schulsysteme vergleichen",
+ "abzeichen": "🌍",
+ "anleitung": "Lies die Tabelle und bewerte die Aussagen. Die Länder sind erfunden, damit du genau mit den Daten arbeitest.",
+ "material": {
+  "typ": "tabelle",
+  "titel": "Schule in Land A und Land B",
+  "kopf": [
+   "",
+   "Land A",
+   "Land B"
+  ],
+  "zeilen": [
+   [
+    "Beginn der Schulpflicht",
+    "6 Jahre",
+    "7 Jahre"
+   ],
+   [
+    "Dauer der Schulpflicht",
+    "10 Jahre",
+    "9 Jahre"
+   ],
+   [
+    "Schuluniform",
+    "Ja",
+    "Nein"
+   ],
+   [
+    "Schulgeld",
+    "Nein",
+    "Ja (staatliche Schulen kostenlos bis Klasse 4)"
+   ],
+   [
+    "Unterrichtsbeginn",
+    "8:00 Uhr",
+    "7:30 Uhr"
+   ]
+  ],
+  "hinweis": "Erfundene Zahlen – nur für diese Übung!",
+  "quelle": "Nur zur Übung."
+ },
+ "aussagen": [
+  {
+   "t": "In Land A beginnt die Schulpflicht früher als in Land B.",
+   "r": 0,
+   "e": "Land A: 6 Jahre, Land B: 7 Jahre."
+  },
+  {
+   "t": "In Land B müssen Kinder länger zur Schule gehen als in Land A.",
+   "r": 1,
+   "e": "Die Tabelle nennt 10 Jahre für Land A, 9 für Land B.",
+   "v": "In Land A dauert die Schulpflicht länger (10 gegenüber 9 Jahren)."
+  },
+  {
+   "t": "In Land A müssen Schüler Schuluniform tragen.",
+   "r": 0,
+   "e": "Die Tabelle nennt „Ja“."
+  },
+  {
+   "t": "Alle Schüler in Land B zahlen ab Klasse 1 Schulgeld.",
+   "r": 1,
+   "e": "Die Tabelle sagt: kostenlos bis Klasse 4.",
+   "v": "Staatliche Schulen sind bis Klasse 4 kostenlos."
+  },
+  {
+   "t": "In Land A gibt es mehr Schüler als in Land B.",
+   "r": 2,
+   "e": "Zur Schülerzahl gibt die Tabelle keine Angabe."
+  }
+ ]
+}

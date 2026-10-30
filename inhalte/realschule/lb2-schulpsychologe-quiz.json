@@ -1,0 +1,84 @@
+{
+ "titel": "Der Schulpsychologe: Wann und wie hilft er?",
+ "abzeichen": "🧑‍⚕️",
+ "anleitung": "Wer hilft bei Problemen in der Schule? Wähle jeweils die passende Antwort.",
+ "fragen": [
+  {
+   "f": "Bei welchem Problem kann die Schulpsychologin helfen?",
+   "o": [
+    "Bei starker Prüfungsangst",
+    "Beim Kauf von Schulbüchern",
+    "Bei der Raumplanung",
+    "Bei der Busfahrt"
+   ],
+   "r": 0,
+   "e": "Schulpsychologen beraten bei Lernschwierigkeiten, Prüfungsangst oder Konflikten."
+  },
+  {
+   "f": "Was gehört zu den Aufgaben von Schulpsychologen?",
+   "o": [
+    "Beraten, Gespräche führen und bei Lern- und Verhaltensproblemen unterstützen",
+    "Noten verteilen",
+    "Unterricht in allen Fächern halten",
+    "Die Hausordnung verändern"
+   ],
+   "r": 0,
+   "e": "Sie beraten Schüler, Eltern und Lehrkräfte."
+  },
+  {
+   "f": "Wer kann sich an den Schulpsychologen wenden?",
+   "o": [
+    "Schülerinnen und Schüler, Eltern und Lehrkräfte",
+    "Nur Lehrkräfte",
+    "Nur Schulleitung",
+    "Nur Eltern"
+   ],
+   "r": 0,
+   "e": "Die Beratung steht allen Beteiligten offen."
+  },
+  {
+   "f": "Welche Haltung hat der Schulpsychologe gegenüber den Anliegen?",
+   "o": [
+    "Er behandelt Gespräche vertraulich.",
+    "Er erzählt alles der ganzen Klasse.",
+    "Er verurteilt Schüler.",
+    "Er gibt Noten für das Gespräch."
+   ],
+   "r": 0,
+   "e": "Vertraulichkeit ist wichtig, damit Ratsuchende offen sprechen."
+  },
+  {
+   "f": "Wann ist ein Gespräch mit einer Beratungsperson sinnvoll?",
+   "o": [
+    "Wenn man Sorgen hat, die man allein schwer lösen kann",
+    "Wenn man einen Ausflug plant",
+    "Wenn man Hunger hat",
+    "Nie"
+   ],
+   "r": 0,
+   "e": "Hilfe zu suchen ist ein Zeichen von Stärke."
+  },
+  {
+   "f": "Wer kann außer dem Schulpsychologen noch beraten?",
+   "o": [
+    "Beratungslehrkräfte, Klassenleitung und Vertrauenslehrkräfte",
+    "Der Busfahrer",
+    "Der Hausmeister allein",
+    "Niemand"
+   ],
+   "r": 0,
+   "e": "An Schulen gibt es mehrere Anlaufstellen."
+  },
+  {
+   "f": "Wie läuft der Kontakt zum Schulpsychologen meistens ab?",
+   "o": [
+    "Man vereinbart einen Termin, oft über das Sekretariat oder die Beratungslehrkraft.",
+    "Man braucht eine Gerichtsentscheidung.",
+    "Man muss bezahlen.",
+    "Man wird von der Polizei hingebracht."
+   ],
+   "r": 0,
+   "e": "Die Beratung ist freiwillig und für Schüler kostenfrei."
+  }
+ ]
+}
