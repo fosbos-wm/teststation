@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Beziehungsgeflecht</title>
+<style>
+:root{--bg:#f2f5f7;--panel:#fff;--fg:#14222c;--muted:#566872;--line:#d3dde3;--pri:#0e5a77;--pri-ink:#fff;--pri-soft:#dcedf4;--ok:#1b7f4b;--ok-soft:#d9f0e2;--bad:#b3261e;--bad-soft:#f9dedc}
+@media (prefers-color-scheme:dark){:root{--bg:#0f171c;--panel:#17232a;--fg:#e6eff3;--muted:#9bb0ba;--line:#2a3b44;--pri:#5fb8d9;--pri-ink:#062029;--pri-soft:#173845;--ok:#6fd49b;--ok-soft:#163626;--bad:#ff9a92;--bad-soft:#40201e;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding:14px max(14px,env(safe-area-inset-left,0px)) 40px}
+main{max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+h1{font-size:1.3rem;margin:0}h2{font-size:1.1rem;margin:0 0 4px;color:var(--pri)}p{margin:0}
+.muted{color:var(--muted)}.small{font-size:.88rem}
+section{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.afb{display:inline-block;font-size:.72rem;font-weight:700;background:var(--pri-soft);color:var(--pri);border-radius:99px;padding:1px 9px;margin-left:6px}
+.row{display:grid;grid-template-columns:1fr 210px;gap:10px;align-items:start;padding:8px 0;border-top:1px solid var(--line)}
+.row:first-of-type{border-top:0}
+@media (max-width:620px){.row{grid-template-columns:1fr}}
+select,textarea,input[type=text]{width:100%;font:inherit;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:7px 9px}
+textarea{min-height:72px;resize:vertical}
+.rel{padding:10px 0;border-top:1px solid var(--line)}.rel:first-of-type{border-top:0}
+.rel h3{margin:0 0 4px;font-size:1rem}
+.rel label{display:flex;gap:8px;align-items:flex-start;padding:5px 6px;border-radius:8px;cursor:pointer}
+.rel label:hover{background:var(--pri-soft)}.rel input{margin-top:5px}
+button{font:600 .95rem system-ui,sans-serif;border-radius:10px;border:1px solid var(--pri);background:var(--pri);color:var(--pri-ink);padding:9px 16px;cursor:pointer;margin:10px 8px 0 0}
+button.alt{background:var(--panel);color:var(--fg);border-color:var(--line)}
+:focus-visible{outline:3px solid var(--pri);outline-offset:2px}
+.fb{margin-top:6px;padding:6px 10px;border-radius:8px;font-size:.92rem;font-weight:600}
+.fb.ok{background:var(--ok-soft);color:var(--ok)}.fb.no{background:var(--bad-soft);color:var(--bad)}
+.score{font-weight:700;margin-left:4px}
+svg{width:100%;height:auto;max-height:400px;display:block}
+.node{fill:var(--panel);stroke:var(--pri);stroke-width:2}
+.nt{fill:var(--fg);font-size:14px;text-anchor:middle;font-weight:700}
+.ns{fill:var(--muted);font-size:11px;text-anchor:middle}
+.edge{stroke:var(--line);stroke-width:2;stroke-dasharray:5 5}
+.edge.on{stroke:var(--ok);stroke-width:3;stroke-dasharray:none}
+.el{fill:var(--fg);font-size:11px;text-anchor:middle;opacity:0}.el.on{opacity:1}
+table{width:100%;border-collapse:collapse}
+td,th{border:1px solid var(--line);padding:6px;vertical-align:top;text-align:left;font-size:.92rem}
+ol{padding-left:20px;margin:8px 0 0}ol li{margin-bottom:14px}
+.lk{display:none;border-left:4px solid var(--pri);padding:8px 12px;margin-top:8px;background:var(--pri-soft);font-size:.92rem}
+body.lk-on .lk{display:block}
+@media print{button,.noprint{display:none}section{break-inside:avoid}}
+</style></head><body>
+<main>
+<div><h1 id="t">Beziehungsgeflecht</h1><p class="muted" id="a"></p></div>
+<section><h2>Teil A · Figuren zuordnen <span class="afb">AFB I</span></h2>
+ <p class="muted small">Ordne jeder Beschreibung die passende Figur bzw. Instanz zu.</p>
+ <div id="aList"></div><button type="button" id="aBtn">Prüfen</button><span class="score" id="aScore"></span></section>
+<section><h2>Teil B · Beziehungen bestimmen <span class="afb">AFB I–II</span></h2>
+ <p class="muted small">Wähle pro Beziehung die zutreffende Aussage. Jede richtig bestimmte Beziehung erscheint im Geflecht.</p>
+ <svg viewBox="0 0 600 350" role="img" aria-label="Beziehungsgeflecht der Figuren" id="graph"></svg>
+ <div id="bList"></div><button type="button" id="bBtn">Prüfen</button><span class="score" id="bScore"></span></section>
+<section><h2>Teil C · Belege im Text finden <span class="afb">AFB II</span></h2>
+ <p class="muted small">Suche zu jeder Beziehung eine Textstelle. Notiere Seite/Zeile und fasse die Stelle in eigenen Worten zusammen (nicht lang zitieren).</p>
+ <table><thead><tr><th style="width:26%">Beziehung</th><th style="width:16%">Seite / Zeile</th><th>Beleg in eigenen Worten – was zeigt er über die Beziehung?</th></tr></thead><tbody id="cBody"></tbody></table></section>
+<section><h2>Teil D · Das Geflecht in Bewegung <span class="afb">AFB I–III</span></h2>
+ <p class="muted small">Bearbeite die Aufgaben schriftlich (Stichpunkte oder zusammenhängender Text).</p><ol id="dList"></ol></section>
+<div class="noprint"><button type="button" onclick="window.print()">Drucken / als PDF sichern</button><button type="button" class="alt" id="reset">Von vorn beginnen</button>
+ <p class="muted small" style="margin-top:12px">Nichts wird gespeichert oder gesendet; alle Eingaben bleiben nur in dieser Seite. Lehrkraft: Der Direktlink <code>stationen/beziehungsgeflecht.html?set=deutsch-furor-beziehungsgeflecht&amp;lk=1</code> zeigt die Erwartungshorizonte in Teil D.</p></div>
+</main>
+<script>
+const QS=new URLSearchParams(location.search),SET=(QS.get("set")||"").replace(/[^a-z0-9\-]/gi,"");
+const $=id=>document.getElementById(id),esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const NS="http://www.w3.org/2000/svg";
+let D=null;
+if(QS.get("lk")==="1")document.body.classList.add("lk-on");
+function el(n,at,txt){const e=document.createElementNS(NS,n);Object.entries(at).forEach(([k,v])=>e.setAttribute(k,v));if(txt!==undefined)e.textContent=txt;return e}
+function drawGraph(){
+  const g=$("graph");g.innerHTML="";
+  D.beziehungen.forEach(r=>{const a=D.figuren[r.von],b=D.figuren[r.zu];
+    g.appendChild(el("line",{id:"e"+r.id,class:"edge",x1:a.x,y1:a.y,x2:b.x,y2:b.y}));
+    g.appendChild(el("text",{id:"l"+r.id,class:"el",x:(a.x+b.x)/2,y:(a.y+b.y)/2-6},r.l))});
+  D.figuren.forEach(f=>{
+    g.appendChild(el("rect",{class:"node",x:f.x-62,y:f.y-24,width:124,height:48,rx:10}));
+    g.appendChild(el("text",{class:"nt",x:f.x,y:f.y-3},f.n));
+    g.appendChild(el("text",{class:"ns",x:f.x,y:f.y+14},f.u))});
+}
+function buildA(){
+  $("aList").innerHTML=D.zuordnung.map((z,i)=>`<div class="row"><div>${esc(z[0])}<div id="afb${i}"></div></div><select id="a${i}" aria-label="Figur wählen"><option value="">– wählen –</option>${D.figuren.map((f,k)=>`<option value="${k}">${esc(f.n)}</option>`).join("")}</select></div>`).join("");
+}
+function checkA(){let n=0;D.zuordnung.forEach((z,i)=>{const v=$("a"+i).value,f=$("afb"+i);if(v===""){f.innerHTML="";return}
+  const ok=+v===z[1];if(ok)n++;f.innerHTML=`<div class="fb ${ok?"ok":"no"}">${ok?"Richtig.":"Noch nicht – lies die Beschreibung noch einmal."}</div>`});
+  $("aScore").textContent=n+" von "+D.zuordnung.length+" richtig"}
+function buildB(){
+  $("bList").innerHTML=D.beziehungen.map(r=>`<div class="rel"><h3>${esc(r.t)}</h3>${r.a.map((x,k)=>`<label><input type="radio" name="${r.id}" value="${k}"><span>${esc(x)}</span></label>`).join("")}<div id="bf${r.id}"></div></div>`).join("");
+}
+function checkB(){let n=0;D.beziehungen.forEach(r=>{const s=document.querySelector(`input[name="${r.id}"]:checked`),f=$("bf"+r.id),e=$("e"+r.id),l=$("l"+r.id);
+  if(!s){f.innerHTML="";return}const ok=+s.value===r.r;
+  e.classList.toggle("on",ok);l.classList.toggle("on",ok);if(ok)n++;
+  f.innerHTML=`<div class="fb ${ok?"ok":"no"}">${ok?"Richtig – die Beziehung erscheint im Geflecht.":"Noch nicht. Lies die Stelle im Text noch einmal und vergleiche."}</div>`});
+  $("bScore").textContent=n+" von "+D.beziehungen.length+" Beziehungen bestimmt"}
+function buildC(){$("cBody").innerHTML=D.beziehungen.map(r=>`<tr><td>${esc(r.t)}</td><td><input type="text" aria-label="Seite und Zeile zu ${esc(r.t)}"></td><td><textarea aria-label="Beleg zu ${esc(r.t)}"></textarea></td></tr>`).join("")}
+function buildD(){$("dList").innerHTML=D.aufgaben.map(a=>`<li><span class="afb" style="margin:0 6px 0 0">${esc(a.afb)}</span><b>${esc(a.op)}</b>${/^[,.;]/.test(a.t)?"":" "}${esc(a.t)}<textarea aria-label="Antwort"></textarea><div class="lk"><b>Erwartung:</b> ${esc(a.lk)}</div></li>`).join("")}
+function init(){buildA();buildB();buildC();buildD();drawGraph();$("aScore").textContent="";$("bScore").textContent=""}
+$("aBtn").addEventListener("click",checkA);$("bBtn").addEventListener("click",checkB);
+$("reset").addEventListener("click",()=>{if(confirm("Alle Eingaben löschen und neu beginnen?"))init()});
+fetch("../inhalte/"+SET+".json",{cache:"no-store"}).then(r=>{if(!r.ok)throw 0;return r.json()}).then(d=>{D=d;$("t").textContent=d.titel;document.title=d.titel;$("a").textContent=d.anleitung;init()}).catch(()=>{$("a").textContent="Die Übung konnte nicht geladen werden."});
+</script></body></html>

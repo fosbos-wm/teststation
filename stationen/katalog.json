@@ -839,5 +839,20 @@
    "Aula",
    "Adventskalender"
   ]
+ },
+ {
+  "id": "deutsch-furor-beziehungsgeflecht",
+  "titel": "Furor – das Beziehungsgeflecht",
+  "fach": "Deutsch",
+  "beschreibung": "Drama der Gegenwart (Hübner/Nemitz): Figuren zuordnen, Beziehungen bestimmen und im Geflecht sichtbar machen, Textbelege sammeln, Schreibaufgaben AFB I–III. Einzelübung, ohne Punkte.",
+  "datei": "beziehungsgeflecht.html?set=deutsch-furor-beziehungsgeflecht",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Furor",
+  "pfad": [
+   "Deutsch",
+   "13. Klasse",
+   "Furor"
+  ]
  }
 ]

@@ -1,0 +1,56 @@
+{
+ "titel": "Furor – das Beziehungsgeflecht",
+ "anleitung": "Arbeite mit deinem Reclam-Text. Zuerst die Figuren zuordnen, dann die Beziehungen bestimmen (das Geflecht füllt sich), dann Belege suchen und die Schreibaufgaben bearbeiten.",
+ "figuren": [
+  {"n": "Heiko Braubach", "u": "OB-Kandidat", "x": 90, "y": 100},
+  {"n": "Nele Siebold", "u": "Altenpflegerin", "x": 170, "y": 310},
+  {"n": "Jerome Siebold", "u": "Paketfahrer", "x": 510, "y": 100},
+  {"n": "Enno", "u": "Sohn, Unfallopfer", "x": 430, "y": 310},
+  {"n": "Medien", "u": "FZ · Internet", "x": 300, "y": 35}
+ ],
+ "zuordnung": [
+  ["Ministerialdirigent und OB-Kandidat; ein Unfall könnte ihm im Wahlkampf schaden", 0],
+  ["Altenpflegerin, die „jeden Cent dreimal umdrehen“ muss; Mutter des Unfallopfers", 1],
+  ["Fahrer bei einem Paketdienst, zornig und voller Misstrauen gegenüber dem „System“", 2],
+  ["Sohn von Nele, bei einem Verkehrsunfall schwer verletzt", 3],
+  ["Berichten über den Unfall und verbreiten Darstellungen zur Schuldfrage, denen Nele und Jerome misstrauen", 4]
+ ],
+ "beziehungen": [
+  {"id": "BN", "von": 0, "zu": 1, "t": "Braubach – Nele", "l": "Besuch / Hilfsangebot", "r": 0, "a": [
+   "Braubach sucht das Gespräch und bietet Hilfe an; Nele reagiert zunächst reserviert.",
+   "Braubach und Nele kennen sich schon lange aus der Kommunalpolitik.",
+   "Nele fordert von Braubach Geld und droht mit der Presse."]},
+  {"id": "BJ", "von": 0, "zu": 2, "t": "Braubach – Jerome", "l": "Konfrontation", "r": 1, "a": [
+   "Jerome unterstützt Braubachs Wahlkampf und vermittelt zwischen den beiden.",
+   "Gegenseitiges Misstrauen: Schlagabtausch, der sich zunehmend zuspitzt.",
+   "Beide verbünden sich, um Enno zu helfen."]},
+  {"id": "NJ", "von": 1, "zu": 2, "t": "Nele – Jerome", "l": "Tante – Neffe", "r": 2, "a": [
+   "Jerome ist Neles Sohn und der Unfallfahrer.",
+   "Jerome ist Neles Vorgesetzter im Paketdienst.",
+   "Verwandte (Tante und Neffe), die Braubachs Angebot unterschiedlich bewerten."]},
+  {"id": "NE", "von": 1, "zu": 3, "t": "Nele – Enno", "l": "Mutter – Sohn", "r": 0, "a": [
+   "Mutter und Sohn: Sorge und Verantwortung nach dem Unfall.",
+   "Nele macht ihren Sohn für den Unfall verantwortlich.",
+   "Enno ist Neles Neffe und Jeromes Bruder."]},
+  {"id": "BE", "von": 0, "zu": 3, "t": "Braubach – Enno", "l": "Unfall", "r": 1, "a": [
+   "Enno ist Braubachs Mitarbeiter und kündigt gerade.",
+   "Braubach fuhr Enno an; ob und wie viel Schuld ihn trifft, wird unterschiedlich beurteilt.",
+   "Braubach und Enno sind Konkurrenten im Wahlkampf."]},
+  {"id": "JM", "von": 2, "zu": 4, "t": "Jerome – Medien", "l": "Misstrauen / Hass", "r": 2, "a": [
+   "Jerome vertraut der Lokalzeitung und hält sie für neutral.",
+   "Jerome arbeitet selbst als Journalist.",
+   "Jerome fühlt sich von der Lokalzeitung getäuscht und nimmt Hass im Internet auf."]}
+ ],
+ "aufgaben": [
+  {"afb": "I", "op": "Beschreibe", "t": "die Figurenkonstellation zu Beginn des Stücks, bevor Jerome auftritt: Wer steht in welchem Verhältnis zu wem?",
+   "lk": "Dreiecksbeziehung Braubach – Nele – (abwesender) Enno; Braubach kommt als Unfallbeteiligter und OB-Kandidat zu Besuch, bietet Hilfe an; Nele ist finanziell unter Druck und reagiert zunächst reserviert, eine Einigung zeichnet sich ab. Belege aus dem Text ergänzen."},
+  {"afb": "II", "op": "Erkläre", "t": ", wie sich das Beziehungsgeflecht durch Jeromes Auftritt verändert und welche Rolle seine Haltung zu „dem System“ dabei spielt.",
+   "lk": "Aus dem Gespräch zu zweit wird ein Konflikt zu dritt; Jerome deutet Braubachs Hilfsangebot als Wahltaktik, der Dialog wird zum Schlagabtausch mit Eskalation; Nele rückt zwischen die Fronten (familiäre Bindung gegen den Wunsch nach Hilfe). Belege aus dem Text ergänzen."},
+  {"afb": "II", "op": "Analysiere", "t": "das Machtgefälle zwischen Braubach und Jerome bzw. Nele (soziale Stellung, Sprache, Handlungsspielraum). Beziehe zwei Textstellen ein.",
+   "lk": "Braubach: Beamter und Kandidat, rhetorisch routiniert, handelt aus einer Position der Freiheit. Nele und Jerome: Erfahrung von Ohnmacht (Geldsorgen, Überstunden, Gefühl, dass niemand Verantwortung übernimmt). Verschiebungen im Gespräch, wenn Braubach „in die Enge gedrängt“ wird. Sprachliche Belege selbst ergänzen."},
+  {"afb": "III", "op": "Beurteile", "t": ", ob man Braubachs Hilfsangebot als aufrichtig oder als wahltaktisch lesen kann. Begründe mit Bezug auf das Beziehungsgeflecht.",
+   "lk": "Beide Lesarten textgestützt abwägen (ehrliche Erschütterung gegen Wahlkampfinteresse); Sichtweisen der Figuren unterscheiden; eigenes begründetes Urteil. Keine einseitige Lösung als „richtig“ vorgeben."},
+  {"afb": "III", "op": "Erörtere", "t": ", welche Rolle Medien (Lokalzeitung „FZ“, Internet) für die Beziehungen der Figuren spielen und was das Stück damit über gesellschaftliche Spaltung sagt.",
+   "lk": "Misstrauen gegenüber der Lokalzeitung (Bericht wirkt parteiisch), Hass und Fake-News im Netz verstärken Jeromes Feindbild; Bezug zur Wir-und-die-Logik und zur Aktualität des Stücks; Gegenposition (Medien als Korrektiv) mitdenken."}
+ ]
+}

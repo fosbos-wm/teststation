@@ -48,3 +48,9 @@ Der QR-Code eines Ordners steht im aufgeklappten Ordner (Link: `index.html?ordne
 - **Inhalte:** in `inhalte/adventskalender.json`. Je Türchen: `art` (Aktion, Nur gemeinsam, Quiz, Mitmachen), `titel`, `text`, `dauer`, `spruch` (Muffelwicht), bei „Nur gemeinsam“ `hinweise` (Liste, je Handy ein Hinweis) und `loesung`, beim Quiz `antworten` (die erste Antwort ist die richtige) und `erklaerung`. Die Lösung steht im Klartext in der Datei und ist im Quelltext lesbar.
 - **Gemeinsame Lichter:** `lichter` ist die Liste der Türchen-Nummern, deren Fenster leuchten. Das trägt die SMV oder die Lehrkraft von Hand nach (z. B. Tür 1, 2, 3 …). Die Stimmung des Muffelwichts hängt von der Anzahl der Lichter ab.
 - **Vorschau:** `?heute=2026-11-26` simuliert ein Datum (auch auf dem Handy).
+
+## Deutsch: Furor – das Beziehungsgeflecht (13. Klasse)
+`stationen/beziehungsgeflecht.html` mit den Inhalten in `inhalte/deutsch-furor-beziehungsgeflecht.json` (Ordner **Deutsch > 13. Klasse > Furor**, ohne Ergebniscode). Einzelübung in vier Teilen: Figuren zuordnen, Beziehungen bestimmen (jede richtige Antwort zeichnet die Linie im Geflecht), Textbelege mit Seite/Zeile (Reclam-Ausgabe), Schreibaufgaben nach Anforderungsbereichen I–III. „Drucken / als PDF sichern“ am Ende.
+- **Erwartungshorizonte:** Direktlink `…/stationen/beziehungsgeflecht.html?set=deutsch-furor-beziehungsgeflecht&lk=1` zeigt bei Teil D die Erwartungen für die Lehrkraft (der Link über `station.html` blendet sie nicht ein).
+- **Anpassen:** Figuren (mit Position im Geflecht), Zuordnungen, Beziehungen mit je drei Aussagen (`r` = Index der richtigen), Aufgaben und Erwartungen stehen in der JSON-Datei.
+- Die Inhaltsangaben beruhen auf Programmheften zweier Theater, nicht auf dem Reclam-Text; Aussagen und Erwartungen bitte einmal gegen die eigene Ausgabe prüfen.
