@@ -309,9 +309,14 @@ function taskFrei(t,key){
     if(t.hinweis)box.append(h('div',{class:'sub'},t.hinweis));
     var ta=h('textarea',{'aria-label':'Deine Antwort',placeholder:'Schreibe zuerst deine eigene Antwort …'});
     ta.value=TXT[key]||'';
-    ta.addEventListener('input',function(){TXT[key]=ta.value;store.set('txt',TXT);btn.disabled=ta.value.trim().length<40;});
+    ta.addEventListener('input',function(){TXT[key]=ta.value;store.set('txt',TXT);});
     var out=h('div');
-    var btn=h('button',{class:'btn',type:'button',disabled:ta.value.trim().length<40?'':false,onclick:function(){
+    var btn=h('button',{class:'btn',type:'button',onclick:function(){
+      TXT[key]=ta.value;store.set('txt',TXT);
+      if(ta.value.trim().length<40){
+        out.replaceChildren(h('div',{class:'fb info'},'Schreibe zuerst deine eigene Antwort, am besten zwei bis drei Sätze. Danach kannst du die Musterlösung ansehen und vergleichen.'));
+        ta.focus();return;
+      }
       var kids=[h('div',{class:'fb info'},h('strong',null,'Musterlösung: '),md(h('span'),t.muster||''))];
       if(t.kriterien&&t.kriterien.length){
         kids.push(kriterienBox(t.kriterien,function(){ta.disabled=true;finish(true);}));
@@ -321,8 +326,7 @@ function taskFrei(t,key){
       out.replaceChildren.apply(out,kids);
       btn.disabled=true;
     }},'Musterlösung anzeigen');
-    btn.disabled=ta.value.trim().length<40;
-    box.append(ta,h('div',{class:'sub'},'Die Musterlösung erscheint, sobald du mindestens ein paar Sätze geschrieben hast.'),btn,out);
+    box.append(ta,h('div',{class:'sub'},'Schreibe zuerst deine Antwort (zwei bis drei Sätze), dann klickst du auf „Musterlösung anzeigen“.'),btn,out);
   });
 }
 var TYPEN={mc:taskMC,lueckentext:taskLuecke,zuordnung:taskZuordnung,kprim:taskKprim,frei:taskFrei};
@@ -454,18 +458,20 @@ function taskStruktur(t,key){
       var muster=h('div',{class:'muster'},h('b',null,'Musterformulierung'),md(h('span'),f.muster||''));
       var bHilfe=h('button',{class:'btn ghost small',type:'button','aria-expanded':'false',onclick:function(){var an=hilfe.classList.toggle('an');bHilfe.setAttribute('aria-expanded',an?'true':'false');}},'? Strukturhilfe');
       var gezeigt=false;
+      var hinweis=h('div',{class:'sub',style:'display:none;margin:4px 0 0'},'Schreibe zuerst zu diesem Baustein ein bis zwei Sätze. Dann kannst du die Musterformulierung ansehen.');
       var bMuster=h('button',{class:'btn small',type:'button',onclick:function(){
+        TXT[k]=ta.value;store.set('txt',TXT);
+        if(ta.value.trim().length<25){hinweis.style.display='block';ta.focus();return;}
+        hinweis.style.display='none';
         muster.style.display='block';bMuster.disabled=true;bMuster.textContent='Muster angezeigt';
         if(!gezeigt){gezeigt=true;zeigtN++;pruefeAbschluss();}
       }},'Muster anzeigen');
-      function upd(){bMuster.disabled=gezeigt||ta.value.trim().length<25;}
-      ta.addEventListener('input',function(){TXT[k]=ta.value;store.set('txt',TXT);upd();});
-      upd();
-      var rechts=h('div',{class:'rechts'},ta,hilfe,muster,h('div',{class:'tools'},bHilfe,bMuster));
+      ta.addEventListener('input',function(){TXT[k]=ta.value;store.set('txt',TXT);if(ta.value.trim().length>=25)hinweis.style.display='none';});
+      var rechts=h('div',{class:'rechts'},ta,hinweis,hilfe,muster,h('div',{class:'tools'},bHilfe,bMuster));
       box.append(h('div',{class:'sfeld'},h('div',{class:'zeile'},h('div',{class:'lab farbe-'+(f.farbe||'pfirsich')},f.titel),rechts)));
       rows.push({ta:ta});
     });
-    box.append(h('div',{class:'sub'},'Die Musterformulierung wird frei, sobald du in einem Baustein mindestens ein bis zwei Sätze geschrieben hast.'),abschluss);
+    box.append(h('div',{class:'sub'},'Die Musterformulierung eines Bausteins kannst du ansehen, sobald du dazu ein bis zwei Sätze geschrieben hast. Hast du alle Bausteine verglichen, erscheint der Abschluss.'),abschluss);
   });
 }
 TYPEN.reihenfolge=taskReihenfolge;
