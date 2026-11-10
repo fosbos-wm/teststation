@@ -1,0 +1,398 @@
+{
+ "titel": "Aufbau üben",
+ "einleitung": "Du übst den **Aufbau** eines Fachaufsatzes am Fall Mira aus der Kurzarbeit: Welche Bausteine gibt es, und in welcher Reihenfolge stehen sie? Am Ende schreibst du deinen Aufsatz mit Strukturstreifen. Plane etwa 45 Minuten ein.",
+ "abschnitte": [
+  {
+   "kicker": "Kurs 1 · Aufbau",
+   "titel": "Die Aufgabe aus der Kurzarbeit",
+   "bloecke": [
+    {
+     "typ": "situation",
+     "label": "Fallvignette: Mira",
+     "zeilen": [
+      "Mira besucht die 11. Klasse einer Fachoberschule. Ihrer Lehrerin fällt auf, dass Mira sich im",
+      "Unterricht nur selten meldet, obwohl sie bei Partner- und Gruppenarbeiten aktiv mitarbeitet und",
+      "gute Ergebnisse erzielt. Mira erklärt, dass sie sich beim Sprechen vor der gesamten Klasse häufig",
+      "unsicher fühlt und Angst hat, eine falsche Antwort zu geben. Eine Mitschülerin sieht den Grund",
+      "dagegen anders: „Mira ist einfach schüchtern – das war schon immer so. Mädchen in dem Alter",
+      "sind eben so.“",
+      "",
+      "Die Lehrerin vermutet, dass sich Schülerinnen und Schüler wie Mira häufiger melden, wenn sie",
+      "ihre Antwort vorher besprechen dürfen. Das prüft sie vier Wochen lang: Per Los teilt sie die Klasse",
+      "in zwei Gruppen. Gruppe A darf sich vor jeder Antwort zwei Minuten mit einer Partnerin oder einem",
+      "Partner besprechen, Gruppe B nicht. Beide Gruppen erhalten dieselben Fragen, die Lehrerin zählt",
+      "die freiwilligen Meldungen. Nach den vier Wochen meldet sich auch Mira, die zu Gruppe A gehört,",
+      "deutlich häufiger."
+     ]
+    },
+    {
+     "typ": "situation",
+     "label": "Arbeitsauftrag",
+     "text": "Verdeutlichen Sie die Aussage der Mitschülerin im Hinblick auf zwei Merkmale einer Alltagstheorie. Belegen Sie Ihre Analyse am Material (Fallvignette)."
+    },
+    {
+     "typ": "text",
+     "text": "In diesem Kurs übst du **nur den Aufbau**: Welche Bausteine hat dein Fachaufsatz, und in welcher Reihenfolge stehen sie? Die Inhalte kennst du aus dem Unterricht. Hier geht es darum, sie an der richtigen Stelle zu platzieren. Plane etwa 45 Minuten ein."
+    },
+    {
+     "typ": "merke",
+     "label": "Merke",
+     "text": "**Verdeutlichen** heißt hier: Du machst eine Theorie am Fall anschaulich, indem du sie an konkreten Textstellen zeigst. Deshalb gehören zu jedem Merkmal Textstellen mit **Zeilenangabe**."
+    },
+    {
+     "typ": "mc",
+     "frage": "Was verlangt der Arbeitsauftrag?",
+     "optionen": [
+      "Zwei Merkmale einer Alltagstheorie an der Aussage der Mitschülerin zeigen und mit Textstellen belegen",
+      "Den Versuch der Lehrerin bewerten und Verbesserungen vorschlagen",
+      "Alle Merkmale von Alltagstheorien aufzählen, ohne den Fall zu nutzen",
+      "Mira Tipps geben, wie sie sich häufiger melden kann"
+     ],
+     "richtig": 0,
+     "erklaerung": "Der Auftrag nennt die Aussage der Mitschülerin, zwei Merkmale einer Alltagstheorie und den Beleg am Material."
+    }
+   ]
+  },
+  {
+   "kicker": "Erster Versuch",
+   "titel": "Aufgabe 1: Bringe den Aufsatz in Ordnung",
+   "bloecke": [
+    {
+     "typ": "text",
+     "text": "Unten steht ein Fachaufsatz zur Aufgabe, in Stücke zerlegt und durcheinander. Du kennst die Bausteine noch nicht systematisch? Das ist in Ordnung. Überlege, was ein Leser zuerst wissen muss und was auf dem Vorherigen aufbaut."
+    },
+    {
+     "typ": "reihenfolge",
+     "titel": "Bringe die Teile in die richtige Reihenfolge.",
+     "hinweis": "Verschiebe die Teile mit den Pfeilen. Nach dem Überprüfen siehst du, welche schon richtig stehen.",
+     "absaetze": [
+      "Menschen versuchen ständig, ihr Erleben und das Verhalten anderer zu verstehen und zu erklären. Im Alltag geschieht dies meist mit eigenen Annahmen (Alltagstheorien), in der Wissenschaft mit systematisch überprüften Aussagen (Wissenschaftstheorien).",
+      "Beide nutzen Theorien, um Verhalten zu beschreiben, zu erklären und vorherzusagen. Unter Pädagogik werden sowohl alle Formen des praktischen Erziehungsgeschehens als auch die wissenschaftliche Erhellung der Erziehungswirklichkeit verstanden. Die Psychologie ist die Wissenschaft vom Erleben und Verhalten des Menschen.",
+      "In der Fallvignette erklärt eine Mitschülerin Miras Zurückhaltung mit einer Alltagstheorie (Z. 5–6). Die Aussage wird im Folgenden anhand von zwei Merkmalen verdeutlicht.",
+      "Alltagstheorien sind subjektive, auf persönlicher Erfahrung beruhende Annahmen. Sie enthalten oft unzulässige Verallgemeinerungen, sind unsystematisch, dienen der Erklärung im Alltag und sind nicht überprüfbar. Wissenschaftstheorien sind dagegen systematisch entwickelt, empirisch überprüfbar und objektiv.",
+      "Ein erstes Merkmal von Alltagstheorien ist die Verallgemeinerung bzw. Pauschalisierung.",
+      "Dabei wird von Einzelbeobachtungen auf eine ganze Gruppe geschlossen, individuelle Unterschiede bleiben unberücksichtigt.",
+      "Die Mitschülerin sagt: „Mädchen in dem Alter sind eben so“ (Z. 5–6). Sie schließt von „den Mädchen“ auf Mira, ohne Miras individuelle Situation zu betrachten, z. B. ihre Angst vor einer falschen Antwort (Z. 3–4).",
+      "Ein zweites Merkmal ist die einfache, subjektive Ursachenzuschreibung ohne Überprüfung.",
+      "Dabei wird Verhalten mit einer simplen, festen Eigenschaft erklärt, ohne Beobachtung oder Belege, und nicht hinterfragt.",
+      "Die Mitschülerin sagt: „Mira ist einfach schüchtern – das war schon immer so“ (Z. 5). Sie erklärt Miras Verhalten mit „schon immer“ statt mit Beobachtung. Mira nennt selbst eine andere Ursache: Angst vor einer falschen Antwort (Z. 3–4). Nach der Partnerbesprechung meldet sie sich häufiger (Z. 11–12).",
+      "Alltagstheorien geben Orientierung, ersetzen aber keine systematische Überprüfung wie im Versuch der Lehrerin."
+     ],
+     "erklaerung": "Zuerst kommt die Einleitung (allgemein, dann eingegrenzt, dann der Fall), danach der Hauptteil mit der Klärung der Begriffe und den beiden Merkmalen, am Ende der Schluss."
+    }
+   ]
+  },
+  {
+   "kicker": "Auflösung",
+   "titel": "Der Bauplan eines Fachaufsatzes",
+   "bloecke": [
+    {
+     "typ": "text",
+     "text": "So sieht derselbe Aufsatz mit Bausteinen aus. Die Zahl hinter dem Baustein zeigt die Bewertungseinheiten (BE), die dafür im Erwartungshorizont vorgesehen sind."
+    },
+    {
+     "typ": "aufbau",
+     "legende": [
+      {
+       "name": "Einleitung und Schluss",
+       "farbe": "pfirsich"
+      },
+      {
+       "name": "Klärung der Theorie",
+       "farbe": "gelb"
+      },
+      {
+       "name": "Merkmal 1",
+       "farbe": "blau"
+      },
+      {
+       "name": "Merkmal 2",
+       "farbe": "gruen"
+      }
+     ],
+     "zeilen": [
+      {
+       "label": "Einleitungssatz · 1 BE",
+       "farbe": "pfirsich",
+       "text": "Menschen versuchen ständig, ihr Erleben und das Verhalten anderer zu verstehen und zu erklären. Im Alltag geschieht dies meist mit eigenen Annahmen (Alltagstheorien), in der Wissenschaft mit systematisch überprüften Aussagen (Wissenschaftstheorien)."
+      },
+      {
+       "label": "Eingrenzung des Lernbereichs · 2 BE",
+       "farbe": "pfirsich",
+       "text": "Beide nutzen Theorien, um Verhalten zu beschreiben, zu erklären und vorherzusagen. Unter Pädagogik werden sowohl alle Formen des praktischen Erziehungsgeschehens als auch die wissenschaftliche Erhellung der Erziehungswirklichkeit verstanden. Die Psychologie ist die Wissenschaft vom Erleben und Verhalten des Menschen."
+      },
+      {
+       "label": "Überleitung Fall und Theorie · 1 BE",
+       "farbe": "pfirsich",
+       "text": "In der Fallvignette erklärt eine Mitschülerin Miras Zurückhaltung mit einer Alltagstheorie (Z. 5–6). Die Aussage wird im Folgenden anhand von zwei Merkmalen verdeutlicht."
+      },
+      {
+       "label": "Klärung der Theoriebegriffe · 2 + 2 BE",
+       "farbe": "gelb",
+       "text": "Alltagstheorien sind subjektive, auf persönlicher Erfahrung beruhende Annahmen. Sie enthalten oft unzulässige Verallgemeinerungen, sind unsystematisch, dienen der Erklärung im Alltag und sind nicht überprüfbar. Wissenschaftstheorien sind dagegen systematisch entwickelt, empirisch überprüfbar und objektiv."
+      },
+      {
+       "label": "Merkmal 1: Nennen · 1 BE",
+       "farbe": "blau",
+       "text": "Ein erstes Merkmal von Alltagstheorien ist die Verallgemeinerung bzw. Pauschalisierung."
+      },
+      {
+       "label": "Merkmal 1: Erklären · 1 BE",
+       "farbe": "blau",
+       "text": "Dabei wird von Einzelbeobachtungen auf eine ganze Gruppe geschlossen, individuelle Unterschiede bleiben unberücksichtigt."
+      },
+      {
+       "label": "Merkmal 1: Verdeutlichen (Transfer) · 2 BE",
+       "farbe": "blau",
+       "text": "Die Mitschülerin sagt: „Mädchen in dem Alter sind eben so“ (Z. 5–6). Sie schließt von „den Mädchen“ auf Mira, ohne Miras individuelle Situation zu betrachten, z. B. ihre Angst vor einer falschen Antwort (Z. 3–4)."
+      },
+      {
+       "label": "Merkmal 2: Nennen · 1 BE",
+       "farbe": "gruen",
+       "text": "Ein zweites Merkmal ist die einfache, subjektive Ursachenzuschreibung ohne Überprüfung."
+      },
+      {
+       "label": "Merkmal 2: Erklären · 1 BE",
+       "farbe": "gruen",
+       "text": "Dabei wird Verhalten mit einer simplen, festen Eigenschaft erklärt, ohne Beobachtung oder Belege, und nicht hinterfragt."
+      },
+      {
+       "label": "Merkmal 2: Verdeutlichen (Transfer) · 2 BE",
+       "farbe": "gruen",
+       "text": "Die Mitschülerin sagt: „Mira ist einfach schüchtern – das war schon immer so“ (Z. 5). Sie erklärt Miras Verhalten mit „schon immer“ statt mit Beobachtung. Mira nennt selbst eine andere Ursache: Angst vor einer falschen Antwort (Z. 3–4). Nach der Partnerbesprechung meldet sie sich häufiger (Z. 11–12)."
+      },
+      {
+       "label": "Schluss · 1 BE",
+       "farbe": "pfirsich",
+       "text": "Alltagstheorien geben Orientierung, ersetzen aber keine systematische Überprüfung wie im Versuch der Lehrerin."
+      }
+     ]
+    },
+    {
+     "typ": "merke",
+     "label": "Merke",
+     "text": "**Drei Regeln für den Aufbau:**\n- Der Einleitungssatz ist ganz **allgemein**, noch ohne Mira. Der Fall kommt erst in der Überleitung.\n- Jedes Merkmal im Hauptteil folgt immer derselben Reihenfolge: **Nennen, Erklären, Verdeutlichen (Transfer)**.\n- Die **Zeilenangabe** steht im Transfer, direkt bei der Textstelle."
+    }
+   ]
+  },
+  {
+   "kicker": "Aufgabe 2",
+   "titel": "Welcher Satz gehört zu welchem Baustein?",
+   "bloecke": [
+    {
+     "typ": "text",
+     "text": "Hier stehen andere Formulierungen als oben. Erkenne den Baustein am Inhalt des Satzes, nicht am Wortlaut."
+    },
+    {
+     "typ": "zuordnung",
+     "titel": "Ordne jedem Baustein den passenden Satz zu.",
+     "paare": [
+      [
+       "Einleitungssatz",
+       "Jeder Mensch macht sich Gedanken darüber, warum sich andere so verhalten, wie sie sich verhalten."
+      ],
+      [
+       "Eingrenzung des Lernbereichs",
+       "Die Psychologie ist die Wissenschaft vom Erleben und Verhalten des Menschen."
+      ],
+      [
+       "Überleitung",
+       "Im Folgenden wird die Aussage der Mitschülerin (Z. 5–6) anhand von zwei Merkmalen einer Alltagstheorie verdeutlicht."
+      ],
+      [
+       "Nennen",
+       "Ein Merkmal von Alltagstheorien ist die Verallgemeinerung."
+      ],
+      [
+       "Erklären",
+       "Dabei wird von wenigen Beobachtungen auf viele Menschen geschlossen."
+      ],
+      [
+       "Verdeutlichen (Transfer)",
+       "Die Mitschülerin sagt, Mädchen in dem Alter seien eben so (Z. 5–6), und schließt damit von „den Mädchen“ auf Mira."
+      ],
+      [
+       "Schluss",
+       "Alltagstheorien helfen im Alltag, ersetzen aber nicht die systematische Überprüfung."
+      ]
+     ],
+     "erklaerung": "Nur der Transfer enthält Mira und eine Zeilenangabe. Nennen und Erklären bleiben allgemein."
+    }
+   ]
+  },
+  {
+   "kicker": "Aufgabe 3",
+   "titel": "Fehlerjagd im Entwurf",
+   "bloecke": [
+    {
+     "typ": "text",
+     "text": "Eine Mitschülerin hat einen Entwurf geschrieben (frei erfunden, nicht aus deiner Klasse). In jedem Abschnitt steckt **ein** Aufbaufehler, einer ist in Ordnung."
+    },
+    {
+     "typ": "sortieren",
+     "titel": "Welcher Fehler steckt in welchem Abschnitt?",
+     "hinweis": "Ordne jeden Abschnitt der passenden Spalte zu.",
+     "kategorien": [
+      {
+       "name": "Fallbezug zu früh",
+       "items": [
+        "Mira meldet sich im Unterricht selten, weil sie Angst hat (Z. 3–4). Das ist ein spannender Fall."
+       ]
+      },
+      {
+       "name": "Schritt fehlt: Erklären",
+       "items": [
+        "Ein Merkmal von Alltagstheorien ist die Verallgemeinerung. Die Mitschülerin sagt: „Mädchen in dem Alter sind eben so“ (Z. 5–6)."
+       ]
+      },
+      {
+       "name": "Zeilenangabe fehlt",
+       "items": [
+        "Ein Merkmal ist die einfache Ursachenzuschreibung. Dabei wird Verhalten mit einer festen Eigenschaft erklärt, ohne Beobachtung oder Belege. Die Mitschülerin sagt, Mira sei einfach schüchtern, das sei schon immer so."
+       ]
+      },
+      {
+       "name": "Schluss ohne Bezug zum Thema",
+       "items": [
+        "Zum Schluss: Mira sollte sich einfach mehr trauen."
+       ]
+      },
+      {
+       "name": "Aufbau in Ordnung",
+       "items": [
+        "Alltagstheorien sind subjektive, auf persönlicher Erfahrung beruhende Annahmen."
+       ]
+      }
+     ],
+     "erklaerung": "Der Einleitungssatz bleibt allgemein, Nennen und Erklären gehören vor den Transfer, jeder Beleg braucht seine Zeile, und der Schluss greift einen Gedanken zum Thema auf, keinen Ratschlag an Mira."
+    },
+    {
+     "typ": "kprim",
+     "stamm": "Beurteile die Aussagen zum Aufbau eines Fachaufsatzes.",
+     "aussagen": [
+      {
+       "text": "Die Definitionen von Pädagogik und Psychologie stehen in der Eingrenzung des Lernbereichs.",
+       "richtig": true,
+       "erklaerung": "Die Eingrenzung führt vom allgemeinen Einstieg zum Lernbereich."
+      },
+      {
+       "text": "Im Hauptteil steht zuerst der Transfer, dann Nennen und Erklären.",
+       "richtig": false,
+       "erklaerung": "Die Reihenfolge ist Nennen, Erklären, Verdeutlichen (Transfer)."
+      },
+      {
+       "text": "Die Überleitung ist die Stelle, an der zum ersten Mal der Fall erwähnt wird.",
+       "richtig": true,
+       "erklaerung": "Der Einleitungssatz und die Eingrenzung bleiben allgemein."
+      },
+      {
+       "text": "Der Schluss besteht aus einem Ratschlag an Mira.",
+       "richtig": false,
+       "erklaerung": "Der Schluss ist ein zum Thema passender Gedanke oder Ausblick."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "Aufgabe 4",
+   "titel": "Dein Fachaufsatz mit Strukturstreifen",
+   "bloecke": [
+    {
+     "typ": "situation",
+     "label": "Fallvignette: Mira",
+     "zeilen": [
+      "Mira besucht die 11. Klasse einer Fachoberschule. Ihrer Lehrerin fällt auf, dass Mira sich im",
+      "Unterricht nur selten meldet, obwohl sie bei Partner- und Gruppenarbeiten aktiv mitarbeitet und",
+      "gute Ergebnisse erzielt. Mira erklärt, dass sie sich beim Sprechen vor der gesamten Klasse häufig",
+      "unsicher fühlt und Angst hat, eine falsche Antwort zu geben. Eine Mitschülerin sieht den Grund",
+      "dagegen anders: „Mira ist einfach schüchtern – das war schon immer so. Mädchen in dem Alter",
+      "sind eben so.“",
+      "",
+      "Die Lehrerin vermutet, dass sich Schülerinnen und Schüler wie Mira häufiger melden, wenn sie",
+      "ihre Antwort vorher besprechen dürfen. Das prüft sie vier Wochen lang: Per Los teilt sie die Klasse",
+      "in zwei Gruppen. Gruppe A darf sich vor jeder Antwort zwei Minuten mit einer Partnerin oder einem",
+      "Partner besprechen, Gruppe B nicht. Beide Gruppen erhalten dieselben Fragen, die Lehrerin zählt",
+      "die freiwilligen Meldungen. Nach den vier Wochen meldet sich auch Mira, die zu Gruppe A gehört,",
+      "deutlich häufiger."
+     ]
+    },
+    {
+     "typ": "text",
+     "text": "Jetzt schreibst du selbst. Jedes Feld ist ein Baustein. Die Strukturhilfe (?) erinnert dich an den Inhalt. Das Muster siehst du, sobald du selbst etwas geschrieben hast."
+    },
+    {
+     "typ": "strukturstreifen",
+     "titel": "Formulieren Sie einen Fachaufsatz zum Fall Mira.",
+     "aufgabe": "Verdeutlichen Sie die Aussage der Mitschülerin im Hinblick auf zwei Merkmale einer Alltagstheorie. Belegen Sie Ihre Analyse am Material (Fallvignette).",
+     "felder": [
+      {
+       "titel": "Einleitung: Einleitungssatz",
+       "farbe": "pfirsich",
+       "hilfe": "Ein ganz allgemeiner Satz ohne Mira: Wie versuchen Menschen, Erleben und Verhalten zu verstehen? Alltag gegen Wissenschaft.",
+       "muster": "Menschen versuchen ständig, ihr Erleben und das Verhalten anderer zu verstehen und zu erklären. Im Alltag geschieht dies meist mit eigenen Annahmen (Alltagstheorien), in der Wissenschaft mit systematisch überprüften Aussagen (Wissenschaftstheorien)."
+      },
+      {
+       "titel": "Einleitung: Eingrenzung des Lernbereichs",
+       "farbe": "pfirsich",
+       "hilfe": "Beide nutzen Theorien. Definiere Pädagogik und Psychologie, jeweils in einem Satz.",
+       "muster": "Beide nutzen Theorien, um Verhalten zu beschreiben, zu erklären und vorherzusagen. Unter Pädagogik werden sowohl alle Formen des praktischen Erziehungsgeschehens als auch die wissenschaftliche Erhellung der Erziehungswirklichkeit verstanden. Die Psychologie ist die Wissenschaft vom Erleben und Verhalten des Menschen."
+      },
+      {
+       "titel": "Einleitung: Überleitung",
+       "farbe": "pfirsich",
+       "hilfe": "Hier kommt zum ersten Mal der Fall: Wer erklärt was (Zeile)? Kündige zwei Merkmale an.",
+       "muster": "In der Fallvignette erklärt eine Mitschülerin Miras Zurückhaltung mit einer Alltagstheorie (Z. 5–6). Die Aussage wird im Folgenden anhand von zwei Merkmalen verdeutlicht."
+      },
+      {
+       "titel": "Hauptteil: Klärung der Theoriebegriffe",
+       "farbe": "gelb",
+       "hilfe": "Definiere Alltagstheorie und Wissenschaftstheorie, noch ohne Fall.",
+       "muster": "Alltagstheorien sind subjektive, auf persönlicher Erfahrung beruhende Annahmen. Sie enthalten oft unzulässige Verallgemeinerungen, sind unsystematisch, dienen der Erklärung im Alltag und sind nicht überprüfbar. Wissenschaftstheorien sind dagegen systematisch entwickelt, empirisch überprüfbar und objektiv."
+      },
+      {
+       "titel": "Merkmal 1",
+       "farbe": "blau",
+       "hilfe": "Nennen, Erklären (allgemein), dann Verdeutlichen (Transfer) mit Zitat und Zeilenangabe.",
+       "muster": "Ein erstes Merkmal von Alltagstheorien ist die Verallgemeinerung bzw. Pauschalisierung. Dabei wird von Einzelbeobachtungen auf eine ganze Gruppe geschlossen, individuelle Unterschiede bleiben unberücksichtigt. Die Mitschülerin sagt: „Mädchen in dem Alter sind eben so“ (Z. 5–6). Sie schließt von „den Mädchen“ auf Mira, ohne Miras individuelle Situation zu betrachten, z. B. ihre Angst vor einer falschen Antwort (Z. 3–4)."
+      },
+      {
+       "titel": "Merkmal 2",
+       "farbe": "gruen",
+       "hilfe": "Nennen, Erklären (allgemein), dann Verdeutlichen (Transfer) mit Zitat und Zeilenangaben.",
+       "muster": "Ein zweites Merkmal ist die einfache, subjektive Ursachenzuschreibung ohne Überprüfung. Dabei wird Verhalten mit einer simplen, festen Eigenschaft erklärt, ohne Beobachtung oder Belege, und nicht hinterfragt. Die Mitschülerin sagt: „Mira ist einfach schüchtern – das war schon immer so“ (Z. 5). Sie erklärt Miras Verhalten mit „schon immer“ statt mit Beobachtung. Mira nennt selbst eine andere Ursache: Angst vor einer falschen Antwort (Z. 3–4). Nach der Partnerbesprechung meldet sie sich häufiger (Z. 11–12)."
+      },
+      {
+       "titel": "Schluss",
+       "farbe": "pfirsich",
+       "hilfe": "Ein Gedanke oder Ausblick zum Thema, kein Ratschlag an Mira.",
+       "muster": "Alltagstheorien geben Orientierung, ersetzen aber keine systematische Überprüfung wie im Versuch der Lehrerin."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "Abschluss",
+   "titel": "Dein Plan für die nächste Kurzarbeit",
+   "bloecke": [
+    {
+     "typ": "frei",
+     "frage": "Welchen Baustein vergisst oder verwechselst du am ehesten? Schreibe zwei bis drei Sätze, worauf du in der nächsten Kurzarbeit als Erstes achtest.",
+     "hinweis": "Ehrlich zu dir selbst zu sein, hilft dir mehr als eine perfekte Antwort.",
+     "muster": "Beispiel: Ich schreibe in den Einleitungssatz oft schon Mira hinein. Ab jetzt schreibe ich ihn allgemein und nenne den Fall erst in der Überleitung. Außerdem kontrolliere ich am Ende, ob bei jedem Transfer eine Zeilenangabe steht.",
+     "kriterien": [
+      "Ich habe einen **konkreten Baustein** genannt.",
+      "Ich habe einen **Satz** formuliert, was ich anders mache.",
+      "Ich weiß, wie ich am Ende **kontrolliere** (z. B. Zeilenangaben prüfen)."
+     ]
+    },
+    {
+     "typ": "merke",
+     "label": "Merke",
+     "text": "Merke dir die Reihenfolge: **Einleitungssatz, Eingrenzung, Überleitung, Klärung der Theoriebegriffe, zwei Merkmale (Nennen, Erklären, Verdeutlichen (Transfer)), Schluss.**\n\nWenn dir die Inhalte der Merkmale noch unsicher sind, übe weiter mit der Übung „Theorie beschreiben üben“. Fehlt dir der Fallbezug, nimm die Übung „Fallbezug üben“."
+    }
+   ]
+  }
+ ]
+}

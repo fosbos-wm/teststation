@@ -1,0 +1,359 @@
+{
+ "titel": "Theorie beschreiben üben",
+ "einleitung": "Du übst, eine Theorie **allgemein** zu beschreiben, also ohne Fallbezug: Definitionen, Merkmale, Nennen und Erklären. Der Fall Mira bleibt zunächst im Hintergrund. Plane etwa 45 Minuten ein.",
+ "abschnitte": [
+  {
+   "kicker": "Kurs 2 · Theorie allgemein beschreiben",
+   "titel": "Allgemein heißt: ohne Mira",
+   "bloecke": [
+    {
+     "typ": "zitat",
+     "text": "„Mira ist einfach schüchtern – das war schon immer so. Mädchen in dem Alter sind eben so.“",
+     "quelle": "Mitschülerin (Z. 5–6)"
+    },
+    {
+     "typ": "situation",
+     "label": "Arbeitsauftrag",
+     "text": "Verdeutlichen Sie die Aussage der Mitschülerin im Hinblick auf zwei Merkmale einer Alltagstheorie. Belegen Sie Ihre Analyse am Material (Fallvignette)."
+    },
+    {
+     "typ": "text",
+     "text": "Bevor du am Fall zeigen kannst, dass die Mitschülerin eine Alltagstheorie verwendet, musst du die **Theorie selbst** sicher beschreiben können: ohne Mira, ohne Zeilenangabe, mit den richtigen Fachbegriffen. Das sind im Aufsatz die **Eingrenzung**, die **Klärung der Theoriebegriffe** sowie bei jedem Merkmal das **Nennen** und **Erklären**. Plane etwa 45 Minuten ein."
+    },
+    {
+     "typ": "merke",
+     "label": "Merke",
+     "text": "**Allgemein beschreiben** heißt: Der Satz würde auch bei einem ganz anderen Fall stimmen. Er enthält keinen Namen und keine Zeilenangabe."
+    },
+    {
+     "typ": "sortieren",
+     "titel": "Allgemein oder mit Fallbezug?",
+     "hinweis": "Ordne jeden Satz zu. Im Hauptteil dürfen Nennen und Erklären nur allgemeine Sätze enthalten.",
+     "kategorien": [
+      {
+       "name": "Allgemein (ohne Fallbezug)",
+       "items": [
+        "Alltagstheorien beruhen auf persönlicher Erfahrung.",
+        "Bei einer Verallgemeinerung wird von Einzelbeobachtungen auf eine ganze Gruppe geschlossen.",
+        "Wissenschaftstheorien sind systematisch entwickelt und empirisch überprüfbar."
+       ]
+      },
+      {
+       "name": "Mit Fallbezug",
+       "items": [
+        "Mira wird von ihrer Mitschülerin als schüchtern bezeichnet.",
+        "Die Mitschülerin schließt von „den Mädchen“ auf Mira (Z. 5–6).",
+        "Die Lehrerin teilt die Klasse per Los in zwei Gruppen."
+       ]
+      }
+     ],
+     "erklaerung": "Sobald ein Name, eine Figur aus dem Fall oder eine Zeilenangabe vorkommt, ist es Fallbezug. Der gehört in den Transfer, nicht in Nennen und Erklären."
+    }
+   ]
+  },
+  {
+   "kicker": "Theorie 1",
+   "titel": "Alltagstheorie und Wissenschaftstheorie",
+   "bloecke": [
+    {
+     "typ": "text",
+     "text": "Menschen wollen Verhalten verstehen, erklären und vorhersagen. Das tun sie im Alltag und in der Wissenschaft, aber auf unterschiedliche Weise."
+    },
+    {
+     "typ": "schema",
+     "links": "Alltagstheorie",
+     "rechts": "Wissenschaftstheorie",
+     "mitte": [
+      "beschreiben, erklären",
+      "und sagen Verhalten vorher"
+     ],
+     "beschriftung": "Beide nutzen Theorien, aber mit unterschiedlicher Qualität."
+    },
+    {
+     "typ": "merke",
+     "label": "Merke",
+     "text": "**Alltagstheorien** sind subjektive, auf persönlicher Erfahrung beruhende Annahmen. Sie enthalten oft unzulässige Verallgemeinerungen, sind unsystematisch, dienen der Erklärung im Alltag und sind nicht überprüfbar.\n\n**Wissenschaftstheorien** sind systematisch entwickelt, empirisch überprüfbar und objektiv."
+    },
+    {
+     "typ": "lueckentext",
+     "titel": "Ergänze die Definitionen.",
+     "text": "Alltagstheorien sind {{subjektive}}, auf persönlicher {{Erfahrung}} beruhende Annahmen. Sie sind {{unsystematisch}} und nicht überprüfbar. Wissenschaftstheorien sind systematisch entwickelt, {{empirisch}} überprüfbar und {{objektiv}}.",
+     "woerter": [
+      "subjektive",
+      "Erfahrung",
+      "unsystematisch",
+      "empirisch",
+      "objektiv",
+      "zufällige",
+      "Vermutung",
+      "beliebig"
+     ],
+     "erklaerung": "Subjektiv, Erfahrung, unsystematisch auf der Seite der Alltagstheorie. Empirisch überprüfbar und objektiv gehören zur Wissenschaft."
+    }
+   ]
+  },
+  {
+   "kicker": "Theorie 2",
+   "titel": "Merkmale von Alltagstheorien",
+   "bloecke": [
+    {
+     "typ": "text",
+     "text": "Im Hauptteil wählst du zwei Merkmale aus und beschreibst sie zuerst allgemein. Diese Merkmale solltest du erklären können:"
+    },
+    {
+     "typ": "zuordnung",
+     "titel": "Ordne jedem Merkmal die passende allgemeine Erklärung zu.",
+     "paare": [
+      [
+       "Subjektivität",
+       "Die Aussage gilt aus der Sicht einer Person, andere könnten denselben Sachverhalt anders sehen."
+      ],
+      [
+       "Persönliche Erfahrung",
+       "Die Annahme stützt sich auf selbst Erlebtes und nicht auf geplante Untersuchungen."
+      ],
+      [
+       "Verallgemeinerung (Pauschalisierung)",
+       "Von Einzelbeobachtungen wird auf eine ganze Gruppe geschlossen, individuelle Unterschiede bleiben unberücksichtigt."
+      ],
+      [
+       "Unsystematik",
+       "Die Annahme entsteht ohne planmäßiges Vorgehen nach festen Regeln."
+      ],
+      [
+       "Einfache Ursachenzuschreibung ohne Überprüfung",
+       "Verhalten wird mit einer simplen, festen Eigenschaft erklärt, ohne Beobachtung oder Belege, und nicht hinterfragt."
+      ]
+     ],
+     "erklaerung": "Zwei dieser Merkmale (Verallgemeinerung und einfache Ursachenzuschreibung) werden im Fall Mira im Erwartungshorizont verdeutlicht. Auch andere Merkmale sind möglich, wenn du sie am Fall belegen kannst."
+    },
+    {
+     "typ": "merke",
+     "label": "Merke",
+     "text": "Ein Merkmal beschreibst du immer in zwei Schritten: **Nennen** (ein Satz: Wie heißt es?) und **Erklären** (ein bis zwei Sätze: Was bedeutet es?). Der Fall kommt erst danach."
+    }
+   ]
+  },
+  {
+   "kicker": "Technik",
+   "titel": "Nennen und Erklären unterscheiden",
+   "bloecke": [
+    {
+     "typ": "text",
+     "text": "Am Beispiel „Verallgemeinerung“ siehst du den Unterschied. Beides bleibt allgemein."
+    },
+    {
+     "typ": "sortieren",
+     "titel": "Nennen oder Erklären?",
+     "hinweis": "Ordne die Sätze zu.",
+     "kategorien": [
+      {
+       "name": "Nennen",
+       "items": [
+        "Ein Merkmal von Alltagstheorien ist die Verallgemeinerung bzw. Pauschalisierung.",
+        "Ein weiteres Merkmal ist die einfache, subjektive Ursachenzuschreibung ohne Überprüfung."
+       ]
+      },
+      {
+       "name": "Erklären",
+       "items": [
+        "Dabei wird von Einzelbeobachtungen auf eine ganze Gruppe geschlossen.",
+        "Individuelle Unterschiede bleiben unberücksichtigt.",
+        "Verhalten wird mit einer simplen, festen Eigenschaft erklärt, ohne Beobachtung oder Belege."
+       ]
+      }
+     ],
+     "erklaerung": "Das Nennen gibt dem Merkmal einen Namen. Das Erklären sagt, was dahintersteckt."
+    },
+    {
+     "typ": "mc",
+     "frage": "Warum reicht es nicht, nur das Merkmal zu nennen („Ein Merkmal ist die Verallgemeinerung.“)?",
+     "optionen": [
+      "Weil der Leser nicht erfährt, was mit dem Fachbegriff gemeint ist",
+      "Weil Fachbegriffe im Aufsatz nicht vorkommen dürfen",
+      "Weil man sonst keine Zeilenangabe braucht",
+      "Es reicht, der Rest steht ja im Transfer"
+     ],
+     "richtig": 0,
+     "erklaerung": "Erst die Erklärung zeigt, dass du den Fachbegriff verstanden hast. Der Transfer baut darauf auf."
+    }
+   ]
+  },
+  {
+   "kicker": "Aufgabe 1",
+   "titel": "Allgemein genug?",
+   "bloecke": [
+    {
+     "typ": "kprim",
+     "stamm": "Beurteile, ob die Sätze für Nennen oder Erklären im Hauptteil geeignet sind (allgemein, ohne Fallbezug).",
+     "aussagen": [
+      {
+       "text": "„Alltagstheorien sind unsystematisch, weil sie ohne planmäßiges Vorgehen entstehen.“",
+       "richtig": true,
+       "erklaerung": "Allgemein, mit Fachbegriff und Begründung."
+      },
+      {
+       "text": "„Mira wird pauschal beurteilt, das ist eine Verallgemeinerung.“",
+       "richtig": false,
+       "erklaerung": "Der Name Mira gehört in den Transfer."
+      },
+      {
+       "text": "„Bei einer Verallgemeinerung bleiben individuelle Unterschiede unberücksichtigt.“",
+       "richtig": true,
+       "erklaerung": "Allgemeine Erklärung des Merkmals."
+      },
+      {
+       "text": "„Die Mitschülerin sagt, Mädchen seien eben so, das ist eine Verallgemeinerung.“",
+       "richtig": false,
+       "erklaerung": "Die Aussage der Mitschülerin ist Fall und gehört in den Transfer."
+      }
+     ]
+    },
+    {
+     "typ": "lueckentext",
+     "titel": "Erkläre das Merkmal ohne Fallbezug.",
+     "text": "Eine Verallgemeinerung liegt vor, wenn von {{Einzelbeobachtungen}} auf eine ganze {{Gruppe}} geschlossen wird. Dabei bleiben {{individuelle}} Unterschiede unberücksichtigt.",
+     "woerter": [
+      "Einzelbeobachtungen",
+      "Gruppe",
+      "individuelle",
+      "Mira",
+      "Mitschülerin",
+      "Experimente"
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "Gegenstück",
+   "titel": "Alltagstheorie oder Wissenschaftstheorie?",
+   "bloecke": [
+    {
+     "typ": "text",
+     "text": "Im Aufsatz hilft es, den Kontrast zu kennen. So erkennst du, was eine Alltagstheorie auszeichnet."
+    },
+    {
+     "typ": "sortieren",
+     "titel": "Zu welcher Theorieart gehört die Aussage?",
+     "hinweis": "Ordne jede Aussage zu.",
+     "kategorien": [
+      {
+       "name": "Alltagstheorie",
+       "items": [
+        "beruht auf einzelnen persönlichen Erfahrungen",
+        "wird im Alltag zur schnellen Erklärung genutzt",
+        "lässt sich nicht überprüfen"
+       ]
+      },
+      {
+       "name": "Wissenschaftstheorie",
+       "items": [
+        "wird systematisch entwickelt",
+        "ist empirisch überprüfbar",
+        "ist unabhängig von der einzelnen Person nachvollziehbar (objektiv)"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "Aufgabe 2",
+   "titel": "Schreibe selbst, ohne Fallbezug",
+   "bloecke": [
+    {
+     "typ": "frei",
+     "frage": "Klären Sie die Begriffe Alltagstheorie und Wissenschaftstheorie in zwei bis drei Sätzen. Verwenden Sie keinen Fallbezug.",
+     "hinweis": "Nenne mindestens drei Kennzeichen der Alltagstheorie und zwei der Wissenschaftstheorie.",
+     "muster": "Alltagstheorien sind subjektive, auf persönlicher Erfahrung beruhende Annahmen. Sie enthalten oft unzulässige Verallgemeinerungen, sind unsystematisch, dienen der Erklärung im Alltag und sind nicht überprüfbar. Wissenschaftstheorien sind dagegen systematisch entwickelt, empirisch überprüfbar und objektiv.",
+     "kriterien": [
+      "Ich habe die Alltagstheorie als **subjektive, auf persönlicher Erfahrung beruhende** Annahme beschrieben.",
+      "Ich habe mindestens zwei weitere Kennzeichen genannt (**Verallgemeinerung, unsystematisch, Alltag, nicht überprüfbar**).",
+      "Ich habe die Wissenschaftstheorie als **systematisch, empirisch überprüfbar, objektiv** beschrieben.",
+      "In meinem Text kommt **kein Name** aus dem Fall und **keine Zeilenangabe** vor."
+     ]
+    },
+    {
+     "typ": "frei",
+     "frage": "Nennen und erklären Sie das Merkmal „Verallgemeinerung bzw. Pauschalisierung“ in zwei Sätzen, ohne Fallbezug.",
+     "hinweis": "Erster Satz: Nennen. Zweiter Satz: Erklären.",
+     "muster": "Ein erstes Merkmal von Alltagstheorien ist die Verallgemeinerung bzw. Pauschalisierung. Dabei wird von Einzelbeobachtungen auf eine ganze Gruppe geschlossen, individuelle Unterschiede bleiben unberücksichtigt.",
+     "kriterien": [
+      "Mein erster Satz **nennt** das Merkmal mit dem Fachbegriff.",
+      "Mein zweiter Satz **erklärt**, was gemeint ist (von Einzelbeobachtungen auf eine Gruppe, Unterschiede bleiben unberücksichtigt).",
+      "Es kommt **kein Fallbezug** vor."
+     ]
+    },
+    {
+     "typ": "frei",
+     "frage": "Nennen und erklären Sie das Merkmal „einfache, subjektive Ursachenzuschreibung ohne Überprüfung“ in zwei Sätzen, ohne Fallbezug.",
+     "hinweis": "Erster Satz: Nennen. Zweiter Satz: Erklären.",
+     "muster": "Ein zweites Merkmal ist die einfache, subjektive Ursachenzuschreibung ohne Überprüfung. Dabei wird Verhalten mit einer simplen, festen Eigenschaft erklärt, ohne Beobachtung oder Belege, und nicht hinterfragt.",
+     "kriterien": [
+      "Mein erster Satz **nennt** das Merkmal.",
+      "Mein zweiter Satz **erklärt**: simple, feste Eigenschaft, keine Beobachtung oder Belege, nicht hinterfragt.",
+      "Es kommt **kein Fallbezug** vor."
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "Finale",
+   "titel": "Der allgemeine Teil deines Aufsatzes",
+   "bloecke": [
+    {
+     "typ": "text",
+     "text": "Jetzt schreibst du alle Teile des Aufsatzes, die **ohne Fall** auskommen. Den Transfer übst du im Übung „Fallbezug üben“."
+    },
+    {
+     "typ": "strukturstreifen",
+     "titel": "Schreiben Sie den fallfreien Teil des Fachaufsatzes.",
+     "aufgabe": "Verdeutlichen Sie die Aussage der Mitschülerin im Hinblick auf zwei Merkmale einer Alltagstheorie. Schreiben Sie hier nur die Teile, die ohne Fallbezug auskommen.",
+     "felder": [
+      {
+       "titel": "Einleitung: Einleitungssatz",
+       "farbe": "pfirsich",
+       "hilfe": "Ganz allgemein: Menschen wollen Erleben und Verhalten verstehen. Alltag gegen Wissenschaft.",
+       "muster": "Menschen versuchen ständig, ihr Erleben und das Verhalten anderer zu verstehen und zu erklären. Im Alltag geschieht dies meist mit eigenen Annahmen (Alltagstheorien), in der Wissenschaft mit systematisch überprüften Aussagen (Wissenschaftstheorien)."
+      },
+      {
+       "titel": "Einleitung: Eingrenzung des Lernbereichs",
+       "farbe": "pfirsich",
+       "hilfe": "Beide nutzen Theorien. Definiere Pädagogik und Psychologie.",
+       "muster": "Beide nutzen Theorien, um Verhalten zu beschreiben, zu erklären und vorherzusagen. Unter Pädagogik werden sowohl alle Formen des praktischen Erziehungsgeschehens als auch die wissenschaftliche Erhellung der Erziehungswirklichkeit verstanden. Die Psychologie ist die Wissenschaft vom Erleben und Verhalten des Menschen."
+      },
+      {
+       "titel": "Hauptteil: Klärung der Theoriebegriffe",
+       "farbe": "gelb",
+       "hilfe": "Alltagstheorie und Wissenschaftstheorie definieren.",
+       "muster": "Alltagstheorien sind subjektive, auf persönlicher Erfahrung beruhende Annahmen. Sie enthalten oft unzulässige Verallgemeinerungen, sind unsystematisch, dienen der Erklärung im Alltag und sind nicht überprüfbar. Wissenschaftstheorien sind dagegen systematisch entwickelt, empirisch überprüfbar und objektiv."
+      },
+      {
+       "titel": "Merkmal 1: Nennen und Erklären",
+       "farbe": "blau",
+       "hilfe": "Verallgemeinerung: Fachbegriff, dann Erklärung.",
+       "muster": "Ein erstes Merkmal von Alltagstheorien ist die Verallgemeinerung bzw. Pauschalisierung. Dabei wird von Einzelbeobachtungen auf eine ganze Gruppe geschlossen, individuelle Unterschiede bleiben unberücksichtigt."
+      },
+      {
+       "titel": "Merkmal 2: Nennen und Erklären",
+       "farbe": "gruen",
+       "hilfe": "Einfache Ursachenzuschreibung: Fachbegriff, dann Erklärung.",
+       "muster": "Ein zweites Merkmal ist die einfache, subjektive Ursachenzuschreibung ohne Überprüfung. Dabei wird Verhalten mit einer simplen, festen Eigenschaft erklärt, ohne Beobachtung oder Belege, und nicht hinterfragt."
+      },
+      {
+       "titel": "Schluss",
+       "farbe": "pfirsich",
+       "hilfe": "Ein allgemeiner Gedanke zum Thema.",
+       "muster": "Alltagstheorien geben Orientierung, ersetzen aber keine systematische Überprüfung wie im Versuch der Lehrerin."
+      }
+     ]
+    },
+    {
+     "typ": "merke",
+     "label": "Merke",
+     "text": "Wenn deine Sätze **allgemein** sind und die Fachbegriffe stimmen, hast du die Grundlage für den Transfer. Weiter geht es mit der Übung „Fallbezug üben“."
+    }
+   ]
+  }
+ ]
+}

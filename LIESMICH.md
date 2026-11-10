@@ -24,3 +24,8 @@ Dateien im Repo: `stationen/sinn-karten.html` (geändert), `inhalte/resilienz-si
 ## Rückweg aus einer Übung
 In `station.html` führt der Knopf oben nur dorthin, wo man hergekommen ist: bei einem Link mit Auswahl zurück zur Auswahl, bei einem Ordner-Link zurück zum Ordner, bei einem Klick aus der Gesamtübersicht zurück zu „Alle Übungen“. Bei einem direkten Link zu genau einer Übung (z. B. aus `lehrer.html` oder per QR-Code) gibt es keinen Knopf zu „Alle Übungen“. Dazu hängt `index.html` an die Übungs-Links `von=1` (und `ordner=…`). Das ist keine Sicherheitssperre: Die Zurück-Taste des Browsers und das Eintippen der Startadresse bleiben möglich.
 Geänderte Dateien: `station.html`, `index.html`.
+
+## Kurzarbeit 11. Klasse Nachsorge (Ordner Pädagogik/Psychologie)
+Vier Einzelübungen zum Fall Mira, jeweils zum Durchklicken mit Rückmeldung, ohne Punkte: Aufbau üben, Theorie beschreiben üben, Fallbezug üben, Schreiben eines Aufsatzes üben.
+Dateien: `stationen/kurs.html` (neu), `inhalte/kurzarbeit-aufbau.json`, `kurzarbeit-theorie.json`, `kurzarbeit-fallbezug.json`, `kurzarbeit-schreiben.json` (neu), `stationen/katalog.json` (vier Einträge am Ende ergänzt).
+Es wird nichts gespeichert; Eingaben liegen nur im Arbeitsspeicher der Seite. Weitere Übungen dieser Art: neue JSON in `inhalte/` und ein Katalogeintrag mit `"datei":"kurs.html?set=<name>"`.

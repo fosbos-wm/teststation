@@ -1,0 +1,398 @@
+{
+ "titel": "Fallbezug üben",
+ "einleitung": "Du übst das **Verdeutlichen (Transfer)**: passende Textstellen finden, Zeilen angeben, mit dem Fachbegriff deuten und Gegenbelege nutzen. Plane etwa 45 Minuten ein.",
+ "abschnitte": [
+  {
+   "kicker": "Kurs 3 · Fallbezug",
+   "titel": "Theorie am Fall belegen",
+   "bloecke": [
+    {
+     "typ": "situation",
+     "label": "Fallvignette: Mira",
+     "zeilen": [
+      "Mira besucht die 11. Klasse einer Fachoberschule. Ihrer Lehrerin fällt auf, dass Mira sich im",
+      "Unterricht nur selten meldet, obwohl sie bei Partner- und Gruppenarbeiten aktiv mitarbeitet und",
+      "gute Ergebnisse erzielt. Mira erklärt, dass sie sich beim Sprechen vor der gesamten Klasse häufig",
+      "unsicher fühlt und Angst hat, eine falsche Antwort zu geben. Eine Mitschülerin sieht den Grund",
+      "dagegen anders: „Mira ist einfach schüchtern – das war schon immer so. Mädchen in dem Alter",
+      "sind eben so.“",
+      "",
+      "Die Lehrerin vermutet, dass sich Schülerinnen und Schüler wie Mira häufiger melden, wenn sie",
+      "ihre Antwort vorher besprechen dürfen. Das prüft sie vier Wochen lang: Per Los teilt sie die Klasse",
+      "in zwei Gruppen. Gruppe A darf sich vor jeder Antwort zwei Minuten mit einer Partnerin oder einem",
+      "Partner besprechen, Gruppe B nicht. Beide Gruppen erhalten dieselben Fragen, die Lehrerin zählt",
+      "die freiwilligen Meldungen. Nach den vier Wochen meldet sich auch Mira, die zu Gruppe A gehört,",
+      "deutlich häufiger."
+     ]
+    },
+    {
+     "typ": "situation",
+     "label": "Arbeitsauftrag",
+     "text": "Verdeutlichen Sie die Aussage der Mitschülerin im Hinblick auf zwei Merkmale einer Alltagstheorie. Belegen Sie Ihre Analyse am Material (Fallvignette)."
+    },
+    {
+     "typ": "text",
+     "text": "In diesem Kurs übst du den Teil, in dem viele Punkte verloren gehen: das **Verdeutlichen (Transfer)**. Du suchst die passende Textstelle, gibst die Zeilen an und verknüpfst sie mit dem Merkmal. Plane etwa 45 Minuten ein."
+    },
+    {
+     "typ": "merke",
+     "label": "Merke",
+     "text": "**Ein guter Transfer hat drei Schritte:**\n- **Beleg:** Du zitierst oder benennst die Textstelle mit Zeilenangabe, z. B. (Z. 5–6).\n- **Deutung:** Du sagst mit dem Fachbegriff, warum die Stelle das Merkmal zeigt („Sie schließt von … auf …“).\n- **Gegenbeleg:** Du zeigst, was im Fall dagegen spricht oder unberücksichtigt bleibt."
+    },
+    {
+     "typ": "mc",
+     "frage": "Welcher Satz ist der Anfang eines guten Transfers?",
+     "optionen": [
+      "Mira ist in der 11. Klasse und meldet sich selten.",
+      "Die Mitschülerin sagt: „Mädchen in dem Alter sind eben so“ (Z. 5–6).",
+      "Das ist eine Verallgemeinerung.",
+      "Alltagstheorien sind subjektive Annahmen."
+     ],
+     "richtig": 1,
+     "erklaerung": "Der Transfer beginnt mit dem Beleg samt Zeilenangabe. Die anderen Sätze erzählen den Fall nach, nennen nur das Ergebnis oder bleiben allgemein."
+    }
+   ]
+  },
+  {
+   "kicker": "Aufgabe 1",
+   "titel": "Zeilen finden",
+   "bloecke": [
+    {
+     "typ": "situation",
+     "label": "Fallvignette: Mira (zum Nachschlagen)",
+     "zeilen": [
+      "Mira besucht die 11. Klasse einer Fachoberschule. Ihrer Lehrerin fällt auf, dass Mira sich im",
+      "Unterricht nur selten meldet, obwohl sie bei Partner- und Gruppenarbeiten aktiv mitarbeitet und",
+      "gute Ergebnisse erzielt. Mira erklärt, dass sie sich beim Sprechen vor der gesamten Klasse häufig",
+      "unsicher fühlt und Angst hat, eine falsche Antwort zu geben. Eine Mitschülerin sieht den Grund",
+      "dagegen anders: „Mira ist einfach schüchtern – das war schon immer so. Mädchen in dem Alter",
+      "sind eben so.“",
+      "",
+      "Die Lehrerin vermutet, dass sich Schülerinnen und Schüler wie Mira häufiger melden, wenn sie",
+      "ihre Antwort vorher besprechen dürfen. Das prüft sie vier Wochen lang: Per Los teilt sie die Klasse",
+      "in zwei Gruppen. Gruppe A darf sich vor jeder Antwort zwei Minuten mit einer Partnerin oder einem",
+      "Partner besprechen, Gruppe B nicht. Beide Gruppen erhalten dieselben Fragen, die Lehrerin zählt",
+      "die freiwilligen Meldungen. Nach den vier Wochen meldet sich auch Mira, die zu Gruppe A gehört,",
+      "deutlich häufiger."
+     ]
+    },
+    {
+     "typ": "zuordnung",
+     "titel": "Ordne jeder Textstelle die richtige Zeilenangabe zu.",
+     "paare": [
+      [
+       "„Mädchen in dem Alter sind eben so“",
+       "Z. 5–6"
+      ],
+      [
+       "Mira hat Angst, eine falsche Antwort zu geben",
+       "Z. 3–4"
+      ],
+      [
+       "„Mira ist einfach schüchtern – das war schon immer so“",
+       "Z. 5"
+      ],
+      [
+       "Per Los teilt die Lehrerin die Klasse in zwei Gruppen",
+       "Z. 8–9"
+      ],
+      [
+       "Gruppe A darf sich zwei Minuten mit einer Partnerin oder einem Partner besprechen",
+       "Z. 9–10"
+      ],
+      [
+       "Mira meldet sich nach den vier Wochen deutlich häufiger",
+       "Z. 11–12"
+      ]
+     ],
+     "erklaerung": "Gib immer alle Zeilen an, über die sich die Stelle erstreckt. So findet die Korrektur den Beleg sofort."
+    }
+   ]
+  },
+  {
+   "kicker": "Aufgabe 2",
+   "titel": "Welcher Beleg passt wohin?",
+   "bloecke": [
+    {
+     "typ": "text",
+     "text": "Nicht jede Textstelle belegt jedes Merkmal. Entscheide, wozu die Stelle passt."
+    },
+    {
+     "typ": "sortieren",
+     "titel": "Ordne die Textstellen zu.",
+     "hinweis": "Eine Spalte nimmt Stellen auf, die gegen die Erklärung der Mitschülerin sprechen. Eine Spalte nimmt Stellen auf, die zu keinem Merkmal passen.",
+     "kategorien": [
+      {
+       "name": "Verallgemeinerung bzw. Pauschalisierung",
+       "items": [
+        "„Mädchen in dem Alter sind eben so“ (Z. 5–6)"
+       ]
+      },
+      {
+       "name": "Einfache Ursachenzuschreibung ohne Überprüfung",
+       "items": [
+        "„Mira ist einfach schüchtern – das war schon immer so“ (Z. 5)"
+       ]
+      },
+      {
+       "name": "Gegenbeleg: Miras eigene Situation",
+       "items": [
+        "Mira hat Angst, eine falsche Antwort zu geben (Z. 3–4)",
+        "Nach den vier Wochen meldet sich Mira deutlich häufiger (Z. 11–12)"
+       ]
+      },
+      {
+       "name": "Gehört zu keinem Merkmal (Hintergrund)",
+       "items": [
+        "Die Lehrerin teilt die Klasse per Los in zwei Gruppen (Z. 8–9)",
+        "Beide Gruppen erhalten dieselben Fragen (Z. 10)"
+       ]
+      }
+     ],
+     "erklaerung": "Die beiden Zitate der Mitschülerin sind die Belege für die Merkmale. Miras eigene Aussage und ihre spätere Entwicklung sind Gegenbelege. Der Aufbau des Versuchs ist Hintergrund und hilft erst im Schluss."
+    }
+   ]
+  },
+  {
+   "kicker": "Technik",
+   "titel": "Einen Transfer Schritt für Schritt bauen",
+   "bloecke": [
+    {
+     "typ": "text",
+     "text": "Setze den Transfer zu Merkmal 1 aus den richtigen Bausteinen zusammen."
+    },
+    {
+     "typ": "lueckentext",
+     "titel": "Ergänze den Transfer zur Verallgemeinerung.",
+     "text": "Die Mitschülerin sagt: „{{Mädchen in dem Alter sind eben so}}“ ({{Z. 5–6}}). Sie {{schließt}} von „den Mädchen“ auf Mira, ohne Miras {{individuelle}} Situation zu betrachten, z. B. ihre Angst vor einer falschen Antwort ({{Z. 3–4}}).",
+     "woerter": [
+      "Mädchen in dem Alter sind eben so",
+      "Z. 5–6",
+      "schließt",
+      "individuelle",
+      "Z. 3–4",
+      "Z. 1–2",
+      "Z. 7–8",
+      "Mira ist einfach schüchtern",
+      "vergleicht",
+      "allgemeine"
+     ],
+     "erklaerung": "Zitat mit Zeile, Deutung mit dem Fachbegriff „schließt von … auf …“ und dann Miras Situation als Gegenbeleg."
+    },
+    {
+     "typ": "text",
+     "text": "Bei Merkmal 2 stehen die Sätze in der richtigen Reihenfolge: Beleg, Deutung, dann die beiden Gegenbelege."
+    },
+    {
+     "typ": "reihenfolge",
+     "titel": "Bringe den Transfer zu Merkmal 2 in die richtige Reihenfolge.",
+     "hinweis": "Beginne mit dem Beleg.",
+     "absaetze": [
+      "Die Mitschülerin sagt: „Mira ist einfach schüchtern – das war schon immer so“ (Z. 5).",
+      "Sie erklärt Miras Verhalten mit „schon immer“ statt mit Beobachtung.",
+      "Mira nennt selbst eine andere Ursache: Angst vor einer falschen Antwort (Z. 3–4).",
+      "Nach der Partnerbesprechung meldet sie sich häufiger (Z. 11–12)."
+     ],
+     "erklaerung": "Beleg, Deutung, Gegenbeleg aus Miras Sicht, Gegenbeleg aus dem Versuch."
+    }
+   ]
+  },
+  {
+   "kicker": "Satzanfänge",
+   "titel": "Mit welchen Wörtern verknüpfst du?",
+   "bloecke": [
+    {
+     "typ": "zuordnung",
+     "titel": "Ordne jeder Aufgabe im Transfer den passenden Satzanfang zu.",
+     "paare": [
+      [
+       "Beleg einführen",
+       "Die Mitschülerin sagt: …"
+      ],
+      [
+       "Deuten",
+       "Damit schließt sie von … auf …"
+      ],
+      [
+       "Begründen",
+       "Das zeigt sich daran, dass …"
+      ],
+      [
+       "Gegenbeleg",
+       "Dagegen nennt Mira selbst …"
+      ],
+      [
+       "Folge aufzeigen",
+       "Dadurch bleibt unberücksichtigt, dass …"
+      ]
+     ],
+     "erklaerung": "Diese Satzanfänge kannst du in jedem Transfer wiederverwenden."
+    }
+   ]
+  },
+  {
+   "kicker": "Fehlerjagd",
+   "titel": "Was fehlt in diesem Transfer?",
+   "bloecke": [
+    {
+     "typ": "text",
+     "text": "Fünf Transferversuche (frei erfunden, nicht aus deiner Klasse). Findest du den Fehler?"
+    },
+    {
+     "typ": "sortieren",
+     "titel": "Ordne jeden Transfer seinem Fehler zu.",
+     "hinweis": "Ein Transfer ist gelungen.",
+     "kategorien": [
+      {
+       "name": "Fall nacherzählt, Theorie fehlt",
+       "items": [
+        "Mira meldet sich selten, obwohl sie gute Ergebnisse erzielt, und die Mitschülerin sagt etwas über Mädchen."
+       ]
+      },
+      {
+       "name": "Zeilenangabe fehlt",
+       "items": [
+        "Die Mitschülerin verallgemeinert, wenn sie sagt „Mädchen in dem Alter sind eben so“, und schließt damit von den Mädchen auf Mira."
+       ]
+      },
+      {
+       "name": "Nur Zitat, Deutung fehlt",
+       "items": [
+        "Die Mitschülerin sagt: „Mädchen in dem Alter sind eben so“ (Z. 5–6)."
+       ]
+      },
+      {
+       "name": "Beleg stammt von der falschen Person",
+       "items": [
+        "Die Mitschülerin verallgemeinert: Mira nennt Angst vor einer falschen Antwort (Z. 3–4)."
+       ]
+      },
+      {
+       "name": "Gelungen",
+       "items": [
+        "Die Mitschülerin verallgemeinert, denn sie sagt: „Mädchen in dem Alter sind eben so“ (Z. 5–6). Von „den Mädchen“ wird auf Mira geschlossen, ihre Angst vor einer falschen Antwort (Z. 3–4) bleibt unberücksichtigt."
+       ]
+      }
+     ],
+     "erklaerung": "Gelungen sind Beleg, Zeile, Fachbegriff und Verknüpfung. Fehlt eines davon, sinkt die Punktzahl."
+    }
+   ]
+  },
+  {
+   "kicker": "Aufgabe 3",
+   "titel": "Schreibe zwei Transfers",
+   "bloecke": [
+    {
+     "typ": "situation",
+     "label": "Fallvignette: Mira",
+     "zeilen": [
+      "Mira besucht die 11. Klasse einer Fachoberschule. Ihrer Lehrerin fällt auf, dass Mira sich im",
+      "Unterricht nur selten meldet, obwohl sie bei Partner- und Gruppenarbeiten aktiv mitarbeitet und",
+      "gute Ergebnisse erzielt. Mira erklärt, dass sie sich beim Sprechen vor der gesamten Klasse häufig",
+      "unsicher fühlt und Angst hat, eine falsche Antwort zu geben. Eine Mitschülerin sieht den Grund",
+      "dagegen anders: „Mira ist einfach schüchtern – das war schon immer so. Mädchen in dem Alter",
+      "sind eben so.“",
+      "",
+      "Die Lehrerin vermutet, dass sich Schülerinnen und Schüler wie Mira häufiger melden, wenn sie",
+      "ihre Antwort vorher besprechen dürfen. Das prüft sie vier Wochen lang: Per Los teilt sie die Klasse",
+      "in zwei Gruppen. Gruppe A darf sich vor jeder Antwort zwei Minuten mit einer Partnerin oder einem",
+      "Partner besprechen, Gruppe B nicht. Beide Gruppen erhalten dieselben Fragen, die Lehrerin zählt",
+      "die freiwilligen Meldungen. Nach den vier Wochen meldet sich auch Mira, die zu Gruppe A gehört,",
+      "deutlich häufiger."
+     ]
+    },
+    {
+     "typ": "frei",
+     "frage": "Verdeutlichen Sie das Merkmal „Verallgemeinerung bzw. Pauschalisierung“ am Fall Mira (Transfer).",
+     "hinweis": "Schreibe zwei bis drei Sätze: Zitat mit Zeilenangabe, Deutung mit Fachbegriff, Gegenbeleg.",
+     "muster": "Die Mitschülerin sagt: „Mädchen in dem Alter sind eben so“ (Z. 5–6). Sie schließt von „den Mädchen“ auf Mira, ohne Miras individuelle Situation zu betrachten, z. B. ihre Angst vor einer falschen Antwort (Z. 3–4).",
+     "kriterien": [
+      "Ich habe die **Textstelle** „Mädchen in dem Alter sind eben so“ genannt.",
+      "Ich habe die **Zeilenangabe** (Z. 5–6) geschrieben.",
+      "Ich habe mit dem Fachbegriff **gedeutet**: Von „den Mädchen“ wird auf Mira geschlossen.",
+      "Ich habe Miras **individuelle Situation** (Angst vor einer falschen Antwort, Z. 3–4) als Gegenbeleg verwendet.",
+      "Ich habe **nichts erfunden**, was nicht im Fall steht."
+     ]
+    },
+    {
+     "typ": "frei",
+     "frage": "Verdeutlichen Sie das Merkmal „einfache, subjektive Ursachenzuschreibung ohne Überprüfung“ am Fall Mira (Transfer).",
+     "hinweis": "Schreibe drei bis vier Sätze: Zitat, Deutung, zwei Gegenbelege mit Zeilen.",
+     "muster": "Die Mitschülerin sagt: „Mira ist einfach schüchtern – das war schon immer so“ (Z. 5). Sie erklärt Miras Verhalten mit „schon immer“ statt mit Beobachtung. Mira nennt selbst eine andere Ursache: Angst vor einer falschen Antwort (Z. 3–4). Nach der Partnerbesprechung meldet sie sich häufiger (Z. 11–12).",
+     "kriterien": [
+      "Ich habe die **Textstelle** „Mira ist einfach schüchtern – das war schon immer so“ mit **Z. 5** angegeben.",
+      "Ich habe gedeutet: Das Verhalten wird mit „schon immer“ statt mit **Beobachtung** erklärt.",
+      "Ich habe Miras **eigene Ursache** (Z. 3–4) genannt.",
+      "Ich habe die **Entwicklung nach der Partnerbesprechung** (Z. 11–12) genannt.",
+      "Ich habe **nichts erfunden**, was nicht im Fall steht."
+     ]
+    }
+   ]
+  },
+  {
+   "kicker": "Finale",
+   "titel": "Der Fallbezug in deinem Aufsatz",
+   "bloecke": [
+    {
+     "typ": "situation",
+     "label": "Fallvignette: Mira",
+     "zeilen": [
+      "Mira besucht die 11. Klasse einer Fachoberschule. Ihrer Lehrerin fällt auf, dass Mira sich im",
+      "Unterricht nur selten meldet, obwohl sie bei Partner- und Gruppenarbeiten aktiv mitarbeitet und",
+      "gute Ergebnisse erzielt. Mira erklärt, dass sie sich beim Sprechen vor der gesamten Klasse häufig",
+      "unsicher fühlt und Angst hat, eine falsche Antwort zu geben. Eine Mitschülerin sieht den Grund",
+      "dagegen anders: „Mira ist einfach schüchtern – das war schon immer so. Mädchen in dem Alter",
+      "sind eben so.“",
+      "",
+      "Die Lehrerin vermutet, dass sich Schülerinnen und Schüler wie Mira häufiger melden, wenn sie",
+      "ihre Antwort vorher besprechen dürfen. Das prüft sie vier Wochen lang: Per Los teilt sie die Klasse",
+      "in zwei Gruppen. Gruppe A darf sich vor jeder Antwort zwei Minuten mit einer Partnerin oder einem",
+      "Partner besprechen, Gruppe B nicht. Beide Gruppen erhalten dieselben Fragen, die Lehrerin zählt",
+      "die freiwilligen Meldungen. Nach den vier Wochen meldet sich auch Mira, die zu Gruppe A gehört,",
+      "deutlich häufiger."
+     ]
+    },
+    {
+     "typ": "text",
+     "text": "Du schreibst jetzt alle Teile mit Fallbezug: die Überleitung, die beiden Transfers und den Schluss. Die allgemeinen Teile sind in der Strukturhilfe vorgegeben."
+    },
+    {
+     "typ": "strukturstreifen",
+     "titel": "Schreiben Sie die Teile des Fachaufsatzes mit Fallbezug.",
+     "aufgabe": "Verdeutlichen Sie die Aussage der Mitschülerin im Hinblick auf zwei Merkmale einer Alltagstheorie. Belegen Sie Ihre Analyse am Material (Fallvignette).",
+     "felder": [
+      {
+       "titel": "Einleitung: Überleitung",
+       "farbe": "pfirsich",
+       "hilfe": "Hier kommt zum ersten Mal der Fall: Wer erklärt Miras Zurückhaltung womit (Zeile)? Kündige zwei Merkmale an.",
+       "muster": "In der Fallvignette erklärt eine Mitschülerin Miras Zurückhaltung mit einer Alltagstheorie (Z. 5–6). Die Aussage wird im Folgenden anhand von zwei Merkmalen verdeutlicht."
+      },
+      {
+       "titel": "Merkmal 1: Verdeutlichen (Transfer)",
+       "farbe": "blau",
+       "hilfe": "Vorgegeben ist: „Ein erstes Merkmal ist die Verallgemeinerung.“ Beleg mit Zeile, Deutung, Gegenbeleg.",
+       "muster": "Die Mitschülerin sagt: „Mädchen in dem Alter sind eben so“ (Z. 5–6). Sie schließt von „den Mädchen“ auf Mira, ohne Miras individuelle Situation zu betrachten, z. B. ihre Angst vor einer falschen Antwort (Z. 3–4)."
+      },
+      {
+       "titel": "Merkmal 2: Verdeutlichen (Transfer)",
+       "farbe": "gruen",
+       "hilfe": "Vorgegeben ist: „Ein zweites Merkmal ist die einfache Ursachenzuschreibung ohne Überprüfung.“ Beleg mit Zeile, Deutung, zwei Gegenbelege.",
+       "muster": "Die Mitschülerin sagt: „Mira ist einfach schüchtern – das war schon immer so“ (Z. 5). Sie erklärt Miras Verhalten mit „schon immer“ statt mit Beobachtung. Mira nennt selbst eine andere Ursache: Angst vor einer falschen Antwort (Z. 3–4). Nach der Partnerbesprechung meldet sie sich häufiger (Z. 11–12)."
+      },
+      {
+       "titel": "Schluss",
+       "farbe": "pfirsich",
+       "hilfe": "Greife den Versuch der Lehrerin auf: Was leisten Alltagstheorien, was nicht?",
+       "muster": "Alltagstheorien geben Orientierung, ersetzen aber keine systematische Überprüfung wie im Versuch der Lehrerin."
+      }
+     ]
+    },
+    {
+     "typ": "merke",
+     "label": "Merke",
+     "text": "Prüfe am Ende jeden Satz mit Mira: **Gibt es eine Zeilenangabe? Steht das wirklich im Fall? Habe ich gedeutet und nicht nur nacherzählt?**"
+    }
+   ]
+  }
+ ]
+}
