@@ -33,3 +33,9 @@ Es wird nichts gespeichert; Eingaben liegen nur im Arbeitsspeicher der Seite. We
 ## Kurzarbeit 11. und 12. Klasse (Ordner Pädagogik/Psychologie > Kurzarbeit)
 Unter „Kurzarbeit“ gibt es zwei Unterordner: „11. Klasse“ (vier Übungen zum Fall Mira) und „12. Klasse“ (vier Übungen zum Fall Tim: Aufbau üben, Theorie beschreiben üben, Fallbezug üben, Schreiben eines Aufsatzes üben).
 Dateien: `inhalte/kurzarbeit-12-aufbau.json`, `kurzarbeit-12-theorie.json`, `kurzarbeit-12-fallbezug.json`, `kurzarbeit-12-schreiben.json` (neu), `inhalte/kurzarbeit-theorie.json` (Satzfehler korrigiert), `stationen/katalog.json` (Pfade geändert, vier Einträge ergänzt), `station.html` (Knopf „Alle Übungen“ entfernt: Zurück gibt es nur noch zur Auswahl oder zum Ordner), `LIESMICH.md`.
+
+## Zugangscode für die ganze Teststation
+Beim Öffnen jeder Seite (außer `datenschutz.html`) erscheint eine Code-Abfrage. Der Code ist `fosbos_2026/27`, Groß-/Kleinschreibung ist egal. Der Code steht nicht im Klartext im Repo, nur sein Prüfwert in `js/gate.js`. Er wird pro Browser-Tab gemerkt (nach Schließen des Tabs wieder fragen), nichts wird gesendet.
+Das ist eine Eingangshürde im Browser, keine Verschlüsselung: Wer die Dateien direkt im Repo oder per Adresse abruft, sieht den Inhalt trotzdem.
+Neuer Code: SHA-256 von `ts-gate:` + Code in Kleinbuchstaben berechnen und in `js/gate.js` bei `HASH` eintragen.
+Dateien: `js/gate.js` (neu), alle `.html`-Dateien im Hauptordner, in `stationen/` und `werkzeug/` (je eine Zeile `<script src="…gate.js">` am Anfang von `<head>`).
