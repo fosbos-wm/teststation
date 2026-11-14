@@ -1823,10 +1823,11 @@
   "datei": "kurs.html?set=kurzarbeit-aufbau",
   "ergebnis": false,
   "parameter": [],
-  "thema": "1. Kurzarbeit 11. Klasse Nachsorge",
+  "thema": "Kurzarbeit 11. Klasse",
   "pfad": [
    "Pädagogik/Psychologie",
-   "1.Kurzarbeit 11.Klasse Nachsorge"
+   "Kurzarbeit",
+   "11. Klasse"
   ]
  },
  {
@@ -1837,10 +1838,11 @@
   "datei": "kurs.html?set=kurzarbeit-theorie",
   "ergebnis": false,
   "parameter": [],
-  "thema": "1. Kurzarbeit 11. Klasse Nachsorge",
+  "thema": "Kurzarbeit 11. Klasse",
   "pfad": [
    "Pädagogik/Psychologie",
-   "1.Kurzarbeit 11.Klasse Nachsorge"
+   "Kurzarbeit",
+   "11. Klasse"
   ]
  },
  {
@@ -1851,10 +1853,11 @@
   "datei": "kurs.html?set=kurzarbeit-fallbezug",
   "ergebnis": false,
   "parameter": [],
-  "thema": "1. Kurzarbeit 11. Klasse Nachsorge",
+  "thema": "Kurzarbeit 11. Klasse",
   "pfad": [
    "Pädagogik/Psychologie",
-   "1.Kurzarbeit 11.Klasse Nachsorge"
+   "Kurzarbeit",
+   "11. Klasse"
   ]
  },
  {
@@ -1865,10 +1868,71 @@
   "datei": "kurs.html?set=kurzarbeit-schreiben",
   "ergebnis": false,
   "parameter": [],
-  "thema": "1. Kurzarbeit 11. Klasse Nachsorge",
+  "thema": "Kurzarbeit 11. Klasse",
   "pfad": [
    "Pädagogik/Psychologie",
-   "1.Kurzarbeit 11.Klasse Nachsorge"
+   "Kurzarbeit",
+   "11. Klasse"
+  ]
+ },
+ {
+  "id": "kurzarbeit-12-aufbau",
+  "titel": "Aufbau üben",
+  "fach": "Pädagogik/Psychologie",
+  "beschreibung": "Fachaufsatz-Aufbau am Fall Tim: Bausteine und Reihenfolge üben, am Ende ein eigener Aufsatz mit Strukturstreifen. Einzelübung zum Durchklicken, ohne Punkte.",
+  "datei": "kurs.html?set=kurzarbeit-12-aufbau",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Kurzarbeit 12. Klasse",
+  "pfad": [
+   "Pädagogik/Psychologie",
+   "Kurzarbeit",
+   "12. Klasse"
+  ]
+ },
+ {
+  "id": "kurzarbeit-12-theorie",
+  "titel": "Theorie beschreiben üben",
+  "fach": "Pädagogik/Psychologie",
+  "beschreibung": "Persönlichkeitstheorie allgemein beschreiben (Nennen, Erklären), ohne Fallbezug. Einzelübung zum Durchklicken, ohne Punkte.",
+  "datei": "kurs.html?set=kurzarbeit-12-theorie",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Kurzarbeit 12. Klasse",
+  "pfad": [
+   "Pädagogik/Psychologie",
+   "Kurzarbeit",
+   "12. Klasse"
+  ]
+ },
+ {
+  "id": "kurzarbeit-12-fallbezug",
+  "titel": "Fallbezug üben",
+  "fach": "Pädagogik/Psychologie",
+  "beschreibung": "Verdeutlichen (Transfer) am Fall Tim: Textstellen finden, Zeilen angeben, deuten, Gegenbelege nutzen. Einzelübung zum Durchklicken, ohne Punkte.",
+  "datei": "kurs.html?set=kurzarbeit-12-fallbezug",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Kurzarbeit 12. Klasse",
+  "pfad": [
+   "Pädagogik/Psychologie",
+   "Kurzarbeit",
+   "12. Klasse"
+  ]
+ },
+ {
+  "id": "kurzarbeit-12-schreiben",
+  "titel": "Schreiben eines Aufsatzes üben",
+  "fach": "Pädagogik/Psychologie",
+  "beschreibung": "Sätze, Argumente, roter Faden, Reihenfolge und nichts dazudichten: ein ganzer Aufsatz am Fall Tim. Einzelübung zum Durchklicken, ohne Punkte.",
+  "datei": "kurs.html?set=kurzarbeit-12-schreiben",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Kurzarbeit 12. Klasse",
+  "pfad": [
+   "Pädagogik/Psychologie",
+   "Kurzarbeit",
+   "12. Klasse"
   ]
  }
 ]

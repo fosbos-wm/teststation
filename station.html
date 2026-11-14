@@ -20,7 +20,6 @@ const ordnerQ=(q.get("ordner")||"").slice(0,200),von=q.get("von")==="1";
 /* Rückweg nur dorthin, wo man hergekommen ist: Auswahl der Lehrkraft, Ordner oder Gesamtübersicht. Direkter Link zu einer einzelnen Übung: kein Weg zu „Alle Übungen“. */
 if(auswahl){$("back").href="index.html?t="+team+"&auswahl="+encodeURIComponent(auswahl);$("back").textContent="Zurück zur Auswahl"}
 else if(ordnerQ){$("back").href="index.html?t="+team+"&ordner="+encodeURIComponent(ordnerQ);$("back").textContent="Zurück zum Ordner"}
-else if(von){$("back").href="index.html?t="+team}
 else{$("back").remove()}
 const shareUrl=(()=>{const u=new URL(location.href);u.searchParams.delete("t");u.searchParams.delete("von");u.hash="";return u.href})();
 qrSvg(shareUrl,56).then(v=>{$("qrs").innerHTML=v});

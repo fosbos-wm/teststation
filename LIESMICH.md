@@ -29,3 +29,7 @@ Geänderte Dateien: `station.html`, `index.html`.
 Vier Einzelübungen zum Fall Mira, jeweils zum Durchklicken mit Rückmeldung, ohne Punkte: Aufbau üben, Theorie beschreiben üben, Fallbezug üben, Schreiben eines Aufsatzes üben.
 Dateien: `stationen/kurs.html` (neu), `inhalte/kurzarbeit-aufbau.json`, `kurzarbeit-theorie.json`, `kurzarbeit-fallbezug.json`, `kurzarbeit-schreiben.json` (neu), `stationen/katalog.json` (vier Einträge am Ende ergänzt).
 Es wird nichts gespeichert; Eingaben liegen nur im Arbeitsspeicher der Seite. Weitere Übungen dieser Art: neue JSON in `inhalte/` und ein Katalogeintrag mit `"datei":"kurs.html?set=<name>"`.
+
+## Kurzarbeit 11. und 12. Klasse (Ordner Pädagogik/Psychologie > Kurzarbeit)
+Unter „Kurzarbeit“ gibt es zwei Unterordner: „11. Klasse“ (vier Übungen zum Fall Mira) und „12. Klasse“ (vier Übungen zum Fall Tim: Aufbau üben, Theorie beschreiben üben, Fallbezug üben, Schreiben eines Aufsatzes üben).
+Dateien: `inhalte/kurzarbeit-12-aufbau.json`, `kurzarbeit-12-theorie.json`, `kurzarbeit-12-fallbezug.json`, `kurzarbeit-12-schreiben.json` (neu), `inhalte/kurzarbeit-theorie.json` (Satzfehler korrigiert), `stationen/katalog.json` (Pfade geändert, vier Einträge ergänzt), `station.html` (Knopf „Alle Übungen“ entfernt: Zurück gibt es nur noch zur Auswahl oder zum Ordner), `LIESMICH.md`.
