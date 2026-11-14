@@ -30,7 +30,7 @@ const fail=t=>{$("fehler").hidden=false;$("ftext").textContent=t};
   try{
     const kat=await loadKatalog(),s=kat.find(x=>x.id===sid);
     if(!s||!SAFE_DATEI.test(s.datei||"")){fail("Diese Übung gibt es nicht.");return}
-    $("titel").textContent=s.titel;$("team").textContent="Team "+team;document.title=s.titel+" – Teststation";
+    $("titel").textContent=s.titel;document.title=s.titel+" – Teststation";
     const u=new URL("stationen/"+s.datei,location.href);
     u.searchParams.set("ts","1");u.searchParams.set("team",team);
     Object.entries(cleanParams(s,q)).forEach(([a,v])=>u.searchParams.set(a,v));
