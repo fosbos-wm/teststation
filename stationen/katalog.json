@@ -1937,26 +1937,52 @@
  },
  {
   "id": "selbstlernkurs-claude",
-  "titel": "Selbstlernkurs: Unterrichtsmaterial mit Claude erstellen",
-  "fach": "Selbstlernkurs Claude",
-  "beschreibung": "Für Lehrkräfte zum Durchklicken: aus einem Lehrtext in drei kurzen Prompts ein Arbeitsblatt (PDF), eine interaktive Übung und eine Lernrallye (PDF) erstellen, plus Wege, die Übung in der Klasse bereitzustellen. Etwa 25 Minuten.",
+  "titel": "Selbstlernkurs: Material mit Claude erstellen",
+  "fach": "Fortbildung",
+  "beschreibung": "Klick-Kurs für Lehrkräfte: Infoblatt, Übung und Lernrallye mit drei kurzen Prompts in Fobizz erstellen.",
   "datei": "selbstlernkurs-claude.html",
   "ergebnis": false,
   "parameter": [],
-  "thema": "Claude auf Fobizz",
+  "thema": "Selbstlernkurs Claude",
+  "pfad": [
+   "Selbstlernkurs Claude"
+  ]
+ },
+ {
+  "id": "selbstlernkurs-infoblatt",
+  "titel": "Beispiel: Infoblatt Entwicklungsbedingungen",
+  "fach": "Fortbildung",
+  "beschreibung": "Beispielergebnis von Prompt 1 aus dem Selbstlernkurs.",
+  "datei": "selbstlernkurs-infoblatt.html",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Selbstlernkurs Claude",
   "pfad": [
    "Selbstlernkurs Claude"
   ]
  },
  {
   "id": "selbstlernkurs-uebung",
-  "titel": "Beispiel Übung: Entwicklungsbedingungen und Wechselwirkung",
-  "fach": "Selbstlernkurs Claude",
-  "beschreibung": "Ergebnis aus dem Selbstlernkurs: vier Aufgaben zu Anlage, Umwelt, Selbststeuerung und ihren Wechselwirkungen mit sofortiger Rückmeldung. Einzelübung, ohne Punkte.",
+  "titel": "Beispiel: Interaktive Übung Entwicklungsbedingungen",
+  "fach": "Fortbildung",
+  "beschreibung": "Beispielergebnis von Prompt 2: vier Aufgaben mit Sofort-Rückmeldung.",
   "datei": "selbstlernkurs-uebung.html",
   "ergebnis": false,
   "parameter": [],
-  "thema": "Claude auf Fobizz",
+  "thema": "Selbstlernkurs Claude",
+  "pfad": [
+   "Selbstlernkurs Claude"
+  ]
+ },
+ {
+  "id": "selbstlernkurs-rallye",
+  "titel": "Beispiel: Lernrallye Entwicklungsbedingungen",
+  "fach": "Fortbildung",
+  "beschreibung": "Beispielergebnis von Prompt 3: sechs Stationen mit Lösungswort.",
+  "datei": "selbstlernkurs-rallye.html",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Selbstlernkurs Claude",
   "pfad": [
    "Selbstlernkurs Claude"
   ]
