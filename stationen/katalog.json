@@ -1937,9 +1937,9 @@
  },
  {
   "id": "selbstlernkurs-claude",
-  "titel": "Selbstlernkurs: Material mit Claude auf Fobizz erstellen",
+  "titel": "Selbstlernkurs: Unterrichtsmaterial mit Claude erstellen",
   "fach": "Selbstlernkurs Claude",
-  "beschreibung": "Für Lehrkräfte zum Durchklicken: Claude in Fobizz öffnen, drei kurze Prompts, Beispiele zum Ausprobieren und ein Prompt-Baukasten. Etwa 20 Minuten.",
+  "beschreibung": "Für Lehrkräfte zum Durchklicken: aus einem Lehrtext in drei kurzen Prompts ein Arbeitsblatt (PDF), eine interaktive Übung und eine Lernrallye (PDF) erstellen, plus Wege, die Übung in der Klasse bereitzustellen. Etwa 25 Minuten.",
   "datei": "selbstlernkurs-claude.html",
   "ergebnis": false,
   "parameter": [],
@@ -1949,37 +1949,11 @@
   ]
  },
  {
-  "id": "selbstlernkurs-infoblatt",
-  "titel": "Beispiel Infoblatt: Schichten des Bewusstseins",
-  "fach": "Selbstlernkurs Claude",
-  "beschreibung": "Ergebnis von Prompt 1 aus dem Selbstlernkurs: Infoblatt zum Schichtenmodell nach Freud (P/P, 12. Klasse).",
-  "datei": "selbstlernkurs-infoblatt.html",
-  "ergebnis": false,
-  "parameter": [],
-  "thema": "Claude auf Fobizz",
-  "pfad": [
-   "Selbstlernkurs Claude"
-  ]
- },
- {
   "id": "selbstlernkurs-uebung",
-  "titel": "Beispiel Übung: Eisberg beschriften",
+  "titel": "Beispiel Übung: Entwicklungsbedingungen und Wechselwirkung",
   "fach": "Selbstlernkurs Claude",
-  "beschreibung": "Ergebnis von Prompt 2: interaktive Übung zu den Schichten des Bewusstseins mit sofortiger Rückmeldung. Einzelübung, ohne Punkte.",
+  "beschreibung": "Ergebnis aus dem Selbstlernkurs: vier Aufgaben zu Anlage, Umwelt, Selbststeuerung und ihren Wechselwirkungen mit sofortiger Rückmeldung. Einzelübung, ohne Punkte.",
   "datei": "selbstlernkurs-uebung.html",
-  "ergebnis": false,
-  "parameter": [],
-  "thema": "Claude auf Fobizz",
-  "pfad": [
-   "Selbstlernkurs Claude"
-  ]
- },
- {
-  "id": "selbstlernkurs-rallye",
-  "titel": "Beispiel Lernrallye: Auf der Spur des Unbewussten",
-  "fach": "Selbstlernkurs Claude",
-  "beschreibung": "Ergebnis von Prompt 3: Lernrallye mit fünf Stationen und Lösungswort. Einzelübung, ohne Punkte.",
-  "datei": "selbstlernkurs-rallye.html",
   "ergebnis": false,
   "parameter": [],
   "thema": "Claude auf Fobizz",
