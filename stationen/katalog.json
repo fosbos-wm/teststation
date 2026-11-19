@@ -1934,5 +1934,57 @@
    "Kurzarbeit",
    "12. Klasse"
   ]
+ },
+ {
+  "id": "selbstlernkurs-claude",
+  "titel": "Selbstlernkurs: Material mit Claude auf Fobizz erstellen",
+  "fach": "Selbstlernkurs Claude",
+  "beschreibung": "Für Lehrkräfte zum Durchklicken: Claude in Fobizz öffnen, drei kurze Prompts, Beispiele zum Ausprobieren und ein Prompt-Baukasten. Etwa 20 Minuten.",
+  "datei": "selbstlernkurs-claude.html",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Claude auf Fobizz",
+  "pfad": [
+   "Selbstlernkurs Claude"
+  ]
+ },
+ {
+  "id": "selbstlernkurs-infoblatt",
+  "titel": "Beispiel Infoblatt: Schichten des Bewusstseins",
+  "fach": "Selbstlernkurs Claude",
+  "beschreibung": "Ergebnis von Prompt 1 aus dem Selbstlernkurs: Infoblatt zum Schichtenmodell nach Freud (P/P, 12. Klasse).",
+  "datei": "selbstlernkurs-infoblatt.html",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Claude auf Fobizz",
+  "pfad": [
+   "Selbstlernkurs Claude"
+  ]
+ },
+ {
+  "id": "selbstlernkurs-uebung",
+  "titel": "Beispiel Übung: Eisberg beschriften",
+  "fach": "Selbstlernkurs Claude",
+  "beschreibung": "Ergebnis von Prompt 2: interaktive Übung zu den Schichten des Bewusstseins mit sofortiger Rückmeldung. Einzelübung, ohne Punkte.",
+  "datei": "selbstlernkurs-uebung.html",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Claude auf Fobizz",
+  "pfad": [
+   "Selbstlernkurs Claude"
+  ]
+ },
+ {
+  "id": "selbstlernkurs-rallye",
+  "titel": "Beispiel Lernrallye: Auf der Spur des Unbewussten",
+  "fach": "Selbstlernkurs Claude",
+  "beschreibung": "Ergebnis von Prompt 3: Lernrallye mit fünf Stationen und Lösungswort. Einzelübung, ohne Punkte.",
+  "datei": "selbstlernkurs-rallye.html",
+  "ergebnis": false,
+  "parameter": [],
+  "thema": "Claude auf Fobizz",
+  "pfad": [
+   "Selbstlernkurs Claude"
+  ]
  }
 ]

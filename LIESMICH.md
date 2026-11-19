@@ -39,3 +39,9 @@ Beim Öffnen jeder Seite (außer `datenschutz.html`) erscheint eine Code-Abfrage
 Das ist eine Eingangshürde im Browser, keine Verschlüsselung: Wer die Dateien direkt im Repo oder per Adresse abruft, sieht den Inhalt trotzdem.
 Neuer Code: SHA-256 von `ts-gate:` + Code in Kleinbuchstaben berechnen und in `js/gate.js` bei `HASH` eintragen.
 Dateien: `js/gate.js` (neu), alle `.html`-Dateien im Hauptordner, in `stationen/` und `werkzeug/` (je eine Zeile `<script src="…gate.js">` am Anfang von `<head>`).
+
+## Selbstlernkurs Claude (Ordner „Selbstlernkurs Claude“)
+Selbstlernkurs für Lehrkräfte zum Durchklicken: Claude in Fobizz öffnen, drei kurze Prompts (Infoblatt, interaktive Übung, Lernrallye), Folge-Prompts und ein Prompt-Baukasten. Dazu die drei Beispielergebnisse einzeln als Übungen für Klassen (Infoblatt, Übung „Eisberg beschriften“, Lernrallye). Alle Seiten sind Einzelübungen ohne Punkte.
+Es werden keine externen Schriften oder Dienste geladen, nichts wird gespeichert oder gesendet; Eingaben liegen nur im Arbeitsspeicher der Seite. Die Seiten stehen hinter dem Zugangscode der Teststation (`js/gate.js`).
+Dateien: `stationen/selbstlernkurs-claude.html`, `stationen/selbstlernkurs-infoblatt.html`, `stationen/selbstlernkurs-uebung.html`, `stationen/selbstlernkurs-rallye.html` (neu), `stationen/katalog.json` (vier Einträge am Ende ergänzt, Ordner „Selbstlernkurs Claude“), `LIESMICH.md` (dieser Abschnitt).
+Die Beispielmaterialien sind Beispiele für Claude-Ergebnisse und vor dem Einsatz fachlich zu prüfen.
